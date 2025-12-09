@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Gideon+Roman&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset cơ bản */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        .header {
+        width: 100vw;   
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        font-family: "Fraunces", serif;
+        background-color: #f0efeb; /* nền sáng như ảnh */
+        border-top: 1px solid #000000; /* viền trên màu đỏ nâu */
+        border-bottom: 1px solid #000000; /* viền dưới màu đỏ nâu */
+        }
+
+        /* Phần trên cùng: vé của tôi, đăng nhập, đăng ký */
+        .inner-wrap-1 {
+        border-bottom: 1px solid #000;
+        width: 100%; /* hoặc width: 300px; ví dụ */
+        display: flex;
+        justify-content: flex-end; /* nếu vẫn muốn nội dung bên phải trong vùng */
+        padding: 4px 20px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #000;
+        }
+
+        .inner-wrap-1 ul {
+        margin: 0 50px;
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 35px;
+        }
+
+        .inner-wrap-1 ul li a {
+        color: #000;
+        text-decoration: none;
+        }
+
+        .inner-wrap-1 ul li a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        }
+
+        /* Phần menu chính */
+        .inner-wrap-2 {
+        margin: 5px 50px;
+        padding: 10px 20px; /* giữ padding nếu cần */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+
+        /* Logo */
+        .inner-logo img {
+        height: 100px; /* tùy chỉnh cao logo */
+        display: block;
+        }
+
+        /* Menu chính */
+        .inner-menu ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #000;
+        }
+
+        .inner-menu ul li a {
+        text-decoration: none;
+        color: #000;
+        }
+        
+        .inner-menu img {
+        margin-left: 6px;
+        height: 15px; /* tùy chỉnh cao logo */
+        }
+        .inner-wrap-1 ul li a:hover {
+        color: #74070d;
+        text-decoration: none;
+        }
+
+        .inner-wrap-1 ul li img {
+        height: 16px; /* hoặc height: 1em; để bằng đúng kích thước font */
+        width: auto;  /* giữ tỉ lệ ảnh */
+        vertical-align: middle; /* canh giữa ảnh với chữ */
+        margin-left: 5px; /* tạo khoảng cách nhẹ giữa chữ và ảnh */
+        }
+
+
+        .inner-menu ul li a:hover {
+        color: #74070d; /* màu đỏ nâu khi hover */
+        cursor: pointer;
+        }
+
+        /* Ẩn submenu mặc định */
+        .inner-menu ul ul.submenu {
+        display: none;
+        position: absolute; /* để submenu không chiếm không gian */
+        background-color: #fff; /* màu nền submenu */
+        padding: 15px 0;
+        list-style: none;
+        margin-top: 5px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        min-width: 150px;
+        z-index: 999;
+        }
+
+        /* Hiện submenu khi rê chuột vào li cha */
+        .inner-menu ul li:hover > ul.submenu {
+        display: block;
+        }
+
+        /* Tạo kiểu cho các item con */
+        .inner-menu ul ul.submenu li {
+        padding: 5px 20px;
+        }
+
+        .inner-menu ul ul.submenu li a {
+        color: #000;
+        text-decoration: none;
+        display: block;
+        }
+
+        .inner-menu ul ul.submenu li a:hover {
+        color: #74070d  ;
+        }
+
+
+        /* Thanh tìm kiếm */
+        .search-box {
+        display: flex;
+        align-items: center;
+        border: 2px solid #000;
+        border-radius: 25px;
+        padding: 5px 10px;
+        gap: 5px;
+        width: 600px;
+        }
+
+        .search-box input {
+        font-family: "Fraunces", serif;
+        border: none;
+        outline: none;
+        flex: 1;
+        font-size: 14px;
+        color: #555;
+        background-color: transparent;
+        }
+
+        .search-icon svg {
+        stroke: #000;
+        }
+
+        .search-button {
+        font-size: 16px;
+        font-family: "Fraunces", serif;
+        background-color: transparent;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        color: #000;
+        padding: 5px 10px;
+        border-radius: 15px;
+        transition: background-color 0.3s ease;
+        }
+
+        .search-button:hover {
+        background-color: #74070d;
+        color: #fff;
+        }
+
+        .ad-banner {
+        width: 100vw;  /* tràn full chiều ngang màn hình */
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        }
+
+        .ad-banner img {
+        height: auto;
+        display: block;
+        }
+
+      @media screen and (max-width: 1024px) {
+        .inner-menu {
+          display: none;
+          flex-direction: column;
+          background-color: #f0efeb;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          padding: 10px 0;
+        }
+
+        .inner-regist {
+          display: none;
+          flex-direction: column;
+          background-color: #f0efeb;
+          position: absolute;
+          top: 860%;
+          left: 0;
+          width: 100%;
+          padding: 10px 0;
+        }
+
+        .inner-menu.show-menu {
+          display: flex;
+        }
+
+        .inner-menu ul {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .inner-menu ul li a {
+          padding: 10px 20px;
+          text-align: center;
+          width: 100%;
+        }
+
+        .inner-regist.show-regist {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          padding: 30px 0;
+        }
+
+        .inner-regist ul {
+          flex-direction: column;
+          width: 100%;
+          padding: 0;
+        }
+
+        .inner-regist ul li {
+          width: 100%;
+          text-align: center;
+          margin: 5px 0;
+        }
+
+        .header .inner-icon {
+          display: block;
+          cursor: pointer;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .header .inner-wrap .inner-menu ul li a {
+          padding: 10px;
+          text-align: center;
+          width: 100%;
+        }
+
+        .inner-regist {
+          display: none;
+          flex-direction: column;
+          background-color: #f0efeb;
+          position: absolute;
+          top: 535%;
+          left: 0;
+          width: 100%;
+          padding: 10px 0;
+        }
+        .ad-banner img {
+            max-height: 150px;
+            object-fit: cover; /* cắt vừa nếu cần */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+        <div class="ad-banner">
+            <a href="#">
+            <img src="assets/images/adverstise 1.png" alt="Quảng cáo" />
+            </a>
+        </div>
+        <div class="inner-wrap-1">
+            <ul>
+            <li>
+                <a href="myTicket">VÉ CỦA TÔI</a>
+                <img src="assets/images/ticket-icon.png">
+            </li>
+            <li>
+                <a href="accounts/login.html" class="login-link">ĐĂNG NHẬP</a>
+                |
+                <a href="accounts/register.html" class="register-link">ĐĂNG KÝ</a>
+                <img src="assets/images/user-icon.png">
+            </li>
+            </ul>
+        </div>
+
+        <div class="inner-wrap-2">
+            <a href="index.html" class="inner-logo">
+            <img src="assets/images/logo (no back).png" alt="echoes_logo.png">
+            </a>
+
+            <nav class="inner-menu">
+            <ul>
+                <li>   
+                    GIỚI THIỆU
+                    <img src="assets/images/dropdown-icon.png">
+                    <ul class="submenu">
+                        <li><a href="aboutUs.html">VỀ CHÚNG TÔI</a></li>
+                        <li><a href="rules.html">QUY ĐỊNH</a></li>
+                    </ul>   
+                </li>
+                <li><a href="music.html">NHẠC SỐNG</a></li>
+                <li><a href="concert.html">CONCERT ÂM NHẠC</a></li>
+                <li><a href="merchandise.html">MERCHANDISE</a></li>
+                <li><a href="news.html">TIN TỨC | KHUYẾN MÃI</a></li>
+            </ul>
+            </nav>
+
+            <div class="search-box">
+            <span class="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+            </span>
+            <input type="text" placeholder="Bạn tìm sự kiện nào?">
+            <button class="search-button">Tìm kiếm</button>
+            </div>
+        </div>
+        </div>
+
+
+    <script>
+      // document.addEventListener("DOMContentLoaded", function () {
+        const loginButton = document.getElementById("login-link");
+        const registerButton = document.getElementById("register-link");
+
+        const currentUser = localStorage.getItem("currentUser");
+
+        if (currentUser) {
+          const user = JSON.parse(currentUser);
+          loginButton.textContent = `Xin chào, ${user.username}`;
+          loginButton.setAttribute("href", "./prof  ile.html");
+
+          registerButton.textContent = "Đăng xuất";
+          registerButton.setAttribute("href", "#");
+
+          registerButton.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("currentUser");
+            window.location.reload();
+          });
+        } else {
+          loginButton.textContent = "Đăng nhập";
+          loginButton.setAttribute("href", "accounts/login/login.html");
+
+          registerButton.textContent = "Đăng ký";
+          registerButton.setAttribute(
+            "href",
+            "accounts/register/register.html"
+          );
+        }
+
+        // Sau khi đã gán xong => hiện các nút
+        loginButton.style.visibility = "visible";
+        registerButton.style.visibility = "visible";
+      // });
+    </script>
+  </body>
+</html>

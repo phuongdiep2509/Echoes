@@ -17,7 +17,15 @@
 
 <body>
     <!-- Nhúng header -->
-    <div id="header"></div>
+    <div id="header">
+        <script>
+            fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+        </script>
+    </div>
 
     <div class="carousel">
         <div class="carousel-list">
