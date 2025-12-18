@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Đăng nhập/Đăng kí</title>
+    <link rel="stylesheet" href="SignUp_LogIn_Form.css">
+    <link rel="stylesheet" href="SignUp_login_formRe.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="modal-overlay" id="modalOverlay" aria-hidden="false">
+        <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <button class="close-btn" id="closeBtn" aria-label="Đóng">&times;</button>
+            </div>
+            
+            <div class="container">
+                <div class="form-box login" aria-hidden="false">
+                    <form id="loginForm" action="#" novalidate>
+                        <h1 id="modalTitle">Đăng nhập</h1>
+
+                        <div class="input-box">
+                            <input type="text" name="username" placeholder="Tên người dùng" required>
+                            <i class='bx bxs-user' aria-hidden="true"></i>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="password" name="password" placeholder="Mật khẩu" required>
+                            <i class='bx bxs-lock-alt'></i>
+                            <i class="bx bx-show toggle-password" title="Hiện/ẩn mật khẩu" aria-hidden="true"></i>
+                        </div>
+
+                        <div class="forgot-link">
+                            <a href="#" id="forgotLink" tabindex="0">Quên mật khẩu?</a>
+                        </div>
+
+                        <button type="submit" class="btn">Đăng nhập</button>
+                        <p>Hoặc đăng nhập bằng mạng xã hội</p>
+
+                        <div class="social-icons">
+                            <a href="#" aria-label="Google"><i class='bx bxl-google'></i></a>
+                            <a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                            <a href="#" aria-label="Github"><i class='bx bxl-github'></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="form-box register" aria-hidden="true">
+                    <form id="registerForm" action="#" novalidate>
+                        <h1>Đăng ký</h1>
+                        <div class="input-box">
+                            <input type="text" name="reg_username" placeholder="Tên người dùng" required>
+                            <i class='bx bxs-user' aria-hidden="true"></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="email" name="reg_email" placeholder="Email" required>
+                            <i class='bx bxs-envelope' aria-hidden="true"></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" name="reg_password" placeholder="Mật khẩu" required>
+                            <i class='bx bxs-lock-alt' aria-hidden="true"></i>
+                            <i class="bx bx-show toggle-password" title="Hiện/ẩn mật khẩu" aria-hidden="true"></i>
+                        </div>
+                        <div class="password-validation-box error-message">
+                            <p class="error-title">❌ Mật khẩu chưa hợp lệ</p>
+                            <ul>
+                                <li data-rule="length"><span class="check-icon">✗</span> Từ 8 - 32 ký tự</li>
+                                <li data-rule="lower_digit"><span class="check-icon">✗</span> Bao gồm chữ thường và số</li>
+                                <li data-rule="special"><span class="check-icon">✗</span> Bao gồm ký tự đặc biệt (!,@,$,%,...)</li>
+                                <li data-rule="upper"><span class="check-icon">✗</span> Có ít nhất 1 ký tự in hoa</li>
+                            </ul>
+                        </div>
+                        <button type="submit" class="btn">Đăng ký</button>
+                        <p>Hoặc Đăng ký bằng tài khoản xã hội</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Google"><i class='bx bxl-google'></i></a>
+                            <a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                            <a href="#" aria-label="Github"><i class='bx bxl-github'></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="toggle-box" aria-hidden="true">
+                    <div class="toggle-panel toggle-left">
+                        <h1>Chào mừng bạn!</h1>
+                        <p>Bạn chưa có tài khoản?</p>
+                        <button class="btn register-btn" type="button">Đăng ký</button>
+                    </div>
+
+                    <div class="toggle-panel toggle-right">
+                        <h1>Chào mừng bạn trở lại!</h1>
+                        <p>Bạn đã có tài khoản?</p>
+                        <button class="btn login-btn" type="button">Đăng nhập</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="mobile-nav" id="mobileNav">
+                <button class="btn mobile-login-btn" type="button">Đăng nhập</button>
+                <button class="btn mobile-register-btn" type="button">Đăng ký</button>
+            </div>
+        </div> 
+
+        <div class="forgot-modal" id="forgotModal">
+            <div class="form-box forgot-form">
+                <button class="close-btn" id="closeForgotBtn" aria-label="Đóng">&times;</button> 
+
+                <form id="forgotForm">
+                    <h1>Quên mật khẩu</h1>
+                    <p>Nhập email để nhận liên kết đặt lại mật khẩu.</p>
+                    <div class="input-box">
+                        <input type="email" name="forgot_email" placeholder="Email" required>
+                        <i class='bx bxs-envelope'></i>
+                    </div>
+                    <button type="submit" class="btn send-email-btn">GỬI</button> 
+                </form>
+
+                <div id="forgotSuccessMessage" style="display:none; text-align:center; padding: 20px 0;">
+                    <i class='bx bxs-check-circle' style="font-size:50px;color:#38c172; margin-bottom: 10px;"></i>
+                    <h2>Hoàn tất!</h2>
+                    <p>Mật khẩu mới đã được gửi đến email của bạn.</p>
+                    <button id="forgotCloseSuccess" class="btn" style="width: 150px;">Đóng</button>
+                </div>
+            </div>
+        </div>
+
+    </div> <script src="SignUp_LogIn_Form.js"></script>
+</body>
+</html>
