@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Gideon+Roman&display=swap" rel="stylesheet">
 
+    <!-- Nhúng css -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 
 </head>
 
@@ -19,72 +22,66 @@
     <!-- Nhúng header -->
     <div id="header">
         <script>
-            fetch('components/header.html')
-            .then(response => response.text())
+           fetch('components/user_header.html')
+            .then(res => res.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
+                const script = document.createElement('script');
+                script.src = 'components/scroll_header.js';
+                document.body.appendChild(script);
             });
         </script>
     </div>
 
     <div class="carousel">
         <div class="carousel-list">
-            <div class="carousel-image"><img src="assets/images/main banner 1.png"></div>
-        <div class="carousel-button-prev">
-            <button id="prev"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="carousel-image">
+                <img src="assets/images/main_banner_1.png" alt="">
+            </div>
+            <div class="carousel-image">
+                <img src="assets/images/main_banner_4.png" alt="">
+            </div>
+            <div class="carousel-image">
+                <img src="assets/images/main_banner_2.png" alt="">
+            </div>
+            <div class="carousel-image">
+                <img src="assets/images/main_banner_3.png" alt="">
+            </div>
         </div>
-        <div class="carousel-button-next">
-            <button id="next"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-        <ul class="carousel-dots">
-            <li class="active"></li>
-            <li></li>
-            <li></li>
+
+        <div class="carousel-button-prev"><</div>
+        <div class="carousel-button-next">></div>
+
+
+        <ul class="carousel-dots">  
         </ul>
     </div>
+    </div>
 
- <div class="section-1">
-    <div class="container">
-                    <!-- Tiêu đề giữa trang -->
-                    <h2 class="inner-title text-center">SỰ KIỆN HOT THÁNG 12</h2>
+        <section class="section-1">
+            <div class="section-content">
+                <h2 class="inner-title">SỰ KIỆN HOT THÁNG 12</h2>
 
-                    <div class="row event-list">
-                        <!-- Cột 1 -->
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                            <div class="event-item">
-                                <div class="event-block">
-                                    <img src="assets/images/yconcert_theme.png " class="event-img">
-                                    <h3 class="event-name">Sự kiện 1</h3>
-                                    <button class="event-btn">MUA NGAY</button>
-                                </div>
-                            </div>
+                <div class="event-container">
+                    <div class="event-list">
+                        <div class="event-wrapper">
+                        <img src="assets/images/yconcert_theme.png" class="event-img">
+                        <button class="event-btn">MUA NGAY</button>
                         </div>
 
-
-                        <!-- Cột 2 -->
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                            <div class="event-item">
-                                <img src="assets/images/yconcert_theme.png" class="event-img">
-                                <h3 class="event-name">Sự kiện 2</h3>
-                                <button class="event-btn">
-                                    MUA NGAY
-                                </button>
-                            </div>
+                        <div class="event-wrapper">
+                        <img src="assets/images/yconcert_theme.png" class="event-img">
+                        <button class="event-btn">MUA NGAY</button>
                         </div>
 
-                        <!-- Cột 3 -->
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                            <div class="event-item">
-                                <img src="assets/images/yconcert_theme.png" class="event-img">
-                                <h3 class="event-name">Sự kiện 3</h3>
-                                <button class="event-btn">
-                                    MUA NGAY
-                                </button>
-                            </div>
+                        <div class="event-wrapper">
+                        <img src="assets/images/yconcert_theme.png" class="event-img">
+                        <button class="event-btn">MUA NGAY</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
                     <!-- Nhạc sống -->
                     <div class="inner-content d-flex justify-content-between align-items-center">
@@ -242,5 +239,6 @@
     <div id="footer"></div>
 
 </body>
-
+--! Nhúng JS !--
+<script src="scripts/carousel.js"></script>
 </html>

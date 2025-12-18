@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+
+:root{
+   --color-text: #000;
+   --color-yellow: #f0efeb;
+   --color-white: #fff;
+   --color-red: #74070d;
+   --color-dark: #454D6A;
+   --font: "Cal Sans", sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: var(--font); /*toàn bộ trang font này*/   
+    background: #f0efeb;
+    overflow-x: hidden;
+} 
+
+a{
+    text-decoration: none !important; /*toàn bộ link ko có gạch chân*/
+}

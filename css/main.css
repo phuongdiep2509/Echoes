@@ -1,0 +1,189 @@
+/*Carousel*/
+.carousel {
+    margin-top: 90px;
+    position: relative;
+    width: 100%;
+    height: 850px;          /* hoặc theo banner */
+    overflow: hidden;
+}
+
+.carousel-list {
+    display: flex;
+    transition: transform 0.6s ease;
+}
+
+.carousel-image {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.carousel-button-prev,
+.carousel-button-next {
+    position: absolute;
+    top: 0;
+    width: 15%;              /* vùng click */
+    height: 100%;            /* cao bằng carousel */
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    color: #fff;
+    font-size: 48px;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Ombre trái */
+.carousel-button-prev {
+    left: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0)
+    );
+}
+
+/* Ombre phải */
+.carousel-button-next {
+    right: 0;
+    background: linear-gradient(
+        to left,
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0)
+    );
+}
+
+/* Hover slider → hiện icon */
+.carousel:hover .carousel-button-prev,
+.carousel:hover .carousel-button-next {
+    opacity: 1;
+}
+
+/* Hover riêng icon */
+.carousel-button-prev:hover,
+.carousel-button-next:hover {
+    font-size: 56px;
+}
+
+.carousel-dots {
+    opacity: 0.5;
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-dots li {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.carousel-dots li.active {
+    background-color: white;
+    background: rgba(255,255,255,1);
+    width: 25px;
+    border-radius: 15px;
+    transition: 1s;
+}
+.section-1 {
+    margin-top: 10px;
+    height: 1000px;
+    background: url(../images/backgroundsection1.png) center / cover no-repeat;
+    display: flex;
+    justify-content: center; /* CHỈ căn giữa ngang */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Wrapper nội dung */
+.section-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;   /* 🔥 DÒNG QUYẾT ĐỊNH */
+}
+
+/* Title */
+.inner-title {
+    color: var(--color-red);
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 60px;
+}
+
+/* Grid */
+.event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* responsive tự động */
+    gap: 40px;
+    justify-content: center;
+    max-width: 1200px;       /* giới hạn chiều rộng tổng */
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.event-wrapper {
+    position: relative;
+    width: 100%;            /* chiếm 100% vùng lưới con */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease;
+    background: #fff;       /* nền trắng để ảnh nổi bật */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-wrapper img {
+    width: 100%;            /* ảnh full chiều ngang wrapper */
+    height: auto;           /* giữ tỉ lệ ảnh */
+    border-radius: 12px 12px 0 0; /* bo góc trên cho ảnh */
+    object-fit: cover;      /* đảm bảo ảnh phủ đầy, giữ tỉ lệ */
+}
+
+/* Nếu có phần nội dung trong event-wrapper */
+.event-content {
+    padding: 15px 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Hiệu ứng hover nhẹ để tăng đẹp mắt */
+.event-wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+
+body {
+    outline: 5px solid red;
+}
+
+.section-1 {
+    outline: 5px solid blue;
+}
+
+.section-content {
+    outline: 5px solid green;
+}
