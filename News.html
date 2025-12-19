@@ -16,8 +16,29 @@
     <link rel="stylesheet" href="assets/css/base.css">
 </head>
 <body>
-    <div id="header-placeholder"></div>
-
+    <div id="header">
+        <script>
+            fetch('components/user_header.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+            
+                    // 👉 kiểm tra user sau khi header load
+                    const user = localStorage.getItem("currentUser");
+                    const accountName = document.getElementById("account-name");
+            
+                    if (user && accountName) {
+                        accountName.innerText = user;
+                        accountName.onclick = null; // bỏ mở modal login
+                    }
+            
+                    const script = document.createElement('script');
+                    script.src = 'components/scroll_header.js';
+                    document.body.appendChild(script);
+                });
+            </script>
+            
+    </div>
 
     <main class="container my-5">
         <nav class="breadcrumb-custom mb-4">
