@@ -1,5 +1,9 @@
 /* Checkout.css */
-.main-title { color: var(--color-red); font-weight: bold; }
+.main-title { color: var(--color-red); 
+    font-weight: bold;
+    margin-top: -10px; 
+    margin-bottom: 30px; 
+}
 
 .section-title {
     font-size: 1.3rem;
@@ -10,6 +14,11 @@
 }
 
 /* Các thẻ chọn thanh toán kiểu viên thuốc */
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 .payment-form label {
     background: var(--color-white);
     display: flex;
@@ -21,6 +30,14 @@
     border: 1px solid transparent;
     transition: 0.3s;
 }
+/* Ẩn nút radio tròn */
+.payment-form input[type="radio"] {
+    margin-right: 15px;
+}
+
+.payment-form label:hover {
+    border-color: var(--color-red);
+}
 .payment-form label:has(input:checked) {
     border-color: var(--color-red);
     background-color: #fdf2f2;
@@ -29,6 +46,11 @@
 .payment-form p { margin: 0; font-weight: bold; }
 
 /* Voucher */
+.promotion-form {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 15px;
+}
 .promotion-form label {
     background: white;
     min-width: 180px;
@@ -36,6 +58,22 @@
     border-radius: 12px;
     margin-right: 10px;
     cursor: pointer;
+}
+/* Ẩn nút radio tròn để giao diện sạch hơn */
+.promotion-form input[type="radio"] {
+    display: none;
+}
+
+/* Khi mã giảm giá được chọn */
+.promotion-form label:has(input:checked) {
+    border-color: var(--color-red);
+    background-color: #fdf2f2;
+}
+
+.promotion-form label strong {
+    display: block;
+    color: var(--color-red);
+    font-size: 1.1rem;
 }
 
 /* Card vé bên phải */
@@ -55,3 +93,73 @@
     transition: 0.3s;
 }
 .btn-finish:hover { background: #5a050a; transform: translateY(-3px); }
+/* Header tối giản cho trang Thanh toán */
+.checkout-header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    position: fixed;
+    height: 70px;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.inner-wrap-checkout {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.checkout-logo-section {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.checkout-logo-section img {
+    height: 60px; /* Nhỏ gọn hơn */
+}
+
+.checkout-logo-section .brand-name {
+    font-family: 'Cal Sans', sans-serif;
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.checkout-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
+
+.checkout-nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.checkout-nav ul li a img {
+    height: 18px;
+}
+
+.checkout-nav ul li a:hover {
+    color: var(--color-red);
+}
+
+/* Đảm bảo nội dung trang không bị header che mất */
+body {
+    padding-top: 65px; 
+}

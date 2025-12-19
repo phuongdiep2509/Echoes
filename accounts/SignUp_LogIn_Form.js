@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // Khởi tạo AuthManager
+    const authManager = new AuthManager();
 
     // 1. KHAI BÁO BIẾN (Tất cả các thành phần)
     const modalOverlay = document.getElementById('modalOverlay');
@@ -166,39 +169,35 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const formData = new FormData(loginForm);
             const username = formData.get('username') || '';
+            const password = formData.get('password') || '';
 
-            if (!username.trim()) {
-            alert('Vui lòng nhập tên người dùng.');
-            return;
-            }
-            // 1. Lưu tên người dùng mới
-            localStorage.setItem(
-         'currentUser',
-        JSON.stringify({
-         username: username,
-        isLogin: true
-        })
-);
-
-            // TODO: gửi AJAX hoặc submit theo hệ thống của bạn
-            alert('Đăng nhập thành công.');
-            loginForm.reset();
-            // Đăng nhập thành công
-            if (window.parent !== window) {
-        // 👉 Đang chạy trong iframe (mở từ index.html)
-                window.parent.postMessage(
-             { action: 'closeModalAndRedirect', url: '../index.html' },
-                '*'
-                );
-            } else {
-    // 👉 Mở trực tiếp SignUp_LogIn_Form.html
-            window.location.href = '../index.html';
+            if (!username.trim() || !password.trim()) {
+                alert('Vui lòng nhập đầy đủ thông tin đăng nhập.');
+                return;
             }
 
-           
-        
+            try {
+                // Đăng nhập với AuthManager
+                const result = authManager.login(username, password);
+                alert('Đăng nhập thành công!');
+                loginForm.reset();
+                
+                // Chuyển hướng
+                if (window.parent !== window) {
+                    // Đang chạy trong iframe
+                    window.parent.postMessage(
+                        { action: 'closeModalAndRedirect', url: '../index.html' },
+                        '*'
+                    );
+                } else {
+                    // Mở trực tiếp
+                    window.location.href = '../index.html';
+                }
+            } catch (error) {
+                alert(error.message);
+            }
         });
-        }
+    }
 
     if (registerForm) {
         registerForm.addEventListener('submit', (e) => {
@@ -220,22 +219,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Mật khẩu chưa đạt yêu cầu.');
                 return;
             }
-            localStorage.setItem("currentUser", JSON.stringify({ username, isLogin: true }));
-            // TODO: gửi AJAX hoặc submit theo hệ thống của bạn
-            alert('Đăng ký thành công!.');
-            registerForm.reset();
-            updatePasswordValidation();
-            openLogin(); // switch back to login after register (optional)
-            // Đăng nhập thành công
-            if (window.parent !== window) {
-        // 👉 Đang chạy trong iframe (mở từ index.html)
-                window.parent.postMessage(
-             { action: 'closeModalAndRedirect', url: '../index.html' },
-                '*'
-                );
-            } else {
-    // 👉 Mở trực tiếp SignUp_LogIn_Form.html
-            window.location.href = '../index.html';
+            try {
+                // Đăng ký với AuthManager
+                authManager.register({ username, email, password: pwd });
+                alert('Đăng ký thành công! Vui lòng đăng nhập.');
+                registerForm.reset();
+                updatePasswordValidation();
+                openLogin(); // Chuyển về form đăng nhập
+            } catch (error) {
+                alert(error.message);
             }
         });
     }

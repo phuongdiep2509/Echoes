@@ -15,6 +15,9 @@
     <!-- Nhúng css -->
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Nhúng AuthManager -->
+    <script src="scripts/authManager.js"></script>
 
 </head>
 
@@ -27,13 +30,9 @@
                 .then(data => {
                     document.getElementById('header').innerHTML = data;
             
-                    // 👉 kiểm tra user sau khi header load
-                    const user = localStorage.getItem("currentUser");
-                    const accountName = document.getElementById("account-name");
-            
-                    if (user && accountName) {
-                        accountName.innerText = user;
-                        accountName.onclick = null; // bỏ mở modal login
+                    // Cập nhật UI header với AuthManager
+                    if (window.authManager) {
+                        authManager.updateHeaderUI();
                     }
             
                     const script = document.createElement('script');
@@ -420,35 +419,13 @@ fetch('components/user_header.html')
   })
   .then(data => {
     const headerContainer = document.getElementById('header');
-    if (!headerContainer) return; // Thoát nếu không có chỗ chứa header
+    if (!headerContainer) return;
     
     headerContainer.innerHTML = data;
 
-    // Sử dụng cơ chế an toàn (Optional Chaining hoặc Check null)
-    const loginBtn = document.getElementById('loginBtn');
-    const userBox = document.getElementById('userBox');
-    const accountName = document.getElementById('account-name');
-    const logoutBtn = document.getElementById('logoutBtn');
-
-    const userRaw = localStorage.getItem("currentUser");
-    const user = userRaw ? JSON.parse(userRaw) : null;
-
-    if (user && user.isLogin) {
-      // Dùng if để chắn chắn phần tử tồn tại mới chỉnh CSS
-      if (loginBtn) loginBtn.style.display = 'none';
-      if (userBox) userBox.style.display = 'inline-flex';
-      if (accountName) accountName.textContent = user.username;
-    } else {
-      // Trường hợp chưa đăng nhập thì ngược lại
-      if (loginBtn) loginBtn.style.display = 'block';
-      if (userBox) userBox.style.display = 'none';
-    }
-
-    if (logoutBtn) {
-      logoutBtn.onclick = () => {
-        localStorage.removeItem("currentUser");
-        window.location.href = 'index.html'; // Dùng đường dẫn tuyệt đối an toàn hơn reload
-      };
+    // Cập nhật UI header với AuthManager
+    if (window.authManager) {
+        authManager.updateHeaderUI();
     }
 
     // Load script cuộn sau khi HTML đã render xong
