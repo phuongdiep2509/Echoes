@@ -342,5 +342,10 @@ p{ margin: 15px 0; font-size: 14.5px; text-align: center; }
     color: #fff;
 }
 
-
-
+/* CSS cho Iframe */
+iframe {
+    display: block;      /* Loại bỏ khoảng hở nhỏ dưới chân file inline */
+    width: 100%;
+    height: 600px;       /* Điều chỉnh chiều cao phù hợp với nội dung file login */
+    border: none;
+}

@@ -387,7 +387,193 @@
 }
 
 
+/* Container chính cho toàn bộ Section 2 */
+.section-2 {
+    padding-top: 60px;
+    margin-top: 100px;
+    background-color: var(--color-green); /* Màu xanh rêu nền tối */
+    font-family: var(--font);
+    color: #f0efeb;
+    padding-bottom: 40px;
+}
 
+.stats-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tiêu đề chính */
+.stats-title {
+    margin-top: -110px;   /* Kéo tiêu đề lên trên */
+    margin-bottom: 10px; /* Tạo khoảng cách với các box bên dưới */
+    position: relative;
+    z-index: 5;
+    font-size: 75px;
+    font-weight: bolder;
+    -webkit-text-stroke: 1px var(--color-green); 
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+/* Bố cục Grid 3 cột */
+.stats-container {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr;
+    gap: 25px;
+    align-items: stretch; /* Quan trọng: Giúp Big Box tự động cao bằng stats-column */
+}
+
+/* Style chung cho các hộp stats */
+.stats-box {
+    border: 3px solid #000;
+    background-color: #e1cfac; 
+    border-radius: 10px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+.stats-column {
+    margin-bottom: 0; /* Bỏ margin-bottom: 30px cũ */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Khớp với gap của stats-container */
+}
+
+/* Container Big Box */
+.big-box {
+    height: 100%;             /* Đảm bảo cao bằng 2 ô nhỏ bên cạnh */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Căn giữa toàn bộ nội dung theo chiều dọc */
+    align-items: flex-start;  /* Đưa TẤT CẢ nội dung (ảnh, số, chữ) sang bên trái */
+    padding-left: 50px;       /* Tạo khoảng cách với viền trái cho đẹp */
+    background-color: #e1cfac;
+}
+
+/* Chỉnh ảnh xe đẩy */
+.big-cart-img {
+    width: 140px;             /* Chỉnh kích thước to lên theo ý bạn */
+    height: auto;
+    margin-bottom: 10px;      /* Khoảng cách với con số bên dưới */
+    display: block;
+}
+
+/* Chỉnh con số Big Box */
+.big-number-text {
+    font-size: 150px;
+    color: var(--color-red);
+    font-weight: 900;
+    margin: 0;
+    line-height: 0.9;         /* Giảm khoảng cách dòng để chữ khít hơn */
+    text-align: left;
+}
+
+/* Chỉnh nhãn bên dưới */
+.big-box .label {
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.number-wrapper {
+    display: flex;
+    align-items: center; /* Căn giữa ảnh và số theo chiều dọc */
+    gap: 25px;           /* Khoảng cách giữa ảnh và số */
+}
+
+.number {
+    height: 100px;        /* Chỉnh chiều cao gần bằng hoặc nhỏ hơn font-size của số (100px) */
+    width: auto;         /* Giữ đúng tỷ lệ ảnh, không bị móp méo */
+    object-fit: contain; /* Đảm bảo ảnh nằm gọn trong khung */
+}
+
+
+.small-box .number {
+    font-weight: 900;
+    font-size: 100px;
+    color: var(--color-red);
+    line-height: 1;      /* Quan trọng: Loại bỏ khoảng trống thừa để ảnh và số khít nhau */
+    margin: 0;
+}
+
+.small-box .label {
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Cột phải: Follow & Contact */
+.follow-box {
+    padding-left: 20px;
+}
+
+.follow-title, .contact-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #e1cfac;
+    text-transform: uppercase;
+}
+
+.social-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.social-list li {
+    display: flex;
+    align-items: center; /* Căn giữa icon và chữ theo chiều dọc */
+    margin-bottom: 15px; /* Khoảng cách giữa các dòng */
+    font-size: 22px;     /* Giữ font chữ như bạn đã thiết lập */
+}
+
+/* Chỉnh kích thước icon bé lại */
+.social-icon {
+    width: 24px;         /* Bạn có thể chỉnh con số này (ví dụ 20px) để bé hơn nữa */
+    height: 24px;        /* Đảm bảo chiều cao bằng chiều rộng để ảnh không bị méo */
+    object-fit: contain; /* Giữ nguyên tỷ lệ hình ảnh bên trong khung */
+    margin-right: 12px;  /* Khoảng cách giữa icon và chữ */
+}
+
+.social-list li a {
+    text-decoration: none; /* Bỏ gạch chân mặc định của link */
+    color: inherit;        /* Lấy màu từ thẻ cha (thường là màu trắng bạn đã thiết lập) */
+    display: flex;         /* Giữ icon và chữ nằm cùng hàng */
+    align-items: center;   /* Căn giữa icon và chữ theo chiều dọc */
+    width: 100%;           /* Cho phép nhấn vào toàn bộ dòng để mở link */
+}
+
+/* Đảm bảo khi di chuột vào hoặc đã nhấn vào, màu không bị đổi sang tím/xanh */
+.social-list li a:visited, 
+.social-list li a:hover, 
+.social-list li a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Hộp Email ở dưới cùng bên phải */
+.contact-email {
+    background-color: #e1cfac;
+    border: 2px solid #000;
+    color: var(--color-red);
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 992px) {
+    .stats-container {
+        grid-template-columns: 1fr; /* Chuyển thành 1 cột trên mobile */
+    }
+}
 
 /* Container chứa danh sách tin tức */
 .news-list {

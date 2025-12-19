@@ -273,22 +273,26 @@
             <div class="stats-container">
                 <!-- Cột trái -->
                 <div class="stats-box big-box">
-                    <i class="icon">🛒</i>
-                    <h3 class="number">23.5K+</h3>
+                    <img src="assets/images/index/cart.png" class="big-cart-img">
+                    <h3 class="big-number-text">23.5K+</h3>
                     <p class="label">NGƯỜI LỰA CHỌN</p>
                 </div>
 
                 <!-- Cột giữa -->
                 <div class="stats-column">
                     <div class="stats-box small-box">
-                        <i class="icon">⭐</i>
-                        <h3 class="number small">2.5K+</h3>
+                        <div class="number-wrapper">
+                            <img src="assets/images/index/followers.png" class="cart">
+                            <h3 class="number small">2.5K+</h3>
+                        </div>
                         <p class="label small">NGƯỜI DÙNG MỚI</p>
                     </div>
 
                     <div class="stats-box small-box">
-                        <i class="icon">🤝</i>
-                        <h3 class="number small">100+</h3>
+                        <div class="number-wrapper">
+                            <img src="assets/images/index/partners.png" class="number">
+                            <h3 class="number small">100+</h3>
+                        </div>
                         <p class="label small">ĐỐI TÁC ĐỒNG HÀNH</p>
                     </div>
                 </div>
@@ -298,9 +302,9 @@
                     <h3 class="follow-title">FOLLOW US</h3>
 
                     <ul class="social-list">
-                        <li><span class="social-icon">📘</span> ECHOES</li>
-                        <li><span class="social-icon">📸</span> echoes</li>
-                        <li><span class="social-icon">🎵</span> echoes.m</li>
+                        <li><a href="https://www.facebook.com/albumechoes"><img src="assets/images/index/facebook_icon.png" class="social-icon">ECHOES</a></li>
+                        <li><a href="https://www.instagram.com/echoesalbum"><img src="assets/images/index/insta_icon.png" class="social-icon">echoes</a></li>
+                        <li><a href="https://www.facebook.com/albumechoes"><img src="assets/images/index/tiktok_icon.png" class="social-icon">echoes.m</a></li>
                     </ul>
 
                     <h3 class="contact-title">CONTACT</h3>
@@ -357,11 +361,12 @@
         </div>
     </div>
     <div id="footer"></div>
+    
     <div id="loginModal" class="modal-overlay" style="display: none;">
         <div class="modal-container" id="loginModal">
             <div class="close-modal" onclick="closeModal()">&times;</div>
             
-            <iframe src="accounts/SignUp_LogIn_Form.html" frameborder="0" style="width: 100%; height: 550px; border-radius: 15px;"></iframe>
+            <iframe src="accounts/SignUp_LogIn_Form.html"></iframe>
         </div>
     </div>
 
@@ -407,45 +412,50 @@
         </script>
 </body>
 <!----Nhúng JS --->
-<script src="scripts/carousel.js"></script>
-<script
- // index.html
+<script src="scripts/carousel.js">
 fetch('components/user_header.html')
-  .then(res => res.text())
+  .then(res => {
+    if (!res.ok) throw new Error('Không tìm thấy file header');
+    return res.text();
+  })
   .then(data => {
-    document.getElementById('header').innerHTML = data;
+    const headerContainer = document.getElementById('header');
+    if (!headerContainer) return; // Thoát nếu không có chỗ chứa header
+    
+    headerContainer.innerHTML = data;
 
-    // ===== LOGIN HEADER LOGIC =====
-    const userRaw = localStorage.getItem("currentUser");
-    const user = userRaw ? JSON.parse(userRaw) : null;
-
-    const loginBtn = document.getElementById('loginBtn'); // "TÀI KHOẢN"
-    const userBox = document.getElementById('userBox');   // Khối user
+    // Sử dụng cơ chế an toàn (Optional Chaining hoặc Check null)
+    const loginBtn = document.getElementById('loginBtn');
+    const userBox = document.getElementById('userBox');
     const accountName = document.getElementById('account-name');
     const logoutBtn = document.getElementById('logoutBtn');
 
+    const userRaw = localStorage.getItem("currentUser");
+    const user = userRaw ? JSON.parse(userRaw) : null;
+
     if (user && user.isLogin) {
-      // 1. Hiện user box, ẩn login
+      // Dùng if để chắn chắn phần tử tồn tại mới chỉnh CSS
       if (loginBtn) loginBtn.style.display = 'none';
       if (userBox) userBox.style.display = 'inline-flex';
-
-      // 2. Gán tên tài khoản
       if (accountName) accountName.textContent = user.username;
+    } else {
+      // Trường hợp chưa đăng nhập thì ngược lại
+      if (loginBtn) loginBtn.style.display = 'block';
+      if (userBox) userBox.style.display = 'none';
     }
 
-    // 3. Logout
     if (logoutBtn) {
       logoutBtn.onclick = () => {
         localStorage.removeItem("currentUser");
-        location.reload();
+        window.location.href = 'index.html'; // Dùng đường dẫn tuyệt đối an toàn hơn reload
       };
     }
 
-    // Load scroll header
+    // Load script cuộn sau khi HTML đã render xong
     const script = document.createElement('script');
     script.src = 'components/scroll_header.js';
     document.body.appendChild(script);
-  });
-
-</script>
+  })
+  .catch(err => console.error("Lỗi header:", err));
+  </script>
 </html>
