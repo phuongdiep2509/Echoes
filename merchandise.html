@@ -3,18 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merchandise | Echoes</title>
-<link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <title>Giới thiệu | Echoes</title>
+    <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets\css\merchandise.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/merchandise.css">
+    
+    <!-- Nhúng AuthManager -->
+    <script src="scripts/authManager.js"></script>
 </head>
 <body>
-
+    <div id="header">
+        <script>
+            fetch('components/user_header.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                    if (window.authManager) {
+                        authManager.updateHeaderUI();
+                    }
+                    const script = document.createElement('script');
+                    script.src = 'components/scroll_header.js';
+                    document.body.appendChild(script);
+                });
+            </script>
+            
+    </div>
 <!-- ===== BREADCRUMB ===== -->
 <div class="breadcrumb">
     TRANG CHỦ / MERCHANDISE
@@ -161,3 +176,4 @@ renderPage();
 
 </body>
 </html>
+
