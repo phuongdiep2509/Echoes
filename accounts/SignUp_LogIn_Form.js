@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
         special: (p) => /[!@#$%^&*_]/.test(p),
         upper: (p) => /[A-Z]/.test(p),
     };
-
+    // 2. Hàm đóng modal và chuyển trang
+    
     function isValidEmail(email) {
         const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return pattern.test(email);
@@ -132,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (forgotModal && authModal && modalOverlay) {
             modalOverlay.style.display = 'flex'; // HIỂN THỊ lớp phủ mờ
             authModal.style.display = 'none'; // Ẩn form chính (Đăng nhập/Đăng ký)
-            forgotModal.style.display = 'flex'; // Hiển thị form quên mật khẩu
+            
             
             // Đảm bảo form gửi email hiện và thông báo thành công ẩn
             if (forgotForm) forgotForm.style.display = 'block'; 
@@ -170,12 +171,32 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Vui lòng nhập tên người dùng.');
             return;
             }
+            // 1. Lưu tên người dùng mới
+            localStorage.setItem(
+         'currentUser',
+        JSON.stringify({
+         username: username,
+        isLogin: true
+        })
+);
 
-            // Lưu vào localStorage
-            localStorage.setItem('currentUser', JSON.stringify({ username }));
-
-            // Chuyển về index
+            // TODO: gửi AJAX hoặc submit theo hệ thống của bạn
+            alert('Đăng nhập thành công.');
+            loginForm.reset();
+            // Đăng nhập thành công
+            if (window.parent !== window) {
+        // 👉 Đang chạy trong iframe (mở từ index.html)
+                window.parent.postMessage(
+             { action: 'closeModalAndRedirect', url: '../index.html' },
+                '*'
+                );
+            } else {
+    // 👉 Mở trực tiếp SignUp_LogIn_Form.html
             window.location.href = '../index.html';
+            }
+
+           
+        
         });
         }
 
@@ -199,12 +220,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Mật khẩu chưa đạt yêu cầu.');
                 return;
             }
-
+            localStorage.setItem("currentUser", JSON.stringify({ username, isLogin: true }));
             // TODO: gửi AJAX hoặc submit theo hệ thống của bạn
-            alert('Đã gửi yêu cầu đăng ký.');
+            alert('Đăng ký thành công!.');
             registerForm.reset();
             updatePasswordValidation();
             openLogin(); // switch back to login after register (optional)
+            // Đăng nhập thành công
+            if (window.parent !== window) {
+        // 👉 Đang chạy trong iframe (mở từ index.html)
+                window.parent.postMessage(
+             { action: 'closeModalAndRedirect', url: '../index.html' },
+                '*'
+                );
+            } else {
+    // 👉 Mở trực tiếp SignUp_LogIn_Form.html
+            window.location.href = '../index.html';
+            }
         });
     }
     

@@ -182,6 +182,14 @@
         .search-icon:hover {
             opacity: 0.8;
         }
+        #logoutBtn {
+        color: #74070d;
+        font-weight: 500;
+        }
+
+        #logoutBtn:hover {
+        text-decoration: underline;
+      }
 
         .button-dk {
           font-family: var(--font);
@@ -288,11 +296,17 @@
               <li>
                 <img src="assets/images/index/ticket-icon.png" />
                 <a href="myTicket">VÉ CỦA TÔI</a>
-              </li>
-              <li>
-                <img src="assets/images/index/user-icon.png" />
-                <a href="accounts/SignUp_Login_Form.html" id="account-btn" class="button button-dk">ĐĂNG NHẬP | ĐĂNG KÝ</a>
-              </li>
+            </li>
+            <li>
+                <img src="assets/images/user-icon.png">
+                <a href="javascript:void(0)" onclick="openModal()">TÀI KHOẢN</a>
+                <!-- Khi ĐÃ đăng nhập -->
+                <span id="userBox" style="display:none;">
+                <span id="account-name"></span>
+                  |
+                  <a href="javascript:void(0)" id="logoutBtn">ĐĂNG XUẤT</a>
+                </span>
+            </li>
             </ul>
         </div>
 
