@@ -16,7 +16,7 @@ body {
     width: 100%; 
     
     /* Căn chỉnh ảnh nền */
-    background-image: url("../images/aboutus/background.png");
+    background-image: url("../images/about/background.png");
     background-size: cover;
     background-position: top center; /* "top" giúp ảnh bám sát mép trên */
     background-repeat: no-repeat;
