@@ -1,0 +1,57 @@
+/* Checkout.css */
+.main-title { color: var(--color-red); font-weight: bold; }
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-left: 5px solid var(--color-red);
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+
+/* Các thẻ chọn thanh toán kiểu viên thuốc */
+.payment-form label {
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+.payment-form label:has(input:checked) {
+    border-color: var(--color-red);
+    background-color: #fdf2f2;
+}
+.payment-form img { width: 30px; margin-right: 15px; }
+.payment-form p { margin: 0; font-weight: bold; }
+
+/* Voucher */
+.promotion-form label {
+    background: white;
+    min-width: 180px;
+    padding: 15px;
+    border-radius: 12px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Card vé bên phải */
+.ticket-summary-card {
+    background: #111;
+    border-radius: 20px;
+    overflow: hidden;
+    position: sticky;
+    top: 100px;
+}
+#ticket-img { width: 100%; height: 200px; object-fit: cover; }
+.btn-finish {
+    background: var(--color-red);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.btn-finish:hover { background: #5a050a; transform: translateY(-3px); }
