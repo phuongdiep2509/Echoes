@@ -1,3 +1,24 @@
+// Hàm mở Popup
+    function openModal() {
+    const modal = document.getElementById('loginModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Ngăn cuộn trang chính
+    }
+
+    // Hàm đóng Popup
+    function closeModal() {
+    const modal = document.getElementById('loginModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Cho phép cuộn lại
+    }
+
+    // Đóng khi click ra ngoài vùng trắng
+    window.onclick = function(event) {
+    const modal = document.getElementById('loginModal');
+    if (event.target == modal) {
+        closeModal();
+    }
+    }
 document.addEventListener('DOMContentLoaded', () => {
 
     const list = document.querySelector('.carousel-list');
@@ -37,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dots.forEach(dot => dot.classList.remove('active'));
         dots[index].classList.add('active');
     }
-
+    
     /* ===== AUTO SLIDE ===== */
     function startAutoSlide() {
         autoSlide = setInterval(() => {
@@ -65,4 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(0);
     startAutoSlide();
 });
-    
+window.addEventListener('message', (event) => {
+    // Kiểm tra origin nếu cần (cho an toàn, ví dụ: if (event.origin !== 'http://yourdomain.com') return;)
+    if (event.data.action === 'closeModalAndRedirect') {
+        closeModal(); // Đóng modal
+        window.location.href = event.data.url; // Redirect trang chính
+    }
+});

@@ -1,0 +1,184 @@
+/* --- 1. ĐỊNH DẠNG CHUNG (GENERAL) --- */
+body {
+    background-color: #f0efeb; /* Màu nền kem nhẹ */
+    font-family: "Fraunces", serif;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 100px;
+}
+
+/* --- 2. THANH ĐIỀU HƯỚNG (BREADCRUMB) --- */
+.breadcrumb-custom {
+    background-color: #3d3d29; /* Màu rêu đặc trưng */
+    color: white;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.breadcrumb-custom a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-custom a:hover {
+    color: #ffffff;
+}
+
+/* --- 3. TRANG DANH SÁCH TIN (NEWS LIST) --- */
+.news-item {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: #74070d; /* Viền đỏ khi hover */
+}
+
+/* Khối màu đại diện bài viết bên trái */
+.news-thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    padding: 20px;
+    text-align: center;
+}
+
+.news-thumb h4 {
+    font-weight: 800;
+    font-size: 1.4rem;
+    margin: 0;
+    color: #333;
+    letter-spacing: 2px;
+}
+
+/* Phần chữ bên phải */
+.news-item h5 {
+    font-size: 1.25rem;
+    color: #222;
+    transition: color 0.3s;
+}
+
+.news-item:hover h5 {
+    color: #74070d;
+}
+
+.category-label {
+    color: #74070d;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* --- 4. CỘT BÊN TRÁI (SIDEBAR) --- */
+.sidebar-item {
+    cursor: pointer;
+    padding: 10px 0;
+    transition: 0.3s;
+}
+
+.sidebar-item:hover strong {
+    color: #74070d;
+}
+
+.sidebar-item strong {
+    display: block;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+/* --- 5. TRANG CHI TIẾT TIN TỨC (NEWS DETAIL) --- */
+#news-title {
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+
+#news-date {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Nội dung bài viết */
+.news-detail-body .lead {
+    font-size: 1.2rem;
+    border-left: 5px solid #74070d;
+    padding-left: 20px;
+    margin: 30px 0;
+    color: #3d3d29;
+}
+
+.news-detail-body p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Hình ảnh trong bài viết */
+figure {
+    margin: 40px 0;
+}
+
+figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+figcaption {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* --- 6. PHÂN TRANG / DOTS --- */
+.dot-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #74070d;
+    width: 25px; /* Hiệu ứng kéo dài dot active */
+    border-radius: 5px;
+}
+
+/* --- 7. NÚT QUAY LẠI --- */
+.btn-back {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 2px solid #3d3d29;
+    color: #3d3d29;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    background-color: #3d3d29;
+    color: #fff;
+}

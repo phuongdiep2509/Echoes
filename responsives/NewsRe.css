@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+    .news-item {
+        text-align: center;
+    }
+    .news-thumb {
+        margin-bottom: 15px;
+    }
+}
+

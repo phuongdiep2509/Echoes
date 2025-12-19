@@ -182,6 +182,14 @@
         .search-icon:hover {
             opacity: 0.8;
         }
+        #logoutBtn {
+        color: #74070d;
+        font-weight: 500;
+        }
+
+        #logoutBtn:hover {
+        text-decoration: underline;
+      }
 
 
       @media screen and (max-width: 1024px) {
@@ -283,7 +291,13 @@
             </li>
             <li>
                 <img src="assets/images/user-icon.png">
-                <a href="accounts/accounts.html">TÀI KHOẢN</a>
+                <a href="javascript:void(0)" onclick="openModal()">TÀI KHOẢN</a>
+                <!-- Khi ĐÃ đăng nhập -->
+                <span id="userBox" style="display:none;">
+                <span id="account-name"></span>
+                  |
+                  <a href="javascript:void(0)" id="logoutBtn">ĐĂNG XUẤT</a>
+                </span>
             </li>
             </ul>
         </div>

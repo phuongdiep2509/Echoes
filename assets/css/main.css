@@ -152,7 +152,60 @@
     flex-direction: column;
     align-items: center;
 }
+/* --- Popup Modal --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Nền đen mờ phía sau */
+    z-index: 99999;
+    display: none; /* Mặc định ẩn */
+    justify-content: center;
+    align-items: center;
+}
 
+.modal-container {
+    padding: 0;
+    position: relative;
+    width: 850px; /* Độ rộng khớp với ảnh form của bạn */
+    height: 550px;
+    background: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3 ease;
+}
+/* Tùy chỉnh Iframe */
+#authIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.close-modal {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 35px;
+    color: #333;
+    cursor: pointer;
+    z-index: 101;
+    line-height: 1;
+}
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.modal-container iframe {
+    border: none;
+    background: transparent;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 .event-wrapper img {
     width: 100%;            /* ảnh full chiều ngang wrapper */
     height: auto;           /* giữ tỉ lệ ảnh */
