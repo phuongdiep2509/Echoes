@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhạc Sống</title>
+
+<!-- CSS GỐC – KHÔNG ĐỤNG -->
+<link rel="stylesheet" href="C:\Users\ADMIN\Echoes\assets\css\base.css">
+<link rel="stylesheet" href="C:\Users\ADMIN\Echoes\assets\css\main.css">
+
+<style>
+/* =========================================================
+   RESET DEBUG – BỎ TOÀN BỘ VIỀN XANH / ĐỎ
+========================================================= */
+*{
+  outline: none !important;
+}
+
+/* =========================================================
+   CHỪA KHOẢNG TRỐNG HEADER + BANNER QUẢNG CÁO
+========================================================= */
+.header-spacer{
+  height: 150px; /* header + ads */
+}
+
+/* =========================================================
+   BACKGROUND CHUNG (1 ẢNH – MỜ) CHO HERO + TRENDING
+========================================================= */
+.bg-wrapper{
+  background: url("assets/images/nhacsong/bg1.jpg") center / cover no-repeat;
+  min-height: 100vh;
+  position: relative;
+  display: flow-root;
+
+}
+/* lớp mờ phủ lên nền */
+.bg-wrapper::before{
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;  /* phủ full wrapper */
+  background: rgba(240,239,235,0.78); /* tăng/giảm 0.6–0.9 để mờ hơn/nhạt hơn */
+  z-index: 0;
+}
+
+/* đảm bảo nội dung nằm trên overlay */
+.bg-wrapper > *{
+  position: relative;
+  z-index: 1;
+}
+/* =========================================================
+   HERO HEADER – CAO & DÀI RA
+========================================================= */
+.page-hero{
+  padding: 70px 0 90px;
+}
+
+.page-hero .section-content{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.breadcrumb-pill{
+  display: inline-block;
+  background: #454D6A;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+}
+
+.page-title{
+  margin: 32px 0 16px;
+  font-size: 72px;          /* TO – ĐÚNG HERO */
+  color: #454D6A;
+  text-transform: uppercase;
+}
+
+.page-desc{
+  max-width: 620px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.6);
+}
+
+.soft-line{
+  margin-top: 30px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.1),
+    rgba(0,0,0,0)
+  );
+}
+
+/* =========================================================
+   SECTION-1 – KHÔNG CỤT, KHÔNG SỬA FILE GỐC
+========================================================= */
+.section-1{
+  height: auto !important;
+  min-height: unset;
+  padding: 70px 0 120px;
+  background: transparent;
+  box-shadow: none;
+}
+.section-1{
+  margin-top: -40px !important;   /* chỉnh -20 đến -80 tùy bạn */
+  padding-top: 30px !important;   /* giữ khoảng thở cho nội dung */
+}
+
+.section-content{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   ĐANG THỊNH HÀNH – ẢNH TO, CARD DÀY
+========================================================= */
+.sub-title{
+  margin: 40px 0 28px;
+  font-size: 24px;
+  color: #454D6A;
+  text-transform: uppercase;
+}
+
+.trending-list{
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.trending-item{
+  display: flex;
+  gap: 28px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+  align-items: center;
+}
+
+/* ẢNH TO RA */
+.trending-thumb{
+  width: 220px;
+  height: 150px;
+  background: #ddd;
+  border-radius: 18px;
+  flex-shrink: 0;
+}
+
+.trending-info h4{
+  margin: 0 0 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.trending-info .price{
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.trending-info .date{
+  font-size: 13px;
+  color: rgba(0,0,0,0.55);
+}
+/* ===== TRENDING: ẢNH TO RA 1 TÍ ===== */
+.trending-item{
+  padding: 30px !important;     /* card dày hơn chút */
+  gap: 30px !important;
+  border-radius: 24px !important;
+}
+
+.trending-thumb{
+  width: 250px !important;      /* TO HƠN chút */
+  height: 170px !important;
+  border-radius: 20px !important;
+}
+/* Ảnh cho Trending */
+.trending-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
+/* Ảnh cho Event cards */
+.event-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
+/* =========================================================
+   GRID EVENT – GIỮ NGUYÊN LOGIC MAIN.CSS
+========================================================= */
+.event-list{
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.event-wrapper{
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+}
+
+.event-thumb{
+  width: 100%;
+  height: 260px;
+  background: #ddd;
+  border-radius: 14px;
+}
+
+.btn{
+  margin: 14px 0 8px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 999px;
+  border: none;
+  font-family: var(--font);
+  font-weight: 600;
+}
+
+.btn.buy{ background:#2f6b3f; color:#fff }
+.btn.sold{ background:#9e9e9e; color:#fff }
+.btn.expired{ background:#74070d; color:#fff }
+
+.event-content{
+  text-align: center;
+}
+
+.event-content h4{
+  margin: 6px 0 4px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.event-content p{
+  margin: 0;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.event-content span{
+  font-size: 12px;
+  color: rgba(0,0,0,0.5);
+}
+.title-indent{
+  padding-left: 150px !important; /* chỉnh 6 -> 10 nếu cần */
+}
+/* ===== Pagination kiểu 2 trang (2 dots + nút chuyển) ===== */
+.pager{
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.pager-btn{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+  background: #454D6A;
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.pager-btn:hover{ transform: scale(1.06); }
+.pager-btn:disabled{ opacity: .35; cursor: not-allowed; transform: none; }
+
+.pager-dots{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.75);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.pager-dots .dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: width .25s ease, background .25s ease;
+}
+
+.pager-dots .dot.active{
+  width: 26px;
+  background: #454D6A;
+}
+
+/* ===== Footer bám sát style trang (be + card trắng mờ) ===== */
+    .footer-wrap{
+      padding: 70px 0 30px;
+      background: transparent;  /* để ăn nền be của body */
+    }
+
+    *{
+  outline: none !important;
+  box-shadow: none;
+    }
+    .footer-container{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .footer-card{
+      background: rgba(255,255,255,0.85);
+      border-radius: 26px;
+      padding: 36px 34px 26px;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.16);
+      backdrop-filter: blur(6px);
+    }
+
+    .footer-top{
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .footer-brand h2{
+      margin: 0 0 10px;
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: var(--color-dark);
+      text-transform: uppercase;
+    }
+
+    .footer-brand p{
+      margin: 0;
+      max-width: 380px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.62);
+    }
+
+    .footer-title{
+      margin: 4px 0 14px;
+      font-size: 13px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.72);
+    }
+
+    .footer-links{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a{
+      text-decoration: none;
+      font-size: 14px;
+      color: rgba(0,0,0,0.62);
+      display: inline-block;
+      transition: transform .15s ease, opacity .15s ease;
+    }
+
+    .footer-links a:hover{
+      transform: translateX(2px);
+      opacity: 1;
+      color: var(--color-dark);
+    }
+
+    .footer-contact{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(0,0,0,0.62);
+    }
+
+    .footer-contact span{
+      color: rgba(0,0,0,0.78);
+    }
+
+    .footer-contact a{
+      color: rgba(0,0,0,0.68);
+      text-decoration: none;
+    }
+
+    .footer-contact a:hover{
+      color: var(--color-dark);
+    }
+
+    /* Social giống nút pill của trang */
+    .footer-social{
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .social-btn{
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(69,77,106,0.22);
+      background: rgba(69,77,106,0.08);
+      display: grid;
+      place-items: center;
+      color: var(--color-dark);
+      text-decoration: none;
+      font-size: 13px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select: none;
+    }
+
+    .social-btn:hover{
+      transform: translateY(-2px);
+      background: rgba(69,77,106,0.14);
+      border-color: rgba(69,77,106,0.3);
+    }
+
+    /* đường kẻ mờ giống hero */
+    .footer-line{
+      margin: 26px 0 16px;
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.18),
+        rgba(0,0,0,0.06),
+        rgba(0,0,0,0)
+      );
+    }
+
+    .footer-bottom{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: rgba(0,0,0,0.55);
+    }
+
+    .footer-bottom a{
+      color: rgba(0,0,0,0.6);
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover{
+      color: var(--color-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .footer-top{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px){
+      .footer-top{ grid-template-columns: 1fr; }
+      .footer-card{ padding: 28px 22px 20px; }
+    }
+/* =====================================================
+   TABLET (≤ 1024px)
+===================================================== */
+@media (max-width: 1024px){
+
+  /* HERO */
+  .page-title{
+    font-size: 56px;
+  }
+
+  .page-desc{
+    max-width: 100%;
+  }
+
+  /* TRENDING */
+  .trending-item{
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .trending-thumb{
+    width: 200px;
+    height: 140px;
+  }
+
+  /* EVENT GRID: 2 cột */
+  .event-list{
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* FOOTER */
+  .footer-top{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* =====================================================
+   MOBILE (≤ 768px)
+===================================================== */
+@media (max-width: 768px){
+
+  /* HERO */
+  .page-hero{
+    padding: 40px 0 50px;
+  }
+
+  .breadcrumb-pill{
+    font-size: 11px;
+    padding: 8px 14px;
+  }
+
+  .page-title{
+    font-size: 42px;
+    line-height: 1.1;
+  }
+
+  .page-desc{
+    font-size: 14px;
+  }
+
+  /* TRENDING: xếp dọc */
+  .trending-item{
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .trending-thumb{
+    width: 100%;
+    height: 200px;
+  }
+
+  /* EVENT GRID: 1 cột */
+  .event-list{
+    grid-template-columns: 1fr !important;
+  }
+
+  .event-thumb{
+    height: 220px;
+  }
+
+  /* BUTTON */
+  .btn{
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* FOOTER */
+  .footer-top{
+    grid-template-columns: 1fr;
+  }
+
+  .footer-card{
+    padding: 26px 20px;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE (≤ 480px)
+===================================================== */
+@media (max-width: 480px){
+
+  .page-title{
+    font-size: 34px;
+  }
+
+  .sub-title{
+    font-size: 20px;
+  }
+
+  .trending-thumb{
+    height: 180px;
+  }
+
+  .event-thumb{
+    height: 200px;
+  }
+
+  .footer-brand h2{
+    font-size: 24px;
+  }
+}
+/* ===== FIX GRID THẲNG HÀNG (OVERRIDE MẠNH) ===== */
+
+/* ép section-content cùng lề trên mọi màn */
+.section-content{
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  box-sizing: border-box !important;
+}
+
+/* ép title + grid cùng một hệ lề */
+.sub-title{
+  margin-left: 0 !important;
+}
+
+/* bỏ mọi thụt của grid */
+.event-list{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  justify-content: start !important;
+  justify-items: stretch !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* tránh card tự tạo khoảng lệch */
+.event-wrapper{
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- CHỪA CHỖ HEADER + ADS -->
+<div class="header-spacer"></div>
+
+<!-- BACKGROUND CHUNG -->
+<div class="bg-wrapper">
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="section-content">
+      <div class="breadcrumb-pill">TRANG CHỦ / NHẠC SỐNG</div>
+      <h1 class="page-title">NHẠC SỐNG</h1>
+      <p class="page-desc">
+        concert âm nhạc • hòa nhạc • nhạc sống • sự kiện biểu diễn trực tiếp
+      </p>
+      <div class="soft-line"></div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="section-1">
+    <div class="section-content">
+
+     <h3 class="sub-title">ĐANG THỊNH HÀNH</h3>
+
+<div class="trending-list">
+
+  <div class="trending-item">
+    <div class="trending-thumb">
+      <img src="assets/images/nhacsong/lc1.jpg" alt="Trending 1">
+    </div>
+    <div class="trending-info">
+      <h4>CONCERT NHẠC SỐNG</h4>
+      <p class="price">Từ 500.000đ - 1.000.000đ</p>
+      <span class="date">22 THÁNG 12, 2025</span>
+    </div>
+  </div>
+
+  <div class="trending-item">
+    <div class="trending-thumb">
+      <img src="assets/images/nhacsong/lc4.jpg" alt="Trending 2">
+    </div>
+    <div class="trending-info">
+      <h4>CONCERT NHẠC SỐNG</h4>
+      <p class="price">Từ 500.000đ - 1.000.000đ</p>
+      <span class="date">22 THÁNG 12, 2025</span>
+    </div>
+  </div>
+
+  <div class="trending-item">
+    <div class="trending-thumb">
+      <img src="assets/images/nhacsong/lc16.jpg" alt="Trending 3">
+    </div>
+    <div class="trending-info">
+      <h4>CONCERT NHẠC SỐNG</h4>
+      <p class="price">Từ 500.000đ - 1.000.000đ</p>
+      <span class="date">22 THÁNG 12, 2025</span>
+    </div>
+  </div>
+
+</div>
+
+    </div>
+  </section>
+
+</div>
+
+<div class="title-indent">
+ <h3 class="sub-title">TẤT CẢ SỰ KIỆN NHẠC SỐNG</h3>
+
+<div class="event-list">
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc2.jpg" alt="Event 1"></div>
+    <button class="btn buy">MUA NGAY</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc3.jpg" alt="Event 2"></div>
+    <button class="btn buy">MUA NGAY</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc5.webp" alt="Event 3"></div>
+    <button class="btn buy">MUA NGAY</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc6.png" alt="Event 4"></div>
+    <button class="btn buy">MUA NGAY</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc7.jpg" alt="Event 5"></div>
+    <button class="btn buy">MUA NGAY</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc15.jpg" alt="Event 6"></div>
+    <button class="btn buy">MUA NGAY</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc9.jpg" alt="Event 7"></div>
+    <button class="btn buy">MUA NGAY</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc10.webp" alt="Event 8"></div>
+    <button class="btn buy">MUA NGAY</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc11.jpg" alt="Event 9"></div>
+    <button class="btn buy">MUA NGAY</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc13.png" alt="Event 10"></div>
+    <button class="btn sold">HẾT HÀNG</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+  <div class="event-wrapper">
+    <div class="event-thumb"><img src="assets/images/nhacsong/lc14.jpg" alt="Event 11"></div>
+    <button class="btn expired">ĐÃ HẾT THỜI GIAN</button>
+    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
+  </div>
+
+</div>
+
+
+</div>
+</section>
+<div class="pager">
+  <button class="pager-btn" id="pagerPrev" aria-label="Trang trước">‹</button>
+
+  <div class="pager-dots" id="pagerDots">
+    <span class="dot active" data-page="0"></span>
+    <span class="dot" data-page="1"></span>
+  </div>
+
+  <button class="pager-btn" id="pagerNext" aria-label="Trang sau">›</button>
+</div>
+
+<script>
+  // ==== Pagination cho event-list: 2 trang, mỗi trang 4 card ====
+  const eventList = document.querySelector('.event-list');
+  const cards = Array.from(eventList.querySelectorAll('.event-wrapper'));
+
+  const prevBtn = document.getElementById('pagerPrev');
+  const nextBtn = document.getElementById('pagerNext');
+  const dotsWrap = document.getElementById('pagerDots');
+  const dots = Array.from(dotsWrap.querySelectorAll('.dot'));
+
+  const pageSize = 8;   // 4 card / trang
+  const totalPages = 2; // đúng yêu cầu 2 trang
+  let page = 0;
+
+  function renderPage(){
+    cards.forEach((card, i) => {
+      const start = page * pageSize;
+      const end = start + pageSize;
+      card.style.display = (i >= start && i < end) ? '' : 'none';
+    });
+
+    dots.forEach(d => d.classList.remove('active'));
+    dots[page].classList.add('active');
+
+    prevBtn.disabled = page === 0;
+    nextBtn.disabled = page === totalPages - 1;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if(page > 0){ page--; renderPage(); }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if(page < totalPages - 1){ page++; renderPage(); }
+  });
+
+  dots.forEach(d => {
+    d.addEventListener('click', () => {
+      page = Number(d.dataset.page);
+      renderPage();
+    });
+  });
+
+  renderPage();
+</script>
+
+<footer class="footer-wrap">
+    <div class="footer-container">
+      <div class="footer-card">
+
+        <div class="footer-top">
+
+          <!-- BRAND -->
+          <div class="footer-brand">
+            <h2>ECHOES</h2>
+            <p>
+              [Mô tả ngắn về Echoes: ví dụ “Nền tảng đặt vé concert & sự kiện. Cập nhật lịch diễn, địa điểm, nghệ sĩ...”]
+            </p>
+
+            <div class="footer-social">
+              <a class="social-btn" href="#" aria-label="Facebook">fb</a>
+              <a class="social-btn" href="#" aria-label="Instagram">ig</a>
+              <a class="social-btn" href="#" aria-label="TikTok">tt</a>
+              <a class="social-btn" href="#" aria-label="YouTube">yt</a>
+            </div>
+          </div>
+
+          <!-- MENU -->
+          <div>
+            <h4 class="footer-title">Danh mục</h4>
+            <ul class="footer-links">
+              <li><a href="#">[Nhạc sống]</a></li>
+              <li><a href="#">[Concert]</a></li>
+              <li><a href="#">[Tin tức nổi bật]</a></li>
+              <li><a href="#">[Khuyến mãi]</a></li>
+            </ul>
+          </div>
+
+          <!-- SUPPORT -->
+          <div>
+            <h4 class="footer-title">Hỗ trợ</h4>
+            <ul class="footer-links">
+              <li><a href="#">[Hướng dẫn đặt vé]</a></li>
+              <li><a href="#">[Câu hỏi thường gặp]</a></li>
+              <li><a href="#">[Chính sách hoàn/đổi]</a></li>
+              <li><a href="#">[Liên hệ]</a></li>
+            </ul>
+          </div>
+
+          <!-- CONTACT -->
+          <div>
+            <h4 class="footer-title">Thông tin</h4>
+            <div class="footer-contact">
+              <div><span>Địa chỉ:</span> [Bạn tự điền]</div>
+              <div><span>Hotline:</span> [Bạn tự điền]</div>
+              <div><span>Email:</span> <a href="mailto:your@email.com">[Bạn tự điền]</a></div>
+              <div><span>Giờ làm việc:</span> [Bạn tự điền]</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-bottom">
+          <div>© <span id="year"></span> Echoes. All rights reserved.</div>
+          <div>
+            <a href="#">[Điều khoản]</a> ·
+            <a href="#">[Chính sách bảo mật]</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+
+</body>
+</html>

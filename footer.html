@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Footer - Echoes</title>
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    /* ===== Footer bám sát style trang (be + card trắng mờ) ===== */
+    .footer-wrap{
+      padding: 70px 0 30px;
+      background: transparent;  /* để ăn nền be của body */
+    }
+
+    *{
+  outline: none !important;
+  box-shadow: none;
+    }
+    .footer-container{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .footer-card{
+      background: rgba(255,255,255,0.85);
+      border-radius: 26px;
+      padding: 36px 34px 26px;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.16);
+      backdrop-filter: blur(6px);
+    }
+
+    .footer-top{
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .footer-brand h2{
+      margin: 0 0 10px;
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: var(--color-dark);
+      text-transform: uppercase;
+    }
+
+    .footer-brand p{
+      margin: 0;
+      max-width: 380px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.62);
+    }
+
+    .footer-title{
+      margin: 4px 0 14px;
+      font-size: 13px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.72);
+    }
+
+    .footer-links{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a{
+      text-decoration: none;
+      font-size: 14px;
+      color: rgba(0,0,0,0.62);
+      display: inline-block;
+      transition: transform .15s ease, opacity .15s ease;
+    }
+
+    .footer-links a:hover{
+      transform: translateX(2px);
+      opacity: 1;
+      color: var(--color-dark);
+    }
+
+    .footer-contact{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(0,0,0,0.62);
+    }
+
+    .footer-contact span{
+      color: rgba(0,0,0,0.78);
+    }
+
+    .footer-contact a{
+      color: rgba(0,0,0,0.68);
+      text-decoration: none;
+    }
+
+    .footer-contact a:hover{
+      color: var(--color-dark);
+    }
+
+    /* Social giống nút pill của trang */
+    .footer-social{
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .social-btn{
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(69,77,106,0.22);
+      background: rgba(69,77,106,0.08);
+      display: grid;
+      place-items: center;
+      color: var(--color-dark);
+      text-decoration: none;
+      font-size: 13px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select: none;
+    }
+
+    .social-btn:hover{
+      transform: translateY(-2px);
+      background: rgba(69,77,106,0.14);
+      border-color: rgba(69,77,106,0.3);
+    }
+
+    /* đường kẻ mờ giống hero */
+    .footer-line{
+      margin: 26px 0 16px;
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.18),
+        rgba(0,0,0,0.06),
+        rgba(0,0,0,0)
+      );
+    }
+
+    .footer-bottom{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: rgba(0,0,0,0.55);
+    }
+
+    .footer-bottom a{
+      color: rgba(0,0,0,0.6);
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover{
+      color: var(--color-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .footer-top{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px){
+      .footer-top{ grid-template-columns: 1fr; }
+      .footer-card{ padding: 28px 22px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <footer class="footer-wrap">
+    <div class="footer-container">
+      <div class="footer-card">
+
+        <div class="footer-top">
+
+          <!-- BRAND -->
+          <div class="footer-brand">
+            <h2>ECHOES</h2>
+            <p>
+              [Mô tả ngắn về Echoes: ví dụ “Nền tảng đặt vé concert & sự kiện. Cập nhật lịch diễn, địa điểm, nghệ sĩ...”]
+            </p>
+
+            <div class="footer-social">
+              <a class="social-btn" href="#" aria-label="Facebook">fb</a>
+              <a class="social-btn" href="#" aria-label="Instagram">ig</a>
+              <a class="social-btn" href="#" aria-label="TikTok">tt</a>
+              <a class="social-btn" href="#" aria-label="YouTube">yt</a>
+            </div>
+          </div>
+
+          <!-- MENU -->
+          <div>
+            <h4 class="footer-title">Danh mục</h4>
+            <ul class="footer-links">
+              <li><a href="#">[Nhạc sống]</a></li>
+              <li><a href="#">[Sự kiện nổi bật]</a></li>
+              <li><a href="#">[Nghệ sĩ]</a></li>
+              <li><a href="#">[Địa điểm]</a></li>
+            </ul>
+          </div>
+
+          <!-- SUPPORT -->
+          <div>
+            <h4 class="footer-title">Hỗ trợ</h4>
+            <ul class="footer-links">
+              <li><a href="#">[Hướng dẫn đặt vé]</a></li>
+              <li><a href="#">[Câu hỏi thường gặp]</a></li>
+              <li><a href="#">[Chính sách hoàn/đổi]</a></li>
+              <li><a href="#">[Liên hệ]</a></li>
+            </ul>
+          </div>
+
+          <!-- CONTACT -->
+          <div>
+            <h4 class="footer-title">Thông tin</h4>
+            <div class="footer-contact">
+              <div><span>Địa chỉ:</span> [Bạn tự điền]</div>
+              <div><span>Hotline:</span> [Bạn tự điền]</div>
+              <div><span>Email:</span> <a href="mailto:your@email.com">[Bạn tự điền]</a></div>
+              <div><span>Giờ làm việc:</span> [Bạn tự điền]</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-bottom">
+          <div>© <span id="year"></span> Echoes. All rights reserved.</div>
+          <div>
+            <a href="#">[Điều khoản]</a> ·
+            <a href="#">[Chính sách bảo mật]</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
