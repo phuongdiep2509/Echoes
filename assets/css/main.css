@@ -2,8 +2,11 @@
 .carousel {
     margin-top: 90px;
     position: relative;
-    width: 100%;
-    height: 100%;          /* hoặc theo banner */
+    width: 100%;           
+    max-width: 2000px;     /* Giới hạn chiều rộng tối đa, zoom ra cũng không to hơn số này */
+    margin-left: auto;     /* Căn giữa carousel */
+    margin-right: auto;    /* Căn giữa carousel */
+    height: 850px;         /* Nên đặt chiều cao cố định hoặc tỉ lệ cụ thể thay vì 100% */
     overflow: hidden;
 }
 
@@ -105,7 +108,11 @@
     transition: 1s;
 }
 .section-1 {
-    margin-top: 10px;
+    width: 100%;           
+    max-width: 2000px;     
+    margin-left: auto;     
+    margin-right: auto;   
+    overflow: hidden;
     height: 1000px;
     background: url(../images/index/backgroundsection1.png) center / cover no-repeat;
     display: flex;
@@ -132,11 +139,11 @@
 .event-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* responsive tự động */
-    gap: 100px;
+    gap: 110px;
     justify-content: center;
     max-width: 1200px;       /* giới hạn chiều rộng tổng */
     margin: 0 auto;
-    padding: 60px 0;
+    padding: 90px 0;
 }
 
 .event-wrapper {
@@ -386,6 +393,29 @@
     margin-right: 7 px;
 }
 
+.ads-adventcld {
+    width: 1170px;        /* Chỉnh độ rộng bạn muốn (ví dụ 300px hoặc 30%) */
+    margin: 40px auto;   /* auto giúp căn giữa theo chiều ngang, 40px là khoảng cách trên dưới */
+    display: block;      /* Đảm bảo khung bao là khối để margin: auto có tác dụng */
+transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.ads-adventcld img {
+    width: 100%;         /* Ảnh sẽ luôn vừa khít với độ rộng 300px của khung cha */
+    height: auto;        /* Tự động tính toán chiều cao để ảnh không bị méo/móp */
+    display: block;      /* Loại bỏ khoảng trắng thừa dưới chân ảnh */
+    border-radius: 7px; /* Tùy chọn: bo góc cho giống các box khác của bạn */
+}
+.ads-adventcld:hover {
+    /* Phóng to lên 1.05 lần (5%) hoặc 1.1 lần tùy bạn muốn zoom mạnh hay nhẹ */
+    transform: scale(1.05); 
+    
+    /* Thêm đổ bóng để tạo cảm giác ảnh nổi hẳn lên khỏi mặt trang web */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); 
+    
+    /* Đảm bảo nó nằm trên các thành phần khác khi phóng to */
+    z-index: 10; 
+}
 
 /* Container chính cho toàn bộ Section 2 */
 .section-2 {

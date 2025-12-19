@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Footer</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <style>
+        .footer .footer-top {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #525233;
+            padding: 30px 10px;
+        }
+
+        .footer .footer-top .about-us {
+            margin-right: 20px;
+
+            width: 300px;
+        }
+
+        .footer .footer-top .about-us h1 {
+            margin-top: 20px;
+            font-size: 20px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .footer .footer-top .about-us .list-box {
+            background-color: #e1cfac;
+            width: 200px;
+            height: 10px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer .footer-top .about-us ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer .footer-top .about-us ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer .footer-top .about-us ul li a {
+            transition: 0.3s;
+            color: white;
+        }
+
+        .footer .footer-top .about-us ul li a:hover {
+            color: white;
+            padding-left: 5px; /* Hiệu ứng dịch nhẹ khi hover */
+        }
+
+        .footer .footer-top .about-us ul li p {
+            color: white;
+            margin-bottom: 0;
+        }
+
+        .footer .footer-top .about-us .social {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer .footer-top .about-us .social li {
+            margin-right: 10px;
+        }
+
+        .footer .footer-top .about-us .social li .inner-image {
+            height: 40px;
+            width: 40px;
+
+        }
+
+        .footer .footer-top .about-us .social li .inner-image img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .footer-bottom {
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #272719;
+        }
+
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            padding: 10px 110px;
+        }
+
+        .footer-bottom .inner-logo {
+            height: 100px;
+            width: auto;
+        }
+
+        .footer-bottom .inner-logo img {
+            height: 90px;
+            width: 90px;
+            margin-right: 20px;
+            padding-top: 10px;
+        }
+
+        .footer-bottom .inner-content ul {
+            list-style: none;
+        }
+
+        .footer-bottom .inner-content ul li p {
+            color: white;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .footer .footer-top {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                padding: 30px 20px;
+            }
+
+            .footer .footer-top .about-us {
+                margin-right: 0;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .footer .footer-top .about-us ul {
+                padding-left: 0;
+            }
+
+            .footer .footer-top .about-us ul li {
+                text-align: left;
+            }
+
+            .footer .footer-top .about-us .social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .footer-bottom .inner-logo {
+                height: 80px;
+            }
+
+            .footer-bottom .inner-content ul li p {
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .footer .footer-top {
+                padding: 20px 10px;
+            }
+
+            .footer .footer-top .about-us h1 {
+                font-size: 18px;
+            }
+
+            .footer .footer-top .about-us .list-box {
+                width: 150px;
+                height: 8px;
+            }
+
+            .footer-bottom .inner-logo {
+                height: 60px;
+            }
+
+            .footer-bottom .inner-content ul li p {
+                font-size: 13px;
+            }
+
+            .footer .footer-top .about-us .social li .inner-image {
+                height: 32px;
+                width: 32px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="footer" id="footer">
+
+        <div class="footer-top">
+            <div class="about-us">
+                <h1>THÔNG TIN </h1>
+                <div class="list-box"></div>
+                <ul>
+                    <li><a href="./aboutUs.html">Về chúng tôi</a></li>
+                    <li><a href="./new.html">Tin tức & Khuyến mãi</a></li>
+                </ul>
+            </div>
+            <div class="about-us">
+                <h1>KHÁM PHÁ</h1>
+                <div class="list-box"></div>
+                <ul>
+                    <li><a href="./music.html">Nhạc sống</a></li>
+                    <li><a href="./concert.html">Concert âm nhạc</a></li>
+                    <li><a href="./merchandise.html">Merchandise</a></li>
+                </ul>
+            </div>
+            <div class="about-us">
+                <h1>QUY ĐỊNH & ĐIỀU KHOẢN</h1>
+                <div class="list-box"></div>
+                <ul>
+                    <li><a href="#">Điều khoản</a></li>
+                    <li><a href="#">Quy định thành viên</a></li>
+                    <li><a href="#">Quy định và chính sách chung</a></li>
+                    <li><a href="#">Chính sách bảo vệ thông tin</a></li>
+                </ul>
+            </div>
+            <div class="about-us">
+                <h1>CHĂM SÓC KHÁCH HÀNG</h1>
+                <div class="list-box"></div>
+                <ul>
+                    <li>
+                        <p><b>Hotline:</b> 19001234</p>
+                    </li>
+                    <li>
+                        <p><b>Email:</b> echoes@gmail.com</p>
+                    </li>
+                </ul>
+                <ul class="social">
+                    <li>
+                        <a href="https://www.facebook.com/albumechoes">
+                            <div class="inner-image">
+                                <img src="./assets/images/index/facebook_icon.png">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/echoesalbum">
+                            <div class="inner-image">
+                                <img src="./assets/images/index/insta_icon.png">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/albumechoes">
+                            <div class="inner-image">
+                                <img src="./assets/images/index/tiktok_icon.png">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <div class="inner-logo"><img src="./assets/images/index/logo-footer.png"></div>
+            <div class="inner-content">
+                <ul>
+                    <li>
+                        <p><b>Công ty Sự kiện âm nhạc Echoes Việt Nam</b></p>
+                    </li>
+                    <li>
+                        <p><b>Giấy CNĐKDN:</b> Giấy phép kinh doanh số: 0104597158. Đăng ký lần đầu ngày 22 tháng 12 năm
+                            2025</p>
+                    </li>
+                    <li>
+                        <p><b>Địa chỉ: </b> Số 12 Chùa Bộc, Đống Đa, Hà Nội</p>
+                    </li>
+                    <li>
+                        <p><b>Hotline: </b> 19001234</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
