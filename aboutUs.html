@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giới thiệu | Echoes</title>
+    <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
 
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/about.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets\css\about.css">
 </head>
 <body>
     <div id="header">
@@ -21,7 +19,6 @@
                 .then(data => {
                     document.getElementById('header').innerHTML = data;
             
-                    // 👉 kiểm tra user sau khi header load
                     const user = localStorage.getItem("currentUser");
                     const accountName = document.getElementById("account-name");
             
@@ -42,8 +39,7 @@
     <div class="hero-content">
         <h1>CHÚNG MÌNH LÀ AI?</h1>
         <p>
-            Echoes là nền tảng kết nối âm nhạc sống, concert và những dư âm
-            cảm xúc chân thật giữa nghệ sĩ và khán giả.
+           Echoes là nền tảng kết nối âm nhạc sống và cảm xúc chân thật dành cho cộng đồng yêu nghệ thuật. Với sứ mệnh mang những buổi diễn chất lượng đến gần hơn với khán giả, chúng tôi tin rằng mỗi giai điệu đều phải để lại dư âm sâu sắc. Dựa trên giá trị Nghệ thuật – Cảm xúc – Kết nối, Echoes cam kết mang đến những trải nghiệm chân thật nhất trong từng khoảnh khắc.
         </p>
     </div>
 </section>
@@ -54,7 +50,7 @@
 
         <div class="vision-item">
             <div class="vision-icon">
-                <img src="assets/images/eye.png" alt="Tầm nhìn">
+                <img src="assets/images/aboutus/eye.png" alt="Tầm nhìn">
             </div>
             <h3>TẦM NHÌN</h3>
             <p>
@@ -65,7 +61,7 @@
 
         <div class="vision-item">
             <div class="vision-icon">
-                <img src="assets/images/flower.png" alt="Sứ mệnh">
+                <img src="assets/images/aboutus/flower.png" alt="Sứ mệnh">
             </div>
             <h3>SỨ MỆNH</h3>
             <p>
@@ -76,7 +72,7 @@
 
         <div class="vision-item">
             <div class="vision-icon">
-                <img src="assets/images/butterfly.png" alt="Giá trị cốt lõi">
+                <img src="assets/images/aboutus/butterfly.png" alt="Giá trị cốt lõi">
             </div>
             <h3>GIÁ TRỊ CỐT LÕI</h3>
             <p>

@@ -1,15 +1,3 @@
-/* =================================
-   ROOT VARIABLES
-   ================================= */
-:root {
-    --olive: #4b4d2a;
-    --cream: #f6f1e7;
-    --dark: #2e2e2e;
-}
-
-/* =================================
-   RESET
-   ================================= */
 * {
     margin: 0;
     padding: 0;
@@ -17,43 +5,27 @@
 }
 
 body {
-    font-family: 'Fraunces', serif;
-    background-color: var(--cream);
-    color: var(--dark);
-    line-height: 1.6;
+    background-color: var(--color-yellow);
+    margin: 0;
+    padding: 0;
 }
+
 .hero-poster {
-    height: 480px;
-    background-image: url("../images/about-hero.png");
+    height: 650px;
+    min-height: 100vh;
+    width: 100%; 
+    
+    /* Căn chỉnh ảnh nền */
+    background-image: url("../images/aboutus/background.png");
     background-size: cover;
-    background-position: center;
+    background-position: top center; /* "top" giúp ảnh bám sát mép trên */
+    background-repeat: no-repeat;
+
+    /* Loại bỏ các khoảng cách thừa */
     position: relative;
+    top: 0; 
+    margin-top: 90px;
     overflow: hidden;
-}
-
-/* overlay RẤT NHẸ – chỉ để đọc chữ */
-.hero-poster::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to right,
-        rgba(0,0,0,0.25),
-        rgba(0,0,0,0.05)
-    );
-    z-index: 1;
-}
-
-/* grain ĐẬM HƠN nhưng KHÔNG làm tối ảnh */
-.hero-poster::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("../images/grain.png");
-    opacity: 0.22;              /* grain rõ */
-    mix-blend-mode: overlay;    /* QUAN TRỌNG */
-    pointer-events: none;
-    z-index: 2;
 }
 
 /* content */
@@ -64,21 +36,31 @@ body {
     padding: 0 8%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Căn giữa cả cụm theo chiều dọc */
+    align-items: center;     /* Căn giữa cả cụm theo chiều ngang */
+    text-align: center;      /* Căn giữa nội dung chữ */
     color: #f6f1e7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    padding-bottom: 450px; /* Tăng con số này để đẩy cụm chữ lên cao hơn */
 }
 
 .hero-content h1 {
-    font-size: 68px;
+    color: #e1cfac;
+    margin: 0 0 20px 0;      /* Chỉ giữ lại một chút khoảng cách dưới (20px) */
+    font-size: 120px;
     font-weight: 900;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
+    letter-spacing: 5px;
     text-shadow: 0 6px 24px rgba(0,0,0,0.35);
 }
 
 .hero-content p {
-    max-width: 720px;
-    font-size: 15px;
+    font-weight: normal ;
+    margin: 0;               /* Bỏ auto để không bị đẩy xa h1 */
+    max-width: 1200px;
+    font-size: 18px;
     line-height: 1.7;
     opacity: 0.95;
 }
@@ -87,7 +69,8 @@ body {
    VISION / MISSION / CORE
    ================================= */
 .vision-section {
-    background-color: var(--cream);
+    margin-top: 100px;
+    background-color: var(--color-yellow);
     padding: 120px 8%;
     position: relative;
     overflow: hidden;
@@ -102,17 +85,17 @@ body {
 
 /* item */
 .vision-item h3 {
-    font-size: 22px;
+    font-size: 40px;
     letter-spacing: 1px;
     margin: 32px 0 16px;
-    color: var(--olive);
+    color: var(--color-green);
 }
 
 .vision-item p {
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--olive);
-    max-width: 320px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-green);
+    max-width: 400px;
     margin: 0 auto;
 }
 
@@ -172,9 +155,6 @@ body {
     right: 40px;
 }
 
-/* =================================
-   MEMBER SECTION
-   ================================= */
 .member-section {
     background-color: var(--olive);
     padding: 110px 8%;
