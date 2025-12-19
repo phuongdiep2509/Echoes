@@ -24,7 +24,7 @@ body {
 }
 .hero-poster {
     height: 480px;
-    background-image: url("../images/about-hero.png");
+    background-image: url("../images/about/about-hero.png");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -49,7 +49,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("../images/grain.png");
+    background-image: url("../images/about/grain.png");
     opacity: 0.22;              /* grain rõ */
     mix-blend-mode: overlay;    /* QUAN TRỌNG */
     pointer-events: none;
@@ -251,3 +251,4 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
