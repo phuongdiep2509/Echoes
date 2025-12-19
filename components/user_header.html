@@ -318,7 +318,7 @@
             <nav class="inner-menu">
             <ul>
                 <li>   
-                    GIỚI THIỆU
+                    <a href="#" onclick="return false;">GIỚI THIỆU</a>
                     <img src="assets/images/index/dropdown-icon.png">
                     <ul class="submenu">
                         <li><a href="aboutUs.html">VỀ CHÚNG TÔI</a></li>
@@ -349,18 +349,7 @@
       </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const accountBtn = document.getElementById('account-btn');
-        const currentUser = localStorage.getItem('currentUser');
-
-        if (currentUser) {
-          accountBtn.textContent = 'TÀI KHOẢN';
-          accountBtn.setAttribute('href', './profile.html');
-        } else {
-          accountBtn.textContent = 'Đăng nhập | Đăng ký';
-          accountBtn.setAttribute('href', 'accounts/SignUp_LogIn_Form.html');
-        }
-      });
+      // Script này sẽ được thay thế bởi AuthManager.updateHeaderUI() từ các trang chính
     </script>
     <script src="components/scroll header.js"></script>
   </body>

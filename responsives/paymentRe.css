@@ -1,0 +1,256 @@
+/* ===== PAYMENT RESPONSIVE - CLEAN VERSION ===== */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .main-title {
+        font-size: 2.2rem;
+    }
+    
+    .payment-options-simple {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .promotion-card {
+        padding: 20px 25px;
+        min-height: 100px;
+    }
+    
+    .payment-option {
+        padding: 20px 15px;
+        min-height: 70px;
+    }
+    
+    .payment-option img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .payment-section {
+        padding: 25px;
+        margin-bottom: 20px;
+    }
+    
+    .promotion-grid-simple {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .promotion-card {
+        text-align: center;
+        padding: 20px;
+        min-height: 90px;
+    }
+    
+    .promotion-title {
+        font-size: 1.2rem;
+    }
+    
+    .promotion-desc {
+        font-size: 0.95rem;
+    }
+    
+    .payment-options-simple {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .payment-option {
+        padding: 20px;
+        min-height: 70px;
+    }
+    
+    .payment-option img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .payment-option .payment-name {
+        font-size: 1rem;
+    }
+    
+    .ticket-summary-card {
+        position: static;
+        margin-top: 30px;
+    }
+    
+    .poster-box {
+        height: 250px;
+    }
+    
+    .summary-body {
+        padding: 25px;
+        min-height: auto;
+    }
+    
+    .event-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .total-amount {
+        font-size: 1.5rem;
+    }
+    
+    .btn-finish {
+        padding: 15px;
+        font-size: 1rem;
+    }
+    
+    .custom-voucher-section {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+    
+    .voucher-input {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+    
+    .voucher-apply-btn {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 576px) {
+    body {
+        padding-top: 70px;
+    }
+    
+    .inner-wrap-checkout {
+        padding: 0 15px;
+    }
+    
+    .checkout-nav ul {
+        gap: 15px;
+    }
+    
+    .checkout-nav .nav-link {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .checkout-logo-section .brand-name {
+        font-size: 20px;
+    }
+    
+    .main-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+    }
+    
+    .payment-section {
+        padding: 15px;
+    }
+    
+    .promotion-card {
+        padding: 12px 15px;
+    }
+    
+    .promotion-title {
+        font-size: 0.9rem;
+    }
+    
+    .promotion-desc {
+        font-size: 0.8rem;
+    }
+    
+    .payment-options-simple {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .payment-option {
+        flex-direction: row;
+        text-align: left;
+        padding: 15px;
+    }
+    
+    .payment-option img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .summary-body {
+        padding: 20px;
+    }
+    
+    .event-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .event-info p {
+        font-size: 0.9rem;
+    }
+    
+    .price-item {
+        font-size: 0.9rem;
+    }
+    
+    .total-label {
+        font-size: 1rem;
+    }
+    
+    .total-amount {
+        font-size: 1.3rem;
+    }
+    
+    .custom-voucher-input {
+        flex-direction: column;
+        border-radius: 7px;
+    }
+    
+    .voucher-input {
+        padding: 15px;
+        border-radius: 7px 7px 0 0;
+        border-bottom: 1px solid var(--color-yellow);
+    }
+    
+    .voucher-apply-btn {
+        padding: 15px;
+        border-radius: 0 0 7px 7px;
+        justify-content: center;
+    }
+    
+    .voucher-suggestions small {
+        font-size: 0.85rem;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+    .checkout-logo-section .brand-name {
+        display: none;
+    }
+    
+    .main-title {
+        font-size: 1.6rem;
+    }
+    
+    .poster-box {
+        height: 200px;
+    }
+    
+    .summary-body {
+        padding: 15px;
+    }
+    
+    .btn-finish {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+}

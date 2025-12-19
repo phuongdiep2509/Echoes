@@ -193,6 +193,7 @@ p{ margin: 15px 0; font-size: 14.5px; text-align: center; }
     display: none;
     justify-content: center;
     align-items: center;
+    background: rgba(0,0,0,0.5);
     z-index: 1050; 
 }
 .forgot-modal .form-box {
@@ -224,6 +225,37 @@ p{ margin: 15px 0; font-size: 14.5px; text-align: center; }
     position: relative; 
     right: auto;
     border-radius: 10px;
+    max-width: 90vw;
+}
+
+.forgot-form h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.forgot-form p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.forgot-form .input-box {
+    margin-bottom: 20px;
+}
+
+.forgot-form .input-box input {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+}
+
+.forgot-form .input-box input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.forgot-form .input-box i {
+    color: rgba(255,255,255,0.7) !important;
 }
 
 /* Thêm style cho nút GỬI */

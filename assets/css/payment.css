@@ -1,108 +1,32 @@
-/* Checkout.css */
-.main-title { color: var(--color-red); 
-    font-weight: bold;
-    margin-top: -10px; 
-    margin-bottom: 30px; 
+/* ===== PAYMENT PAGE - CLEAN CSS ===== */
+
+/* Variables */
+:root {
+    --color-red: #74070d;
+    --color-white: #fff;
+    --color-yellow: #f0efeb;
+    --color-text: #000;
+    --font: "Cal Sans", sans-serif;
 }
 
-.section-title {
-    font-size: 1.3rem;
-    font-weight: bold;
-    border-left: 5px solid var(--color-red);
-    padding-left: 15px;
-    margin-bottom: 25px;
+/* Base */
+body {
+    padding-top: 80px;
+    background: var(--color-yellow);
+    font-family: var(--font);
 }
 
-/* Các thẻ chọn thanh toán kiểu viên thuốc */
-.payment-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.payment-form label {
-    background: var(--color-white);
-    display: flex;
-    align-items: center;
-    padding: 15px 25px;
-    border-radius: 50px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: 0.3s;
-}
-/* Ẩn nút radio tròn */
-.payment-form input[type="radio"] {
-    margin-right: 15px;
-}
-
-.payment-form label:hover {
-    border-color: var(--color-red);
-}
-.payment-form label:has(input:checked) {
-    border-color: var(--color-red);
-    background-color: #fdf2f2;
-}
-.payment-form img { width: 30px; margin-right: 15px; }
-.payment-form p { margin: 0; font-weight: bold; }
-
-/* Voucher */
-.promotion-form {
-    display: flex;
-    gap: 15px;
-    padding-bottom: 15px;
-}
-.promotion-form label {
-    background: white;
-    min-width: 180px;
-    padding: 15px;
-    border-radius: 12px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-/* Ẩn nút radio tròn để giao diện sạch hơn */
-.promotion-form input[type="radio"] {
-    display: none;
-}
-
-/* Khi mã giảm giá được chọn */
-.promotion-form label:has(input:checked) {
-    border-color: var(--color-red);
-    background-color: #fdf2f2;
-}
-
-.promotion-form label strong {
-    display: block;
-    color: var(--color-red);
-    font-size: 1.1rem;
-}
-
-/* Card vé bên phải */
-.ticket-summary-card {
-    background: #111;
-    border-radius: 20px;
-    overflow: hidden;
-    position: sticky;
-    top: 100px;
-}
-#ticket-img { width: 100%; height: 200px; object-fit: cover; }
-.btn-finish {
-    background: var(--color-red);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-.btn-finish:hover { background: #5a050a; transform: translateY(-3px); }
-/* Header tối giản cho trang Thanh toán */
+/* Header */
 .checkout-header {
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 15px 0;
     position: fixed;
-    height: 70px;
     top: 0;
     width: 100%;
     z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
 }
 
 .inner-wrap-checkout {
@@ -118,19 +42,18 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    gap: 10px;
+    gap: 12px;
 }
 
 .checkout-logo-section img {
-    height: 60px; /* Nhỏ gọn hơn */
+    height: 50px;
 }
 
 .checkout-logo-section .brand-name {
-    font-family: 'Cal Sans', sans-serif;
-    font-size: 24px;
-    color: #000;
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-size: 28px;
+    color: var(--color-red);
+    font-weight: 800;
+    letter-spacing: 2px;
 }
 
 .checkout-nav ul {
@@ -138,28 +61,389 @@
     display: flex;
     gap: 30px;
     margin: 0;
+    padding: 0;
 }
 
-.checkout-nav ul li a {
+.checkout-nav .nav-link {
     text-decoration: none;
-    color: #000;
+    color: var(--color-text);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: 0.3s;
+    padding: 10px 15px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.7);
 }
 
-.checkout-nav ul li a img {
-    height: 18px;
+.checkout-nav .nav-link:hover {
+    color: var(--color-red);
+    background: rgba(220, 53, 69, 0.1);
+    transform: translateY(-2px);
 }
 
-.checkout-nav ul li a:hover {
+/* Main Title */
+.main-title {
+    color: var(--color-red);
+    font-weight: 800;
+    font-size: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+
+/* Sections */
+.payment-section {
+    background: var(--color-white);
+    border: 1px solid var(--color-red);
+    border-radius: 7px;
+    padding: 35px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--color-red);
+    display: flex;
+    align-items: center;
+}
+
+/* Promotions */
+.promotion-grid-simple {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.promotion-card {
+    background: var(--color-white);
+    color: var(--color-text);
+    padding: 25px 30px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid var(--color-yellow);
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.promotion-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.promotion-card.selected {
+    background: var(--color-yellow);
+    border-color: var(--color-red);
+    box-shadow: 0 0 15px rgba(116, 7, 13, 0.3);
+}
+
+.promotion-card input[type="radio"] {
+    display: none;
+}
+
+.promotion-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
     color: var(--color-red);
 }
 
-/* Đảm bảo nội dung trang không bị header che mất */
-body {
-    padding-top: 65px; 
+.promotion-desc {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--color-text);
+    opacity: 0.8;
+}
+
+/* Custom Voucher */
+.custom-voucher-section {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid var(--color-yellow);
+}
+
+.custom-voucher-input {
+    display: flex;
+    gap: 0;
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 2px solid var(--color-yellow);
+}
+
+.voucher-input {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    font-size: 1rem;
+    font-family: var(--font);
+    background: var(--color-white);
+    color: var(--color-text);
+    outline: none;
+}
+
+.voucher-apply-btn {
+    background: var(--color-red);
+    color: var(--color-white);
+    border: none;
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.voucher-apply-btn:hover {
+    background: #5a050a;
+}
+
+.voucher-suggestions {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.voucher-suggestions small {
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Payment Methods */
+.payment-options-simple {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.payment-option {
+    background: var(--color-white);
+    border: 2px solid var(--color-yellow);
+    border-radius: 7px;
+    padding: 25px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 80px;
+}
+
+.payment-option:hover {
+    border-color: var(--color-red);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.payment-option.selected {
+    border-color: var(--color-red);
+    background: var(--color-yellow);
+    box-shadow: 0 0 15px rgba(116, 7, 13, 0.3);
+}
+
+.payment-option input[type="radio"] {
+    display: none;
+}
+
+.payment-option img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.payment-option .payment-name {
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Ticket Summary Card */
+.ticket-summary-card {
+    background: #111;
+    border-radius: 7px;
+    overflow: hidden;
+    position: sticky;
+    top: 120px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 1px solid #333;
+    width: 100%;
+}
+
+.poster-box {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+}
+
+.poster-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.event-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.summary-body {
+    padding: 40px;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 450px;
+}
+
+.event-info h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+
+.event-info p {
+    color: #aaa;
+    margin-bottom: 15px;
+    font-size: 1.15rem;
+}
+
+.price-breakdown {
+    margin: 30px 0;
+    padding: 25px 0;
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 1.15rem;
+    color: var(--color-white);
+}
+
+.price-item:last-child {
+    margin-bottom: 0;
+}
+
+.discount-item {
+    background: rgba(40, 167, 69, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.total-section {
+    margin: 30px 0;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    background: #222;
+    border-radius: 7px;
+    color: white;
+    border: 1px solid #444;
+}
+
+.total-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.total-amount {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-red);
+}
+
+/* Payment Button */
+.btn-finish {
+    width: 100%;
+    background: linear-gradient(135deg, var(--color-red) 0%, #c82333 100%);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: auto;
+}
+
+.btn-finish:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(220, 53, 69, 0.4);
+}
+
+.security-info {
+    text-align: center;
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(40, 167, 69, 0.2);
+    border-radius: 8px;
+}
+
+.security-info small {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }

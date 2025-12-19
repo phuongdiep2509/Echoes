@@ -27,7 +27,6 @@ body {
     margin-top: 90px;
     overflow: hidden;
 }
-
 /* content */
 .hero-content {
     position: relative;
@@ -231,3 +230,4 @@ body {
         grid-template-columns: 1fr;
     }
 }
+

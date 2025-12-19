@@ -8,15 +8,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 async function loadLayout() {
-    try {
-        // Cùng thư mục components
-        const [h, f] = await Promise.all([
-            fetch('../components/user_header.html').then(res => res.text()),
-            fetch('../components/user_footer.html').then(res => res.text())
-        ]);
-        document.getElementById('header-placeholder').innerHTML = h;
-        document.getElementById('footer-placeholder').innerHTML = f;
-    } catch (err) { console.error(err); }
+    // Footer is now loaded directly in HTML, no need to load here
+    return;
 }
 
 
@@ -37,8 +30,8 @@ function renderDetail() {
     content.innerHTML = `
         <p class="lead fw-bold mb-4" style="color:#3d3d29;">${data.intro}</p>
         ${data.images.map(img => {
-            // Nếu src bắt đầu bằng /, ta bỏ / và thêm ../ để lùi ra khỏi thư mục components
-            const fixedSrc = img.src.startsWith('/') ? `..${img.src}` : `../${img.src}`;
+            // Fix image path for root directory
+            const fixedSrc = img.src.startsWith('/') ? img.src.substring(1) : img.src;
             return `
                 <figure class="my-4 text-center">
                     <img src="${fixedSrc}" class="img-fluid rounded shadow" style="max-height:500px;">

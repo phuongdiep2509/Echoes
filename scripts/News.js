@@ -9,15 +9,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 async function loadLayout() {
-    try {
-        // Cùng nằm trong thư mục components nên gọi trực tiếp
-        const [h, f] = await Promise.all([
-            fetch('../components/user_header.html').then(res => res.text()),
-            fetch('../components/user_footer.html').then(res => res.text())
-        ]);
-        document.getElementById('header-placeholder').innerHTML = h;
-        document.getElementById('footer-placeholder').innerHTML = f;
-    } catch (err) { console.error("Lỗi nạp layout:", err); }
+    // Footer is now loaded directly in HTML, no need to load here
+    return;
 }
 
 
