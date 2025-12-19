@@ -82,6 +82,7 @@
 }
 
 .sub-title{
+  font-weight: bold;
   margin: 50px 0 10px;
   font-size: 24px;
   color: var(--color-green);
@@ -112,6 +113,9 @@
   flex-shrink: 0;
 }
 
+.date img {
+  margin-right: 10px;
+}
 .trending-info h4{
   margin: 0 0 10px;
   font-size: 18px;
