@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu | Echoes</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets\css\about.css">
+</head>
+<body>
+    <div id="header">
+        <script>
+            fetch('components/user_header.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+            
+                    // 👉 kiểm tra user sau khi header load
+                    const user = localStorage.getItem("currentUser");
+                    const accountName = document.getElementById("account-name");
+            
+                    if (user && accountName) {
+                        accountName.innerText = user;
+                        accountName.onclick = null; // bỏ mở modal login
+                    }
+            
+                    const script = document.createElement('script');
+                    script.src = 'components/scroll_header.js';
+                    document.body.appendChild(script);
+                });
+            </script>
+            
+    </div>
+    <!--hero-->
+<section class="hero hero-poster">
+    <div class="hero-content">
+        <h1>CHÚNG MÌNH LÀ AI?</h1>
+        <p>
+            Echoes là nền tảng kết nối âm nhạc sống, concert và những dư âm
+            cảm xúc chân thật giữa nghệ sĩ và khán giả.
+        </p>
+    </div>
+</section>
+
+    <!-- TẦM NHÌN - SỨ MỆNH - GIÁ TRỊ -->
+    <section class="vision-section">
+    <div class="vision-grid">
+
+        <div class="vision-item">
+            <div class="vision-icon">
+                <img src="assets/images/eye.png" alt="Tầm nhìn">
+            </div>
+            <h3>TẦM NHÌN</h3>
+            <p>
+                Echoes hướng đến việc trở thành nền tảng kết nối âm nhạc sống và
+                cảm xúc chân thật của cộng đồng yêu nghệ thuật.
+            </p>
+        </div>
+
+        <div class="vision-item">
+            <div class="vision-icon">
+                <img src="assets/images/flower.png" alt="Sứ mệnh">
+            </div>
+            <h3>SỨ MỆNH</h3>
+            <p>
+                Mang những buổi biểu diễn chất lượng đến gần hơn với khán giả,
+                nơi từng giai điệu đều có dư âm.
+            </p>
+        </div>
+
+        <div class="vision-item">
+            <div class="vision-icon">
+                <img src="assets/images/butterfly.png" alt="Giá trị cốt lõi">
+            </div>
+            <h3>GIÁ TRỊ CỐT LÕI</h3>
+            <p>
+                Nghệ thuật – Cảm xúc – Kết nối – Trải nghiệm chân thật.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- THÀNH VIÊN -->
+    <section class="member-section">
+        <h2 class="member-title">CÁC THÀNH VIÊN</h2>
+
+        <div class="members">
+            <div class="member-card">
+                <img src="assets/images/member1.png" alt="">
+                <div class="member-name">NGUYỄN TRẦN PHƯƠNG DIỆP</div>
+            </div>
+
+            <div class="member-card">
+                <img src="assets/images/member2.png" alt="">
+                <div class="member-name">NGUYỄN TRẦN PHƯƠNG DIỆP</div>
+            </div>
+
+            <div class="member-card">
+                <img src="assets/images/member3.png" alt="">
+                <div class="member-name">NGUYỄN TRẦN PHƯƠNG DIỆP</div>
+            </div>
+
+            <div class="member-card">
+                <img src="assets/images/member4.png" alt="">
+                <div class="member-name">NGUYỄN TRẦN PHƯƠNG DIỆP</div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

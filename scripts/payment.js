@@ -1,76 +1,137 @@
-// Dữ liệu thanh toán & khuyến mãi
-const promotions = [
+// payment.js (ES Module – Professional version)
+
+/* =========================
+   DATA
+========================= */
+const PROMOTIONS = [
     { title: 'Giảm 50%', discount: 0.5 },
     { title: 'Giảm 15%', discount: 0.15 }
 ];
 
-const payments = [
-    { name: 'Ví ShopeePay', img: '../assets/images/banking/shopeepay.png' },
-    { name: 'Ví Momo', img: '../assets/images/banking/momo.png' }
+const PAYMENTS = [
+    { name: 'Ví ShopeePay', img: '../assets/images/bankings/shopeepay.png' },
+    { name: 'Ví Momo', img: '../assets/images/bankings/momo.png' }
 ];
 
-// Lấy dữ liệu vé từ trang trước đó
-const currentTicket = JSON.parse(localStorage.getItem('selectedTicket'));
+/* =========================
+   STATE
+========================= */
+const ticket = JSON.parse(localStorage.getItem('selectedTicket'));
+const SYSTEM_FEE = 50000;
 
+/* =========================
+   DOM READY
+========================= */
 document.addEventListener('DOMContentLoaded', () => {
-    if (!currentTicket) {
-        alert("Thông tin vé trống!");
+    if (!ticket) {
+        alert('Không tìm thấy thông tin vé!');
+        window.location.href = 'index.html';
         return;
     }
-    
-    renderUI();
+
+    renderTicketInfo();
+    renderPromotions();
+    renderPayments();
     updatePrice();
+
+    bindEvents();
 });
 
-function renderUI() {
-    // 1. Đổ dữ liệu vé vào cột bên phải
-    document.getElementById('ticket-img').src = currentTicket.img;
-    document.getElementById('ticket-title').innerText = currentTicket.title;
-    document.getElementById('ticket-loc').innerText = currentTicket.location;
-    document.getElementById('ticket-zone').innerText = `1x Vé ${currentTicket.type}`;
-    document.getElementById('ticket-price').innerText = `${currentTicket.price.toLocaleString()} đ`;
+/* =========================
+   RENDER FUNCTIONS
+========================= */
+function renderTicketInfo() {
+    document.getElementById('ticket-img').src = ticket.img;
+    document.getElementById('ticket-title').textContent = ticket.title;
+    document.getElementById('ticket-loc').textContent = ticket.location;
+    document.getElementById('ticket-zone').textContent = `1x Vé ${ticket.type}`;
+    document.getElementById('ticket-price').textContent =
+        `${ticket.price.toLocaleString()} đ`;
+}
 
-    // 2. Render Voucher
-    const promoForm = document.querySelector('.promotion-form');
-    promoForm.innerHTML = promotions.map((p, i) => `
+function renderPromotions() {
+    const promoContainer = document.querySelector('.promotion-form');
+
+    promoContainer.innerHTML = PROMOTIONS.map((promo, index) => `
         <label>
-            <input type="radio" name="promo" value="${p.discount}" ${i===0?'checked':''}>
+            <input 
+                type="radio" 
+                name="promo" 
+                value="${promo.discount}" 
+                ${index === 0 ? 'checked' : ''}
+            >
             <div>
-                <strong>${p.title}</strong>
-                <p class="small m-0">Giảm giá trực tiếp</p>
+                <strong>${promo.title}</strong>
+                <p class="small m-0">Giảm trực tiếp vào giá vé</p>
             </div>
         </label>
     `).join('');
-
-    // 3. Render Phương thức thanh toán
-    const payForm = document.querySelector('.payment-form');
-    payForm.innerHTML = payments.map(p => `
-        <label>
-            <input type="radio" name="pay" checked>
-            <img src="${p.img}">
-            <p>${p.name}</p>
-        </label>
-    `).join('');
-
-    // Lắng nghe sự kiện đổi voucher
-    document.querySelectorAll('input[name="promo"]').forEach(r => {
-        r.addEventListener('change', updatePrice);
-    });
 }
 
-function updatePrice() {
-    const basePrice = currentTicket.price;
-    const fee = 50000;
-    const discountRate = parseFloat(document.querySelector('input[name="promo"]:checked').value);
-    
-    const discountAmount = basePrice * discountRate;
-    const total = basePrice - discountAmount + fee;
+function renderPayments() {
+    const paymentContainer = document.querySelector('.payment-form');
 
-    document.getElementById('final-total').innerText = `${total.toLocaleString()} đ`;
+    paymentContainer.innerHTML = PAYMENTS.map((method, index) => `
+        <label>
+            <input 
+                type="radio" 
+                name="payment" 
+                ${index === 0 ? 'checked' : ''}
+            >
+            <img src="${method.img}" alt="${method.name}">
+            <p>${method.name}</p>
+        </label>
+    `).join('');
+}
+
+/* =========================
+   EVENTS
+========================= */
+function bindEvents() {
+    document
+        .querySelectorAll('input[name="promo"]')
+        .forEach(input =>
+            input.addEventListener('change', updatePrice)
+        );
+
+    document
+        .querySelector('.btn-finish')
+        .addEventListener('click', handlePayment);
+}
+
+/* =========================
+   LOGIC
+========================= */
+function updatePrice() {
+    const discountRate = getSelectedDiscount();
+    const discountAmount = ticket.price * discountRate;
+    const total = ticket.price - discountAmount + SYSTEM_FEE;
+
+    document.getElementById('final-total').textContent =
+        `${total.toLocaleString()} đ`;
+
     document.getElementById('discount-row').innerHTML = `
         <div class="d-flex justify-content-between text-success">
             <span>Khuyến mãi</span>
-            <span>-${discountAmount.toLocaleString()} đ</span>
+            <span>- ${discountAmount.toLocaleString()} đ</span>
         </div>
     `;
+}
+
+function getSelectedDiscount() {
+    const checked = document.querySelector('input[name="promo"]:checked');
+    return checked ? parseFloat(checked.value) : 0;
+}
+
+function handlePayment() {
+    const paymentSelected =
+        document.querySelector('input[name="payment"]:checked');
+
+    if (!paymentSelected) {
+        alert('Vui lòng chọn phương thức thanh toán!');
+        return;
+    }
+
+    alert('Thanh toán thành công (demo)');
+    localStorage.removeItem('selectedTicket');
 }
