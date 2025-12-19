@@ -1,137 +1,278 @@
-// payment.js (ES Module – Professional version)
+// ===== PAYMENT PAGE - CLEAN VERSION =====
 
-/* =========================
-   DATA
-========================= */
+// Configuration
+const CONFIG = {
+    SYSTEM_FEE: 50000,
+    DEMO_MODE: true
+};
+
+// Data
 const PROMOTIONS = [
-    { title: 'Giảm 50%', discount: 0.5 },
-    { title: 'Giảm 15%', discount: 0.15 }
+    { id: 'vip20', title: 'VIP20', discount: 0.2, desc: 'Khách hàng VIP' },
+    { id: 'new15', title: 'NEW15', discount: 0.15, desc: 'Khách hàng mới' },
+    { id: 'member10', title: 'MEMBER10', discount: 0.1, desc: 'Thành viên thường' }
 ];
 
 const PAYMENTS = [
-    { name: 'Ví ShopeePay', img: '../assets/images/bankings/shopeepay.png' },
-    { name: 'Ví Momo', img: '../assets/images/bankings/momo.png' }
+    { id: 'momo', name: 'Ví MoMo', img: '../assets/images/bankings/momo.png' },
+    { id: 'shopeepay', name: 'ShopeePay', img: '../assets/images/bankings/shopeepay.png' },
+    { id: 'vnpay', name: 'VNPay', img: '../assets/images/bankings/vnpay.png' },
+    { id: 'zalopay', name: 'ZaloPay', img: '../assets/images/bankings/zalopay.png' },
+    { id: 'visa', name: 'Visa/Mastercard', img: 'https://img.icons8.com/color/48/visa.png' },
+    { id: 'atm', name: 'Thẻ ATM', img: 'https://img.icons8.com/color/48/bank-card-back-side.png' }
 ];
 
-/* =========================
-   STATE
-========================= */
-const ticket = JSON.parse(localStorage.getItem('selectedTicket'));
-const SYSTEM_FEE = 50000;
+const VOUCHERS = {
+    'ECHOES50': { discount: 0.5, desc: 'Giảm 50% VIP' },
+    'STUDENT15': { discount: 0.15, desc: 'Giảm 15% sinh viên' },
+    'WEEKEND10': { discount: 0.1, desc: 'Giảm 10% cuối tuần' }
+};
 
-/* =========================
-   DOM READY
-========================= */
-document.addEventListener('DOMContentLoaded', () => {
-    if (!ticket) {
-        alert('Không tìm thấy thông tin vé!');
-        window.location.href = 'index.html';
-        return;
-    }
+// State
+let state = {
+    ticket: null,
+    selectedPromo: null,
+    selectedPayment: null,
+    customVoucher: null,
+    totalAmount: 0,
+    discountAmount: 0
+};
 
-    renderTicketInfo();
-    renderPromotions();
-    renderPayments();
-    updatePrice();
+// Initialize
+document.addEventListener('DOMContentLoaded', init);
 
+function init() {
+    loadTicket();
+    renderAll();
     bindEvents();
-});
-
-/* =========================
-   RENDER FUNCTIONS
-========================= */
-function renderTicketInfo() {
-    document.getElementById('ticket-img').src = ticket.img;
-    document.getElementById('ticket-title').textContent = ticket.title;
-    document.getElementById('ticket-loc').textContent = ticket.location;
-    document.getElementById('ticket-zone').textContent = `1x Vé ${ticket.type}`;
-    document.getElementById('ticket-price').textContent =
-        `${ticket.price.toLocaleString()} đ`;
+    calculate();
 }
 
-function renderPromotions() {
-    const promoContainer = document.querySelector('.promotion-form');
+// Load ticket data
+function loadTicket() {
+    const saved = localStorage.getItem('selectedTicket');
+    if (saved) {
+        try {
+            state.ticket = JSON.parse(saved);
+            return;
+        } catch (e) {}
+    }
+    
+    // Demo data
+    state.ticket = {
+        title: 'Echoes Concert 2024',
+        location: 'Nhà hát Hòa Bình, TP.HCM',
+        date: '25/12/2024',
+        time: '20:00 - 22:30',
+        type: 'VIP',
+        price: 500000,
+        quantity: 1,
+        img: '../assets/images/index/main_banner_1.png'
+    };
+}
 
-    promoContainer.innerHTML = PROMOTIONS.map((promo, index) => `
-        <label>
-            <input 
-                type="radio" 
-                name="promo" 
-                value="${promo.discount}" 
-                ${index === 0 ? 'checked' : ''}
-            >
-            <div>
-                <strong>${promo.title}</strong>
-                <p class="small m-0">Giảm trực tiếp vào giá vé</p>
-            </div>
-        </label>
+// Render functions
+function renderAll() {
+    renderTicket();
+    renderPromos();
+    renderPayments();
+}
+
+function renderTicket() {
+    const t = state.ticket;
+    document.getElementById('ticket-img').src = t.img;
+    document.getElementById('ticket-title').textContent = t.title;
+    document.getElementById('ticket-loc').innerHTML = `<i class="fas fa-map-marker-alt me-1"></i>${t.location}`;
+    document.getElementById('ticket-time').innerHTML = `<i class="fas fa-clock me-1"></i>${t.time}`;
+    document.getElementById('event-date').textContent = t.date;
+    document.getElementById('ticket-zone').textContent = `${t.quantity || 1}x Vé ${t.type}`;
+    document.getElementById('ticket-price').textContent = formatMoney(t.price);
+    document.getElementById('system-fee').textContent = formatMoney(CONFIG.SYSTEM_FEE);
+}
+
+function renderPromos() {
+    const container = document.querySelector('.promotion-grid-simple');
+    container.innerHTML = PROMOTIONS.map((p, i) => `
+        <div class="promotion-card ${i === 0 ? 'selected' : ''}" data-id="${p.id}">
+            <input type="radio" name="promo" value="${p.discount}" ${i === 0 ? 'checked' : ''}>
+            <div class="promotion-title">${p.title}</div>
+            <div class="promotion-desc">${p.desc}</div>
+        </div>
     `).join('');
+    
+    state.selectedPromo = PROMOTIONS[0];
 }
 
 function renderPayments() {
-    const paymentContainer = document.querySelector('.payment-form');
-
-    paymentContainer.innerHTML = PAYMENTS.map((method, index) => `
-        <label>
-            <input 
-                type="radio" 
-                name="payment" 
-                ${index === 0 ? 'checked' : ''}
-            >
-            <img src="${method.img}" alt="${method.name}">
-            <p>${method.name}</p>
-        </label>
-    `).join('');
-}
-
-/* =========================
-   EVENTS
-========================= */
-function bindEvents() {
-    document
-        .querySelectorAll('input[name="promo"]')
-        .forEach(input =>
-            input.addEventListener('change', updatePrice)
-        );
-
-    document
-        .querySelector('.btn-finish')
-        .addEventListener('click', handlePayment);
-}
-
-/* =========================
-   LOGIC
-========================= */
-function updatePrice() {
-    const discountRate = getSelectedDiscount();
-    const discountAmount = ticket.price * discountRate;
-    const total = ticket.price - discountAmount + SYSTEM_FEE;
-
-    document.getElementById('final-total').textContent =
-        `${total.toLocaleString()} đ`;
-
-    document.getElementById('discount-row').innerHTML = `
-        <div class="d-flex justify-content-between text-success">
-            <span>Khuyến mãi</span>
-            <span>- ${discountAmount.toLocaleString()} đ</span>
+    const container = document.querySelector('.payment-options-simple');
+    container.innerHTML = PAYMENTS.map((p, i) => `
+        <div class="payment-option ${i === 0 ? 'selected' : ''}" data-id="${p.id}">
+            <input type="radio" name="payment" value="${p.id}" ${i === 0 ? 'checked' : ''}>
+            <img src="${p.img}" alt="${p.name}" onerror="this.src='https://img.icons8.com/color/48/wallet.png'">
+            <div class="payment-name">${p.name}</div>
         </div>
-    `;
+    `).join('');
+    
+    state.selectedPayment = PAYMENTS[0];
 }
 
-function getSelectedDiscount() {
-    const checked = document.querySelector('input[name="promo"]:checked');
-    return checked ? parseFloat(checked.value) : 0;
+// Events
+function bindEvents() {
+    // Promo selection
+    document.addEventListener('click', (e) => {
+        const promoCard = e.target.closest('.promotion-card');
+        if (promoCard) {
+            document.querySelectorAll('.promotion-card').forEach(c => c.classList.remove('selected'));
+            promoCard.classList.add('selected');
+            promoCard.querySelector('input').checked = true;
+            
+            const id = promoCard.dataset.id;
+            state.selectedPromo = PROMOTIONS.find(p => p.id === id);
+            state.customVoucher = null;
+            calculate();
+        }
+        
+        const paymentOption = e.target.closest('.payment-option');
+        if (paymentOption) {
+            document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+            paymentOption.classList.add('selected');
+            paymentOption.querySelector('input').checked = true;
+            
+            const id = paymentOption.dataset.id;
+            state.selectedPayment = PAYMENTS.find(p => p.id === id);
+        }
+    });
+    
+    // Custom voucher
+    document.getElementById('apply-voucher-btn').addEventListener('click', applyVoucher);
+    document.getElementById('custom-voucher-input').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') applyVoucher();
+    });
+    
+    // Payment button
+    document.getElementById('payment-btn').addEventListener('click', processPayment);
 }
 
-function handlePayment() {
-    const paymentSelected =
-        document.querySelector('input[name="payment"]:checked');
-
-    if (!paymentSelected) {
-        alert('Vui lòng chọn phương thức thanh toán!');
+// Apply custom voucher
+function applyVoucher() {
+    const input = document.getElementById('custom-voucher-input');
+    const code = input.value.trim().toUpperCase();
+    
+    if (!code) {
+        showNotif('Vui lòng nhập mã giảm giá', 'warning');
         return;
     }
-
-    alert('Thanh toán thành công (demo)');
-    localStorage.removeItem('selectedTicket');
+    
+    if (VOUCHERS[code]) {
+        state.customVoucher = { code, ...VOUCHERS[code] };
+        state.selectedPromo = null;
+        
+        // Clear promo selection
+        document.querySelectorAll('.promotion-card').forEach(c => c.classList.remove('selected'));
+        document.querySelectorAll('input[name="promo"]').forEach(i => i.checked = false);
+        
+        showNotif(`Áp dụng mã ${code} thành công!`, 'success');
+        calculate();
+    } else {
+        showNotif('Mã giảm giá không hợp lệ', 'error');
+    }
 }
+
+// Calculate total
+function calculate() {
+    const basePrice = state.ticket.price * (state.ticket.quantity || 1);
+    let discount = 0;
+    
+    if (state.selectedPromo) {
+        discount = basePrice * state.selectedPromo.discount;
+    } else if (state.customVoucher) {
+        discount = basePrice * state.customVoucher.discount;
+    }
+    
+    const total = basePrice - discount + CONFIG.SYSTEM_FEE;
+    
+    state.discountAmount = discount;
+    state.totalAmount = total;
+    
+    updatePriceDisplay();
+}
+
+function updatePriceDisplay() {
+    const discountRow = document.getElementById('discount-row');
+    const finalTotal = document.getElementById('final-total');
+    
+    if (state.discountAmount > 0) {
+        discountRow.style.display = 'flex';
+        document.getElementById('discount-amount').textContent = `-${formatMoney(state.discountAmount)}`;
+    } else {
+        discountRow.style.display = 'none';
+    }
+    
+    finalTotal.textContent = formatMoney(state.totalAmount);
+}
+
+// Process payment
+function processPayment() {
+    if (!state.selectedPayment) {
+        showNotif('Vui lòng chọn phương thức thanh toán', 'warning');
+        return;
+    }
+    
+    showLoading();
+    
+    setTimeout(() => {
+        hideLoading();
+        showSuccess();
+        
+        // Save payment history
+        const payment = {
+            id: 'PAY' + Date.now(),
+            ticket: state.ticket,
+            payment: state.selectedPayment,
+            total: state.totalAmount,
+            discount: state.discountAmount,
+            timestamp: new Date().toISOString()
+        };
+        
+        const history = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
+        history.push(payment);
+        localStorage.setItem('paymentHistory', JSON.stringify(history));
+        
+        setTimeout(() => localStorage.removeItem('selectedTicket'), 3000);
+    }, 2000);
+}
+
+// Utilities
+function formatMoney(amount) {
+    return `${amount.toLocaleString('vi-VN')} đ`;
+}
+
+function showNotif(message, type = 'info') {
+    const notif = document.createElement('div');
+    notif.className = `alert alert-${type === 'error' ? 'danger' : type} position-fixed`;
+    notif.style.cssText = 'top: 100px; right: 20px; z-index: 9999; min-width: 300px;';
+    notif.innerHTML = `${message} <button onclick="this.parentElement.remove()" class="btn-close"></button>`;
+    document.body.appendChild(notif);
+    setTimeout(() => notif.remove(), 3000);
+}
+
+function showLoading() {
+    const modal = new bootstrap.Modal(document.getElementById('loadingModal'));
+    modal.show();
+}
+
+function hideLoading() {
+    const modal = bootstrap.Modal.getInstance(document.getElementById('loadingModal'));
+    if (modal) modal.hide();
+}
+
+function showSuccess() {
+    const modal = new bootstrap.Modal(document.getElementById('successModal'));
+    modal.show();
+}
+
+// Export for booking page
+window.proceedToPayment = function(ticketData) {
+    localStorage.setItem('selectedTicket', JSON.stringify(ticketData));
+    window.location.href = 'components/payment.html';
+};

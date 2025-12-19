@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanh toán Vé | Echoes</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap & FontAwesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/payment.css">
+    <link rel="stylesheet" href="../responsives/paymentRe.css">
 </head>
 
 <body>
@@ -20,19 +21,20 @@
         <div class="inner-wrap-checkout">
             <a href="../index.html" class="checkout-logo-section">
                 <img src="../assets/images/index/logo header .png" alt="Echoes Logo">
+                <span class="brand-name">ECHOES</span>
             </a>
 
             <nav class="checkout-nav">
                 <ul>
                     <li>
-                        <a href="myTicket.html">
-                            <img src="../assets/images/index/ticket-icon.png" alt="icon">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-ticket-alt"></i>
                             VÉ CỦA TÔI
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" onclick="openModal()">
-                            <img src="../assets/images/index/user-icon.png" alt="icon">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-user"></i>
                             TÀI KHOẢN
                         </a>
                     </li>
@@ -43,65 +45,199 @@
 
     <!-- MAIN -->
     <main class="container my-5 pt-5">
-        <h1 class="main-title text-center mb-5">XÁC NHẬN THANH TOÁN</h1>
+        <h1 class="main-title text-center mb-5">
+            <i class="fas fa-credit-card me-3"></i>
+            XÁC NHẬN THANH TOÁN
+        </h1>
 
         <div class="row">
-            <!-- VOUCHER + PAYMENT -->
-            <div class="col-lg-7">
-                <!-- Voucher -->
-                <section class="mb-5">
-                    <h2 class="section-title">Mã giảm giá</h2>
-                    <div class="promotion-form d-flex overflow-auto pb-3"></div>
+            <!-- BÊN TRÁI: MÃ GIẢM GIÁ + PHƯƠNG THỨC THANH TOÁN -->
+            <div class="col-lg-6">
+                <!-- Mã giảm giá -->
+                <section class="payment-section mb-4">
+                    <h2 class="section-title">
+                        <i class="fas fa-tags me-2"></i>
+                        Mã giảm giá
+                    </h2>
+                    <div class="promotion-grid-simple">
+                        <div class="promotion-card selected" data-id="vip20">
+                            <input type="radio" name="promo" value="0.2" checked>
+                            <div class="promotion-title">VIP20</div>
+                            <div class="promotion-desc">Khách hàng VIP</div>
+                        </div>
+                        <div class="promotion-card" data-id="new15">
+                            <input type="radio" name="promo" value="0.15">
+                            <div class="promotion-title">NEW15</div>
+                            <div class="promotion-desc">Khách hàng mới</div>
+                        </div>
+                        <div class="promotion-card" data-id="member10">
+                            <input type="radio" name="promo" value="0.1">
+                            <div class="promotion-title">MEMBER10</div>
+                            <div class="promotion-desc">Thành viên thường</div>
+                        </div>
+                    </div>
+                    
+                    <div class="custom-voucher-section">
+                        <div class="custom-voucher-input">
+                            <input type="text" class="voucher-input" id="custom-voucher-input" 
+                                   placeholder="Nhập mã giảm giá khác...">
+                            <button class="voucher-apply-btn" type="button" id="apply-voucher-btn">
+                                <i class="fas fa-check"></i>
+                                Áp dụng
+                            </button>
+                        </div>
+                        <div class="voucher-suggestions">
+                            <small>
+                                <i class="fas fa-lightbulb"></i>
+                                Thử: ECHOES50, STUDENT15, WEEKEND10
+                            </small>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- Phương thức thanh toán -->
-                <section>
-                    <h2 class="section-title">Phương thức thanh toán</h2>
-                    <div class="payment-form"></div>
+                <section class="payment-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-wallet me-2"></i>
+                        Phương thức thanh toán
+                    </h2>
+                    <div class="payment-options-simple">
+                        <div class="payment-option selected" data-id="momo">
+                            <input type="radio" name="payment" value="momo" checked>
+                            <img src="../assets/images/bankings/momo.png" alt="Ví MoMo">
+                            <div class="payment-name">Ví MoMo</div>
+                        </div>
+                        <div class="payment-option" data-id="shopeepay">
+                            <input type="radio" name="payment" value="shopeepay">
+                            <img src="../assets/images/bankings/shopeepay.png" alt="ShopeePay">
+                            <div class="payment-name">ShopeePay</div>
+                        </div>
+                        <div class="payment-option" data-id="vnpay">
+                            <input type="radio" name="payment" value="vnpay">
+                            <img src="../assets/images/bankings/vnpay.png" alt="VNPay">
+                            <div class="payment-name">VNPay</div>
+                        </div>
+                        <div class="payment-option" data-id="zalopay">
+                            <input type="radio" name="payment" value="zalopay">
+                            <img src="../assets/images/bankings/zalopay.png" alt="ZaloPay">
+                            <div class="payment-name">ZaloPay</div>
+                        </div>
+                        <div class="payment-option" data-id="visa">
+                            <input type="radio" name="payment" value="visa">
+                            <img src="https://img.icons8.com/color/48/visa.png" alt="Visa">
+                            <div class="payment-name">Visa/Mastercard</div>
+                        </div>
+                        <div class="payment-option" data-id="atm">
+                            <input type="radio" name="payment" value="atm">
+                            <img src="https://img.icons8.com/color/48/bank-card-back-side.png" alt="ATM">
+                            <div class="payment-name">Thẻ ATM</div>
+                        </div>
+                    </div>
                 </section>
             </div>
 
-            <!-- TÓM TẤT CẢ VÉ -->
-            <div class="col-lg-5">
-                <div class="ticket-summary-card shadow">
+            <!-- BÊN PHẢI: THÔNG TIN VÉ -->
+            <div class="col-lg-6">
+                <div class="ticket-summary-card">
                     <div class="poster-box">
-                        <img src="" alt="Ảnh sự kiện" id="ticket-img">
+                        <img src="../assets/images/index/main_banner_1.png" alt="Poster sự kiện" id="ticket-img">
+                        <div class="event-badge">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            <span id="event-date">25/12/2024</span>
+                        </div>
                     </div>
-                    <div class="summary-body p-4 text-white">
-                        <h3 id="ticket-title" class="mb-1">Tên sự kiện</h3>
-                        <p id="ticket-loc" class="small text-white-50 mb-4">Địa điểm</p>
+                    
+                    <div class="summary-body">
+                        <div class="event-info">
+                            <h3 id="ticket-title">Echoes Concert 2024</h3>
+                            <p id="ticket-loc">
+                                <i class="fas fa-map-marker-alt me-1"></i>
+                                Nhà hát Hòa Bình, TP.HCM
+                            </p>
+                            <p id="ticket-time">
+                                <i class="fas fa-clock me-1"></i>
+                                20:00 - 22:30
+                            </p>
+                        </div>
 
-                        <div class="price-details border-top border-secondary pt-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span id="ticket-zone">Loại vé</span>
-                                <span id="ticket-price">0 đ</span>
+                        <div class="price-breakdown">
+                            <div class="price-item">
+                                <span id="ticket-zone">1x Vé VIP</span>
+                                <span id="ticket-price">500.000 đ</span>
                             </div>
-                            <div class="d-flex justify-content-between mb-2">
+                            <div class="price-item">
                                 <span>Phí hệ thống</span>
-                                <span>50.000 đ</span>
+                                <span id="system-fee">50.000 đ</span>
                             </div>
-                            <div id="discount-row"></div>
+                            <div class="price-item discount-item" id="discount-row" style="display: none;">
+                                <span class="text-success">
+                                    <i class="fas fa-tag me-1"></i>
+                                    Giảm giá
+                                </span>
+                                <span class="text-success" id="discount-amount">-0 đ</span>
+                            </div>
                         </div>
 
-                        <hr class="border-secondary my-4">
-
-                        <div class="total-row d-flex justify-content-between align-items-center">
-                            <span class="h5 mb-0 fw-bold">TỔNG CỘNG</span>
-                            <span id="final-total" class="h3 mb-0 fw-bold text-warning">0 đ</span>
+                        <div class="total-section">
+                            <div class="total-row">
+                                <span class="total-label">TỔNG CỘNG</span>
+                                <span id="final-total" class="total-amount">550.000 đ</span>
+                            </div>
                         </div>
 
-                        <button class="btn-finish mt-4 w-100 py-3 fw-bold">THANH TOÁN NGAY</button>
+                        <button class="btn-finish" id="payment-btn">
+                            <i class="fas fa-lock me-2"></i>
+                            THANH TOÁN AN TOÀN
+                        </button>
+                        
+                        <div class="security-info">
+                            <small>
+                                <i class="fas fa-shield-alt me-1"></i>
+                                Thông tin thanh toán được bảo mật SSL 256-bit
+                            </small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <div id="footer-placeholder"></div>
+    <!-- Loading Modal -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center py-5">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5>Đang xử lý thanh toán...</h5>
+                    <p class="text-muted">Vui lòng không đóng trang này</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- SCRIPTS -->
-    <script src="../scripts/payment.js" type="module"></script>
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center py-5">
+                    <div class="success-icon mb-3">
+                        <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                    </div>
+                    <h4 class="text-success mb-3">Thanh toán thành công!</h4>
+                    <p class="mb-4">Vé của bạn đã được gửi qua email và SMS</p>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='../index.html'">
+                        Về trang chủ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Payment JS -->
+    <script src="../scripts/payment.js"></script>
 </body>
-
 </html>
