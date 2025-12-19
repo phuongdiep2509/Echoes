@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Castle Veil Bandana | Echoes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="merchandiseDetail.css">
+</head>
+<body>
+
+<div class="breadcrumb">
+    Merch / Year End 2025 / <span>Castle Veil Bandana</span>
+</div>
+
+<section class="product-detail">
+
+  <div class="product-image">
+    <img 
+        src="assets/images/merch/merch1.png"
+        alt="Castle Veil Bandana"
+        id="productImg"
+        class="product-main-img"
+    >
+</div>
+
+
+<!-- MODAL -->
+<div class="image-modal" id="imageModal">
+    <span class="close" onclick="closeModal()">×</span>
+    <img id="modalImg">
+</div>
+
+
+
+    <!-- INFO -->
+    <div class="product-info">
+        <h1>Castle Veil Bandana</h1>
+        <p class="price">105.000 đ</p>
+
+        <p class="desc">
+            Castle Veil Bandana – “Wonder Hallows” Collection Echoes Year End 2025
+        </p>
+
+        <ul class="meta">
+            <li><strong>Chất liệu:</strong> Lụa bóng</li>
+            <li><strong>Kích thước:</strong> 60 × 60 cm</li>
+        </ul>
+
+        <!-- QUANTITY -->
+        <div class="quantity">
+            <span>Số lượng</span>
+            <div class="qty-box">
+                <button onclick="changeQty(-1)">−</button>
+                <input type="text" id="qty" value="1" readonly>
+                <button onclick="changeQty(1)">+</button>
+            </div>
+        </div>
+
+        <button class="add-cart">THÊM VÀO GIỎ HÀNG</button>
+
+        <!-- TABS -->
+        <div class="tabs">
+            <div class="tab-buttons">
+                <button class="active" onclick="openTab(0)">Mô tả</button>
+                <button onclick="openTab(1)">Chính sách đổi trả</button>
+            </div>
+
+            <div class="tab-content active">
+                Bandana phiên bản giới hạn thuộc bộ sưu tập cuối năm của Echoes.
+                Phù hợp làm phụ kiện hoặc trang trí.
+            </div>
+
+            <div class="tab-content">
+                Sản phẩm được đổi trả trong vòng 7 ngày nếu còn nguyên tem,
+                chưa qua sử dụng và có lỗi từ nhà sản xuất.
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script src="scripts\merchandiseDetail.js"></script>
+</body>
+</html>
