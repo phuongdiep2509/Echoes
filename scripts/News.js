@@ -26,15 +26,18 @@ function renderNewsList() {
     const sidebar = document.getElementById('sidebar-news');
     const entries = Object.entries(news);
      // Phân trang
-    const start = (page - 1) * POSTS_PER_PAGE;
-    const end = start + POSTS_PER_PAGE;
-    const pageEntries = entries.slice(start, end);
+    const start = (currentPage - 1) * POSTS_PER_PAGE;
+const end = start + POSTS_PER_PAGE;
+const pageEntries = entries.slice(start, end);
 
-    main.innerHTML = entries.map(([id, data]) => `
+    main.innerHTML = pageEntries.map(([id, data]) => `
         <div class="news-item mb-4 shadow-sm" onclick="location.href='NewDetail.html?id=${id}'" style="cursor:pointer; background:#fff; border-radius:10px; overflow:hidden;">
             <div class="row g-0">
-                <div class="col-md-4 p-4 d-flex align-items-center justify-content-center" style="background:${data.bgColor}; min-height:160px;">
-                    <h3 class="fw-bold m-0">${data.label}</h3>
+                <div class="col-md-4 p-0 d-flex align-items-center justify-content-center" style="background:${data.bgColor}; min-height:160px; overflow:hidden;">
+                 <img src="${data.images[0]?.src.startsWith('/') ? '..' + data.images[0].src : '../' + data.images[0].src}" 
+         class="img-fluid w-100 h-100 object-fit-cover" 
+         alt="${data.label}">
+                   
                 </div>
                 <div class="col-md-8 p-4">
                     <span class="text-danger small fw-bold">[${data.category}]</span>
@@ -53,8 +56,31 @@ function renderNewsList() {
             <small class="text-muted" style="font-size:0.7rem;">${data.date}</small>
         </div>
     `).join('');
-    
+    renderPagination(entries.length);
 }
+function renderPagination(totalItems) {
+    const totalPages = Math.ceil(totalItems / POSTS_PER_PAGE);
+    let paginationContainer = document.querySelector('.dot-container');
+
+    if (!paginationContainer) {
+        paginationContainer = document.createElement('div');
+        paginationContainer.className = 'dot-container';
+        document.getElementById('news-list-container').after(paginationContainer);
+    }
+
+    let dotsHtml = "";
+    for (let i = 1; i <= totalPages; i++) {
+        dotsHtml += `<span class="dot ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})"></span>`;
+    }
+    paginationContainer.innerHTML = dotsHtml;
+}
+
+// Hàm chuyển trang toàn cục
+window.goToPage = (pageNumber) => {
+    currentPage = pageNumber;
+    renderNewsList();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
 
 
