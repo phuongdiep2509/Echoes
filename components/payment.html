@@ -4,15 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Thanh toán Vé | Echoes</title>
 
     <!-- Bootstrap -->
+=======
+    <title>Thanh toán</title>
+>>>>>>> e728bf72e29d84cf44595962fb3d68df892c74bc
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/payment.css">
 </head>
+<<<<<<< HEAD
+=======
+<body>
+    <div id="header">
+        <script>
+            fetch('user_header.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+            
+                    const user = localStorage.getItem("currentUser");
+                    const accountName = document.getElementById("account-name");
+            
+                    if (user && accountName) {
+                        accountName.innerText = user;
+                        accountName.onclick = null; // bỏ mở modal login
+                    }
+            
+                    const script = document.createElement('script');
+                    script.src = 'scroll_header.js';
+                    document.body.appendChild(script);
+                });
+            </script>
+            
+    </div>
+>>>>>>> e728bf72e29d84cf44595962fb3d68df892c74bc
 
 <body>
     <!-- HEADER -->
