@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Random Gift System</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; border-radius: 5px; }
+        button { padding: 10px 20px; margin: 5px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>🎁 Test Random Gift System</h1>
+    <p>Hệ thống random quà với tỉ lệ:</p>
+    <ul>
+        <li>Voucher 500.000đ - 10%</li>
+        <li>Áo thun Noel - 20%</li>
+        <li>Móc khóa lưu niệm - 30%</li>
+        <li>Lời chúc may mắn - 40%</li>
+    </ul>
+
+    <button onclick="testSingle()">🎲 Random 1 lần</button>
+    <button onclick="testMultiple()">🎲 Random 10 lần</button>
+    <button onclick="clearResults()">🧹 Xóa kết quả</button>
+
+    <div id="results"></div>
+
+    <script>
+        // Copy exact random system from opensecretbox.js
+        const gifts = [
+            { 
+                name: "🎫 Voucher 500.000đ", 
+                chance: 10,
+                description: "Voucher giảm giá trị giá 500.000đ cho vé concert và nhạc sống",
+                code: "ECHOES500"
+            },
+            { 
+                name: "👕 Áo thun Noel", 
+                chance: 20,
+                description: "Áo thun Giáng sinh độc quyền với thiết kế đặc biệt từ Echoes",
+                code: "NOEL2024"
+            },
+            { 
+                name: "🔑 Móc khóa lưu niệm", 
+                chance: 30,
+                description: "Móc khóa kim loại cao cấp với logo Echoes và sticker đi kèm",
+                code: "KEYCHAIN"
+            },
+            { 
+                name: "🎄 Lời chúc may mắn", 
+                chance: 40,
+                description: "Lời chúc đặc biệt từ đội ngũ Echoes cùng voucher 10% lần sau",
+                code: "LUCKY10"
+            }
+        ];
+
+        function randomGift() {
+            // Tạo số random thực sự từ 0-100
+            const rand = Math.random() * 100;
+            
+            let sum = 0;
+            for (const gift of gifts) {
+                sum += gift.chance;
+                if (rand < sum) {
+                    return gift;
+                }
+            }
+            // Fallback về quà cuối cùng
+            return gifts[gifts.length - 1];
+        }
+
+        function testSingle() {
+            const gift = randomGift();
+            const resultsDiv = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'result';
+            resultDiv.innerHTML = `
+                <strong>${gift.name}</strong><br>
+                <small>${gift.description}</small><br>
+                <code>Mã: ${gift.code}</code>
+            `;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function testMultiple() {
+            const counts = {};
+            gifts.forEach(gift => counts[gift.name] = 0);
+
+            for (let i = 0; i < 10; i++) {
+                const gift = randomGift();
+                counts[gift.name]++;
+            }
+
+            const resultsDiv = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'result';
+            resultDiv.innerHTML = `
+                <h3>📊 Kết quả 10 lần random:</h3>
+                ${Object.entries(counts).map(([name, count]) => 
+                    `<div>${name}: ${count} lần</div>`
+                ).join('')}
+            `;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

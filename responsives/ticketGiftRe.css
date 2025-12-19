@@ -1,0 +1,373 @@
+/* Ticket Gift Responsive CSS */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .gift-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .form-grid {
+        gap: 30px;
+    }
+
+    .form-section {
+        padding: 25px;
+    }
+
+    .card-templates {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .template-preview {
+        height: 100px;
+    }
+
+    .preview-card {
+        min-height: 280px;
+    }
+}
+
+/* Mobile Large */
+@media (max-width: 768px) {
+    .page-container {
+        padding-top: 100px;
+    }
+
+    .gift-header h1 {
+        font-size: 2rem;
+    }
+
+    .gift-header p {
+        font-size: 1.1rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .booked-ticket {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .ticket-meta {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .ticket-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ticket-icon {
+        font-size: 2rem;
+    }
+
+    .card-templates {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .template-preview {
+        height: 80px;
+    }
+
+    .template-content h4 {
+        font-size: 0.9rem;
+    }
+
+    .template-content p {
+        font-size: 0.7rem;
+    }
+
+    .card-preview {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .preview-card {
+        min-height: 250px;
+        padding: 20px;
+    }
+
+    .card-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .recipient-name {
+        font-size: 1.2rem;
+    }
+
+    .summary {
+        padding: 15px;
+    }
+
+    .summary-item {
+        font-size: 0.9rem;
+    }
+
+    .summary-total {
+        font-size: 1.1rem;
+    }
+
+    .btn-gift {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .page-container {
+        padding-top: 90px;
+    }
+
+    .gift-container {
+        padding: 20px 0;
+    }
+
+    .gift-header {
+        margin-bottom: 30px;
+    }
+
+    .gift-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .gift-header p {
+        font-size: 1rem;
+    }
+
+    .breadcrumb {
+        padding: 15px 0;
+        font-size: 0.9rem;
+    }
+
+    .form-section {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .form-section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .ticket-option {
+        padding: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .ticket-info {
+        width: 100%;
+    }
+
+    .ticket-info h3 {
+        font-size: 1rem;
+    }
+
+    .ticket-info p {
+        font-size: 0.8rem;
+    }
+
+    .ticket-info .price {
+        font-size: 1rem;
+    }
+
+    .ticket-option input[type="radio"] {
+        align-self: flex-end;
+        margin-top: -30px;
+    }
+
+    .template-preview {
+        height: 70px;
+    }
+
+    .template-content h4 {
+        font-size: 0.8rem;
+    }
+
+    .template-content p {
+        font-size: 0.6rem;
+    }
+
+    .template-option span {
+        font-size: 0.9rem;
+    }
+
+    .preview-card {
+        min-height: 220px;
+        padding: 15px;
+    }
+
+    .card-header h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .recipient-name {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+
+    .gift-text {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .ticket-info-preview {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .ticket-name {
+        font-size: 1rem;
+    }
+
+    .message-preview {
+        padding: 12px;
+        min-height: 50px;
+        font-size: 0.9rem;
+    }
+
+    .card-footer {
+        padding-top: 12px;
+    }
+
+    .card-footer small {
+        font-size: 0.8rem;
+    }
+
+    .summary {
+        padding: 12px;
+    }
+
+    .summary-item {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+    }
+
+    .summary-total {
+        font-size: 1rem;
+        margin-top: 12px;
+        padding-top: 12px;
+    }
+
+    .form-actions {
+        margin-top: 30px;
+    }
+
+    .btn-gift {
+        padding: 12px 25px;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .modal-content {
+        margin: 15% auto;
+        padding: 25px 15px;
+        border-radius: 20px;
+    }
+
+    .checkmark {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .modal-content p {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+
+    .modal-actions {
+        margin-top: 25px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Very Small Mobile */
+@media (max-width: 360px) {
+    .gift-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .form-section {
+        padding: 12px;
+    }
+
+    .form-section h2 {
+        font-size: 1.1rem;
+    }
+
+    .ticket-option {
+        padding: 10px;
+    }
+
+    .preview-card {
+        min-height: 200px;
+        padding: 12px;
+    }
+
+    .modal-content {
+        margin: 10% auto;
+        padding: 20px 12px;
+    }
+
+    .checkmark {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.3rem;
+    }
+}

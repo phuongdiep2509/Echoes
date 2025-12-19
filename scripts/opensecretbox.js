@@ -1,77 +1,189 @@
-// Open Secret Box JavaScript
+// Open Secret Box JavaScript - Clean Random System
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Hiện ngày đã chọn từ trang giới thiệu
-    const picked = localStorage.getItem('secret_free_date');
-    const el = document.getElementById('pickedDate');
-    if (picked) {
-        el.textContent = "📅 Ngày bạn đăng ký tham gia: " + picked;
-    } else {
-        el.textContent = "📅 Bạn chưa chọn ngày ở trang giới thiệu (có thể quay lại chọn).";
-    }
-
-    // Random quà theo tỉ lệ - phù hợp với Echoes
+    // Danh sách quà với tỉ lệ trúng (phù hợp với secretbox.html)
     const gifts = [
-        { name: "Voucher giảm giá 50% vé Concert", chance: 5 },
-        { name: "Voucher giảm giá 30% vé Nhạc Sống", chance: 15 },
-        { name: "Áo thun Echoes Limited Edition", chance: 20 },
-        { name: "Móc khóa Echoes + Sticker", chance: 25 },
-        { name: "Lời chúc may mắn từ Echoes 🎄", chance: 35 }
+        { 
+            name: "🎫 Voucher 500.000đ", 
+            chance: 10,
+            description: "Voucher giảm giá trị giá 500.000đ cho vé concert và nhạc sống",
+            code: "ECHOES500"
+        },
+        { 
+            name: "👕 Áo thun Noel", 
+            chance: 20,
+            description: "Áo thun Giáng sinh độc quyền với thiết kế đặc biệt từ Echoes",
+            code: "NOEL2024"
+        },
+        { 
+            name: "🔑 Móc khóa lưu niệm", 
+            chance: 30,
+            description: "Móc khóa kim loại cao cấp với logo Echoes và sticker đi kèm",
+            code: "KEYCHAIN"
+        },
+        { 
+            name: "🎄 Lời chúc may mắn", 
+            chance: 40,
+            description: "Lời chúc đặc biệt từ đội ngũ Echoes cùng voucher 10% lần sau",
+            code: "LUCKY10"
+        }
     ];
 
+    // Hàm random quà theo tỉ lệ
     function randomGift() {
-        let rand = Math.random() * 100;
+        const rand = Math.random() * 100;
         let sum = 0;
+        
         for (const gift of gifts) {
             sum += gift.chance;
-            if (rand <= sum) return gift.name;
+            if (rand < sum) {
+                return gift;
+            }
         }
-        return gifts[gifts.length - 1].name;
+        
+        // Fallback về quà cuối cùng
+        return gifts[gifts.length - 1];
     }
 
-    // Xử lý click vào hộp quà
+    // Kiểm tra đã mở quà chưa
+    function hasOpenedGift() {
+        return localStorage.getItem('gift_opened') === 'true';
+    }
+
+    // Lưu thông tin đã mở quà
+    function saveGiftOpened(gift) {
+        localStorage.setItem('gift_opened', 'true');
+        localStorage.setItem('gift_received', JSON.stringify(gift));
+        localStorage.setItem('gift_opened_time', new Date().toISOString());
+    }
+
+    // Lấy thông tin quà đã nhận
+    function getSavedGift() {
+        const savedGift = localStorage.getItem('gift_received');
+        if (savedGift) {
+            try {
+                return JSON.parse(savedGift);
+            } catch (e) {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    // Hiển thị kết quả quà
+    function showGiftResult(gift, isAlreadyOpened = false) {
+        const resultEl = document.getElementById("resultDisplay");
+        const resultContent = resultEl.querySelector('.result-content');
+        
+        const title = isAlreadyOpened ? "🎁 Bạn đã nhận được:" : "🎉 Chúc mừng!";
+        
+        resultContent.innerHTML = `
+            <h2>${title}</h2>
+            <p>Bạn nhận được <strong>${gift.name}</strong></p>
+            <p style="font-size: 0.9rem; color: #666;">${gift.description}</p>
+            <div class="voucher-code">
+                <span>Mã: ${gift.code}</span>
+            </div>
+        `;
+        
+        resultEl.classList.add('show');
+        
+        if (!isAlreadyOpened) {
+            createFireworks();
+        }
+    }
+
+    // Xử lý mở hộp quà
     const giftBox = document.getElementById("giftBox");
-    const resultEl = document.getElementById("result");
-    let hasOpened = false;
+    const resultEl = document.getElementById("resultDisplay");
 
     giftBox.addEventListener("click", function() {
-        if (hasOpened) {
-            resultEl.textContent = "🎁 Bạn đã mở hộp quà rồi! Mỗi người chỉ được mở 1 lần.";
+        // Kiểm tra đã mở quà chưa
+        if (hasOpenedGift()) {
+            alert("🎁 Bạn đã mở quà rồi! Mỗi người chỉ được mở 1 lần duy nhất.");
             return;
         }
 
-        // Thêm hiệu ứng shake
-        giftBox.classList.add('shake');
-        setTimeout(() => {
-            giftBox.classList.remove('shake');
-        }, 600);
+        // Hiệu ứng mở hộp quà
+        giftBox.classList.add('opening');
 
-        // Hiển thị kết quả sau một chút delay
+        // Random quà và hiển thị kết quả
         setTimeout(() => {
             const gift = randomGift();
-            resultEl.textContent = "🎉 Chúc mừng! Bạn nhận được: " + gift;
-            hasOpened = true;
             
-            // Lưu vào localStorage để tránh mở lại
-            localStorage.setItem('gift_opened', 'true');
-            localStorage.setItem('gift_received', gift);
-        }, 300);
+            // Lưu thông tin đã mở quà
+            saveGiftOpened(gift);
+            
+            // Hiển thị kết quả
+            showGiftResult(gift, false);
+            
+        }, 1200);
     });
 
-    // Kiểm tra xem đã mở quà chưa
-    if (localStorage.getItem('gift_opened') === 'true') {
-        hasOpened = true;
-        const savedGift = localStorage.getItem('gift_received');
+    // Kiểm tra khi load trang - nếu đã mở quà thì hiển thị kết quả
+    if (hasOpenedGift()) {
+        const savedGift = getSavedGift();
         if (savedGift) {
-            resultEl.textContent = "🎁 Bạn đã nhận được: " + savedGift;
+            giftBox.classList.add('opening');
+            showGiftResult(savedGift, true);
         }
     }
+
+    // Tạo hiệu ứng pháo hoa
+    function createFireworks() {
+        const fireworkEmojis = ['🎉', '✨', '🎊', '⭐', '🎈', '🎆', '💫'];
+        
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+                const firework = document.createElement('div');
+                firework.style.position = 'fixed';
+                firework.style.left = Math.random() * window.innerWidth + 'px';
+                firework.style.top = Math.random() * window.innerHeight + 'px';
+                firework.style.fontSize = (20 + Math.random() * 15) + 'px';
+                firework.style.zIndex = '10000';
+                firework.style.pointerEvents = 'none';
+                firework.style.animation = 'fireworkFade 3s ease-out forwards';
+                firework.textContent = fireworkEmojis[Math.floor(Math.random() * fireworkEmojis.length)];
+                
+                document.body.appendChild(firework);
+                
+                setTimeout(() => {
+                    if (firework.parentNode) {
+                        firework.remove();
+                    }
+                }, 3000);
+            }, i * 150);
+        }
+    }
+
+    // CSS cho hiệu ứng pháo hoa
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fireworkFade {
+            0% { 
+                opacity: 1; 
+                transform: scale(0.5) translateY(0px); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2) translateY(-50px); 
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(0.8) translateY(-100px); 
+            }
+        }
+    `;
+    document.head.appendChild(style);
 });
 
 // Snow Effect
 function initSnowEffect() {
     const snowContainer = document.createElement("div");
-    snowContainer.className = "snow-container";
+    snowContainer.style.position = "fixed";
+    snowContainer.style.inset = "0";
+    snowContainer.style.pointerEvents = "none";
+    snowContainer.style.zIndex = "999";
     document.body.appendChild(snowContainer);
 
     function createSnow() {
@@ -98,8 +210,8 @@ function initSnowEffect() {
         }, duration);
     }
 
-    // Tạo tuyết rơi mỗi 300ms
-    setInterval(createSnow, 300);
+    // Tạo tuyết rơi mỗi 500ms
+    setInterval(createSnow, 500);
 }
 
 // Khởi tạo hiệu ứng tuyết rơi

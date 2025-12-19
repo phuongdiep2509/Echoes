@@ -1,0 +1,386 @@
+/* 3D Gift Box Popup */
+
+.gift-popup {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9998; /* Thấp hơn header (9999) nhưng cao hơn các element khác */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: none; /* Ẩn mặc định */
+}
+
+.gift-popup:hover {
+    transform: scale(1.1);
+}
+
+/* 3D Gift Box Container */
+.gift-box-3d {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: float 3s ease-in-out infinite, wiggle 2s ease-in-out infinite;
+}
+
+/* Gift Box Base */
+.gift-box-base {
+    width: 180px;
+    height: 135px;
+    background: linear-gradient(135deg, #74070d, #a00a12, #74070d);
+    border-radius: 18px;
+    position: relative;
+    box-shadow: 
+        0 20px 40px rgba(116, 7, 13, 0.5),
+        inset 0 4px 8px rgba(255, 255, 255, 0.2),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+    border: 4px solid #5a0509;
+}
+
+/* Gift Box Lid */
+.gift-box-lid {
+    width: 189px;
+    height: 45px;
+    background: linear-gradient(135deg, #8b0a0f, #74070d, #a00a12);
+    border-radius: 18px 18px 9px 9px;
+    position: absolute;
+    top: -22px;
+    left: -4px;
+    box-shadow: 
+        0 12px 25px rgba(116, 7, 13, 0.6),
+        inset 0 3px 6px rgba(255, 255, 255, 0.3),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.2);
+    border: 4px solid #5a0509;
+}
+
+/* Ribbon Vertical */
+.ribbon-vertical {
+    width: 27px;
+    height: 180px;
+    background: linear-gradient(90deg, #ffd700, #ffed4e, #ffd700);
+    position: absolute;
+    left: 50%;
+    top: -22px;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    box-shadow: 
+        4px 0 8px rgba(0, 0, 0, 0.3),
+        -4px 0 8px rgba(0, 0, 0, 0.3),
+        inset 0 0 6px rgba(255, 255, 255, 0.4);
+    border: 3px solid #e6c200;
+}
+
+/* Ribbon Horizontal */
+.ribbon-horizontal {
+    width: 198px;
+    height: 27px;
+    background: linear-gradient(180deg, #ffd700, #ffed4e, #ffd700);
+    position: absolute;
+    left: -9px;
+    top: 54px;
+    border-radius: 4px;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        0 -4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 0 6px rgba(255, 255, 255, 0.4);
+    border: 3px solid #e6c200;
+}
+
+/* Bow */
+.bow {
+    width: 45px;
+    height: 36px;
+    position: absolute;
+    left: 50%;
+    top: -18px;
+    transform: translateX(-50%);
+}
+
+.bow::before,
+.bow::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 36px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #ffc107);
+    border-radius: 50% 22px 50% 22px;
+    border: 3px solid #e6c200;
+    box-shadow: 
+        inset 0 3px 6px rgba(255, 255, 255, 0.4),
+        0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.bow::before {
+    left: 0;
+    transform: rotate(-15deg);
+}
+
+.bow::after {
+    right: 0;
+    transform: rotate(15deg);
+}
+
+/* Bow Center */
+.bow-center {
+    width: 18px;
+    height: 22px;
+    background: linear-gradient(180deg, #ffed4e, #ffd700, #e6c200);
+    position: absolute;
+    left: 50%;
+    top: 7px;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    border: 3px solid #cc9900;
+    box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Sparkles */
+.sparkle {
+    position: absolute;
+    color: #ffd700;
+    font-size: 12px;
+    animation: sparkle 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.sparkle:nth-child(1) {
+    top: -30px;
+    left: -25px;
+    animation-delay: 0s;
+    font-size: 24px;
+}
+
+.sparkle:nth-child(2) {
+    top: -25px;
+    right: -30px;
+    animation-delay: 0.5s;
+    font-size: 20px;
+}
+
+.sparkle:nth-child(3) {
+    bottom: -30px;
+    left: -20px;
+    animation-delay: 1s;
+    font-size: 24px;
+}
+
+.sparkle:nth-child(4) {
+    bottom: -25px;
+    right: -25px;
+    animation-delay: 1.5s;
+    font-size: 20px;
+}
+
+/* Tooltip */
+.gift-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: linear-gradient(135deg, #74070d, #a00a12, #74070d);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    margin-bottom: 20px;
+    box-shadow: 
+        0 10px 30px rgba(116, 7, 13, 0.6),
+        0 0 20px rgba(255, 215, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    border: 3px solid #ffd700;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(255, 215, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+.gift-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: #74070d;
+}
+
+.gift-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 10px solid transparent;
+    border-top-color: #ffd700;
+    z-index: -1;
+}
+
+.gift-popup:hover .gift-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1.2);
+    animation: tooltipBounce 0.6s ease, textGlow 2s ease-in-out infinite;
+}
+
+@keyframes tooltipBounce {
+    0% {
+        transform: translateX(-50%) scale(0.8) translateY(15px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.3) translateY(-8px);
+    }
+    100% {
+        transform: translateX(-50%) scale(1.2) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 
+            0 2px 4px rgba(0, 0, 0, 0.8),
+            0 0 10px rgba(255, 215, 0, 0.5);
+        box-shadow: 
+            0 10px 30px rgba(116, 7, 13, 0.6),
+            0 0 20px rgba(255, 215, 0, 0.3),
+            inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        text-shadow: 
+            0 2px 4px rgba(0, 0, 0, 0.8),
+            0 0 20px rgba(255, 215, 0, 0.8),
+            0 0 30px rgba(255, 255, 255, 0.3);
+        box-shadow: 
+            0 10px 30px rgba(116, 7, 13, 0.8),
+            0 0 30px rgba(255, 215, 0, 0.6),
+            inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    }
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-3deg);
+    }
+    75% {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Pulse effect when hovering */
+.gift-popup:hover .gift-box-3d {
+    animation: float 3s ease-in-out infinite, wiggle 2s ease-in-out infinite, pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(116, 7, 13, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(116, 7, 13, 0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gift-popup {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .gift-box-3d {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .gift-box-base {
+        width: 130px;
+        height: 98px;
+    }
+    
+    .gift-box-lid {
+        width: 137px;
+        height: 33px;
+        left: -3px;
+        top: -16px;
+    }
+    
+    .ribbon-vertical {
+        width: 20px;
+        height: 130px;
+        top: -16px;
+    }
+    
+    .ribbon-horizontal {
+        width: 143px;
+        height: 20px;
+        left: -6px;
+        top: 39px;
+    }
+    
+    .bow {
+        width: 33px;
+        height: 26px;
+        top: -13px;
+    }
+    
+    .bow::before,
+    .bow::after {
+        width: 16px;
+        height: 26px;
+    }
+    
+    .bow-center {
+        width: 13px;
+        height: 16px;
+        top: 5px;
+    }
+    
+    .gift-tooltip {
+        font-size: 14px;
+        padding: 12px 20px;
+        margin-bottom: 15px;
+    }
+    
+    .gift-popup:hover .gift-tooltip {
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+/* Hide on very small screens */
+@media (max-width: 480px) {
+    .gift-popup {
+        display: none;
+    }
+}

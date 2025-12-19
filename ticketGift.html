@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Gửi Tặng Vé | Echoes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
+
+    <!-- Nhúng font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Gideon+Roman&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/ticketGift.css">
+    <link rel="stylesheet" href="responsives/ticketGiftRe.css">
+    
+    <!-- Nhúng AuthManager -->
+    <script src="scripts/authManager.js"></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div id="header">
+        <script>
+            fetch('components/user_header.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                    
+                    // Cập nhật UI header với AuthManager
+                    if (window.authManager) {
+                        authManager.updateHeaderUI();
+                    }
+                    
+                    const script = document.createElement('script');
+                    script.src = 'components/scroll_header.js';
+                    document.body.appendChild(script);
+                });
+        </script>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="page-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="index.html">Trang chủ</a>
+                <span>›</span>
+                <span>Gửi tặng vé</span>
+            </div>
+        </div>
+
+        <!-- Main Form -->
+        <div class="gift-container">
+            <div class="container">
+                <div class="gift-header">
+                    <h1>🎁 GỬI TẶNG VÉ</h1>
+                    <p>Chia sẻ niềm vui âm nhạc cùng người thân yêu</p>
+                </div>
+
+                <form id="giftForm" class="gift-form">
+                    <div class="form-grid">
+                        <!-- Left Column -->
+                        <div class="form-left">
+                            <!-- Thông tin người nhận -->
+                            <div class="form-section">
+                                <h2>👤 Thông tin người nhận</h2>
+                                <div class="form-group">
+                                    <label for="recipientName">Họ và tên *</label>
+                                    <input type="text" id="recipientName" name="recipientName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipientEmail">Email *</label>
+                                    <input type="email" id="recipientEmail" name="recipientEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipientPhone">Số điện thoại</label>
+                                    <input type="tel" id="recipientPhone" name="recipientPhone">
+                                </div>
+                            </div>
+
+                            <!-- Thông tin vé đã booking -->
+                            <div class="form-section">
+                                <h2>🎫 Vé đã chọn</h2>
+                                <div class="booked-ticket">
+                                    <div class="ticket-details">
+                                        <h3 id="bookedEventName">Đang tải thông tin vé...</h3>
+                                        <div class="ticket-meta">
+                                            <p><span>📅</span> <span id="bookedEventDate">--/--/----</span></p>
+                                            <p><span>🕒</span> <span id="bookedEventTime">--:--</span></p>
+                                            <p><span>📍</span> <span id="bookedEventVenue">Đang tải...</span></p>
+                                            <p><span>🎟️</span> <span id="bookedTicketType">Loại vé</span></p>
+                                        </div>
+                                        <div class="ticket-price">
+                                            <span class="price-label">Giá vé:</span>
+                                            <span class="price-value" id="bookedTicketPrice">0đ</span>
+                                        </div>
+                                    </div>
+                                    <div class="ticket-image">
+                                        <div class="ticket-icon">🎫</div>
+                                    </div>
+                                </div>
+                                <div class="booking-note">
+                                    <small>💡 Thông tin vé này được lấy từ booking của bạn</small>
+                                </div>
+                            </div>
+
+                            <!-- Lời chúc -->
+                            <div class="form-section">
+                                <h2>💌 Lời chúc</h2>
+                                <div class="form-group">
+                                    <label for="giftMessage">Tin nhắn của bạn</label>
+                                    <textarea id="giftMessage" name="giftMessage" rows="4" placeholder="Viết lời chúc cho người nhận..."></textarea>
+                                    <small>Tối đa 200 ký tự</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="form-right">
+                            <!-- Chọn mẫu thiệp -->
+                            <div class="form-section">
+                                <h2>🎨 Chọn mẫu thiệp</h2>
+                                <div class="card-templates">
+                                    <div class="template-option active" data-template="classic">
+                                        <div class="template-preview classic">
+                                            <div class="template-content">
+                                                <h4>🎵 Echoes</h4>
+                                                <p>Chúc bạn có những giây phút tuyệt vời!</p>
+                                            </div>
+                                        </div>
+                                        <span>Classic</span>
+                                    </div>
+                                    <div class="template-option" data-template="modern">
+                                        <div class="template-preview modern">
+                                            <div class="template-content">
+                                                <h4>🎶 Echoes</h4>
+                                                <p>Âm nhạc kết nối tâm hồn</p>
+                                            </div>
+                                        </div>
+                                        <span>Modern</span>
+                                    </div>
+                                    <div class="template-option" data-template="festive">
+                                        <div class="template-preview festive">
+                                            <div class="template-content">
+                                                <h4>🎄 Echoes</h4>
+                                                <p>Mùa lễ hội đầy âm nhạc!</p>
+                                            </div>
+                                        </div>
+                                        <span>Festive</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Preview thiệp -->
+                            <div class="form-section">
+                                <h2>👀 Xem trước thiệp</h2>
+                                <div class="card-preview">
+                                    <div class="preview-card classic">
+                                        <div class="card-header">
+                                            <h3>🎵 Echoes</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="recipient-name">Tên người nhận</p>
+                                            <p class="gift-text">Bạn đã nhận được một món quà đặc biệt!</p>
+                                            <div class="ticket-info-preview">
+                                                <span class="ticket-name">Chọn vé</span>
+                                            </div>
+                                            <p class="message-preview">Lời chúc của bạn sẽ hiển thị ở đây...</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small>Từ Echoes với yêu thương ❤️</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tổng kết -->
+                            <div class="form-section">
+                                <h2>💰 Tổng kết</h2>
+                                <div class="summary">
+                                    <div class="summary-item">
+                                        <span>Vé đã chọn:</span>
+                                        <span id="selectedTicketName">Chưa chọn</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Giá vé:</span>
+                                        <span id="selectedTicketPrice">0đ</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span>Phí xử lý:</span>
+                                        <span>50.000đ</span>
+                                    </div>
+                                    <div class="summary-total">
+                                        <span>Tổng cộng:</span>
+                                        <span id="totalPrice">50.000đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-gift">
+                            💳 Tiếp tục thanh toán
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+        <script>
+            fetch('components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                })
+                .catch(error => console.error('Lỗi khi tải footer:', error));
+        </script>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="scripts/ticketGift.js"></script>
+</body>
+</html>
