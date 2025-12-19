@@ -13,6 +13,9 @@
 
     <!-- Nhúng css -->
     <link rel="stylesheet" href="assets/css/base.css">
+    
+    <!-- Nhúng AuthManager -->
+    <script src="scripts/authManager.js"></script>
 </head>
 <body>
     <div id="header">
@@ -22,13 +25,9 @@
                 .then(data => {
                     document.getElementById('header').innerHTML = data;
             
-                    // 👉 kiểm tra user sau khi header load
-                    const user = localStorage.getItem("currentUser");
-                    const accountName = document.getElementById("account-name");
-            
-                    if (user && accountName) {
-                        accountName.innerText = user;
-                        accountName.onclick = null; // bỏ mở modal login
+                    // Cập nhật UI header với AuthManager
+                    if (window.authManager) {
+                        authManager.updateHeaderUI();
                     }
             
                     const script = document.createElement('script');
@@ -54,7 +53,18 @@
     </main>
 
 
-    <div id="footer-placeholder"></div>
+    <!-- FOOTER -->
+    <div id="footer">
+        <script>
+        fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Lỗi khi tải footer:', error));
+        </script>
+    </div>
+
     <script type="module" src="scripts/NewsDetail.js"></script>
 </body>
 </html>

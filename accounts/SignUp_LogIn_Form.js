@@ -133,10 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. HANDLERS FORGOT PASSWORD
     function openForgotModal() {
-        if (forgotModal && authModal && modalOverlay) {
-            modalOverlay.style.display = 'flex'; // HIỂN THỊ lớp phủ mờ
-            authModal.style.display = 'none'; // Ẩn form chính (Đăng nhập/Đăng ký)
-            
+        if (forgotModal) {
+            forgotModal.style.display = 'flex'; // Hiển thị modal quên mật khẩu
             
             // Đảm bảo form gửi email hiện và thông báo thành công ẩn
             if (forgotForm) forgotForm.style.display = 'block'; 
@@ -145,10 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function closeForgotModal() {
-        if (forgotModal && authModal) {
+        if (forgotModal) {
             forgotModal.style.display = 'none'; // Ẩn form quên mật khẩu
-            authModal.style.display = 'block'; // Hiển thị lại form chính (Đăng nhập/Đăng ký)
-            // Lớp phủ vẫn giữ nguyên
         }
     }
 
@@ -263,6 +259,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalOverlay.style.display = 'none';
                 if (forgotModal) forgotModal.style.display = 'none';
                 if (authModal) authModal.style.display = 'block'; // Đảm bảo form chính hiện lại khi mở lần sau
+            }
+        });
+    }
+
+    // Xử lý click overlay cho modal quên mật khẩu
+    if (forgotModal) {
+        forgotModal.addEventListener('click', (e) => {
+            if (e.target === forgotModal) {
+                closeForgotModal();
             }
         });
     }

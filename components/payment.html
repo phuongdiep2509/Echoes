@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/payment.css">
     <link rel="stylesheet" href="../responsives/paymentRe.css">
+    
+    <!-- Nhúng AuthManager -->
+    <script src="../scripts/authManager.js"></script>
 </head>
 
 <body>
@@ -33,10 +36,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link" id="payment-account-link">
                             <i class="fas fa-user"></i>
                             TÀI KHOẢN
                         </a>
+                        <span id="payment-user-box" style="display:none;">
+                            <i class="fas fa-user"></i>
+                            <span id="payment-account-name"></span>
+                            |
+                            <a href="javascript:void(0)" id="payment-logout-btn" style="color: #74070d;">ĐĂNG XUẤT</a>
+                        </span>
                     </li>
                 </ul>
             </nav>
@@ -235,8 +244,52 @@
         </div>
     </div>
 
+    <!-- FOOTER -->
+    <div id="footer">
+        <script>
+        fetch('../components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Lỗi khi tải footer:', error));
+        </script>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Update Payment Header UI -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.authManager) {
+                const currentUser = authManager.getCurrentUser();
+                const accountLink = document.getElementById('payment-account-link');
+                const userBox = document.getElementById('payment-user-box');
+                const accountName = document.getElementById('payment-account-name');
+                const logoutBtn = document.getElementById('payment-logout-btn');
+
+                if (currentUser && currentUser.isLoggedIn) {
+                    // Đã đăng nhập - hiển thị tên user
+                    accountLink.style.display = 'none';
+                    userBox.style.display = 'inline';
+                    accountName.textContent = currentUser.username;
+
+                    // Xử lý đăng xuất
+                    logoutBtn.onclick = () => {
+                        authManager.logout();
+                        alert('Đăng xuất thành công!');
+                        window.location.href = '../index.html';
+                    };
+                } else {
+                    // Chưa đăng nhập
+                    accountLink.style.display = 'inline';
+                    userBox.style.display = 'none';
+                }
+            }
+        });
+    </script>
+    
     <!-- Payment JS -->
     <script src="../scripts/payment.js"></script>
 </body>

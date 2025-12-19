@@ -12,6 +12,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets\css\about.css">
+    
+    <!-- Nhúng AuthManager -->
+    <script src="scripts/authManager.js"></script>
 </head>
 <body>
     <div id="header">
@@ -21,13 +24,9 @@
                 .then(data => {
                     document.getElementById('header').innerHTML = data;
             
-                    // 👉 kiểm tra user sau khi header load
-                    const user = localStorage.getItem("currentUser");
-                    const accountName = document.getElementById("account-name");
-            
-                    if (user && accountName) {
-                        accountName.innerText = user;
-                        accountName.onclick = null; // bỏ mở modal login
+                    // Cập nhật UI header với AuthManager
+                    if (window.authManager) {
+                        authManager.updateHeaderUI();
                     }
             
                     const script = document.createElement('script');
