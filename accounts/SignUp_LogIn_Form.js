@@ -165,17 +165,19 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const formData = new FormData(loginForm);
             const username = formData.get('username') || '';
-            const pwd = formData.get('password') || '';
 
-            if (!username.trim() || !pwd.trim()) {
-                alert('Vui lòng nhập đầy đủ tên người dùng và mật khẩu.');
-                return;
+            if (!username.trim()) {
+            alert('Vui lòng nhập tên người dùng.');
+            return;
             }
-            // TODO: gửi AJAX hoặc submit theo hệ thống của bạn
-            alert('Đã gửi yêu cầu đăng nhập.');
-            loginForm.reset();
+
+            // Lưu vào localStorage
+            localStorage.setItem('currentUser', JSON.stringify({ username }));
+
+            // Chuyển về index
+            window.location.href = '../index.html';
         });
-    }
+        }
 
     if (registerForm) {
         registerForm.addEventListener('submit', (e) => {

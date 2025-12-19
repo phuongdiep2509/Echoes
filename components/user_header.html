@@ -183,6 +183,13 @@
             opacity: 0.8;
         }
 
+        .button-dk {
+          font-family: var(--font);
+          border: none;
+          font-weight: normal;
+          font-size: 18px;
+          color: #000;
+        }
 
       @media screen and (max-width: 1024px) {
         .inner-menu {
@@ -275,29 +282,30 @@
 
   <body>
     <div class="header">
+      <div id="popup-container" style="display:none;"></div>
         <div class="inner-wrap-1">
             <ul>
-            <li>
-                <img src="assets/images/ticket-icon.png">
+              <li>
+                <img src="assets/images/index/ticket-icon.png" />
                 <a href="myTicket">VÉ CỦA TÔI</a>
-            </li>
-            <li>
-                <img src="assets/images/user-icon.png">
-                <a href="accounts/accounts.html">TÀI KHOẢN</a>
-            </li>
+              </li>
+              <li>
+                <img src="assets/images/index/user-icon.png" />
+                <a href="accounts/SignUp_Login_Form.html" id="account-btn" class="button button-dk">ĐĂNG NHẬP | ĐĂNG KÝ</a>
+              </li>
             </ul>
         </div>
 
         <div class="inner-wrap-2">
             <a href="index.html" class="inner-logo">
-            <img src="assets/images/logo (no back).png" alt="echoes_logo.png">
+            <img src="assets/images/index/logo (no back).png" alt="echoes_logo.png">
             </a>
 
             <nav class="inner-menu">
             <ul>
                 <li>   
                     GIỚI THIỆU
-                    <img src="assets/images/dropdown-icon.png">
+                    <img src="assets/images/index/dropdown-icon.png">
                     <ul class="submenu">
                         <li><a href="aboutUs.html">VỀ CHÚNG TÔI</a></li>
                         <li><a href="rules.html">QUY ĐỊNH</a></li>
@@ -326,7 +334,20 @@
         </div>
       </div>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const accountBtn = document.getElementById('account-btn');
+        const currentUser = localStorage.getItem('currentUser');
 
+        if (currentUser) {
+          accountBtn.textContent = 'TÀI KHOẢN';
+          accountBtn.setAttribute('href', './profile.html');
+        } else {
+          accountBtn.textContent = 'Đăng nhập | Đăng ký';
+          accountBtn.setAttribute('href', 'accounts/SignUp_LogIn_Form.html');
+        }
+      });
+    </script>
     <script src="components/scroll header.js"></script>
   </body>
 </html>

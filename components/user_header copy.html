@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset cơ bản */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body {
+            padding-top: 50px; /* ≈ chiều cao header */
+        }
+        .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+
+        transition: transform 0.35s ease, background 0.3s ease;
+        transform: translateY(0);
+        }
+
+        .header.show {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        }
+
+        .header.hide {
+            transform: translateY(-100%);
+        }
+
+        /* Thu gọn header khi scroll */
+        .header.show .inner-wrap-2 {
+            padding: 6px 50px;
+        }
+
+        .header.show .inner-logo img {
+            height: 70px; /* nhỏ hơn */
+        }
+
+        .header-solid {
+        background: rgba(30,30,30,0.9);
+        backdrop-filter: blur(6px);
+        }
+        /* Phần trên cùng: vé của tôi, đăng nhập, đăng ký */
+        .inner-wrap-1 {
+        border-bottom: 1px solid #000;
+        width: 100%; /* hoặc width: 300px; ví dụ */
+        display: flex;
+        justify-content: flex-end; /* nếu vẫn muốn nội dung bên phải trong vùng */
+        padding: 4px 20px;
+        font-weight: normal;
+        font-size: 18px;
+        color: #000;
+        }
+
+        .inner-wrap-1 ul {
+        margin: 0 50px;
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 60px;
+        }
+
+        .inner-wrap-1 ul li a {
+        color: #000;
+        text-decoration: none;
+        }
+
+        .inner-wrap-1 ul li a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        }
+
+        /* Phần menu chính */
+        .inner-wrap-2 {
+        padding: 10px 50px; /* giữ padding nếu cần */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+
+        /* Logo */
+        .inner-logo img {
+        height: 100px; /* tùy chỉnh cao logo */
+        display: block;
+        }
+
+        /* Menu chính */
+        .inner-menu ul {
+        list-style: none;
+        display: flex;
+        gap: 100px;
+        font-weight: normal;
+        font-size: 18px;
+        color: #000;
+        }
+
+        .inner-menu ul li a {
+        text-decoration: none;
+        color: #000;
+        }
+        
+        .inner-menu img {
+        margin-left: 6px;
+        height: 15px; /* tùy chỉnh cao logo */
+        }
+        .inner-wrap-1 ul li a:hover {
+        color: #74070d;
+        text-decoration: none;
+        }
+
+        .inner-wrap-1 ul li img {
+        height: 16px; /* hoặc height: 1em; để bằng đúng kích thước font */
+        width: auto;  /* giữ tỉ lệ ảnh */
+        vertical-align: middle; /* canh giữa ảnh với chữ */
+        margin-right: 5px; /* tạo khoảng cách nhẹ giữa c  hữ và ảnh */
+        }
+
+
+        .inner-menu ul li a:hover {
+        color: #74070d; /* màu đỏ nâu khi hover */
+        cursor: pointer;
+        }
+
+        /* Ẩn submenu mặc định */
+        .inner-menu ul ul.submenu {
+        display: none;
+        position: absolute; /* để submenu không chiếm không gian */
+        background-color: #fff; /* màu nền submenu */
+        padding: 15px 0;
+        list-style: none;
+        margin-top: 5px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        min-width: 150px;
+        z-index: 999;
+        }
+
+        /* Hiện submenu khi rê chuột vào li cha */
+        .inner-menu ul li:hover > ul.submenu {
+        display: block;
+        }
+
+        /* Tạo kiểu cho các item con */
+        .inner-menu ul ul.submenu li {
+        padding: 5px 20px;
+        }
+
+        .inner-menu ul ul.submenu li a {
+        color: #000;
+        text-decoration: none;
+        display: block;
+        }
+
+        .inner-menu ul ul.submenu li a:hover {
+        color: #74070d  ;
+        }
+
+
+        /* Thanh tìm kiếm */
+        .search-icon {
+        background: none;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        color: #000; 
+        padding: 10px;
+        }
+
+        .search-icon:hover {
+            opacity: 0.8;
+        }
+
+
+      @media screen and (max-width: 1024px) {
+        .inner-menu {
+          display: none;
+          flex-direction: column;
+          background-color: #f0efeb;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          padding: 10px 0;
+        }
+
+        .inner-regist {
+          display: none;
+          flex-direction: column;
+          background-color: #f0efeb;
+          position: absolute;
+          top: 860%;
+          left: 0;
+          width: 100%;
+          padding: 10px 0;
+        }
+
+        .inner-menu.show-menu {
+          display: flex;
+        }
+
+        .inner-menu ul {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .inner-menu ul li a {
+          padding: 10px 20px;
+          text-align: center;
+          width: 100%;
+        }
+
+        .inner-regist.show-regist {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          padding: 30px 0;
+        }
+
+        .inner-regist ul {
+          flex-direction: column;
+          width: 100%;
+          padding: 0;
+        }
+
+        .inner-regist ul li {
+          width: 100%;
+          text-align: center;
+          margin: 5px 0;
+        }
+
+        .header .inner-icon {
+          display: block;
+          cursor: pointer;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .header .inner-wrap .inner-menu ul li a {
+          padding: 10px;
+          text-align: center;
+          width: 100%;
+        }
+
+        .inner-regist {
+          display: none;
+          flex-direction: column;
+          background-color: #f0efeb;
+          position: absolute;
+          top: 535%;
+          left: 0;
+          width: 100%;
+          padding: 10px 0;
+        }
+        .ad-banner img {
+            max-height: 150px;
+            object-fit: cover; /* cắt vừa nếu cần */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+        <div class="inner-wrap-1">
+            <ul>
+            <li>
+                <img src="assets/images/ticket-icon.png">
+                <a href="myTicket">VÉ CỦA TÔI</a>
+            </li>
+            <li>
+                <img src="assets/images/user-icon.png">
+                <a href="accounts/SignUp_Login_Form.html">ĐĂNG NHẬP | ĐĂNG KÝ</a>
+            </li>
+            </ul>
+        </div>
+
+        <div class="inner-wrap-2">
+            <a href="index.html" class="inner-logo">
+            <img src="assets/images/logo (no back).png" alt="echoes_logo.png">
+            </a>
+
+            <nav class="inner-menu">
+            <ul>
+                <li>   
+                    GIỚI THIỆU
+                    <img src="assets/images/dropdown-icon.png">
+                    <ul class="submenu">
+                        <li><a href="aboutUs.html">VỀ CHÚNG TÔI</a></li>
+                        <li><a href="rules.html">QUY ĐỊNH</a></li>
+                    </ul>   
+                </li>
+                <li><a href="music.html">NHẠC SỐNG</a></li>
+                <li><a href="concert.html">CONCERT ÂM NHẠC</a></li>
+                <li><a href="merchandise.html">MERCHANDISE</a></li>
+                <li><a href="news.html">TIN TỨC | KHUYẾN MÃI</a></li>
+            </ul>
+            </nav>
+
+            <div class="search-box">
+              <button class="search-icon" aria-label="Tìm kiếm">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="30" y1="30" x2="16.65" y2="16.65"/>
+                </svg>
+              </button>
+            </div>
+        </div>
+      </div>
+
+
+    <script src="components/scroll header.js"></script>
+  </body>
+</html>

@@ -3,7 +3,7 @@
     margin-top: 90px;
     position: relative;
     width: 100%;
-    height: 850px;          /* hoặc theo banner */
+    height: 100%;          /* hoặc theo banner */
     overflow: hidden;
 }
 
@@ -107,7 +107,7 @@
 .section-1 {
     margin-top: 10px;
     height: 1000px;
-    background: url(../images/backgroundsection1.png) center / cover no-repeat;
+    background: url(../images/index/backgroundsection1.png) center / cover no-repeat;
     display: flex;
     justify-content: center; /* CHỈ căn giữa ngang */
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
@@ -116,10 +116,9 @@
 /* Wrapper nội dung */
 .section-content {
     max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;   /* 🔥 DÒNG QUYẾT ĐỊNH */
+    width: 100%;    
+    padding: 30px 0;    
 }
-
 /* Title */
 .inner-title {
     color: var(--color-red);
@@ -133,28 +132,30 @@
 .event-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* responsive tự động */
-    gap: 40px;
+    gap: 100px;
     justify-content: center;
     max-width: 1200px;       /* giới hạn chiều rộng tổng */
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 60px 0;
 }
 
 .event-wrapper {
+    border: 1px solid var(--color-red);
     position: relative;
     width: 100%;            /* chiếm 100% vùng lưới con */
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     transition: transform 0.4s ease;
-    background: #fff;       /* nền trắng để ảnh nổi bật */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .event-wrapper img {
-    width: 100%;            /* ảnh full chiều ngang wrapper */
+    padding-top: 7px;
+    padding-bottom: 10px;
+    width: 160%;            /* ảnh full chiều ngang wrapper */
     height: auto;           /* giữ tỉ lệ ảnh */
     border-radius: 12px 12px 0 0; /* bo góc trên cho ảnh */
     object-fit: cover;      /* đảm bảo ảnh phủ đầy, giữ tỉ lệ */
@@ -164,7 +165,7 @@
 .event-content {
     padding: 15px 20px;
     text-align: center;
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font);
     color: #333;
 }
 
@@ -175,15 +176,241 @@
     cursor: pointer;
 }
 
-
-body {
-    outline: 5px solid red;
+.event-btn {
+    font-family: var(--font);
+    font-size: 18px;
+    color: var(--color-red);
+    border: 1px solid var(--color-red);
+    background-color: #ede5d8;
+    border-radius: 7px;
+    padding: 10px 110px 10px 110px;
+    margin-bottom: 10px;
 }
 
-.section-1 {
-    outline: 5px solid blue;
+/* Container tổng */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+    font-family: var(--font)
 }
 
-.section-content {
-    outline: 5px solid green;
+/* Thanh tiêu đề Nhạc Sống */
+.section-header {
+    background-color: var(--color-green); /* Màu rêu */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 7px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-family: var(--font);
+    color: white;
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.see-more {
+    font-family: var(--font);
+    color: #f1f1f1;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* Chia lưới 4 cột bằng CSS Grid */
+.music-grid {
+    font-family: var(--font);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Tạo 4 cột bằng nhau */
+    gap: 30px; /* Khoảng cách giữa các cột */
+}
+
+/* Responsive cho điện thoại (Chuyển về 1 cột nếu màn hình nhỏ) */
+@media (max-width: 768px) {
+    .music-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Container bao quanh cả 2 phần */
+.music-item {
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Khoảng cách giữa phần trên và phần dưới */
+}
+
+.music-item:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Thêm đổ bóng cho đẹp */
+}
+
+
+/* Khối phía trên (Ảnh và Nút) */
+.card-top {
+    height: 400px;
+    background-color: #f0efeb;
+    border: 1px solid var(--color-green);
+    border-radius: 7px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.poster-container {
+    width: 100%;
+}
+
+.poster-img {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    object-fit: cover;  
+    height: 345px;
+    width: 100%;
+    display: block;
+    border-radius: 7px;
+}
+
+.button-container {
+    padding: 7px;
+    text-align: center;
+}
+
+.btn-buy {
+    color: var(--color-green);
+    font-size: 18px;
+    font-family: var(--font);
+    font-weight: normal;
+    width: 100%;
+    padding: 7px 0;
+    background: transparent;
+    border: 1px solid var(--color-green);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+/* Khối phía dưới (Thông tin) */
+.card-bottom {
+    background-color: #f0efeb;
+    border: 1px solid var(--color-green);
+    border-radius: 7px;
+    padding: 15px;
+    text-align: center;
+    /* Đảm bảo khối này có chiều cao ổn định */
+    flex-grow: 1;
+}
+
+.event-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto;
+    color: var(--color-green);
+    line-height: 1.2;
+}
+
+.price {
+    color: var(--color-red);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.date {
+    font-size: 13px;
+    color: #333;
+    font-weight: bold;
+}
+
+.date img {
+    height: 12px;
+    margin-right: 7 px;
+}
+
+
+
+
+/* Container chứa danh sách tin tức */
+.news-list {
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s ease;
+    font-family: var(--font);
+    display: flex;
+    flex-direction: column; /* Các tin tức xếp chồng lên nhau theo hàng dọc */
+    gap: 7px; /* Khoảng cách giữa các tin tức */
+    margin-top: 20px;
+}
+
+/* Từng dòng tin tức: Ảnh và Chữ nằm ngang */
+.news-item-horizontal {
+    display: flex; /* Kích hoạt nằm ngang */
+    background-color: transparent; /* Màu be đồng bộ với card nhạc sống */
+    border: 1px solid var(--color-green);
+    border-radius: 7px;
+    overflow: hidden;
+    align-items: center; /* Căn giữa ảnh và chữ theo chiều dọc */
+    transition: transform 0.3s ease;
+}
+
+.news-item-horizontal:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Thêm đổ bóng cho đẹp */
+}
+
+/* Khối ảnh */
+.news-image-wrapper {
+    flex: 0 0 40%; 
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+}
+
+.news-image-wrapper img {
+    border-radius: 12px;
+    width: 100%; 
+    height: 100%; 
+    display: block;
+    aspect-ratio: 18 / 9; /* Tạo khung hình chữ nhật cố định (có thể đổi thành 1/1 nếu muốn khung vuông) */
+    object-fit: cover;   /* Ảnh sẽ tự lấp đầy khung mà không bị méo, phần dư bị cắt bỏ */
+    padding: 7px; 
+}
+/* Điều chỉnh lại khối nội dung chữ cho cân đối */
+.news-content-wrapper {
+    flex: 1;
+    padding: 20px 30px; 
+}
+
+.news-title-big {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-green);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.news-desc-big {
+    font-size: 16px;
+    color: #999999;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Responsive cho điện thoại: Quay về dạng cột nếu màn hình quá nhỏ */
+@media (max-width: 768px) {
+    .news-item-horizontal {
+        flex-direction: column;
+        text-align: center;
+    }
+    .news-image-wrapper {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
