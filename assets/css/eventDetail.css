@@ -79,8 +79,9 @@ body {
 
 .event-poster img {
     width: 100%;
-    height: 400px;
-    object-fit: cover;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
     border-radius: 15px;
 }
 
@@ -177,6 +178,18 @@ body {
     line-height: 1.7;
     margin-bottom: 15px;
     font-size: 1rem;
+}
+
+/* Images in content */
+.event-description img,
+.event-highlights img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .event-highlights ul {

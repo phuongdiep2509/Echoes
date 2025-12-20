@@ -50,6 +50,56 @@ function init() {
 
 // Load ticket data
 function loadTicket() {
+    // Check URL parameters for booking type
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookingType = urlParams.get('type');
+    const bookingId = urlParams.get('bookingId');
+    
+    // Handle seat booking
+    if (bookingType === 'seat-booking' && bookingId) {
+        const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
+        const booking = bookings.find(b => b.id === bookingId);
+        
+        if (booking) {
+            state.ticket = {
+                title: booking.eventName,
+                location: booking.venue,
+                date: booking.eventDate,
+                time: booking.eventTime,
+                type: booking.ticketType,
+                seatSection: booking.seatSection,
+                price: booking.price,
+                quantity: booking.quantity,
+                totalPrice: booking.totalAmount,
+                img: '../assets/images/index/main_banner_1.png',
+                bookingId: booking.id
+            };
+            return;
+        }
+    }
+    
+    // Handle regular booking
+    if (bookingType === 'booking' && bookingId) {
+        const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
+        const booking = bookings.find(b => b.id === bookingId);
+        
+        if (booking) {
+            state.ticket = {
+                title: booking.eventName,
+                location: booking.venue,
+                date: booking.eventDate,
+                time: booking.eventTime,
+                type: booking.ticketType,
+                price: booking.price,
+                quantity: booking.quantity,
+                img: '../assets/images/index/main_banner_1.png',
+                bookingId: booking.id
+            };
+            return;
+        }
+    }
+    
+    // Try legacy selectedTicket
     const saved = localStorage.getItem('selectedTicket');
     if (saved) {
         try {
@@ -85,8 +135,17 @@ function renderTicket() {
     document.getElementById('ticket-loc').innerHTML = `<i class="fas fa-map-marker-alt me-1"></i>${t.location}`;
     document.getElementById('ticket-time').innerHTML = `<i class="fas fa-clock me-1"></i>${t.time}`;
     document.getElementById('event-date').textContent = t.date;
-    document.getElementById('ticket-zone').textContent = `${t.quantity || 1}x Vé ${t.type}`;
-    document.getElementById('ticket-price').textContent = formatMoney(t.price);
+    
+    // Handle seat booking display
+    if (t.seatSection) {
+        document.getElementById('ticket-zone').textContent = `${t.quantity || 1}x Vé ${t.type} (${t.seatSection})`;
+    } else {
+        document.getElementById('ticket-zone').textContent = `${t.quantity || 1}x Vé ${t.type}`;
+    }
+    
+    // Use total price for seat booking, individual price for others
+    const displayPrice = t.totalPrice || (t.price * (t.quantity || 1));
+    document.getElementById('ticket-price').textContent = formatMoney(displayPrice);
     document.getElementById('system-fee').textContent = formatMoney(CONFIG.SYSTEM_FEE);
 }
 
@@ -180,7 +239,8 @@ function applyVoucher() {
 
 // Calculate total
 function calculate() {
-    const basePrice = state.ticket.price * (state.ticket.quantity || 1);
+    // Use total price for seat booking, calculate for others
+    const basePrice = state.ticket.totalPrice || (state.ticket.price * (state.ticket.quantity || 1));
     let discount = 0;
     
     if (state.selectedPromo) {
@@ -267,9 +327,40 @@ function hideLoading() {
 }
 
 function showSuccess() {
+    // Move booking from userBookings to completedBookings
+    if (state.ticket && state.ticket.bookingId) {
+        try {
+            const userBookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
+            const completedBookings = JSON.parse(localStorage.getItem('completedBookings') || '[]');
+            
+            // Find and remove from userBookings
+            const bookingIndex = userBookings.findIndex(b => b.id === state.ticket.bookingId);
+            if (bookingIndex !== -1) {
+                const completedBooking = userBookings.splice(bookingIndex, 1)[0];
+                completedBooking.status = 'completed';
+                completedBooking.paymentDate = new Date().toISOString();
+                completedBooking.totalPaid = state.totalAmount;
+                
+                // Add to completedBookings
+                completedBookings.push(completedBooking);
+                
+                // Update localStorage
+                localStorage.setItem('userBookings', JSON.stringify(userBookings));
+                localStorage.setItem('completedBookings', JSON.stringify(completedBookings));
+            }
+        } catch (error) {
+            console.error('Error completing booking:', error);
+        }
+    }
+    
     const modal = new bootstrap.Modal(document.getElementById('successModal'));
     modal.show();
 }
+
+// Function to view tickets after payment
+window.viewMyTickets = function() {
+    window.location.href = '../myTicket.html';
+};
 
 // Export for booking page
 window.proceedToPayment = function(ticketData) {
