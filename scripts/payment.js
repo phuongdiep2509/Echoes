@@ -340,6 +340,7 @@ function showSuccess() {
                 completedBooking.status = 'completed';
                 completedBooking.paymentDate = new Date().toISOString();
                 completedBooking.totalPaid = state.totalAmount;
+                completedBooking.paymentTime = new Date().toLocaleString('vi-VN');
                 
                 // Add to completedBookings
                 completedBookings.push(completedBooking);
@@ -347,6 +348,9 @@ function showSuccess() {
                 // Update localStorage
                 localStorage.setItem('userBookings', JSON.stringify(userBookings));
                 localStorage.setItem('completedBookings', JSON.stringify(completedBookings));
+                
+                // Save completed ticket to sessionStorage for immediate display
+                sessionStorage.setItem('completedTicket', JSON.stringify(completedBooking));
             }
         } catch (error) {
             console.error('Error completing booking:', error);
@@ -359,7 +363,7 @@ function showSuccess() {
 
 // Function to view tickets after payment
 window.viewMyTickets = function() {
-    window.location.href = '../myTicket.html';
+    window.location.href = '../myTicket.html?from=payment';
 };
 
 // Export for booking page

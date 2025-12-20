@@ -81,13 +81,19 @@
                 ticketType: 'VIP',
                 price: 1500000,
                 quantity: 1,
-                timestamp: new Date().toISOString()
+                totalAmount: 1500000,
+                timestamp: new Date().toISOString(),
+                status: 'pending',
+                bookingType: 'regular'
             };
 
-            // Save to localStorage
+            // Save to localStorage and sessionStorage
             const existingBookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
             existingBookings.push(bookingData);
             localStorage.setItem('userBookings', JSON.stringify(existingBookings));
+            
+            // Save to sessionStorage for immediate access
+            sessionStorage.setItem('currentBookingData', JSON.stringify(bookingData));
 
             currentBookingId = bookingData.id;
 

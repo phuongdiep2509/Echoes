@@ -10,6 +10,7 @@ body {
     padding: 0;
     background: linear-gradient(135deg, #f0efeb 0%, #faf9f6 50%, #f0efeb 100%);
     min-height: 100vh;
+    margin-top: 100px;
 }
 
 .container {
@@ -20,32 +21,29 @@ body {
 
 /* Page Container */
 .page-container {
-    padding-top: 120px;
+    padding-top: 0px;
     min-height: calc(100vh - 200px);
 }
 
 /* Breadcrumb */
-.breadcrumb {
-    padding: 20px 0;
-    background: var(--color-green);
+.breadcrumb-custom {
+    background-color: var(--color-green);
     color: white;
+    padding: 12px 20px;
     font-size: 14px;
-    font-weight: 600;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.breadcrumb a {
+.breadcrumb-custom a {
     color: #ccc;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.breadcrumb a:hover {
-    color: white;
-}
-
-.breadcrumb span {
-    margin: 0 10px;
-    color: #ccc;
+.breadcrumb-custom a:hover {
+    color: #ffffff;
 }
 
 /* Event Detail Container */

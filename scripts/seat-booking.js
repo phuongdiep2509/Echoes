@@ -344,14 +344,18 @@ class SeatBooking {
             quantity: this.quantity,
             totalAmount: this.totalPrice,
             timestamp: new Date().toISOString(),
-            status: 'pending'
+            status: 'pending',
+            bookingType: 'seat-booking'
         };
         
-        // Save booking to localStorage
+        // Save booking to localStorage and sessionStorage
         try {
             const existingBookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
             existingBookings.push(bookingData);
             localStorage.setItem('userBookings', JSON.stringify(existingBookings));
+            
+            // Save to sessionStorage for immediate access after payment
+            sessionStorage.setItem('currentBookingData', JSON.stringify(bookingData));
             
             // Save current booking for payment
             localStorage.setItem('currentBooking', JSON.stringify({
@@ -396,14 +400,18 @@ class SeatBooking {
             totalAmount: this.totalPrice,
             timestamp: new Date().toISOString(),
             status: 'gift',
-            isGift: true
+            isGift: true,
+            bookingType: 'seat-booking'
         };
         
-        // Save booking to localStorage
+        // Save booking to localStorage and sessionStorage
         try {
             const existingBookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
             existingBookings.push(bookingData);
             localStorage.setItem('userBookings', JSON.stringify(existingBookings));
+            
+            // Save to sessionStorage for immediate access
+            sessionStorage.setItem('currentBookingData', JSON.stringify(bookingData));
             
             // Redirect to gift page
             window.location.href = `ticketGift.html?bookingId=${bookingData.id}&type=seat-booking`;
@@ -433,3 +441,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for use in other modules
 export { SeatBooking };
+
+// Global function for back button
+window.goBack = function() {
+    // Try to go back to the event detail page
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventId = urlParams.get('eventId');
+    
+    if (eventId) {
+        window.location.href = `eventDetail.html?id=${eventId}&type=concert`;
+    } else {
+        // Fallback to concert page
+        window.location.href = 'concert.html';
+    }
+};

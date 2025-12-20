@@ -16,6 +16,7 @@ body {
     font-family: 'Fraunces', serif;
     background: var(--cream);
     color: var(--dark);
+    margin-top: 100px;
 }
 
 /* BREADCRUMB */
