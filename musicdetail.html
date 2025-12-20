@@ -5,446 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chi tiết sự kiện | Echoes</title>
 
-<!-- GIỮ NGUYÊN CSS GỐC -->
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/main.css">
-
-<style>
-/* =====================================================
-   TẮT TOÀN BỘ VIỀN / OUTLINE DEBUG (VIỀN ĐỎ XANH...)
-===================================================== */
-*{
-  outline: none !important;
-}
-
-/* =====================================================
-   CHỪA CHỖ HEADER + QUẢNG CÁO
-===================================================== */
-.header-spacer{
-  height: 150px;
-}
-
-/* =====================================================
-   EVENT DETAIL LAYOUT
-===================================================== */
-.event-detail{
-  padding: 60px 0 90px;
-}
-
-.event-detail .section-content{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px; /* tránh sát mép trên mobile */
-  box-sizing: border-box;
-}
-
-.event-detail-grid{
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 40px;
-  align-items: start;
-}
-
-/* ẢNH */
-.event-detail-image{
-  width: 100%;
-  height: 520px;
-  background: #ddd;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 14px 32px rgba(0,0,0,0.18);
-}
-
-.event-detail-image img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* NỘI DUNG */
-.event-detail-info{
-  background: rgba(255,255,255,0.88);
-  border-radius: 24px;
-  padding: 36px;
-  box-shadow: 0 14px 32px rgba(0,0,0,0.18);
-}
-
-.event-title{
-  margin: 0 0 14px;
-  font-size: 36px;
-  text-transform: uppercase;
-  color: var(--color-dark);
-}
-
-.event-meta{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-bottom: 22px;
-  font-size: 14px;
-  color: rgba(0,0,0,0.65);
-}
-
-.event-meta span{
-  font-weight: 700;
-  color: rgba(0,0,0,0.8);
-}
-
-.event-description{
-  font-size: 15px;
-  line-height: 1.7;
-  color: rgba(0,0,0,0.7);
-  margin-bottom: 28px;
-}
-
-/* CTA */
-.event-cta{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-}
-
-.event-price{
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--color-dark);
-}
-
-.btn-book{
-  padding: 14px 36px;
-  border-radius: 999px;
-  background: #2f6b3f;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
-}
-
-.btn-book:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.2);
-}
-
-.btn-book:active{
-  transform: translateY(0);
-  opacity: 0.95;
-}
-/* ÉP Ô MÔ TẢ CAO BẰNG Ô ẢNH */
-.event-detail-grid{
-  align-items: stretch !important; /* cho 2 cột cùng cao */
-}
-
-.event-detail-info{
-  height: 100% !important;         /* cao bằng ô ảnh */
-  display: flex;
-  flex-direction: column;
-}
-
-/* đẩy phần CTA xuống đáy cho đẹp (tuỳ thích) */
-.event-cta{
-  margin-top: auto;
-}
-
-/* ===== TAB GIỐNG ẢNH (CLICK ĐỔI NỘI DUNG) ===== */
-.event-tabs{
-  padding: 10px 0 80px;
-}
-
-.event-tabs .section-content{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-
-.tabs-card{
-  background: rgba(255,255,255,0.88);
-  border-radius: 24px;
-  box-shadow: 0 14px 32px rgba(0,0,0,0.16);
-  overflow: hidden;
-}
-
-/* phần tab trên */
-.tabs-head{
-  display: flex;
-  gap: 26px;
-  padding: 18px 22px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-
-/* button tab giống style chữ in hoa */
-.tab-btn{
-  border: none;
-  background: transparent;
-  padding: 14px 18px;
-  font-family: var(--font);
-  font-size: 18px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.72);
-  cursor: pointer;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  transition: color .15s ease, background .15s ease;
-}
-
-/* tab active (đỏ như ảnh) */
-.tab-btn.active{
-  color: var(--color-red);
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 -8px 18px rgba(0,0,0,0.06);
-}
-
-/* nội dung */
-.tabs-body{
-  padding: 28px 26px 30px;
-}
-
-.tab-panel{
-  display: none;
-}
-
-.tab-panel.active{
-  display: block;
-}
-
-.tab-title{
-  margin: 0 0 14px;
-  font-size: 18px;
-  color: rgba(0,0,0,0.78);
-  text-transform: uppercase;
-}
-
-.tab-list{
-  margin: 0;
-  padding-left: 18px;
-  color: rgba(0,0,0,0.68);
-  line-height: 1.8;
-  font-size: 15px;
-}
-
-.tab-note{
-  margin: 16px 0 0;
-  font-size: 13px;
-  color: rgba(0,0,0,0.55);
-}
-
-/* responsive */
-@media (max-width: 768px){
-  .tabs-head{
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .tab-btn{
-    font-size: 15px;
-    padding: 12px 14px;
-  }
-  .tabs-body{
-    padding: 22px 18px 24px;
-  }
-}
-
-
-/* =====================================================
-   FOOTER (BÁM SÁT STYLE TRANG)
-===================================================== */
-.footer-wrap{
-  padding: 40px 0 30px;
-  background: transparent;
-}
-
-.footer-container{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-
-.footer-card{
-  background: rgba(255,255,255,0.86);
-  border-radius: 26px;
-  padding: 34px 34px 22px;
-  box-shadow: 0 14px 36px rgba(0,0,0,0.16);
-  backdrop-filter: blur(6px);
-}
-
-.footer-top{
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 26px;
-  align-items: start;
-}
-
-.footer-brand h2{
-  margin: 0 0 10px;
-  font-size: 28px;
-  letter-spacing: 1px;
-  color: var(--color-dark);
-  text-transform: uppercase;
-}
-
-.footer-brand p{
-  margin: 0;
-  max-width: 380px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: rgba(0,0,0,0.62);
-}
-
-.footer-title{
-  margin: 4px 0 14px;
-  font-size: 13px;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.72);
-}
-
-.footer-links{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footer-links a{
-  text-decoration: none;
-  font-size: 14px;
-  color: rgba(0,0,0,0.62);
-  display: inline-block;
-  transition: transform .15s ease, opacity .15s ease;
-}
-
-.footer-links a:hover{
-  transform: translateX(2px);
-  color: var(--color-dark);
-}
-
-.footer-contact{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-  color: rgba(0,0,0,0.62);
-}
-
-.footer-contact span{
-  color: rgba(0,0,0,0.78);
-  font-weight: 700;
-}
-
-.footer-contact a{
-  color: rgba(0,0,0,0.68);
-  text-decoration: none;
-}
-
-.footer-contact a:hover{
-  color: var(--color-dark);
-}
-
-.footer-social{
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.social-btn{
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  border: 1px solid rgba(69,77,106,0.22);
-  background: rgba(69,77,106,0.08);
-  display: grid;
-  place-items: center;
-  color: var(--color-dark);
-  text-decoration: none;
-  font-size: 13px;
-  transition: transform .15s ease, background .15s ease, border-color .15s ease;
-  user-select: none;
-}
-
-.social-btn:hover{
-  transform: translateY(-2px);
-  background: rgba(69,77,106,0.14);
-  border-color: rgba(69,77,106,0.3);
-}
-
-.footer-line{
-  margin: 24px 0 14px;
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.18),
-    rgba(0,0,0,0.06),
-    rgba(0,0,0,0)
-  );
-}
-
-.footer-bottom{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  color: rgba(0,0,0,0.55);
-}
-
-.footer-bottom a{
-  color: rgba(0,0,0,0.6);
-  text-decoration: none;
-}
-
-.footer-bottom a:hover{
-  color: var(--color-dark);
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-@media (max-width: 1024px){
-  .event-detail-grid{
-    grid-template-columns: 1fr;
-  }
-  .event-detail-image{ height: 420px; }
-  .footer-top{ grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 768px){
-  .event-detail{ padding: 40px 0 70px; }
-  .event-detail-info{ padding: 26px; }
-  .event-title{ font-size: 28px; }
-  .event-detail-image{ height: 320px; }
-  .footer-top{ grid-template-columns: 1fr; }
-  .footer-card{ padding: 26px 20px 18px; }
-}
-</style>
+<link rel="stylesheet" href="assets/css/musicdetail.css">
 </head>
 
 <body>
 
-<!-- ===== HEADER + ADS (ĐỂ TRỐNG) ===== -->
+<!-- HEADER -->
+<div id="header"></div>
+
 <div class="header-spacer"></div>
 
-<!-- ===== EVENT DETAIL ===== -->
+<!-- EVENT DETAIL -->
 <section class="event-detail">
   <div class="section-content">
-
     <div class="event-detail-grid">
 
-      <!-- ẢNH SỰ KIỆN -->
       <div class="event-detail-image">
-        <!-- THAY ẢNH Ở ĐÂY -->
-        <img src="assets/images/nhacsong/lc1.jpg" alt="Event image">
+        <img src="assets/images/music/lc1.jpg" alt="">
       </div>
 
-      <!-- THÔNG TIN -->
       <div class="event-detail-info">
-
         <h1 class="event-title">CONCERT NHẠC SỐNG ECHOES</h1>
 
         <div class="event-meta">
@@ -454,172 +36,90 @@
         </div>
 
         <div class="event-description">
-          [Mô tả sự kiện]  
-          Viết mô tả chi tiết về chương trình, nghệ sĩ tham gia, thời lượng, quy định vào cổng,
-          các lưu ý khi tham dự...
+          [Mô tả chi tiết sự kiện...]
         </div>
 
         <div class="event-cta">
           <div class="event-price">Từ 500.000đ</div>
-          <!-- LINK SANG TRANG ĐẶT VÉ -->
           <a href="booking.html" class="btn-book">ĐẶT VÉ NGAY</a>
         </div>
-
       </div>
 
     </div>
-
   </div>
 </section>
-<!-- ===== THÔNG TIN BỔ SUNG (TAB) ===== -->
+
+<!-- TABS -->
 <section class="event-tabs">
   <div class="section-content">
-
     <div class="tabs-card">
-      <div class="tabs-head" role="tablist" aria-label="Thông tin sự kiện">
-        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="benefit">
-          QUYỀN LỢI KHÁCH HÀNG
-        </button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-tab="rules">
-          QUY ĐỊNH BAN TỔ CHỨC
-        </button>
+
+      <div class="tabs-head">
+        <button class="tab-btn active" data-tab="benefit">QUYỀN LỢI KHÁCH HÀNG</button>
+        <button class="tab-btn" data-tab="rules">QUY ĐỊNH</button>
       </div>
 
       <div class="tabs-body">
-
-        <!-- TAB 1 -->
-        <div class="tab-panel active" id="benefit" role="tabpanel">
-          <h3 class="tab-title">Quyền lợi khách hàng</h3>
-
+        <div class="tab-panel active" id="benefit">
           <ul class="tab-list">
-            <li>Vé điện tử (QR) gửi qua email/SMS sau khi thanh toán thành công.</li>
-            <li>Ưu tiên check-in nhanh theo hạng vé (nếu có).</li>
-            <li>Nhận quà tặng/merch (áp dụng theo chương trình & hạng vé).</li>
-            <li>Hỗ trợ đổi thông tin người tham dự theo chính sách trước ngày diễn ra.</li>
+            <li>Vé điện tử (QR) gửi qua email/SMS sau khi thanh toán thành công.</li> 
+            <li>Ưu tiên check-in nhanh theo hạng vé (nếu có).</li> 
+            <li>Nhận quà tặng/merch (áp dụng theo chương trình & hạng vé).</li> 
+            <li>Hỗ trợ đổi thông tin người tham dự theo chính sách trước ngày diễn ra.</li> 
             <li>Được hỗ trợ từ đội CSKH trong giờ làm việc: <strong>[Bạn tự điền]</strong>.</li>
-          </ul>
-
-          <p class="tab-note">
-            * Quyền lợi cụ thể có thể thay đổi theo từng sự kiện. Vui lòng xem thông tin hạng vé khi đặt.
-          </p>
+          </ul><br>
+        <p class="tab-note"> * Quyền lợi cụ thể có thể thay đổi theo từng sự kiện. Vui lòng xem thông tin hạng vé khi đặt. </p>
         </div>
 
-        <!-- TAB 2 -->
-        <div class="tab-panel" id="rules" role="tabpanel">
-          <h3 class="tab-title">Quy định của ban tổ chức</h3>
-
+        <div class="tab-panel" id="rules">
           <ul class="tab-list">
             <li>Vui lòng đến trước giờ diễn <strong>60–90 phút</strong> để check-in.</li>
-            <li>Mỗi vé chỉ có giá trị vào cổng <strong>01 lần</strong>. Không chia sẻ mã QR.</li>
-            <li>Không mang vật sắc nhọn, chất dễ cháy nổ, đồ uống có cồn vào khu vực sự kiện.</li>
-            <li>Tuân thủ hướng dẫn của BTC/An ninh. BTC có quyền từ chối phục vụ nếu vi phạm.</li>
-            <li>BTC được quyền ghi hình/chụp ảnh và sử dụng cho mục đích truyền thông của sự kiện.</li>
-          </ul>
-
-          <p class="tab-note">
-            * Trường hợp bất khả kháng (thời tiết, kỹ thuật…), BTC có thể thay đổi lịch/format và sẽ thông báo qua kênh chính thức.
-          </p>
+             <li>Mỗi vé chỉ có giá trị vào cổng <strong>01 lần</strong>. Không chia sẻ mã QR.</li> 
+             <li>Không mang vật sắc nhọn, chất dễ cháy nổ, đồ uống có cồn vào khu vực sự kiện.</li>
+              <li>Tuân thủ hướng dẫn của BTC/An ninh. BTC có quyền từ chối phục vụ nếu vi phạm.</li> 
+              <li>BTC được quyền ghi hình/chụp ảnh và sử dụng cho mục đích truyền thông của sự kiện.</li> 
+            </ul> <br>
+            <p class="tab-note"> * Trường hợp bất khả kháng (thời tiết, kỹ thuật…), BTC có thể thay đổi lịch/format và sẽ thông báo qua kênh chính thức. </p>
         </div>
-
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
 
+<!-- FOOTER -->
+<div id="footer"></div>
 
-<!-- ===== FOOTER (ĐÃ THÊM) ===== -->
-<footer class="footer-wrap">
-  <div class="footer-container">
-    <div class="footer-card">
-
-      <div class="footer-top">
-
-        <div class="footer-brand">
-          <h2>ECHOES</h2>
-          <p>
-            [Mô tả ngắn về Echoes: nền tảng đặt vé concert & sự kiện, cập nhật lịch diễn...]
-          </p>
-
-          <div class="footer-social">
-            <a class="social-btn" href="#" aria-label="Facebook">fb</a>
-            <a class="social-btn" href="#" aria-label="Instagram">ig</a>
-            <a class="social-btn" href="#" aria-label="TikTok">tt</a>
-            <a class="social-btn" href="#" aria-label="YouTube">yt</a>
-          </div>
-        </div>
-
-        <div>
-          <h4 class="footer-title">Danh mục</h4>
-          <ul class="footer-links">
-            <li><a href="#">[Nhạc sống]</a></li>
-            <li><a href="#">[Sự kiện nổi bật]</a></li>
-            <li><a href="#">[Nghệ sĩ]</a></li>
-            <li><a href="#">[Địa điểm]</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-title">Hỗ trợ</h4>
-          <ul class="footer-links">
-            <li><a href="#">[Hướng dẫn đặt vé]</a></li>
-            <li><a href="#">[Câu hỏi thường gặp]</a></li>
-            <li><a href="#">[Chính sách hoàn/đổi]</a></li>
-            <li><a href="#">[Liên hệ]</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-title">Thông tin</h4>
-          <div class="footer-contact">
-            <div><span>Địa chỉ:</span> [Bạn tự điền]</div>
-            <div><span>Hotline:</span> [Bạn tự điền]</div>
-            <div><span>Email:</span> <a href="mailto:your@email.com">[Bạn tự điền]</a></div>
-            <div><span>Giờ làm việc:</span> [Bạn tự điền]</div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="footer-line"></div>
-
-      <div class="footer-bottom">
-        <div>© <span id="year"></span> Echoes. All rights reserved.</div>
-        <div>
-          <a href="#">[Điều khoản]</a> ·
-          <a href="#">[Chính sách bảo mật]</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</footer>
-
+<!-- FETCH HEADER & FOOTER -->
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-<script>
-  // Tabs switch
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.tab-panel');
+fetch('components/user_header.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('header').innerHTML = html;
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.tab;
+    if (window.authManager) authManager.updateHeaderUI();
 
-      tabBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      panels.forEach(p => p.classList.remove('active'));
-
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      document.getElementById(target).classList.add('active');
-    });
+    const s = document.createElement('script');
+    s.src = 'components/scroll_header.js';
+    document.body.appendChild(s);
   });
+
+fetch('components/footer.html')
+  .then(res => res.text())
+  .then(html => document.getElementById('footer').innerHTML = html);
 </script>
 
+<!-- TAB SCRIPT -->
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('.tab-btn,.tab-panel')
+      .forEach(el=>el.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  }
+});
+</script>
 
 </body>
 </html>
