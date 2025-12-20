@@ -490,20 +490,20 @@ export const concerts = {
     "• Địa điểm: Nhà hát Hồ Gươm - 40 Hàng Bài, Hoàn Kiếm, Hà Nội"
         ]
     },
-    "concert-nhac-song-4": {
-        id: "concert-nhac-song-4",
-        title: "Concert Nhạc Sống Đêm Gala",
-        date: "02/01/2026 - 20:00",
-        venue: "Nhà hát Opera, TP.HCM",
+    "anh-trai-vuot-ngan-chong-gai": {
+        id: "anh-trai-vuot-ngan-chong-gai",
+        title: "Anh trai vượt ngàn chông gai",
+        date: "07/09/2025 - 18:30",
+        venue: "The Global City",
         genre: "Classical, Pop",
-        duration: "Khoảng 2.5 giờ",
-        price: "Từ 700.000đ - 2.000.000đ",
-        status: "available",
-        image: "assets/images/concert/lc6.png",
-        poster: "assets/images/concert/lc6.png",
+        duration: "Khoảng 5 giờ",
+        price: "Từ 1.000.000đ - 10.000.000đ",
+        status: "expired",
+        image: "assets/images/concert/attvncg.png",
+        poster: "assets/images/concert/atvncg2.jpg",
         category: "concert",
         description: [
-            "Đêm gala âm nhạc đẳng cấp với sự kết hợp giữa nhạc cổ điển và hiện đại.",
+            "Đêm concert âm nhạc đẳng cấp với sự kết hợp giữa nhạc cổ điển và hiện đại.",
             "Trải nghiệm âm nhạc tinh tế trong không gian sang trọng."
         ],
         highlights: [
@@ -513,78 +513,127 @@ export const concerts = {
             "🍾 Tiệc cocktail sau chương trình"
         ],
         tickets: [
-            { type: "vip", name: "VIP", price: 2000000, status: "available" },
-            { type: "standard", name: "Standard", price: 1300000, status: "available" },
-            { type: "economy", name: "Economy", price: 700000, status: "available" }
+            { type: "vip", name: "VIP", price: 10000000, status: "expired" },
+            { type: "standard", name: "Standard", price: 70000000, status: "expired" },
+            { type: "economy", name: "Economy", price: 10000000, status: "expired" }
         ]
     },
-    "concert-nhac-song-5": {
-        id: "concert-nhac-song-5",
-        title: "Concert Nhạc Sống Xuân Mới",
-        date: "15/01/2026 - 19:00",
+    "em-xinh-say-hi": {
+        id: "em-xinh-say-hi",
+        title: "Concert Em xinh say Hi",
+        date: "11/10/2022 - 12:00",
         venue: "Sân vận động Mỹ Đình, Hà Nội",
-        genre: "Traditional, Modern",
-        duration: "Khoảng 3 giờ",
-        price: "Từ 300.000đ - 1.000.000đ",
+        genre: "Pop, Modern",
+        duration: "Khoảng 8 giờ",
+        price: "Từ 800.000đ - 5.000.000đ",
         status: "available",
-        image: "assets/images/concert/lc7.jpg",
-        poster: "assets/images/concert/lc7.jpg",
+        image: "assets/images/concert/exsh.jpg",
+        poster: "assets/images/concert/exsh.jpg",
         category: "concert",
         description: [
-            "Concert chào xuân với những giai điệu truyền thống và hiện đại.",
-            "Không khí lễ hội xuân tràn đầy niềm vui và hy vọng."
+            "Concert hoành tráng của Em Xinh với những ca khúc hit đình đám.",
+            "Một đêm nhạc đầy năng lượng và sôi động tại sân vận động Mỹ Đình."
         ],
+        
         highlights: [
-            "🌸 Chào đón mùa xuân mới",
-            "🎵 Nhạc truyền thống và hiện đại",
-            "🏮 Trang trí đậm chất Tết",
-            "🎁 Quà tặng may mắn"
+            "🎤 Em Xinh và dàn nghệ sĩ khách mời",
+            "🏟️ Sân vận động Mỹ Đình hoành tráng",
+            "🎵 Những ca khúc hit được yêu thích nhất",
+            "⚡ Không khí sôi động suốt 8 tiếng",
+            "🎆 Hiệu ứng ánh sáng và âm thanh đỉnh cao"
         ],
         tickets: [
-            { type: "vip", name: "VIP", price: 1000000, status: "available" },
-            { type: "standard", name: "Standard", price: 650000, status: "available" },
-            { type: "economy", name: "Economy", price: 300000, status: "available" }
-        ]
+            { type: "vip", name: "VIP", price: 5000000, status: "available" },
+            { type: "standard", name: "Standard", price: 3500000, status: "available" },
+            { type: "economy", name: "Economy", price: 800000, status: "available" }
+        ],
+        terms: [
+    "**I. ĐIỀU KIỆN VÀ ĐIỀU KHOẢN MUA VÉ:**",
+    "• Khi mua vé, người mua mặc nhiên đồng ý với các Điều kiện – Điều khoản của BTC và Quy định tham gia được ghi rõ tại Echoes",
+    "• Echoes là đơn vị phân phối vé độc quyền; BTC có quyền từ chối giải quyết các tranh chấp liên quan đến vé chuyển nhượng hoặc trao tặng không qua hệ thống",
+    "• Mỗi tài khoản được mua tối đa mười (10) vé. Một (1) mã vé có giá trị sử dụng cho một (1) người và một (1) lần duy nhất",
+    "",
+    "**QUY ĐỊNH ĐỘ TUỔI:**",
+    "• Khu vực đứng (GA): Dành cho người tham dự từ đủ 14 tuổi",
+    "• Khu vực khán đài ngồi (SVIP, VIP, CAT): Dành cho người tham dự từ đủ 06 tuổi",
+    "• Khán giả từ 06 đến dưới 18 tuổi phải mang theo giấy tờ tùy thân và có người thân (từ đủ 21 tuổi) đi cùng cùng hạng vé để bảo lãnh",
+    "",
+    "**QUY ĐỊNH HOÀN TRẢ & SỨC KHỎE:**",
+    "• Vé đã mua KHÔNG đổi, trả, nâng cấp, hủy hay hoàn tiền trong bất kỳ trường hợp nào; vé mất KHÔNG được cấp lại",
+    "• Phụ nữ mang thai và người khuyết tật chỉ được mua vé Khu khán đài ngồi để đảm bảo an toàn",
+    "• Khán giả cần tự cân nhắc và chịu trách nhiệm về tình trạng sức khỏe cá nhân khi tham gia chương trình",
+    "",
+    "**LƯU Ý QUAN TRỌNG:**",
+    "• Khán giả có trách nhiệm kiểm tra kỹ ngày giờ, địa điểm và giá vé trên đơn hàng trước khi thanh toán",
+    "• Cấm sử dụng vé cho mục đích thương mại hoặc khuyến mãi khi chưa có sự đồng ý bằng văn bản từ BTC",
+    "• BTC giữ quyền thu hồi vé vi phạm và đưa ra quyết định cuối cùng để đảm bảo thực tế tổ chức",
+    "",
+    "**HỖ TRỢ:** Mọi thắc mắc vui lòng liên hệ hotline Echoes để được giải quyết nhanh nhất."
+    ],
     },
-    "concert-nhac-song-6": {
-        id: "concert-nhac-song-6",
-        title: "Concert Nhạc Sống Valentine",
-        date: "14/02/2026 - 20:30",
-        venue: "Nhà hát Hồ Gươm, Hà Nội",
-        genre: "Romantic, Ballad",
-        duration: "Khoảng 2 giờ",
-        price: "Từ 500.000đ - 1.500.000đ",
+    "GD": {
+        id: "GD",
+        title: "G-DRAGON 2025 WORLD TOUR",
+        date: "09/11/2025 - 22:00",
+        venue: "Wonder Ocean City Vinhomes Ocean Park 3, Xã Nghĩa Trụ, Huyện Văn Giang, Tỉnh Hưng Yên",
+        genre: "K-Pop, Dance",
+        duration: "Khoảng 1 giờ",
+        price: "Từ 1.000.000đ - 5.000.000đ",
         status: "available",
-        image: "assets/images/concert/lc15.jpg",
-        poster: "assets/images/concert/lc15.jpg",
+        image: "assets/images/concert/GD.png",
+        poster: "assets/images/concert/GD.png",
         category: "concert",
         description: [
-            "Đêm nhạc lãng mạn dành cho các cặp đôi trong ngày Valentine.",
-            "Những ca khúc tình yêu bất hủ trong không gian ấm cúng."
+            "Lần đầu tiên G-Dragon mang World Tour đẳng cấp quốc tế đến Việt Nam.",
+            "Một đêm nhạc K-pop hoành tráng với những bản hit huyền thoại của 'Ông hoàng K-pop'."
         ],
         highlights: [
-            "💕 Đêm nhạc lãng mạn",
-            "🌹 Tặng hoa hồng cho các cặp đôi",
-            "🕯️ Ánh nến lung linh",
-            "💝 Quà tặng đặc biệt"
+            "👑 G-Dragon - 'Ông hoàng K-pop' đến Việt Nam",
+            "🌍 World Tour [Übermensch] đẳng cấp quốc tế",
+            "🎵 Những bản hit huyền thoại của GD",
+            "🎭 Sân khấu kỳ công với công nghệ hiện đại",
+            "⚡ Hệ thống âm thanh - ánh sáng mãn nhãn"
         ],
         tickets: [
-            { type: "vip", name: "VIP", price: 1500000, status: "limited" },
-            { type: "standard", name: "Standard", price: 1000000, status: "available" },
-            { type: "economy", name: "Economy", price: 500000, status: "available" }
-        ]
+            { type: "vip", name: "VIP", price: 5000000, status: "limited" },
+            { type: "standard", name: "Standard", price: 3000000, status: "available" },
+            { type: "economy", name: "Economy", price: 1000000, status: "available" }
+        ],
+        terms : [
+    "**G-DRAGON 2025 WORLD TOUR [Übermensch] IN HANOI**",
+    "Lần đầu tiên, \"Ông hoàng K-pop\" G-DRAGON chính thức mang chuỗi World Tour đẳng cấp quốc tế đến Việt Nam. Một đêm nhạc không chỉ để thưởng thức, mà còn để lưu giữ những ký ức rực rỡ nhất của thanh xuân.",
+    "",
+    "Sự kiện hứa hẹn bùng nổ với sân khấu kỳ công, hệ thống âm thanh - ánh sáng mãn nhãn và những bản hit huyền thoại đã làm nên tên tuổi của GD. Hãy sẵn sàng để hòa mình vào không gian nghệ thuật độc bản mà 8Wonder mang tới.",
+    "",
+    "**QUY ĐỊNH CHUNG & AN NINH:**",
+    "• Để đảm bảo an toàn, BTC có quyền kiểm tra tư trang của tất cả khán giả tại cổng an ninh.",
+    "• Khán giả nên tự bảo quản tài sản cá nhân; BTC không chịu trách nhiệm đối với các trường hợp mất mát, đánh cắp hoặc hư hỏng đồ đạc.",
+    "• BTC giữ quyền từ chối quyền tham gia hoặc mời ra khỏi khu vực biểu diễn đối với cá nhân vi phạm quy định mà không hoàn trả tiền vé.",
+    "",
+    "**QUY ĐỊNH GHI HÌNH & HÌNH ẢNH:**",
+    "• Sự kiện được ghi hình và thu âm chuyên nghiệp; một số khu vực có thể bị hạn chế tầm nhìn tạm thời do thiết bị kỹ thuật phục vụ sản xuất.",
+    "• Bằng việc tham dự, khán giả đồng ý để BTC sử dụng hình ảnh, giọng nói và tư liệu ghi hình tại sự kiện cho mục đích thương mại, quảng bá và truyền thông.",
+    "",
+    "**LƯU Ý QUAN TRỌNG:**",
+    "• Vui lòng tự ý thức bảo vệ sức khỏe và tuân thủ các chỉ dẫn của nhân viên điều phối tại hiện trường.",
+    "• Trong mọi tình huống phát sinh, quyết định của Ban Tổ Chức là quyết định cuối cùng.",
+    "",
+    "**THÔNG TIN TỔ CHỨC:**",
+    "• Đơn vị tổ chức: 8Wonder & VPBank",
+    "• Hotline hỗ trợ Echoes: 19001234"
+]
     },
-    "concert-nhac-song-7": {
-        id: "concert-nhac-song-7",
-        title: "Concert Nhạc Sống Mùa Hè",
-        date: "20/06/2026 - 19:30",
-        venue: "Công viên Thống Nhất, TP.HCM",
+    "waterbomb": {
+        id: "waterbomb",
+        title: "Concert WaterBomb",
+        date: "16/11/2025 - 14:30",
+        venue: "Vạn Phúc City",
         genre: "Pop, Dance",
-        duration: "Khoảng 3 giờ",
-        price: "Từ 400.000đ - 1.200.000đ",
+        duration: "Khoảng 6 giờ",
+        price: "Từ 1.000.000đ - 5.000.000đ",
         status: "available",
-        image: "assets/images/concert/lc9.jpg",
-        poster: "assets/images/concert/lc9.jpg",
+        image: "assets/images/concert/waterbomb.png",
+        poster: "assets/images/concert/waterbomb2.png",
         category: "concert",
         description: [
             "Concert ngoài trời sôi động trong không khí mùa hè.",
@@ -597,123 +646,175 @@ export const concerts = {
             "🎪 Hoạt động giải trí đa dạng"
         ],
         tickets: [
-            { type: "vip", name: "VIP", price: 1200000, status: "available" },
-            { type: "standard", name: "Standard", price: 800000, status: "available" },
-            { type: "economy", name: "Economy", price: 400000, status: "available" }
+            { type: "vip", name: "VIP", price: 5000000, status: "available" },
+            { type: "standard", name: "Standard", price: 3000000, status: "available" },
+            { type: "economy", name: "Economy", price: 1000000, status: "available" }
         ]
     },
-    "concert-nhac-song-8": {
-        id: "concert-nhac-song-8",
-        title: "Concert Nhạc Sống Đêm Trăng",
-        date: "15/08/2026 - 20:00",
-        venue: "Bờ hồ Hoàn Kiếm, Hà Nội",
-        genre: "Folk, Acoustic",
-        duration: "Khoảng 2 giờ",
-        price: "Từ 350.000đ - 900.000đ",
+    "YConcert": {
+        id: "YConcert",
+        title: "Y CONCERT 2025",
+        date: "20/12/2026 - 14:00",
+        venue: "VINHOMES OCEAN PARK 3",
+        genre: "Modern, Acoustic",
+        duration: "Khoảng 8 giờ",
+        price: "Từ 1.000.000đ - 5.000.000đ",
         status: "available",
-        image: "assets/images/concert/lc10.webp",
-        poster: "assets/images/concert/lc10.webp",
+        image: "assets/images/concert/concertY.jpg",
+        poster: "assets/images/concert/concertY.jpg",
         category: "concert",
         description: [
-            "Đêm nhạc thơ mộng bên bờ hồ Hoàn Kiếm dưới ánh trăng.",
-            "Không gian lãng mạn với những giai điệu folk nhẹ nhàng."
+            "Y Concert 2025 - Sự kiện âm nhạc bùng nổ dành cho giới trẻ tại Vinhomes Ocean Park 3.",
+            "Một đêm nhạc đầy năng lượng với sự kết hợp giữa âm nhạc hiện đại và acoustic."
         ],
         highlights: [
-            "🌙 Đêm nhạc dưới ánh trăng",
-            "🏞️ Bên bờ hồ Hoàn Kiếm",
-            "🎸 Nhạc folk acoustic",
-            "⭐ Không gian thơ mộng"
+            "🎵 Sự kiện âm nhạc bùng nổ cho giới trẻ",
+            "🏢 Tại Vinhomes Ocean Park 3 hiện đại",
+            "🎸 Kết hợp Modern và Acoustic độc đáo",
+            "⏰ Suốt 8 tiếng đầy năng lượng",
+            "🎭 Không gian trải nghiệm đa dạng"
         ],
         tickets: [
-            { type: "vip", name: "VIP", price: 900000, status: "available" },
-            { type: "standard", name: "Standard", price: 600000, status: "available" },
-            { type: "economy", name: "Economy", price: 350000, status: "available" }
-        ]
+            { type: "vip", name: "VIP", price: 5000000, status: "available" },
+            { type: "standard", name: "Standard", price: 3000000, status: "available" },
+            { type: "economy", name: "Economy", price: 1000000, status: "available" }
+        ],
+        terms: [
+    "**QUY ĐỊNH VỀ VÉ THAM DỰ SỰ KIỆN Y-CONCERT**",
+    "Sự kiện âm nhạc Y-Concert mang đến không gian bùng nổ cho giới trẻ. Để đảm bảo trải nghiệm tốt nhất, quý khán giả vui lòng tuân thủ các quy định sau đây.",
+    "",
+    "**QUY ĐỊNH ĐỘ TUỔI TỐI THIỂU:**",
+    "• Sự kiện không dành cho trẻ em dưới 14 tuổi.",
+    "• Khán giả từ 14 đến dưới 18 tuổi bắt buộc phải có người bảo hộ (từ 21 tuổi trở lên) đi cùng trong suốt chương trình.",
+    "• **Lưu ý đặc biệt:** HẠNG VÉ VIP KHÔNG PHỤC VỤ cho khán giả dưới 18 tuổi.",
+    "",
+    "**ĐỐI VỚI PHỤ NỮ MANG THAI:**",
+    "• BTC không khuyến khích phụ nữ mang thai tham dự sự kiện để đảm bảo an toàn tuyệt đối.",
+    "• Khán giả vui lòng cân nhắc kỹ lưỡng và tự chịu trách nhiệm về sức khỏe cá nhân. Nếu tham dự, nên chọn khu vực có ghế ngồi để đảm bảo an toàn.",
+    "• BTC không chịu trách nhiệm cho bất kỳ sự cố phát sinh nào liên quan đến sức khỏe của thai phụ.",
+    "",
+    "**HỖ TRỢ NGƯỜI SỬ DỤNG XE LĂN / NGƯỜI KHUYẾT TẬT:**",
+    "• BTC có bố trí khu vực chỗ ngồi dành riêng cho người tham dự sử dụng xe lăn tại địa điểm tổ chức.",
+    "• Vui lòng liên hệ với nhân viên điều phối tại cổng để được hướng dẫn di chuyển vào khu vực ưu tiên.",
+    "",
+    "**QUY ĐỊNH CHUNG:**",
+    "• Vé không đổi - trả - hoàn tiền dưới mọi hình thức sau khi thanh toán.",
+    "• Khán giả vui lòng xuất trình giấy tờ tùy thân (CCCD/Hộ chiếu) khi có yêu cầu kiểm tra từ BTC.",
+    "• Ban Tổ Chức giữ quyền quyết định cuối cùng trong mọi trường hợp tranh chấp.",
+    "",
+    "**THÔNG TIN HỖ TRỢ:** Hotline Y-Concert: [19001234]"
+    ]
     },
-    "concert-nhac-song-9": {
-        id: "concert-nhac-song-9",
-        title: "Concert Nhạc Sống Mùa Thu",
-        date: "22/10/2026 - 19:00",
+    "GS25": {
+        id: "GS25",
+        title: "GS25 MUSIC FESTIVAL 2025",
+        date: "22/11/2025 - 10:00",
         venue: "Nhà hát Lớn, TP.HCM",
-        genre: "Jazz, Blues",
-        duration: "Khoảng 2.5 giờ",
-        price: "Từ 600.000đ - 1.600.000đ",
+        genre: "Pop, Modern",
+        duration: "Khoảng 8 giờ",
+        price: "Từ 800.000đ - 3.000.000đ",
         status: "available",
-        image: "assets/images/concert/lc11.jpg",
-        poster: "assets/images/concert/lc11.jpg",
+        image: "assets/images/concert/GS25.jpg",
+        poster: "assets/images/concert/GS252.jpg",
         category: "concert",
         description: [
-            "Đêm nhạc jazz và blues trong không khí mùa thu se lạnh.",
-            "Thưởng thức những giai điệu sâu lắng và đầy cảm xúc."
+            "GS25 Music Festival 2025 - Đại nhạc hội 'Đu Đông Slay Đã' với những nghệ sĩ hàng đầu.",
+            "Một sự kiện âm nhạc hoành tráng kéo dài 8 tiếng đầy năng lượng và sôi động."
         ],
         highlights: [
-            "🍂 Không khí mùa thu",
-            "🎷 Nhạc jazz và blues",
-            "🍷 Đồ uống cao cấp",
-            "🎹 Nghệ sĩ tài năng"
+            "�  Đại nhạc hội 'Đu Đông Slay Đã'",
+            "�  Dàn nghệ sĩ hàng đầu Việt Nam",
+            "⏰ 8 tiếng âm nhạc liên tục",
+            "� Tại Nhà háit Lớn TP.HCM",
+            "🎭 Sân khấu hoành tráng và hiện đại"
         ],
         tickets: [
-            { type: "vip", name: "VIP", price: 1600000, status: "available" },
-            { type: "standard", name: "Standard", price: 1100000, status: "available" },
-            { type: "economy", name: "Economy", price: 600000, status: "available" }
+            { type: "vip", name: "VIP", price: 3000000, status: "available" },
+            { type: "standard", name: "Standard", price: 1500000, status: "available" },
+            { type: "economy", name: "Economy", price: 800000, status: "available" }
+        ],
+        terms: [
+            "**I. ĐIỀU KIỆN VÀ ĐIỀU KHOẢN MUA VÉ:**",
+            "Khi mua vé, tức là người mua đã đồng ý với các Điều Kiện và Điều Khoản của Ban tổ chức (\"BTC\") và Quy Định Tham Gia Chương Trình được ghi rõ tại Echoes.",
+            "",
+            "Echoes là đơn vị phân phối vé độc quyền của sự kiện GS25 Music Festival – Đu Đông Slay Đã. Echoes chịu trách nhiệm giải quyết vấn đề liên quan vé mua từ và có quyền từ chối không giải quyết các tranh chấp liên quan đến vé trao tặng, chuyển nhượng giữa các bên.",
+            "",
+            "**QUY ĐỊNH MUA VÉ:**",
+            "• Mỗi tài khoản được mua tối đa bốn (04) Vé",
+            "• Một (01) Mã Vé có giá trị sử dụng cho một (01) người và một (01) lần duy nhất",
+            "• Vé đã mua KHÔNG đổi, trả, nâng cấp, hủy hay hoàn tiền trong bất kì trường hợp nào",
+            "• Vé bị mất KHÔNG được xuất lại",
+            "",
+            "**QUY ĐỊNH ĐẶC BIỆT:**",
+            "• Phụ nữ mang thai và người khuyết tật chỉ được mua vé Khu khán đài ngồi",
+            "• Người Tham Dự cân nhắc và tự chịu trách nhiệm về sức khỏe khi tham gia Chương Trình",
+            "• BTC có quyền điều chỉnh, bổ sung nội dung Điều Kiện và Điều Khoản nếu xét thấy cần thiết để đảm bảo thực tế và tuân thủ theo yêu cầu của cơ quan chức năng",
+            "",
+            "**TRÁCH NHIỆM NGƯỜI THAM DỰ:**",
+            "• Người Tham Dự có trách nhiệm cần kiểm tra ngày giờ, địa điểm và giá vé trùng khớp với thông tin đơn hàng, nếu có bất cứ thay đổi nào trước khi sự kiện diễn ra",
+            "• Người Tham Dự KHÔNG được sử dụng vé để thực hiện các chương trình khuyến mãi",
+            "• Trong trường hợp vi phạm, BTC được quyền thu hồi vé đã mua và không hoàn lại tiền, không cho phép tham dự chương trình bằng những vé này và yêu cầu Người Tham Dự bồi thường thiệt hại",
+            "",
+            "**LƯU Ý:**",
+            "• Quy định này không áp dụng đối với các tổ chức, cá nhân đã đạt được thỏa thuận bằng văn bản với CÔNG TY TNHH GS 25 VIETNAM về việc sử dụng vé để khuyến mãi",
+            "• Trong mọi trường hợp, quyết định của BTC là quyết định cuối cùng",
+            "",
+            "**THÔNG TIN HỖ TRỢ:** Hotline Echoes: [19001234]"
         ]
     },
-    "concert-nhac-song-10": {
-        id: "concert-nhac-song-10",
-        title: "Concert Nhạc Sống Đặc Biệt",
-        date: "05/12/2026 - 20:30",
-        venue: "Cung Văn hóa Hữu nghị, Hà Nội",
-        genre: "World Music",
+    "concert-soobin": {
+        id: "concert-soobin",
+        title: "SOOBIN LIVE CONCERT: ALL-ROUNDER THE FINAL",
+        date: "29/11/2026 - 20:00",
+        venue: "THE GLOBAL CITY",
+        genre: "Pop, All-Genre",
         duration: "Khoảng 3 giờ",
-        price: "Từ 500.000đ - 1.400.000đ",
-        status: "sold",
-        image: "assets/images/concert/lc13.png",
-        poster: "assets/images/concert/lc13.png",
+        price: "Từ 800.000đ - 2.500.000đ",
+        status: "available",
+        image: "assets/images/concert/soobin.png",
+        poster: "assets/images/concert/soobin.png",
         category: "concert",
         description: [
-            "Concert đặc biệt với sự kết hợp của nhiều thể loại nhạc thế giới.",
-            "Hành trình âm nhạc xuyên suốt các nền văn hóa."
+            "Các all-rounders chờ đã lâu rồi phải không? Một lần nữa hãy cùng đắm chìm trong trải nghiệm sân khấu 'all around you'.",
+            "Để SOOBIN cùng âm nhạc luôn chuyển động bên bạn mọi lúc - mọi nơi nhé!"
         ],
         highlights: [
-            "🌍 Nhạc thế giới đa dạng",
-            "🎭 Kết hợp nhiều nền văn hóa",
-            "🎪 Biểu diễn đa phương tiện",
-            "🎨 Nghệ thuật tổng hợp"
+            "�  SOOBIN - All-rounder tài năng của Vpop",
+            "🎭 Sân khấu 'all around you' độc đáo",
+            "� Âm nhạic chuyển động mọi lúc mọi nơi",
+            "� Cohncert THE FINAL đặc biệt",
+            "💫 Trải nghiệm đa chiều cho all-rounders"
         ],
         tickets: [
-            { type: "vip", name: "VIP", price: 1400000, status: "sold" },
-            { type: "standard", name: "Standard", price: 950000, status: "sold" },
-            { type: "economy", name: "Economy", price: 500000, status: "sold" }
+            { type: "vip", name: "VIP", price: 2500000, status: "available" },
+            { type: "standard", name: "Standard", price: 1500000, status: "available" },
+            { type: "economy", name: "Economy", price: 800000, status: "available" }
+        ],
+        terms: [
+            "**SOOBIN LIVE CONCERT: ALL-ROUNDER THE FINAL**",
+            "Chào mừng các all-rounders đến với concert đặc biệt nhất trong năm! Đây là cơ hội để cùng SOOBIN trải nghiệm âm nhạc theo cách hoàn toàn mới với concept 'all around you'.",
+            "",
+            "**QUY ĐỊNH THAM GIA:**",
+            "• Concert dành cho khán giả từ 12 tuổi trở lên",
+            "• Khán giả dưới 16 tuổi phải có người bảo hộ (từ 18 tuổi) đi cùng",
+            "• Vé đã mua không đổi - trả - hoàn tiền dưới mọi hình thức",
+            "• Mỗi tài khoản được mua tối đa 6 vé",
+            "",
+            "**TRẢI NGHIỆM ĐẶC BIỆT:**",
+            "• Sân khấu 'all around you' với công nghệ 360 độ",
+            "• Âm nhạc chuyển động theo không gian",
+            "• Tương tác trực tiếp với SOOBIN",
+            "• Merchandise độc quyền cho all-rounders",
+            "",
+            "**LƯU Ý AN TOÀN:**",
+            "• Khán giả cần giữ gìn sức khỏe trong suốt 3 tiếng diễn ra concert",
+            "• Tuân thủ hướng dẫn của nhân viên về khu vực di chuyển",
+            "• Không mang đồ vật cứng có thể gây nguy hiểm",
+            "",
+            "**THÔNG TIN HỖ TRỢ:** Hotline All-rounders: [19001234]"
         ]
     },
-    "concert-nhac-song-11": {
-        id: "concert-nhac-song-11",
-        title: "Concert Nhạc Sống Kỷ Niệm",
-        date: "31/12/2026 - 22:00",
-        venue: "Sân khấu ngoài trời, Đà Nẵng",
-        genre: "Pop, Rock",
-        duration: "Khoảng 4 giờ",
-        price: "Từ 800.000đ - 2.200.000đ",
-        status: "expired",
-        image: "assets/images/concert/lc14.jpg",
-        poster: "assets/images/concert/lc14.jpg",
-        category: "concert",
-        description: [
-            "Concert kỷ niệm cuối năm với những màn trình diễn hoành tráng.",
-            "Đón chào năm mới với âm nhạc và pháo hoa rực rỡ."
-        ],
-        highlights: [
-            "🎊 Đón năm mới hoành tráng",
-            "🎆 Pháo hoa rực rỡ",
-            "🌊 Sân khấu bên bờ biển",
-            "🎉 Lễ hội âm nhạc lớn"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 2200000, status: "expired" },
-            { type: "standard", name: "Standard", price: 1500000, status: "expired" },
-            { type: "economy", name: "Economy", price: 800000, status: "expired" }
-        ]
-    }
+    
 };
 
 // Live Music Events Data

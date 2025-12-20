@@ -103,6 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update ticket price info
         displayTicketPriceInfo(data.tickets);
 
+        // Update booking button based on event status
+        updateBookingButton(data.status);
+
         // Load related events
         loadRelatedEvents(eventType, eventId);
 
@@ -136,6 +139,48 @@ document.addEventListener('DOMContentLoaded', function() {
             style: 'currency',
             currency: 'VND'
         }).format(price).replace('₫', 'đ');
+    }
+
+    function updateBookingButton(status) {
+        const btnBook = document.getElementById('btnBook');
+        
+        if (!btnBook) return;
+        
+        switch(status) {
+            case 'expired':
+                btnBook.textContent = 'HẾT HẠN';
+                btnBook.disabled = true;
+                btnBook.style.backgroundColor = '#6c757d';
+                btnBook.style.borderColor = '#6c757d';
+                btnBook.style.cursor = 'not-allowed';
+                btnBook.title = 'Sự kiện đã hết hạn';
+                break;
+            case 'sold':
+                btnBook.textContent = 'HẾT VÉ';
+                btnBook.disabled = true;
+                btnBook.style.backgroundColor = '#343a40';
+                btnBook.style.borderColor = '#343a40';
+                btnBook.style.cursor = 'not-allowed';
+                btnBook.title = 'Sự kiện đã hết vé';
+                break;
+            case 'limited':
+                btnBook.textContent = 'ĐẶT NGAY (CÒN ÍT)';
+                btnBook.disabled = false;
+                btnBook.style.backgroundColor = '#dc3545';
+                btnBook.style.borderColor = '#dc3545';
+                btnBook.style.cursor = 'pointer';
+                btnBook.title = 'Còn ít vé, đặt ngay!';
+                break;
+            case 'available':
+            default:
+                btnBook.textContent = 'ĐẶT NGAY';
+                btnBook.disabled = false;
+                btnBook.style.backgroundColor = '#74070d';
+                btnBook.style.borderColor = '#74070d';
+                btnBook.style.cursor = 'pointer';
+                btnBook.title = 'Đặt vé ngay';
+                break;
+        }
     }
 
     function loadRelatedEvents(currentEventType, currentEventId) {
@@ -240,6 +285,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleBooking() {
         if (!currentEventData) return;
         
+        // Check if event is expired or sold out
+        if (currentEventData.status === 'expired') {
+            // Don't show alert, button is already disabled
+            return;
+        }
+        
+        if (currentEventData.status === 'sold') {
+            // Don't show alert, button is already disabled
+            return;
+        }
+        
         // Prepare event data for booking page
         const eventData = {
             eventId: currentEventData.id,
@@ -257,6 +313,8 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('currentBookingEvent', JSON.stringify(eventData));
         
         // Show loading state
+        const btnBook = document.getElementById('btnBook');
+        const originalText = btnBook.textContent;
         btnBook.textContent = '🔄 Đang chuyển...';
         btnBook.disabled = true;
         
