@@ -63,5 +63,24 @@
 
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 <script src="scripts/ticketDetail.js"></script>
+  <div id="footer">
+        <script>
+        fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Lỗi khi tải footer:', error));
+        </script>
+    </div>
+    
+    <div id="loginModal" class="modal-overlay" style="display: none;">
+        <div class="modal-container" id="loginModal">
+            <div class="close-modal" onclick="closeModal()">&times;</div>
+            
+            <iframe src="accounts/SignUp_LogIn_Form.html"></iframe>
+        </div>
+    </div>
 </body>
 </html>
+
