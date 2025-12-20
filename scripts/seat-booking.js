@@ -362,7 +362,7 @@ class SeatBooking {
                 type: 'seat-booking'
             }));
             
-            window.location.href = `components/payment.html?type=seat-booking&bookingId=${bookingData.id}`;
+            window.location.href = `payment.html?type=seat-booking&bookingId=${bookingData.id}`;
         } else {
             alert('Có lỗi xảy ra khi lưu thông tin đặt vé. Vui lòng thử lại!');
         }

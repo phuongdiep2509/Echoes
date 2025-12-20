@@ -826,7 +826,7 @@ export const liveMusic = {
         venue: "Học viện Âm nhạc Quốc Gia Việt Nam, Hà Nội",
         genre: "Giao hưởng, Piano",
         duration: "Khoảng 2 giờ 30 phút",
-        price: "Từ 300.000đ - 800.000đ",
+        price: "Từ 500.000đ - 800.000đ",
         status: "available",
         image: "assets/images/music/lc1.jpg",
         poster: "assets/images/music/lc1.jpg",
@@ -844,8 +844,7 @@ export const liveMusic = {
             ],
         tickets: [
         { type: "vip", name: "VIP", price: 800000, status: "limited" },
-        { type: "standard", name: "Standard", price: 500000, status: "available" },
-        { type: "economy", name: "Economy", price: 300000, status: "available" }
+        { type: "standard", name: "Standard", price: 500000, status: "available" }
             ]
     },
     "concert-sketch-a-rose": {
@@ -855,7 +854,7 @@ export const liveMusic = {
   venue: "Saigon Opera House, TP.HCM",
   genre: "Pop Ballad, Live Band",
   duration: "Khoảng 2 giờ",
-  price: "Từ 400.000đ - 1.000.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc4.jpg",
   poster: "assets/images/music/lc4.jpg",
@@ -872,9 +871,8 @@ export const liveMusic = {
     "★ Khu vực check-in theo concept (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 1000000, status: "available" },
-    { type: "standard", name: "Standard", price: 700000, status: "available" },
-    { type: "economy", name: "Economy", price: 400000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -885,7 +883,7 @@ export const liveMusic = {
   venue: "Nhà hát Lớn Hà Nội",
   genre: "Giao hưởng, Nhạc thính phòng",
   duration: "Khoảng 2 giờ 30 phút",
-  price: "Từ 250.000đ - 600.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc16.jpg",
   poster: "assets/images/music/lc16.jpg",
@@ -902,9 +900,8 @@ export const liveMusic = {
     "★ Poster/photobooth kỷ niệm (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 600000, status: "available" },
-    { type: "standard", name: "Standard", price: 400000, status: "available" },
-    { type: "economy", name: "Economy", price: 250000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -915,7 +912,7 @@ export const liveMusic = {
   venue: "Nhà hát Tuổi trẻ, TP.HCM",
   genre: "Ballad, Acoustic",
   duration: "Khoảng 2 giờ",
-  price: "Từ 350.000đ - 900.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc2.jpg",
   poster: "assets/images/music/lc2.jpg",
@@ -932,9 +929,8 @@ export const liveMusic = {
     "★ Góc check-in theo concept (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 900000, status: "available" },
-    { type: "standard", name: "Standard", price: 600000, status: "available" },
-    { type: "economy", name: "Economy", price: 350000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -945,7 +941,7 @@ export const liveMusic = {
   venue: "Cà phê Acoustic, Hà Nội",
   genre: "Anime, Orchestral, Epic",
   duration: "Khoảng 2.5 giờ",
-  price: "Từ 200.000đ - 500.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc3.jpg",
   poster: "assets/images/music/lc3.jpg",
@@ -962,9 +958,8 @@ export const liveMusic = {
     "★ Góc check-in/standee theo concept (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 500000, status: "available" },
-    { type: "standard", name: "Standard", price: 350000, status: "available" },
-    { type: "economy", name: "Economy", price: 200000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -975,7 +970,7 @@ export const liveMusic = {
   venue: "Rock Club, TP.HCM",
   genre: "Christmas, Acoustic, Pop",
   duration: "Khoảng 3 giờ",
-  price: "Từ 300.000đ - 700.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc5.webp",
   poster: "assets/images/music/lc5.webp",
@@ -992,9 +987,8 @@ export const liveMusic = {
     "★ Check-in & quà mini (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 700000, status: "available" },
-    { type: "standard", name: "Standard", price: 500000, status: "available" },
-    { type: "economy", name: "Economy", price: 300000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -1005,7 +999,7 @@ export const liveMusic = {
   venue: "Soul Bar, TP.HCM",
   genre: "Symphonic, Anime, Epic",
   duration: "Khoảng 2.5 giờ",
-  price: "Từ 400.000đ - 1.000.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
         image: "assets/images/music/lc6.png",
         poster: "assets/images/music/lc6.png",
@@ -1021,9 +1015,8 @@ export const liveMusic = {
     "★ Visual/lighting theo nhịp nhạc (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 1000000, status: "limited" },
-    { type: "standard", name: "Standard", price: 700000, status: "available" },
-    { type: "economy", name: "Economy", price: 400000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "limited" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
     "attack-on-titan-freedom": {
@@ -1033,7 +1026,7 @@ export const liveMusic = {
   venue: "Beach Club, Đà Nẵng",
   genre: "Anime, Orchestral Rock, Epic",
   duration: "Khoảng 3 giờ",
-  price: "Từ 250.000đ - 600.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc7.jpg",
   poster: "assets/images/music/lc7.jpg",
@@ -1049,9 +1042,8 @@ export const liveMusic = {
     "★ Check-in concept (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 600000, status: "available" },
-    { type: "standard", name: "Standard", price: 425000, status: "available" },
-    { type: "economy", name: "Economy", price: 250000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
     "symphonic-anime": {
@@ -1061,7 +1053,7 @@ export const liveMusic = {
   venue: "Electronic Club, Hà Nội",
   genre: "Symphonic, Anime OST, Live Show",
   duration: "Khoảng 4 giờ",
-  price: "Từ 350.000đ - 800.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc15.jpg",
   poster: "assets/images/music/lc15.jpg",
@@ -1078,8 +1070,7 @@ export const liveMusic = {
   ],
   tickets: [
     { type: "vip", name: "VIP", price: 800000, status: "available" },
-    { type: "standard", name: "Standard", price: 575000, status: "available" },
-    { type: "economy", name: "Economy", price: 350000, status: "available" }
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -1090,7 +1081,7 @@ export const liveMusic = {
   venue: "Cultural Center, TP.HCM",
   genre: "Anime OST, J-Pop, Live Band",
   duration: "Khoảng 2.5 giờ",
-  price: "Từ 400.000đ - 950.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc9.jpg",
   poster: "assets/images/music/lc9.jpg",
@@ -1106,9 +1097,8 @@ export const liveMusic = {
     "★ Cosplay/check-in (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 950000, status: "available" },
-    { type: "standard", name: "Standard", price: 675000, status: "available" },
-    { type: "economy", name: "Economy", price: 400000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
   
@@ -1119,7 +1109,7 @@ export const liveMusic = {
   venue: "Art Space, Hà Nội",
   genre: "Film Score, Ambient, Storytelling",
   duration: "Khoảng 2 giờ",
-  price: "Từ 300.000đ - 700.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc10.webp",
   poster: "assets/images/music/lc10.webp",
@@ -1135,9 +1125,8 @@ export const liveMusic = {
     "★ Không gian nghệ thuật phù hợp concept"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 700000, status: "available" },
-    { type: "standard", name: "Standard", price: 500000, status: "available" },
-    { type: "economy", name: "Economy", price: 300000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
      "shinsekai-childhood-memory": {
@@ -1147,7 +1136,7 @@ export const liveMusic = {
   venue: "Fusion Hall, TP.HCM",
   genre: "Neo-Classical, Piano, Nostalgia",
   duration: "Khoảng 3 giờ",
-  price: "Từ 450.000đ - 1.100.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "sold",
   image: "assets/images/music/lc11.jpg",
   poster: "assets/images/music/lc11.jpg",
@@ -1163,9 +1152,8 @@ export const liveMusic = {
     "★ Trải nghiệm nghe tập trung"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 1100000, status: "sold" },
-    { type: "standard", name: "Standard", price: 775000, status: "sold" },
-    { type: "economy", name: "Economy", price: 450000, status: "sold" }
+    { type: "vip", name: "VIP", price: 800000, status: "sold" },
+    { type: "standard", name: "Standard", price: 500000, status: "sold" }
   ]
 },
 "concert-to-the-line": {
@@ -1175,7 +1163,7 @@ export const liveMusic = {
   venue: "Intimate Venue, Đà Lạt",
   genre: "Unplugged, Acoustic, Ballad",
   duration: "Khoảng 2 giờ",
-  price: "Từ 250.000đ - 600.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "expired",
   image: "assets/images/music/lc13.png",
   poster: "assets/images/music/lc13.png",
@@ -1191,9 +1179,8 @@ export const liveMusic = {
     "★ Trải nghiệm nghe “ấm” và yên"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 600000, status: "expired" },
-    { type: "standard", name: "Standard", price: 425000, status: "expired" },
-    { type: "economy", name: "Economy", price: 250000, status: "expired" }
+    { type: "vip", name: "VIP", price: 800000, status: "expired" },
+    { type: "standard", name: "Standard", price: 500000, status: "expired" }
   ]
 },
 }

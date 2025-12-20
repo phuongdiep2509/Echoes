@@ -303,9 +303,18 @@ document.addEventListener('DOMContentLoaded', function() {
         btnBook.textContent = '🔄 Đang chuyển...';
         btnBook.disabled = true;
         
-        // Redirect to seat booking page
+        // Determine booking page based on event category
+        let bookingPage;
+        if (currentEventData.category === 'live-music') {
+            bookingPage = `booking.html?eventId=${currentEventData.id}`;
+        } else {
+            // Default to seat-booking for concerts
+            bookingPage = `seat-booking.html?eventId=${currentEventData.id}`;
+        }
+        
+        // Redirect to appropriate booking page
         setTimeout(() => {
-            window.location.href = `seat-booking.html?eventId=${currentEventData.id}`;
+            window.location.href = bookingPage;
         }, 1000);
     }
 });

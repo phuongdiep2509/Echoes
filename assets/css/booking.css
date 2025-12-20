@@ -1,259 +1,114 @@
-/* Wrapper container */
-.seat-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    padding: 0 20px;
-}
+/* Music Booking Styles */
 
-/* CSS cho phòng nhạc thính phòng */
+/* Seat Selection Styles */
 .seatBox {
-    max-width: 100%;
-    width: 100%;
-    margin: 0 auto;
-    padding: 30px;
-    background: var(--color-green);
+    background: #f8f9fa;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    overflow-x: auto;
-    min-width: 600px; /* Đảm bảo có đủ không gian cho layout */
+    padding: 30px;
+    margin: 20px 0;
 }
 
-/* Sân khấu */
 .stage {
-    background: #666;
+    background: linear-gradient(135deg, #74070d, #a50a12);
     color: white;
     text-align: center;
-    padding: 20px 10px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(112, 112, 112, 0.3);
-    position: relative;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .stage-text {
-    font-size: 14px;
     font-weight: bold;
-    letter-spacing: 1px;
+    font-size: 18px;
+    letter-spacing: 2px;
 }
 
-.stage::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-}
-
-/* Khoảng cách giữa các khu vực */
-.row-spacer {
-    height: 30px;
-}
-
-/* Container cho mỗi section ghế */
 .seat-section {
-    margin-bottom: 30px;
-    width: 100%;
-    overflow-x: auto;
+    margin-bottom: 20px;
 }
 
-/* Container cho mỗi hàng (chứa 2 khối + lối đi) */
 .row-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
-    gap: 0;
-    min-width: fit-content;
+    margin-bottom: 8px;
 }
 
-/* Hàng ghế trong mỗi khối */
 .seat-row {
     display: flex;
-    gap: 4px;
-    flex-shrink: 0;
+    gap: 5px;
 }
 
-/* Lối đi giữa 2 khối */
+.left-block, .right-block {
+    display: flex;
+    gap: 5px;
+}
+
 .aisle {
-    width: 60px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    flex-shrink: 0;
+    width: 40px;
+    margin: 0 10px;
 }
 
-.aisle::after {
-    content: '';
-    width: 2px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 1px;
-}
-
-/* Khối ghế bên trái và phải */
-.left-block,
-.right-block {
-    display: flex;
-    gap: 4px;
-    flex-shrink: 0;
-}
-
-/* VIP Section */
-.vip-section .row-container {
-    justify-content: center;
-}
-
-/* Standard Section - tạo hiệu ứng cong */
-.standard-section {
-    perspective: 1000px;
-}
-
-.standard-section .row-container {
-    transform: rotateX(6deg);
-    margin-bottom: 15px;
-}
-
-.standard-section .row-container:nth-child(1) {
-    transform: rotateX(6deg) translateZ(10px);
-}
-
-.standard-section .row-container:nth-child(2) {
-    transform: rotateX(6deg) translateZ(20px);
-}
-
-.standard-section .row-container:nth-child(3) {
-    transform: rotateX(6deg) translateZ(30px);
-}
-
-.standard-section .left-block {
-    transform: rotateY(2deg);
-}
-
-.standard-section .right-block {
-    transform: rotateY(-2deg);
-}
-
-/* Ghế chung */
 .seat {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
-    color: white;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
+    background: white;
 }
 
-.seat::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-}
-
-.seat:hover::before {
-    left: 100%;
-}
-
-/* Ghế VIP */
 .seat-vip {
-    background: #ead1a4;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    border-color: #d4af37;
     color: #8b4513;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
 }
 
-.seat-vip:hover {
-    background: linear-gradient(135deg, #f3e3b2, #f3e3b2e5);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
-}
-
-/* Ghế Standard */
 .seat-standard {
-    background: linear-gradient(135deg, #e9cd76, #e9cc76c9);
-    color: #1b1b1b;
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #46462a, #5a5a35);
+    border-color: #3a3a22;
+    color: white;
 }
 
-.seat-standard:hover {
-    background: linear-gradient(135deg, #f1d98e, #f1d88ec5);  
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
-}
-
-/* Ghế đã chọn */
-.seat.selected {
-    background: var(--color-red) !important;
-    color: white !important;
-    border: 2px solid #fff;
+.seat:hover:not(.selected) {
     transform: scale(1.1);
-    box-shadow: 0 6px 25px var(--color-red);
-    animation: pulse 1.5s infinite;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-@keyframes pulse {
-    0% {
-        box-shadow: 0 6px 25px var(--color-red);;
-    }
-    50% {
-        box-shadow: 0 6px 25px var(--color-red);;
-    }
-    100% {
-        box-shadow: 0 6px 25px var(--color-red);;
-    }
+.seat.selected {
+    background: linear-gradient(135deg, #74070d, #a50a12) !important;
+    border-color: #74070d !important;
+    color: white !important;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(116, 7, 13, 0.4);
 }
 
-/* Ghế không khả dụng */
-.seat.unavailable {
-    background: #666 !important;
-    color: #999 !important;
-    cursor: not-allowed;
-    opacity: 0.5;
+.row-spacer {
+    height: 15px;
 }
 
-.seat.unavailable:hover {
-    transform: none;
-    box-shadow: none;
-}
-
-/* Chú thích ghế */
 .seat-legend {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     margin-top: 30px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    background: white;
     border-radius: 10px;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: white;
+    gap: 8px;
     font-size: 14px;
 }
 
@@ -261,142 +116,221 @@
     width: 20px;
     height: 20px;
     border-radius: 4px;
+    border: 2px solid #ddd;
 }
 
 .legend-vip {
-    background: linear-gradient(135deg, #f3e3b2, #f3e3b2e5);
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    border-color: #d4af37;
 }
 
 .legend-standard {
-    background: linear-gradient(135deg, #e9cd76, #e9cc76c9);
+    background: linear-gradient(135deg, #46462a, #5a5a35);
+    border-color: #3a3a22;
 }
 
 .legend-selected {
-    background: var(--color-red);
+    background: linear-gradient(135deg, #74070d, #a50a12);
+    border-color: #74070d;
 }
 
 .legend-unavailable {
-    background: #888888;
+    background: #6c757d;
+    border-color: #495057;
 }
 
-/* Responsive */
+/* Ticket Info Styles */
+.music-ticket {
+    background: #27271a;
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    position: sticky;
+    top: 120px;
+}
+
+.music-infomation {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.music-image {
+    width: 120px;
+    height: 160px;
+    margin-right: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.music-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.music-content .music-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.music-note {
+    background-color: var(--color-green);
+    color: white;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.cinema, .schedule {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.seat-info-container {
+    border-top: 2px dashed #666;
+    padding-top: 15px;
+    margin: 15px 0;
+}
+
+.seat-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+}
+
+.seat-selected .seat-total {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.seat-selected .seat-number {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.seat-price {
+    font-weight: 600;
+    color: #ffd700;
+}
+
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px dashed #666;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.total-price-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.total-price-number {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffd700;
+}
+
+/* Button Styles */
+.button-next, .button-prev, .button-gift {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.button-next {
+    background-color: var(--color-red);
+    color: white;
+}
+
+.button-next:hover:not(.disabled) {
+    background-color: #a50a12;
+    transform: translateY(-2px);
+}
+
+.button-next.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.button-gift {
+    background-color: #ff6b35;
+    color: white;
+}
+
+.button-gift:hover:not(.disabled) {
+    background-color: #e55a2b;
+    transform: translateY(-2px);
+}
+
+.button-gift.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.button-prev {
+    background-color: var(--color-green);
+    color: var(--color-yellow);
+}
+
+.button-prev:hover {
+    background-color: #5a5a35;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+    .music-ticket {
+        position: static;
+        margin-top: 20px;
+    }
+    
     .seatBox {
-        padding: 10px;
+        padding: 15px;
     }
     
     .seat {
-        width: 28px;
-        height: 28px;
-        font-size: 8px;
-    }
-    
-    .seat-row {
-        gap: 3px;
-    }
-    
-    .row-container {
-        margin-bottom: 8px;
-    }
-    
-    .aisle {
-        width: 40px;
-        height: 28px;
-    }
-    
-    .stage-text {
-        font-size: 12px;
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
     }
     
     .seat-legend {
         flex-wrap: wrap;
         gap: 10px;
-        padding: 15px;
     }
     
-    .legend-item {
-        font-size: 12px;
+    .music-infomation {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .music-image {
+        width: 100px;
+        height: 130px;
+        margin: 0 auto 15px auto;
     }
 }
 
-@media (max-width: 480px) {
-    .seatBox {
-        padding: 8px;
-    }
-    
-    .seat {
-        width: 24px;
-        height: 24px;
-        font-size: 7px;
-    }
-    
-    .seat-row {
-        gap: 5px;
-    }
-    
-    .aisle {
-        width: 30px;
-        height: 24px;
-    }
-    
-    .row-container {
-        margin-bottom: 6px;
-    }
-    
-    .standard-section .row-container {
-        transform: rotateX(3deg);
-    }
-    
-    .standard-section .row-container:nth-child(1) {
-        transform: rotateX(3deg) translateZ(5px);
-    }
-    
-    .standard-section .row-container:nth-child(2) {
-        transform: rotateX(3deg) translateZ(10px);
-    }
-    
-    .standard-section .row-container:nth-child(3) {
-        transform: rotateX(3deg) translateZ(15px);
-    }
-    
-    .standard-section .left-block,
-    .standard-section .right-block {
-        transform: none; /* Tắt hiệu ứng xoay ngang trên mobile */
-    }
-    
-    .stage-text {
-        font-size: 10px;
-    }
-    
-    .seat-legend {
-        padding: 10px;
-        gap: 8px;
-    }
-    
-    .legend-item {
-        font-size: 11px;
-    }
-    
-    .legend-seat {
-        width: 16px;
-        height: 16px;
-    }
-}
-
-/* Responsive cho màn hình rất nhỏ */
-@media (max-width: 360px) {
-    .seat {
-        width: 20px;
-        height: 20px;
-        font-size: 6px;
-    }
-    
-    .seat-row {
-        gap: 1px;
-    }
-    
-    .aisle {
-        width: 25px;
-        height: 20px;
-    }
-}

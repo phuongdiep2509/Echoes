@@ -8,10 +8,15 @@ let allLiveMusic = []; // toàn bộ entries
 let allEvents = [];    // entries dùng cho grid (không trùng trending)
 
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOM loaded, initializing live music...');
+  console.log('liveMusic data:', liveMusic);
+  
   allLiveMusic = Object.entries(liveMusic);
+  console.log('allLiveMusic entries:', allLiveMusic.length);
 
   // ✅ Bỏ 3 sự kiện đầu ra khỏi grid để không bị lặp
   allEvents = allLiveMusic.slice(TRENDING_COUNT);
+  console.log('allEvents entries:', allEvents.length);
 
   renderTrendingList();
   renderEventList();
@@ -20,7 +25,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function renderTrendingList() {
   const container = document.getElementById('trending-list');
+  console.log('Trending container:', container);
+  
+  if (!container) {
+    console.error('trending-list container not found!');
+    return;
+  }
+  
   const trendingEvents = allLiveMusic.slice(0, TRENDING_COUNT);
+  console.log('Rendering trending events:', trendingEvents.length);
 
   container.innerHTML = trendingEvents.map(([id, event]) => `
     <div class="trending-item" onclick="location.href='eventDetail.html?id=${id}&type=live-music'">
@@ -34,14 +47,24 @@ function renderTrendingList() {
       </div>
     </div>
   `).join('');
+  
+  console.log('Trending list rendered');
 }
 
 function renderEventList() {
   const container = document.getElementById('event-list');
+  console.log('Event list container:', container);
+  
+  if (!container) {
+    console.error('event-list container not found!');
+    return;
+  }
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const pageItems = allEvents.slice(startIndex, endIndex);
+  
+  console.log('Rendering events for page', currentPage, ':', pageItems.length);
 
   container.innerHTML = pageItems.map(([id, event]) => `
     <div class="event-wrapper" onclick="location.href='eventDetail.html?id=${id}&type=live-music'">
@@ -56,6 +79,8 @@ function renderEventList() {
       </div>
     </div>
   `).join('');
+  
+  console.log('Event list rendered');
 }
 
 function setupPagination() {

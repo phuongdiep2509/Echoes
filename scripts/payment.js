@@ -14,10 +14,10 @@ const PROMOTIONS = [
 ];
 
 const PAYMENTS = [
-    { id: 'momo', name: 'Ví MoMo', img: '../assets/images/bankings/momo.png' },
-    { id: 'shopeepay', name: 'ShopeePay', img: '../assets/images/bankings/shopeepay.png' },
-    { id: 'vnpay', name: 'VNPay', img: '../assets/images/bankings/vnpay.png' },
-    { id: 'zalopay', name: 'ZaloPay', img: '../assets/images/bankings/zalopay.png' },
+    { id: 'momo', name: 'Ví MoMo', img: 'assets/images/bankings/momo.png' },
+    { id: 'shopeepay', name: 'ShopeePay', img: 'assets/images/bankings/shopeepay.png' },
+    { id: 'vnpay', name: 'VNPay', img: 'assets/images/bankings/vnpay.png' },
+    { id: 'zalopay', name: 'ZaloPay', img: 'assets/images/bankings/zalopay.png' },
     { id: 'visa', name: 'Visa/Mastercard', img: 'https://img.icons8.com/color/48/visa.png' },
     { id: 'atm', name: 'Thẻ ATM', img: 'https://img.icons8.com/color/48/bank-card-back-side.png' }
 ];
@@ -50,28 +50,14 @@ function init() {
 
 // Load ticket data
 function loadTicket() {
-    // Check URL parameters for booking type
-    const urlParams = new URLSearchParams(window.location.search);
-    const bookingType = urlParams.get('type');
-    const bookingId = urlParams.get('bookingId');
+    console.log('Loading ticket data...');
     
-    // Handle seat booking or regular booking
-    if ((bookingType === 'seat-booking' || bookingType === 'booking') && bookingId) {
-        const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
-        const booking = bookings.find(b => b.id === bookingId);
-        
-        if (booking) {
-            // Debug log
-            console.log('Found booking:', booking);
-            console.log('Original eventImage:', booking.eventImage);
-            
-            // Fix image path for payment page (in components folder)
-            let imagePath = booking.eventImage;
-            if (imagePath && !imagePath.startsWith('http') && !imagePath.startsWith('../')) {
-                imagePath = '../' + imagePath;
-            }
-            
-            console.log('Fixed imagePath:', imagePath);
+    // First try to get from sessionStorage (most recent booking)
+    const currentBooking = sessionStorage.getItem('currentBookingData');
+    if (currentBooking) {
+        try {
+            const booking = JSON.parse(currentBooking);
+            console.log('Found current booking in sessionStorage:', booking);
             
             state.ticket = {
                 title: booking.eventName,
@@ -83,9 +69,45 @@ function loadTicket() {
                 price: booking.price,
                 quantity: booking.quantity,
                 totalPrice: booking.totalAmount,
-                img: imagePath || '../assets/images/index/main_banner_1.png',
+                img: booking.eventImage || 'assets/images/index/main_banner_1.png', // No ../ prefix needed
                 bookingId: booking.id
             };
+            
+            console.log('Set ticket state:', state.ticket);
+            return;
+        } catch (e) {
+            console.error('Error parsing current booking:', e);
+        }
+    }
+    
+    // Check URL parameters for booking type
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookingType = urlParams.get('type');
+    const bookingId = urlParams.get('bookingId');
+    
+    // Handle seat booking or regular booking
+    if ((bookingType === 'seat-booking' || bookingType === 'booking') && bookingId) {
+        const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
+        const booking = bookings.find(b => b.id === bookingId);
+        
+        if (booking) {
+            console.log('Found booking by ID:', booking);
+            
+            state.ticket = {
+                title: booking.eventName,
+                location: booking.venue,
+                date: booking.eventDate,
+                time: booking.eventTime,
+                type: booking.ticketType,
+                seatSection: booking.seatSection,
+                price: booking.price,
+                quantity: booking.quantity,
+                totalPrice: booking.totalAmount,
+                img: booking.eventImage || 'assets/images/index/main_banner_1.png', // No ../ prefix needed
+                bookingId: booking.id
+            };
+            
+            console.log('Set ticket state from booking ID:', state.ticket);
             return;
         }
     }
@@ -95,20 +117,28 @@ function loadTicket() {
     if (saved) {
         try {
             const ticketData = JSON.parse(saved);
-            // Fix image path for payment page (in components folder)
-            if (ticketData.img && !ticketData.img.startsWith('http') && !ticketData.img.startsWith('../')) {
-                ticketData.img = '../' + ticketData.img;
+            console.log('Found legacy selectedTicket:', ticketData);
+            
+            // Fix image path - remove ../ prefix since payment.html is in root
+            if (ticketData.img && ticketData.img.startsWith('../')) {
+                ticketData.img = ticketData.img.substring(3);
             }
+            
             // Ensure image field exists
             if (!ticketData.img) {
-                ticketData.img = '../assets/images/index/main_banner_1.png';
+                ticketData.img = 'assets/images/index/main_banner_1.png';
             }
+            
             state.ticket = ticketData;
+            console.log('Set ticket state from legacy:', state.ticket);
             return;
-        } catch (e) {}
+        } catch (e) {
+            console.error('Error parsing legacy ticket:', e);
+        }
     }
     
     // Demo data
+    console.log('Using demo data');
     state.ticket = {
         title: 'Echoes Concert 2024',
         location: 'Nhà hát Hòa Bình, TP.HCM',
@@ -117,7 +147,7 @@ function loadTicket() {
         type: 'VIP',
         price: 500000,
         quantity: 1,
-        img: '../assets/images/index/main_banner_1.png'
+        img: 'assets/images/index/main_banner_1.png'
     };
 }
 
@@ -130,7 +160,15 @@ function renderAll() {
 
 function renderTicket() {
     const t = state.ticket;
-    document.getElementById('ticket-img').src = t.img;
+    console.log('Rendering ticket with image:', t.img);
+    
+    const imgElement = document.getElementById('ticket-img');
+    imgElement.src = t.img;
+    imgElement.onerror = function() {
+        console.log('Image failed to load, using fallback');
+        this.src = 'assets/images/index/main_banner_1.png';
+    };
+    
     document.getElementById('ticket-title').textContent = t.title;
     document.getElementById('ticket-loc').innerHTML = `<i class="fas fa-map-marker-alt me-1"></i>${t.location}`;
     document.getElementById('ticket-time').innerHTML = `<i class="fas fa-clock me-1"></i>${t.time}`;
@@ -363,7 +401,7 @@ function showSuccess() {
 
 // Function to view tickets after payment
 window.viewMyTickets = function() {
-    window.location.href = '../myTicket.html?from=payment';
+    window.location.href = 'myTicket.html?from=payment';
 };
 
 // Export for booking page
