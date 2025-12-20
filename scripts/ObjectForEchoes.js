@@ -1194,6 +1194,8 @@ export const merchandise = {
         image: "assets/images/merch/merch1.png",
         category: "accessories",
         description: "Khăn bandana phong cách Gothic với họa tiết Wonder Hallows độc đáo.",
+        material: "Lụa bóng",
+        size: "60 × 60 cm",
         inStock: true
     },
     "echo-keyring": {
@@ -1203,6 +1205,8 @@ export const merchandise = {
         image: "assets/images/merch/merch2.png",
         category: "accessories",
         description: "Móc khóa Echo với thiết kế Wonder Hallows tinh tế.",
+        material: "Kim loại mạ vàng",
+        size: "5 × 3 cm",
         inStock: true
     },
     "anh-trai-bandana": {
@@ -1212,6 +1216,8 @@ export const merchandise = {
         image: "assets/images/merch/merch3.png",
         category: "accessories",
         description: "Khăn bandana chính thức từ concert Anh Trai Say Hi.",
+        material: "Cotton cao cấp",
+        size: "55 × 55 cm",
         inStock: true
     },
     "anh-trai-lightstick": {
@@ -1221,6 +1227,8 @@ export const merchandise = {
         image: "assets/images/merch/merch4.png",
         category: "lightstick",
         description: "Lightstick chính thức với hiệu ứng ánh sáng đặc biệt.",
+        material: "Nhựa ABS + LED",
+        size: "25 cm (dài)",
         inStock: true
     },
     "em-xinh-lightstick": {
@@ -1230,6 +1238,8 @@ export const merchandise = {
         image: "assets/images/merch/merch5.png",
         category: "lightstick",
         description: "Lightstick Em Xinh với aura đặc biệt và màu sắc rực rỡ.",
+        material: "Nhựa ABS + LED RGB",
+        size: "25 cm (dài)",
         inStock: true
     },
     "em-xinh-cap": {
@@ -1239,6 +1249,8 @@ export const merchandise = {
         image: "assets/images/merch/merch6.png",
         category: "clothing",
         description: "Mũ lưỡi trai Em Xinh với slogan độc đáo và thiết kế trendy.",
+        material: "Cotton twill",
+        size: "Free size (56-60 cm)",
         inStock: true
     },
     "kingdom-stick": {
@@ -1248,6 +1260,8 @@ export const merchandise = {
         image: "assets/images/merch/merch7.png",
         category: "lightstick",
         description: "Lightstick phiên bản giới hạn đầu tiên với công nghệ cao cấp.",
+        material: "Nhựa ABS + LED + Bluetooth",
+        size: "30 cm (dài)",
         inStock: false
     },
     "all-rounder-tote": {
@@ -1257,6 +1271,8 @@ export const merchandise = {
         image: "assets/images/merch/merch8.png",
         category: "accessories",
         description: "Túi tote đa năng với thiết kế minimalist và chất liệu bền đẹp.",
+        material: "Canvas cotton",
+        size: "40 × 35 × 10 cm",
         inStock: true
     }
 };

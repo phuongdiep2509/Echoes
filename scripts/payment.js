@@ -52,6 +52,40 @@ function init() {
 function loadTicket() {
     console.log('Loading ticket data...');
     
+    // Check if this is a merchandise purchase
+    const urlParams = new URLSearchParams(window.location.search);
+    const purchaseType = urlParams.get('type');
+    
+    if (purchaseType === 'merchandise') {
+        const merchandiseData = sessionStorage.getItem('currentMerchandiseData');
+        if (merchandiseData) {
+            try {
+                const merch = JSON.parse(merchandiseData);
+                console.log('Found merchandise data:', merch);
+                
+                state.ticket = {
+                    title: merch.productName,
+                    location: 'Giao hàng tận nơi',
+                    date: 'Giao trong 3-5 ngày',
+                    time: 'Thời gian giao hàng: 8:00 - 18:00',
+                    type: merch.category,
+                    seatSection: `${merch.material} - ${merch.size}`,
+                    price: merch.price,
+                    quantity: merch.quantity,
+                    totalPrice: merch.totalAmount,
+                    img: merch.productImage || 'assets/images/merch/merch1.png',
+                    bookingId: merch.id,
+                    isMerchandise: true
+                };
+                
+                console.log('Set merchandise ticket state:', state.ticket);
+                return;
+            } catch (e) {
+                console.error('Error parsing merchandise data:', e);
+            }
+        }
+    }
+    
     // First try to get from sessionStorage (most recent booking)
     const currentBooking = sessionStorage.getItem('currentBookingData');
     if (currentBooking) {
@@ -81,7 +115,6 @@ function loadTicket() {
     }
     
     // Check URL parameters for booking type
-    const urlParams = new URLSearchParams(window.location.search);
     const bookingType = urlParams.get('type');
     const bookingId = urlParams.get('bookingId');
     
@@ -174,11 +207,21 @@ function renderTicket() {
     document.getElementById('ticket-time').innerHTML = `<i class="fas fa-clock me-1"></i>${t.time}`;
     document.getElementById('event-date').textContent = t.date;
     
-    // Handle seat booking display
-    if (t.seatSection) {
-        document.getElementById('ticket-zone').textContent = `${t.quantity || 1}x Vé ${t.type} (${t.seatSection})`;
+    // Handle merchandise vs ticket display
+    if (t.isMerchandise) {
+        // For merchandise, show product details
+        if (t.seatSection) {
+            document.getElementById('ticket-zone').textContent = `${t.quantity || 1}x ${t.type} (${t.seatSection})`;
+        } else {
+            document.getElementById('ticket-zone').textContent = `${t.quantity || 1}x ${t.type}`;
+        }
     } else {
-        document.getElementById('ticket-zone').textContent = `${t.quantity || 1}x Vé ${t.type}`;
+        // For tickets, show seat information
+        if (t.seatSection) {
+            document.getElementById('ticket-zone').textContent = `${t.quantity || 1}x Vé ${t.type} (${t.seatSection})`;
+        } else {
+            document.getElementById('ticket-zone').textContent = `${t.quantity || 1}x Vé ${t.type}`;
+        }
     }
     
     // Use total price for seat booking, individual price for others
@@ -329,14 +372,73 @@ function processPayment() {
             payment: state.selectedPayment,
             total: state.totalAmount,
             discount: state.discountAmount,
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
+            type: state.ticket.isMerchandise ? 'merchandise' : 'ticket'
         };
         
         const history = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
         history.push(payment);
         localStorage.setItem('paymentHistory', JSON.stringify(history));
         
-        setTimeout(() => localStorage.removeItem('selectedTicket'), 3000);
+        // Handle merchandise vs ticket completion
+        if (state.ticket.isMerchandise) {
+            // Move from userOrders to completedOrders
+            if (state.ticket.bookingId) {
+                try {
+                    const userOrders = JSON.parse(localStorage.getItem('userOrders') || '[]');
+                    const completedOrders = JSON.parse(localStorage.getItem('completedOrders') || '[]');
+                    
+                    const orderIndex = userOrders.findIndex(o => o.id === state.ticket.bookingId);
+                    if (orderIndex !== -1) {
+                        const completedOrder = userOrders.splice(orderIndex, 1)[0];
+                        completedOrder.status = 'completed';
+                        completedOrder.paymentDate = new Date().toISOString();
+                        completedOrder.totalPaid = state.totalAmount;
+                        completedOrder.paymentTime = new Date().toLocaleString('vi-VN');
+                        
+                        completedOrders.push(completedOrder);
+                        
+                        localStorage.setItem('userOrders', JSON.stringify(userOrders));
+                        localStorage.setItem('completedOrders', JSON.stringify(completedOrders));
+                        
+                        sessionStorage.setItem('completedOrder', JSON.stringify(completedOrder));
+                    }
+                } catch (error) {
+                    console.error('Error completing merchandise order:', error);
+                }
+            }
+        } else {
+            // Handle ticket booking completion
+            if (state.ticket && state.ticket.bookingId) {
+                try {
+                    const userBookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
+                    const completedBookings = JSON.parse(localStorage.getItem('completedBookings') || '[]');
+                    
+                    const bookingIndex = userBookings.findIndex(b => b.id === state.ticket.bookingId);
+                    if (bookingIndex !== -1) {
+                        const completedBooking = userBookings.splice(bookingIndex, 1)[0];
+                        completedBooking.status = 'completed';
+                        completedBooking.paymentDate = new Date().toISOString();
+                        completedBooking.totalPaid = state.totalAmount;
+                        completedBooking.paymentTime = new Date().toLocaleString('vi-VN');
+                        
+                        completedBookings.push(completedBooking);
+                        
+                        localStorage.setItem('userBookings', JSON.stringify(userBookings));
+                        localStorage.setItem('completedBookings', JSON.stringify(completedBookings));
+                        
+                        sessionStorage.setItem('completedTicket', JSON.stringify(completedBooking));
+                    }
+                } catch (error) {
+                    console.error('Error completing booking:', error);
+                }
+            }
+        }
+        
+        setTimeout(() => {
+            localStorage.removeItem('selectedTicket');
+            sessionStorage.removeItem('currentMerchandiseData');
+        }, 3000);
     }, 2000);
 }
 

@@ -78,20 +78,86 @@ fetch('components/user_header.html')
       </div>
     </div>
 
-    <button class="add-cart">THÊM VÀO GIỎ HÀNG</button>
+    <button class="buy-now">MUA HÀNG</button>
 
     <div class="tabs">
       <div class="tab-buttons">
         <button class="active" onclick="openTab(0)">Mô tả</button>
         <button onclick="openTab(1)">Chính sách đổi trả</button>
+        <button onclick="openTab(2)">Hướng dẫn bảo quản</button>
       </div>
 
       <div class="tab-content active">
-        Bandana phiên bản giới hạn thuộc bộ sưu tập cuối năm của Echoes.
+        <p>Bandana phiên bản giới hạn thuộc bộ sưu tập cuối năm của Echoes.</p>
+        <p>Sản phẩm được thiết kế độc quyền với chất liệu cao cấp, mang đến trải nghiệm tuyệt vời cho người sử dụng.</p>
+        <ul>
+          <li>Thiết kế độc quyền từ Echoes</li>
+          <li>Chất liệu cao cấp, bền đẹp</li>
+          <li>Phù hợp làm quà tặng hoặc sưu tầm</li>
+          <li>Số lượng có hạn</li>
+        </ul>
       </div>
 
       <div class="tab-content">
-        Đổi trả trong vòng 7 ngày nếu có lỗi từ nhà sản xuất.
+        <h4>📋 CHÍNH SÁCH ĐỔI TRẢ</h4>
+        
+        <h5>🔄 Điều kiện đổi trả:</h5>
+        <ul>
+          <li><strong>Thời gian:</strong> Trong vòng 7 ngày kể từ ngày nhận hàng</li>
+          <li><strong>Tình trạng sản phẩm:</strong> Còn nguyên tem mác, chưa qua sử dụng</li>
+          <li><strong>Bao bì:</strong> Còn nguyên vẹn, không bị rách hoặc hư hỏng</li>
+          <li><strong>Hóa đơn:</strong> Có hóa đơn mua hàng hoặc email xác nhận đơn hàng</li>
+        </ul>
+
+        <h5>✅ Các trường hợp được đổi trả:</h5>
+        <ul>
+          <li>Sản phẩm bị lỗi từ nhà sản xuất</li>
+          <li>Giao sai sản phẩm so với đơn hàng</li>
+          <li>Sản phẩm bị hư hỏng trong quá trình vận chuyển</li>
+          <li>Không hài lòng với chất lượng sản phẩm (áp dụng cho lần mua đầu tiên)</li>
+        </ul>
+
+        <h5>❌ Các trường hợp KHÔNG được đổi trả:</h5>
+        <ul>
+          <li>Sản phẩm đã qua sử dụng hoặc bị bẩn</li>
+          <li>Sản phẩm bị rách, hỏng do người dùng</li>
+          <li>Quá thời hạn 7 ngày đổi trả</li>
+          <li>Không có hóa đơn hoặc bằng chứng mua hàng</li>
+          <li>Sản phẩm thuộc chương trình khuyến mãi đặc biệt</li>
+        </ul>
+
+        <h5>📞 Liên hệ đổi trả:</h5>
+        <ul>
+          <li><strong>Hotline:</strong> 1900 1234 (8:00 - 22:00)</li>
+          <li><strong>Email:</strong> support@echoes.vn</li>
+          <li><strong>Địa chỉ:</strong> 123 Nguyễn Huệ, Q1, TP.HCM</li>
+        </ul>
+
+        <p><em>* Phí vận chuyển đổi trả sẽ do Echoes chịu nếu lỗi từ phía chúng tôi, ngược lại khách hàng sẽ chịu phí vận chuyển.</em></p>
+      </div>
+
+      <div class="tab-content">
+        <h4>🧼 HƯỚNG DẪN BẢO QUẢN</h4>
+        
+        <h5>Đối với sản phẩm vải (Bandana, Áo, Mũ):</h5>
+        <ul>
+          <li>Giặt tay bằng nước lạnh, không ngâm quá 30 phút</li>
+          <li>Sử dụng xà phòng trung tính, không dùng chất tẩy</li>
+          <li>Phơi nơi thoáng mát, tránh ánh nắng trực tiếp</li>
+          <li>Ủi ở nhiệt độ thấp, có thể dùng khăn lót</li>
+          <li>Bảo quản nơi khô ráo, thoáng mát</li>
+        </ul>
+
+        <h5>Đối với phụ kiện (Móc khóa, Lightstick):</h5>
+        <ul>
+          <li>Lau chùi bằng khăn mềm, ẩm</li>
+          <li>Tránh va đập mạnh</li>
+          <li>Bảo quản nơi khô ráo, tránh ẩm ướt</li>
+          <li>Đối với lightstick: Tháo pin khi không sử dụng lâu</li>
+          <li>Tránh tiếp xúc với hóa chất mạnh</li>
+        </ul>
+
+        <p><strong>⚠️ Lưu ý:</strong> Tuân thủ hướng dẫn bảo quản để sản phẩm được bền đẹp và giữ nguyên chất lượng.</p>
       </div>
     </div>
   </div>
@@ -112,7 +178,7 @@ fetch('components/footer.html')
   .then(html => document.getElementById('footer').innerHTML = html);
 </script>
 
-<script src="scripts/merchandiseDetail.js"></script>
+<script type="module" src="scripts/merchandiseDetail.js"></script>
 
 </body>
 </html>
