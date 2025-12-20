@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const resultEl = document.getElementById("resultDisplay");
         const resultContent = resultEl.querySelector('.result-content');
         
-        const title = isAlreadyOpened ? "🎁 Bạn đã nhận được:" : "🎉 Chúc mừng!";
+        const title = isAlreadyOpened ? " Bạn đã nhận được:" : "🎉 Chúc mừng!";
         
         resultContent.innerHTML = `
             <h2>${title}</h2>
@@ -194,8 +194,9 @@ function initSnowEffect() {
         snow.style.left = Math.random() * window.innerWidth + "px";
         snow.style.fontSize = (12 + Math.random() * 12) + "px";
         snow.style.opacity = Math.random();
-        snow.style.transition = "top linear";
-        snow.style.color = "#74070d";
+        snow.style.transition = `top ${duration}ms linear`;
+        snow.style.color = "#ffffff";
+        snow.style.fontSize = (16 + Math.random() * 16) + "px";
         snowContainer.appendChild(snow);
 
         const duration = 4000 + Math.random() * 4000;

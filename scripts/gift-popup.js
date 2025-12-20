@@ -34,21 +34,19 @@ class GiftPopup {
         popup.className = 'gift-popup';
         popup.id = 'giftPopup';
         
-        popup.innerHTML = `
-            <div class="gift-tooltip">🎁 NHẬN QUÀ GIÁNG SINH! 🎄</div>
-            <div class="gift-box-3d">
-                <div class="gift-box-base"></div>
-                <div class="gift-box-lid"></div>
-                <div class="ribbon-vertical"></div>
-                <div class="ribbon-horizontal"></div>
-                <div class="bow">
-                    <div class="bow-center"></div>
-                </div>
-                <div class="sparkle">✨</div>
-                <div class="sparkle">⭐</div>
-                <div class="sparkle">✨</div>
-                <div class="sparkle">⭐</div>
-            </div>
+       popup.innerHTML = `
+         <div class="gift-tooltip">NHẬN QUÀ GIÁNG SINH!🎄</div>
+
+         <button class="gift-pop-btn" type="button" aria-label="Mở quà">
+         <img
+         class="gift-pop-img"
+        src="assets/images/open/giftbox.png"
+        alt="Gift"
+        />
+        </button>
+        </div>
+        <div class="gift-pop-shell">
+        </div>
         `;
 
         // Thêm event listener
