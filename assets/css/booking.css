@@ -1,0 +1,402 @@
+/* Wrapper container */
+.seat-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 20px;
+}
+
+/* CSS cho phòng nhạc thính phòng */
+.seatBox {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    background: var(--color-green);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow-x: auto;
+    min-width: 600px; /* Đảm bảo có đủ không gian cho layout */
+}
+
+/* Sân khấu */
+.stage {
+    background: #666;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(112, 112, 112, 0.3);
+    position: relative;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stage-text {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.stage::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+}
+
+/* Khoảng cách giữa các khu vực */
+.row-spacer {
+    height: 30px;
+}
+
+/* Container cho mỗi section ghế */
+.seat-section {
+    margin-bottom: 30px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Container cho mỗi hàng (chứa 2 khối + lối đi) */
+.row-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 0;
+    min-width: fit-content;
+}
+
+/* Hàng ghế trong mỗi khối */
+.seat-row {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+/* Lối đi giữa 2 khối */
+.aisle {
+    width: 60px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.aisle::after {
+    content: '';
+    width: 2px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1px;
+}
+
+/* Khối ghế bên trái và phải */
+.left-block,
+.right-block {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+/* VIP Section */
+.vip-section .row-container {
+    justify-content: center;
+}
+
+/* Standard Section - tạo hiệu ứng cong */
+.standard-section {
+    perspective: 1000px;
+}
+
+.standard-section .row-container {
+    transform: rotateX(6deg);
+    margin-bottom: 15px;
+}
+
+.standard-section .row-container:nth-child(1) {
+    transform: rotateX(6deg) translateZ(10px);
+}
+
+.standard-section .row-container:nth-child(2) {
+    transform: rotateX(6deg) translateZ(20px);
+}
+
+.standard-section .row-container:nth-child(3) {
+    transform: rotateX(6deg) translateZ(30px);
+}
+
+.standard-section .left-block {
+    transform: rotateY(2deg);
+}
+
+.standard-section .right-block {
+    transform: rotateY(-2deg);
+}
+
+/* Ghế chung */
+.seat {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.seat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.seat:hover::before {
+    left: 100%;
+}
+
+/* Ghế VIP */
+.seat-vip {
+    background: #ead1a4;
+    color: #8b4513;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+.seat-vip:hover {
+    background: linear-gradient(135deg, #f3e3b2, #f3e3b2e5);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Ghế Standard */
+.seat-standard {
+    background: linear-gradient(135deg, #e9cd76, #e9cc76c9);
+    color: #1b1b1b;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.seat-standard:hover {
+    background: linear-gradient(135deg, #f1d98e, #f1d88ec5);  
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Ghế đã chọn */
+.seat.selected {
+    background: var(--color-red) !important;
+    color: white !important;
+    border: 2px solid #fff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px var(--color-red);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 6px 25px var(--color-red);;
+    }
+    50% {
+        box-shadow: 0 6px 25px var(--color-red);;
+    }
+    100% {
+        box-shadow: 0 6px 25px var(--color-red);;
+    }
+}
+
+/* Ghế không khả dụng */
+.seat.unavailable {
+    background: #666 !important;
+    color: #999 !important;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.seat.unavailable:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Chú thích ghế */
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 14px;
+}
+
+.legend-seat {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.legend-vip {
+    background: linear-gradient(135deg, #f3e3b2, #f3e3b2e5);
+}
+
+.legend-standard {
+    background: linear-gradient(135deg, #e9cd76, #e9cc76c9);
+}
+
+.legend-selected {
+    background: var(--color-red);
+}
+
+.legend-unavailable {
+    background: #888888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .seatBox {
+        padding: 10px;
+    }
+    
+    .seat {
+        width: 28px;
+        height: 28px;
+        font-size: 8px;
+    }
+    
+    .seat-row {
+        gap: 3px;
+    }
+    
+    .row-container {
+        margin-bottom: 8px;
+    }
+    
+    .aisle {
+        width: 40px;
+        height: 28px;
+    }
+    
+    .stage-text {
+        font-size: 12px;
+    }
+    
+    .seat-legend {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .legend-item {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .seatBox {
+        padding: 8px;
+    }
+    
+    .seat {
+        width: 24px;
+        height: 24px;
+        font-size: 7px;
+    }
+    
+    .seat-row {
+        gap: 5px;
+    }
+    
+    .aisle {
+        width: 30px;
+        height: 24px;
+    }
+    
+    .row-container {
+        margin-bottom: 6px;
+    }
+    
+    .standard-section .row-container {
+        transform: rotateX(3deg);
+    }
+    
+    .standard-section .row-container:nth-child(1) {
+        transform: rotateX(3deg) translateZ(5px);
+    }
+    
+    .standard-section .row-container:nth-child(2) {
+        transform: rotateX(3deg) translateZ(10px);
+    }
+    
+    .standard-section .row-container:nth-child(3) {
+        transform: rotateX(3deg) translateZ(15px);
+    }
+    
+    .standard-section .left-block,
+    .standard-section .right-block {
+        transform: none; /* Tắt hiệu ứng xoay ngang trên mobile */
+    }
+    
+    .stage-text {
+        font-size: 10px;
+    }
+    
+    .seat-legend {
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .legend-item {
+        font-size: 11px;
+    }
+    
+    .legend-seat {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Responsive cho màn hình rất nhỏ */
+@media (max-width: 360px) {
+    .seat {
+        width: 20px;
+        height: 20px;
+        font-size: 6px;
+    }
+    
+    .seat-row {
+        gap: 1px;
+    }
+    
+    .aisle {
+        width: 25px;
+        height: 20px;
+    }
+}
