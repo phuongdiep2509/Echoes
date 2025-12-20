@@ -213,9 +213,34 @@
   font-size: 12px;
   color: rgba(0,0,0,0.5);
 }
+/* Căn "TẤT CẢ SỰ KIỆN NHẠC SỐNG" + grid thẳng hàng với .section-content */
 .title-indent{
-  padding-left: 150px !important; /* chỉnh 6 -> 10 nếu cần */
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 0;  /* giống section-content của bạn */
 }
+
+/* Grid bám trái */
+.title-indent .event-list{
+  margin-left: 0;
+  padding-left: 0;
+
+  /* nếu event-list là grid */
+  justify-content: start;
+
+  /* nếu event-list là flex thì dùng dòng dưới thay */
+  /* justify-content: flex-start; */
+}
+
+
+/* Pager cũng thẳng hàng */
+.pager{
+  max-width: 1320px;
+  margin: 16px auto 0;
+  padding: 0 24px;
+}
+
 
 .pager{
   margin-top: 24px;

@@ -26,20 +26,26 @@
     <!-- HEADER -->
     <div id="header">
         <script>
-            fetch('components/user_header.html')
-                .then(res => res.text())
-                .then(data => {
-                    document.getElementById('header').innerHTML = data;
-                    
-                    if (window.authManager) {
-                        authManager.updateHeaderUI();
-                    }
-                    
-                    const script = document.createElement('script');
-                    script.src = 'components/scroll_header.js';
-                    document.body.appendChild(script);
-                });
-        </script>
+  fetch('components/user_header.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('header').innerHTML = data;
+
+      function setHeaderOffset() {
+        const h = document.getElementById('header')?.offsetHeight || 0;
+        document.documentElement.style.setProperty('--header-h', h + 'px');
+      }
+
+      setHeaderOffset();
+      window.addEventListener('resize', setHeaderOffset);
+
+      if (window.authManager) authManager.updateHeaderUI();
+
+      const script = document.createElement('script');
+      script.src = 'components/scroll_header.js';
+      document.body.appendChild(script);
+    });
+</script>
     </div>
 
     <!-- MAIN CONTENT -->
@@ -63,7 +69,7 @@
                 <!-- 1. TÊN CONCERT -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-header text-white" style="background-color: var(--color-red);">
-                        <h3 class="mb-0">📍 THÔNG TIN SỰ KIỆN</h3>
+                        <h3 class="mb-0">✶ THÔNG TIN SỰ KIỆN</h3>
                     </div>
                     <div class="card-body">
                         <h1 id="eventTitle" class="fw-bold text-danger mb-4">Đang tải...</h1>
@@ -71,7 +77,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <div class="d-flex align-items-center">
-                                    <span class="me-3 fs-4">📅</span>
+                                    <span class="me-3 fs-4">✶</span>
                                     <div>
                                         <small class="text-muted d-block fw-bold">THỜI GIAN</small>
                                         <span id="eventDate" class="fs-5">-</span>
@@ -81,7 +87,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <div class="d-flex align-items-center">
-                                    <span class="me-3 fs-4">📍</span>
+                                    <span class="me-3 fs-4">✶</span>
                                     <div>
                                         <small class="text-muted d-block fw-bold">ĐỊA ĐIỂM</small>
                                         <span id="eventVenue" class="fs-5">-</span>
@@ -91,7 +97,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <div class="d-flex align-items-center">
-                                    <span class="me-3 fs-4">⏱️</span>
+                                    <span class="me-3 fs-4">✶</span>
                                     <div>
                                         <small class="text-muted d-block fw-bold">THỜI LƯỢNG</small>
                                         <span id="eventDuration" class="fs-5">-</span>
@@ -101,7 +107,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <div class="d-flex align-items-center">
-                                    <span class="me-3 fs-4">🎭</span>
+                                    <span class="me-3 fs-4">✶</span>
                                     <div>
                                         <small class="text-muted d-block fw-bold">THỂ LOẠI</small>
                                         <span id="eventGenre" class="fs-5">-</span>
@@ -115,7 +121,7 @@
                 <!-- 2. GIỚI THIỆU -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-header text-white" style="background-color: var(--color-green);">
-                        <h3 class="mb-0">📝 GIỚI THIỆU</h3>
+                        <h3 class="mb-0">✶ GIỚI THIỆU</h3>
                     </div>
                     <div class="card-body">
                         <div id="eventDescription">

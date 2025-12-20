@@ -819,12 +819,12 @@ export const concerts = {
 
 // Live Music Events Data
 export const liveMusic = {
-    "acoustic-trinh-cong-son": {
-        id: "acoustic-trinh-cong-son",
-        title: "Đêm Nhạc Acoustic - Trịnh Công Sơn",
-        date: "22/12/2025 - 20:00",
-        venue: "Phòng trà Acoustic, Hà Nội",
-        genre: "Acoustic, Nhạc Trịnh",
+    "concert-ryuichi-sakamoto":{
+        id: "concert-ryuichi-sakamoto",
+        title: "MERRY CHRISTMAS - RYUICHI SAKAMOTO",
+        date: "28/12/2025 - 20:00",
+        venue: "Học viện Âm nhạc Quốc Gia Việt Nam, Hà Nội",
+        genre: "Giao hưởng, Piano",
         duration: "Khoảng 2 giờ 30 phút",
         price: "Từ 300.000đ - 800.000đ",
         status: "available",
@@ -832,389 +832,371 @@ export const liveMusic = {
         poster: "assets/images/music/lc1.jpg",
         category: "live-music",
         description: [
-            "Đêm nhạc Acoustic đặc biệt tái hiện những tác phẩm bất hủ của nhạc sĩ Trịnh Công Sơn.",
-            "Một không gian âm nhạc đầy cảm xúc với sự trình diễn của các nghệ sĩ tài năng."
-        ],
-        highlights: [
-            "🎸 Không gian âm nhạc acoustic đặc biệt",
-            "🎤 Dàn nghệ sĩ tài năng trình diễn",
-            "🎵 Những ca khúc bất hủ của Trịnh Công Sơn",
-            "🕯️ Không gian ấm cúng, thân mật",
-            "☕ Đồ uống miễn phí"
-        ],
+        "Đêm nhạc giao hưởng đặc biệt mang tinh thần Giáng Sinh, lấy cảm hứng từ những giai điệu nổi tiếng của Ryuichi Sakamoto.",
+        "Không gian trang trọng tại Học viện Âm nhạc Quốc Gia Việt Nam với phần trình diễn của dàn nhạc và nghệ sĩ piano."
+            ],
+         highlights: [
+        "★ Những bản piano giàu cảm xúc",
+        "★ Dàn nhạc giao hưởng trình diễn live",
+        "★ Không khí Giáng Sinh trang trọng, ấm áp",
+        "★ Không gian âm nhạc đẳng cấp tại Học viện Âm nhạc",
+        "★ Góc check-in & poster kỷ niệm (tuỳ chương trình)"
+            ],
         tickets: [
-            { type: "vip", name: "VIP", price: 800000, status: "limited" },
-            { type: "standard", name: "Standard", price: 500000, status: "available" },
-            { type: "economy", name: "Economy", price: 300000, status: "available" }
-        ]
+        { type: "vip", name: "VIP", price: 800000, status: "limited" },
+        { type: "standard", name: "Standard", price: 500000, status: "available" },
+        { type: "economy", name: "Economy", price: 300000, status: "available" }
+            ]
     },
-    "jazz-night-saigon": {
-        id: "jazz-night-saigon",
-        title: "Jazz Night Saigon",
-        date: "28/12/2025 - 21:00",
-        venue: "Saigon Opera House, TP.HCM",
-        genre: "Jazz, Blues",
-        duration: "Khoảng 2 giờ",
-        price: "Từ 400.000đ - 1.000.000đ",
-        status: "available",
-        image: "assets/images/music/lc4.jpg",
-        poster: "assets/images/music/lc4.jpg",
-        category: "live-music",
-        description: [
-            "Đêm nhạc Jazz đẳng cấp với sự tham gia của các nghệ sĩ jazz hàng đầu.",
-            "Thưởng thức những giai điệu jazz kinh điển trong không gian sang trọng."
-        ],
-        highlights: [
-            "🎷 Nghệ sĩ jazz hàng đầu Việt Nam",
-            "🎹 Những giai điệu jazz kinh điển",
-            "🏛️ Không gian sang trọng tại Opera House",
-            "🍷 Dịch vụ đồ uống cao cấp",
-            "🎭 Trải nghiệm văn hóa đẳng cấp"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 1000000, status: "available" },
-            { type: "standard", name: "Standard", price: 700000, status: "available" },
-            { type: "economy", name: "Economy", price: 400000, status: "available" }
-        ]
-    },
-    "indie-music-hanoi": {
-        id: "indie-music-hanoi",
-        title: "Indie Music Night - Hà Nội",
-        date: "30/12/2025 - 19:30",
-        venue: "L'Espace, Hà Nội",
-        genre: "Indie, Alternative",
-        duration: "Khoảng 3 giờ",
-        price: "Từ 250.000đ - 600.000đ",
-        status: "available",
-        image: "assets/images/music/lc16.jpg",
-        poster: "assets/images/music/lc16.jpg",
-        category: "live-music",
-        description: [
-            "Đêm nhạc Indie với những ban nhạc underground tài năng của Hà Nội.",
-            "Khám phá những âm thanh mới lạ và sáng tạo từ thế hệ nghệ sĩ trẻ."
-        ],
-        highlights: [
-            "🎸 Ban nhạc indie underground",
-            "🎵 Âm nhạc sáng tạo và độc đáo",
-            "🌃 Không gian nghệ thuật đương đại",
-            "👥 Cộng đồng yêu nhạc indie",
-            "🎨 Kết hợp với triển lãm nghệ thuật"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 600000, status: "available" },
-            { type: "standard", name: "Standard", price: 400000, status: "available" },
-            { type: "economy", name: "Economy", price: 250000, status: "available" }
-        ]
-    },
-    "live-music-1": {
-        id: "live-music-1",
-        title: "Đêm Nhạc Sống Bolero",
-        date: "25/12/2025 - 20:30",
-        venue: "Nhà hát Tuổi trẻ, TP.HCM",
-        genre: "Bolero, Tango",
-        duration: "Khoảng 2 giờ",
-        price: "Từ 350.000đ - 900.000đ",
-        status: "available",
-        image: "assets/images/music/lc2.jpg",
-        poster: "assets/images/music/lc2.jpg",
-        category: "live-music",
-        description: [
-            "Đêm nhạc Bolero đầy cảm xúc với những ca khúc bất hủ.",
-            "Không gian lãng mạn với những giai điệu da diết."
-        ],
-        highlights: [
-            "💃 Nhạc Bolero và Tango",
-            "🌹 Không gian lãng mạn",
-            "🎤 Nghệ sĩ tài năng",
-            "🕯️ Ánh nến lung linh"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 900000, status: "available" },
-            { type: "standard", name: "Standard", price: 600000, status: "available" },
-            { type: "economy", name: "Economy", price: 350000, status: "available" }
-        ]
-    },
-    "live-music-2": {
-        id: "live-music-2",
-        title: "Đêm Nhạc Sống Folk",
-        date: "27/12/2025 - 19:00",
-        venue: "Cà phê Acoustic, Hà Nội",
-        genre: "Folk, Country",
-        duration: "Khoảng 2.5 giờ",
-        price: "Từ 200.000đ - 500.000đ",
-        status: "available",
-        image: "assets/images/music/lc3.jpg",
-        poster: "assets/images/music/lc3.jpg",
-        category: "live-music",
-        description: [
-            "Đêm nhạc Folk với những giai điệu dân gian đương đại.",
-            "Không gian ấm cúng như ở nhà với những ca khúc gần gũi."
-        ],
-        highlights: [
-            "🎸 Nhạc Folk và Country",
-            "☕ Không gian cà phê ấm cúng",
-            "🌿 Gần gũi với thiên nhiên",
-            "🎵 Ca khúc dân gian đương đại"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 500000, status: "available" },
-            { type: "standard", name: "Standard", price: 350000, status: "available" },
-            { type: "economy", name: "Economy", price: 200000, status: "available" }
-        ]
-    },
-    "live-music-3": {
-        id: "live-music-3",
-        title: "Đêm Nhạc Sống Rock",
-        date: "29/12/2025 - 21:30",
-        venue: "Rock Club, TP.HCM",
-        genre: "Rock, Metal",
-        duration: "Khoảng 3 giờ",
-        price: "Từ 300.000đ - 700.000đ",
-        status: "available",
-        image: "assets/images/music/lc5.webp",
-        poster: "assets/images/music/lc5.webp",
-        category: "live-music",
-        description: [
-            "Đêm nhạc Rock sôi động với những ban nhạc rock underground.",
-            "Cháy hết mình với những giai điệu rock mạnh mẽ."
-        ],
-        highlights: [
-            "🎸 Ban nhạc rock underground",
-            "⚡ Âm nhạc mạnh mẽ, sôi động",
-            "🔥 Không khí cuồng nhiệt",
-            "🤘 Cộng đồng rock yêu nhạc"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 700000, status: "available" },
-            { type: "standard", name: "Standard", price: 500000, status: "available" },
-            { type: "economy", name: "Economy", price: 300000, status: "available" }
-        ]
-    },
-    "live-music-4": {
-        id: "live-music-4",
-        title: "Đêm Nhạc Sống Classical",
-        date: "02/01/2026 - 20:00",
-        venue: "Nhà hát Lớn Hà Nội",
-        genre: "Classical, Chamber",
-        duration: "Khoảng 2 giờ",
-        price: "Từ 500.000đ - 1.200.000đ",
-        status: "available",
+    "concert-sketch-a-rose": {
+  id: "concert-sketch-a-rose",
+  title: "CONCERT SKETCH A ROSE",
+  date: "25/12/2025 - 21:00",
+  venue: "Saigon Opera House, TP.HCM",
+  genre: "Pop Ballad, Live Band",
+  duration: "Khoảng 2 giờ",
+  price: "Từ 400.000đ - 1.000.000đ",
+  status: "available",
+  image: "assets/images/music/lc4.jpg",
+  poster: "assets/images/music/lc4.jpg",
+  category: "live-music",
+  description: [
+    "Sketch A Rose là đêm nhạc lãng mạn với những bản tình ca nhẹ nhàng, được dàn dựng theo concept mùa lễ hội.",
+    "Sân khấu kết hợp live band và hiệu ứng ánh sáng ấm áp, tạo không gian thưởng thức âm nhạc tinh tế."
+  ],
+  highlights: [
+    "★ Concept lãng mạn “Sketch A Rose”",
+    "★ Live vocal + live band",
+    "★ Ánh sáng & sân khấu dàn dựng theo chủ đề lễ hội",
+    "★ Không gian sang trọng tại Opera House",
+    "★ Khu vực check-in theo concept (tuỳ chương trình)"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 1000000, status: "available" },
+    { type: "standard", name: "Standard", price: 700000, status: "available" },
+    { type: "economy", name: "Economy", price: 400000, status: "available" }
+  ]
+},
+
+    "concert-bon-canh-chim-troi": {
+  id: "concert-bon-canh-chim-troi",
+  title: "CONCERT BỐN CÁNH CHIM TRỜI",
+  date: "27/12/2025 - 20:00",
+  venue: "Nhà hát Lớn Hà Nội",
+  genre: "Giao hưởng, Nhạc thính phòng",
+  duration: "Khoảng 2 giờ 30 phút",
+  price: "Từ 250.000đ - 600.000đ",
+  status: "available",
+  image: "assets/images/music/lc16.jpg",
+  poster: "assets/images/music/lc16.jpg",
+  category: "live-music",
+  description: [
+    "Bốn Cánh Chim Trời là đêm hòa nhạc thính phòng với màu sắc giao hưởng tinh tế và giàu cảm xúc.",
+    "Chương trình được dàn dựng theo concept nghệ thuật, kết hợp những tác phẩm giàu chiều sâu trong không gian trang trọng."
+  ],
+  highlights: [
+    "★ Hòa nhạc thính phòng giàu cảm xúc",
+    "★ Tác phẩm được dàn dựng theo concept nghệ thuật",
+    "★ Không gian trang trọng tại Nhà hát Lớn Hà Nội",
+    "★ Âm thanh & ánh sáng tối ưu cho trải nghiệm nghe",
+    "★ Poster/photobooth kỷ niệm (tuỳ chương trình)"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 600000, status: "available" },
+    { type: "standard", name: "Standard", price: 400000, status: "available" },
+    { type: "economy", name: "Economy", price: 250000, status: "available" }
+  ]
+},
+
+    "when-i-remember-this-life": {
+  id: "when-i-remember-this-life",
+  title: "WHEN I REMEMBER THIS LIFE",
+  date: "25/12/2025 - 20:30",
+  venue: "Nhà hát Tuổi trẻ, TP.HCM",
+  genre: "Ballad, Acoustic",
+  duration: "Khoảng 2 giờ",
+  price: "Từ 350.000đ - 900.000đ",
+  status: "available",
+  image: "assets/images/music/lc2.jpg",
+  poster: "assets/images/music/lc2.jpg",
+  category: "live-music",
+  description: [
+    "When I Remember This Life là đêm nhạc mang màu sắc hoài niệm, dẫn dắt khán giả qua những giai điệu dịu dàng và sâu lắng.",
+    "Chương trình kết hợp live band/acoustic cùng phần dàn dựng ánh sáng ấm áp để tạo cảm giác gần gũi và tinh tế."
+  ],
+  highlights: [
+    "★ Setlist ballad sâu lắng, hoài niệm",
+    "★ Live band / acoustic mộc mạc",
+    "★ Ánh sáng ấm & concept nhẹ nhàng",
+    "★ Không gian nhà hát gần gũi, dễ thưởng thức",
+    "★ Góc check-in theo concept (tuỳ chương trình)"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 900000, status: "available" },
+    { type: "standard", name: "Standard", price: 600000, status: "available" },
+    { type: "economy", name: "Economy", price: 350000, status: "available" }
+  ]
+},
+
+   "attack-on-titan-devotion": {
+  id: "attack-on-titan-devotion",
+  title: "ATTACK ON TITAN - DEVOTION",
+  date: "27/12/2025 - 19:00",
+  venue: "Cà phê Acoustic, Hà Nội",
+  genre: "Anime, Orchestral, Epic",
+  duration: "Khoảng 2.5 giờ",
+  price: "Từ 200.000đ - 500.000đ",
+  status: "available",
+  image: "assets/images/music/lc3.jpg",
+  poster: "assets/images/music/lc3.jpg",
+  category: "live-music",
+  description: [
+    "Attack on Titan - Devotion là đêm nhạc lấy cảm hứng từ những giai điệu huyền thoại của series Attack on Titan, tái hiện không khí sử thi và kịch tính.",
+    "Chương trình được phối khí theo hướng orchestral/epic với phần trình diễn live, mang lại trải nghiệm bùng nổ nhưng vẫn gần gũi trong không gian acoustic."
+  ],
+  highlights: [
+    "★ Theme nhạc Attack on Titan đầy kịch tính",
+    "★ Phối khí orchestral/epic phiên bản live",
+    "★ Không khí sử thi – cao trào liên tục",
+    "★ Không gian acoustic ấm cúng, nghe rõ từng lớp nhạc",
+    "★ Góc check-in/standee theo concept (tuỳ chương trình)"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 500000, status: "available" },
+    { type: "standard", name: "Standard", price: 350000, status: "available" },
+    { type: "economy", name: "Economy", price: 200000, status: "available" }
+  ]
+},
+
+    "a-tale-of-two-christmas": {
+  id: "a-tale-of-two-christmas",
+  title: "A TALE OF TWO CHRISTMAS",
+  date: "29/12/2025 - 21:30",
+  venue: "Rock Club, TP.HCM",
+  genre: "Christmas, Acoustic, Pop",
+  duration: "Khoảng 3 giờ",
+  price: "Từ 300.000đ - 700.000đ",
+  status: "available",
+  image: "assets/images/music/lc5.webp",
+  poster: "assets/images/music/lc5.webp",
+  category: "live-music",
+  description: [
+    "A Tale of Two Christmas là đêm nhạc kể hai “màu” Giáng Sinh: ấm áp – lãng mạn và rộn ràng – bùng nổ, dẫn dắt khán giả qua những bản nhạc quen thuộc theo cách mới.",
+    "Chương trình kết hợp acoustic/live band, medley carol và những tiết mục tương tác để giữ không khí lễ hội xuyên suốt."
+  ],
+  highlights: [
+    "★ Medley Giáng Sinh (carol) được làm mới",
+    "★ Live band / acoustic ấm áp",
+    "★ Không khí lễ hội, ánh sáng & decor theo concept",
+    "★ Setlist “2 chương” – nhẹ nhàng & sôi động",
+    "★ Check-in & quà mini (tuỳ chương trình)"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 700000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" },
+    { type: "economy", name: "Economy", price: 300000, status: "available" }
+  ]
+},
+
+    "classonic-in-concert-tatakae": {
+  id: "classonic-in-concert-tatakae",
+  title: "CLASSONIC IN CONCERT: TATAKAE",
+  date: "05/01/2026 - 21:00",
+  venue: "Soul Bar, TP.HCM",
+  genre: "Symphonic, Anime, Epic",
+  duration: "Khoảng 2.5 giờ",
+  price: "Từ 400.000đ - 1.000.000đ",
+  status: "available",
         image: "assets/images/music/lc6.png",
         poster: "assets/images/music/lc6.png",
-        category: "live-music",
-        description: [
-            "Đêm nhạc cổ điển với dàn nhạc thính phòng chuyên nghiệp.",
-            "Thưởng thức những tác phẩm kinh điển của các nhạc sĩ nổi tiếng thế giới."
-        ],
-        highlights: [
-            "🎼 Nhạc cổ điển kinh điển",
-            "🎻 Dàn nhạc thính phòng",
-            "🏛️ Không gian trang nghiêm",
-            "🎭 Trải nghiệm văn hóa cao cấp"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 1200000, status: "available" },
-            { type: "standard", name: "Standard", price: 800000, status: "available" },
-            { type: "economy", name: "Economy", price: 500000, status: "available" }
-        ]
-    },
-    "live-music-5": {
-        id: "live-music-5",
-        title: "Đêm Nhạc Sống R&B",
-        date: "05/01/2026 - 21:00",
-        venue: "Soul Bar, TP.HCM",
-        genre: "R&B, Soul",
-        duration: "Khoảng 2.5 giờ",
-        price: "Từ 400.000đ - 1.000.000đ",
-        status: "available",
-        image: "assets/images/music/lc7.jpg",
-        poster: "assets/images/music/lc7.jpg",
-        category: "live-music",
-        description: [
-            "Đêm nhạc R&B và Soul với những giọng ca đầy cảm xúc.",
-            "Không gian bar sang trọng với âm nhạc đầy tâm hồn."
-        ],
-        highlights: [
-            "🎤 Giọng ca R&B đầy cảm xúc",
-            "🍸 Không gian bar sang trọng",
-            "💫 Âm nhạc đầy tâm hồn",
-            "🌃 Không khí đêm lãng mạn"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 1000000, status: "limited" },
-            { type: "standard", name: "Standard", price: 700000, status: "available" },
-            { type: "economy", name: "Economy", price: 400000, status: "available" }
-        ]
-    },
-    "live-music-6": {
-        id: "live-music-6",
-        title: "Đêm Nhạc Sống Reggae",
-        date: "10/01/2026 - 20:30",
-        venue: "Beach Club, Đà Nẵng",
-        genre: "Reggae, Ska",
-        duration: "Khoảng 3 giờ",
-        price: "Từ 250.000đ - 600.000đ",
-        status: "available",
-        image: "assets/images/music/lc15.jpg",
-        poster: "assets/images/music/lc15.jpg",
-        category: "live-music",
-        description: [
-            "Đêm nhạc Reggae bên bờ biển với không khí thoải mái.",
-            "Thư giãn với những giai điệu Reggae đầy năng lượng tích cực."
-        ],
-        highlights: [
-            "🏖️ Bên bờ biển Đà Nẵng",
-            "🎵 Nhạc Reggae thoải mái",
-            "🌊 Không khí biển cả",
-            "☀️ Năng lượng tích cực"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 600000, status: "available" },
-            { type: "standard", name: "Standard", price: 425000, status: "available" },
-            { type: "economy", name: "Economy", price: 250000, status: "available" }
-        ]
-    },
-    "live-music-7": {
-        id: "live-music-7",
-        title: "Đêm Nhạc Sống Electronic",
-        date: "15/01/2026 - 22:00",
-        venue: "Electronic Club, Hà Nội",
-        genre: "Electronic, Ambient",
-        duration: "Khoảng 4 giờ",
-        price: "Từ 350.000đ - 800.000đ",
-        status: "available",
-        image: "assets/images/music/lc9.jpg",
-        poster: "assets/images/music/lc9.jpg",
-        category: "live-music",
-        description: [
-            "Đêm nhạc Electronic với những âm thanh tương lai.",
-            "Trải nghiệm âm nhạc điện tử trong không gian hiện đại."
-        ],
-        highlights: [
-            "🎛️ Nhạc Electronic hiện đại",
-            "💫 Hiệu ứng ánh sáng đặc biệt",
-            "🔊 Hệ thống âm thanh chất lượng cao",
-            "🌌 Không gian tương lai"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 800000, status: "available" },
-            { type: "standard", name: "Standard", price: 575000, status: "available" },
-            { type: "economy", name: "Economy", price: 350000, status: "available" }
-        ]
-    },
-    "live-music-8": {
-        id: "live-music-8",
-        title: "Đêm Nhạc Sống World Music",
-        date: "20/01/2026 - 19:30",
-        venue: "Cultural Center, TP.HCM",
-        genre: "World Music, Fusion",
-        duration: "Khoảng 2.5 giờ",
-        price: "Từ 400.000đ - 950.000đ",
-        status: "available",
-        image: "assets/images/music/lc10.webp",
-        poster: "assets/images/music/lc10.webp",
-        category: "live-music",
-        description: [
-            "Đêm nhạc World Music với sự kết hợp của nhiều nền văn hóa.",
-            "Hành trình âm nhạc xuyên suốt các châu lục."
-        ],
-        highlights: [
-            "🌍 Nhạc thế giới đa văn hóa",
-            "🎭 Kết hợp nhiều nền văn hóa",
-            "🎪 Biểu diễn đa phương tiện",
-            "🎨 Nghệ thuật tổng hợp"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 950000, status: "available" },
-            { type: "standard", name: "Standard", price: 675000, status: "available" },
-            { type: "economy", name: "Economy", price: 400000, status: "available" }
-        ]
-    },
-    "live-music-9": {
-        id: "live-music-9",
-        title: "Đêm Nhạc Sống Experimental",
-        date: "25/01/2026 - 21:30",
-        venue: "Art Space, Hà Nội",
-        genre: "Experimental, Avant-garde",
-        duration: "Khoảng 2 giờ",
-        price: "Từ 300.000đ - 700.000đ",
-        status: "available",
-        image: "assets/images/music/lc11.jpg",
-        poster: "assets/images/music/lc11.jpg",
-        category: "live-music",
-        description: [
-            "Đêm nhạc thử nghiệm với những âm thanh độc đáo và sáng tạo.",
-            "Khám phá ranh giới mới của âm nhạc đương đại."
-        ],
-        highlights: [
-            "🎨 Âm nhạc thử nghiệm",
-            "🔬 Khám phá âm thanh mới",
-            "🎭 Nghệ thuật đương đại",
-            "💡 Sáng tạo không giới hạn"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 700000, status: "available" },
-            { type: "standard", name: "Standard", price: 500000, status: "available" },
-            { type: "economy", name: "Economy", price: 300000, status: "available" }
-        ]
-    },
-    "live-music-10": {
-        id: "live-music-10",
-        title: "Đêm Nhạc Sống Fusion",
-        date: "30/01/2026 - 20:00",
-        venue: "Fusion Hall, TP.HCM",
-        genre: "Jazz Fusion, Rock Fusion",
-        duration: "Khoảng 3 giờ",
-        price: "Từ 450.000đ - 1.100.000đ",
-        status: "sold",
-        image: "assets/images/music/lc13.png",
-        poster: "assets/images/music/lc13.png",
-        category: "live-music",
-        description: [
-            "Đêm nhạc Fusion với sự kết hợp hoàn hảo giữa Jazz và Rock.",
-            "Trải nghiệm âm nhạc đa chiều với những nghệ sĩ tài năng."
-        ],
-        highlights: [
-            "🎷 Jazz Fusion chuyên nghiệp",
-            "🎸 Rock Fusion sôi động",
-            "🎹 Kỹ thuật cao siêu",
-            "🎵 Âm nhạc đa chiều"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 1100000, status: "sold" },
-            { type: "standard", name: "Standard", price: 775000, status: "sold" },
-            { type: "economy", name: "Economy", price: 450000, status: "sold" }
-        ]
-    },
-    "live-music-11": {
-        id: "live-music-11",
-        title: "Đêm Nhạc Sống Unplugged",
-        date: "05/02/2026 - 19:00",
-        venue: "Intimate Venue, Đà Lạt",
-        genre: "Unplugged, Acoustic",
-        duration: "Khoảng 2 giờ",
-        price: "Từ 250.000đ - 600.000đ",
-        status: "expired",
-        image: "assets/images/music/lc14.jpg",
-        poster: "assets/images/music/lc14.jpg",
-        category: "live-music",
-        description: [
-            "Đêm nhạc Unplugged trong không gian thân mật tại Đà Lạt.",
-            "Những ca khúc được trình diễn hoàn toàn bằng nhạc cụ acoustic."
-        ],
-        highlights: [
-            "🎸 Hoàn toàn acoustic",
-            "🏔️ Không gian Đà Lạt thơ mộng",
-            "🕯️ Không khí thân mật",
-            "❤️ Gần gũi với nghệ sĩ"
-        ],
-        tickets: [
-            { type: "vip", name: "VIP", price: 600000, status: "expired" },
-            { type: "standard", name: "Standard", price: 425000, status: "expired" },
-            { type: "economy", name: "Economy", price: 250000, status: "expired" }
-        ]
-    }
-};
+          category: "live-music",
+  description: [
+    "Classonic in Concert: Tatakae là đêm nhạc bùng nổ với tinh thần sử thi, kết hợp dàn dựng symphonic và nhịp điệu hiện đại.",
+    "Những đoạn cao trào được phối khí dày, mạnh, mang năng lượng “chiến đấu” đúng như tên Tatakae."
+  ],
+  highlights: [
+    "★ Phối khí symphonic/epic đầy cao trào",
+    "★ Năng lượng mạnh – dồn dập – bùng nổ",
+    "★ Setlist theo concept “Tatakae”",
+    "★ Visual/lighting theo nhịp nhạc (tuỳ chương trình)"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 1000000, status: "limited" },
+    { type: "standard", name: "Standard", price: 700000, status: "available" },
+    { type: "economy", name: "Economy", price: 400000, status: "available" }
+  ]
+},
+    "attack-on-titan-freedom": {
+  id: "attack-on-titan-freedom",
+  title: "ATTACK ON TITAN: FREEDOM",
+  date: "10/01/2026 - 20:30",
+  venue: "Beach Club, Đà Nẵng",
+  genre: "Anime, Orchestral Rock, Epic",
+  duration: "Khoảng 3 giờ",
+  price: "Từ 250.000đ - 600.000đ",
+  status: "available",
+  image: "assets/images/music/lc7.jpg",
+  poster: "assets/images/music/lc7.jpg",
+  category: "live-music",
+  description: [
+    "Attack on Titan: Freedom tái hiện tinh thần “phá xiềng” qua những bản phối epic, kịch tính và giàu năng lượng.",
+    "Không gian mở tạo cảm giác bùng nổ như một đêm live show ngoài trời."
+  ],
+  highlights: [
+    "★ Theme AOT phiên bản orchestral rock",
+    "★ Cao trào liên tục, không khí “battle”",
+    "★ Live show vibe ngoài trời",
+    "★ Check-in concept (tuỳ chương trình)"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 600000, status: "available" },
+    { type: "standard", name: "Standard", price: 425000, status: "available" },
+    { type: "economy", name: "Economy", price: 250000, status: "available" }
+  ]
+},
+    "symphonic-anime": {
+  id: "symphonic-anime",
+  title: "SYMPHONIC ANIME",
+  date: "15/01/2026 - 22:00",
+  venue: "Electronic Club, Hà Nội",
+  genre: "Symphonic, Anime OST, Live Show",
+  duration: "Khoảng 4 giờ",
+  price: "Từ 350.000đ - 800.000đ",
+  status: "available",
+  image: "assets/images/music/lc15.jpg",
+  poster: "assets/images/music/lc15.jpg",
+  category: "live-music",
+  description: [
+    "Symphonic Anime là đêm nhạc anime OST theo phong cách giao hưởng, nhấn vào độ dày hòa âm và cảm xúc.",
+    "Âm nhạc kết hợp trình diễn live và hiệu ứng sân khấu để tạo trải nghiệm “đã mắt đã tai”."
+  ],
+  highlights: [
+    "★ Anime OST phối khí symphonic",
+    "★ Hiệu ứng sân khấu/visual đồng bộ",
+    "★ Setlist nhiều cung bậc cảm xúc",
+    "★ Âm thanh tối ưu cho live show"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 575000, status: "available" },
+    { type: "economy", name: "Economy", price: 350000, status: "available" }
+  ]
+},
+
+    "anime-in-town": {
+  id: "anime-in-town",
+  title: "ANIME IN TOWN",
+  date: "20/01/2026 - 19:30",
+  venue: "Cultural Center, TP.HCM",
+  genre: "Anime OST, J-Pop, Live Band",
+  duration: "Khoảng 2.5 giờ",
+  price: "Từ 400.000đ - 950.000đ",
+  status: "available",
+  image: "assets/images/music/lc9.jpg",
+  poster: "assets/images/music/lc9.jpg",
+  category: "live-music",
+  description: [
+    "Anime in Town là đêm nhạc dành cho cộng đồng yêu anime, với loạt OST/ca khúc quen thuộc được trình diễn live.",
+    "Không khí lễ hội – vui – dễ quẩy, phù hợp đi cùng bạn bè."
+  ],
+  highlights: [
+    "★ OST/anime hits phiên bản live",
+    "★ Live band khuấy động không khí",
+    "★ Không gian sự kiện cộng đồng",
+    "★ Cosplay/check-in (tuỳ chương trình)"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 950000, status: "available" },
+    { type: "standard", name: "Standard", price: 675000, status: "available" },
+    { type: "economy", name: "Economy", price: 400000, status: "available" }
+  ]
+},
+  
+"once-upon-a-time": {
+  id: "once-upon-a-time",
+  title: "ONCE UPON A TIME",
+  date: "25/01/2026 - 21:30",
+  venue: "Art Space, Hà Nội",
+  genre: "Film Score, Ambient, Storytelling",
+  duration: "Khoảng 2 giờ",
+  price: "Từ 300.000đ - 700.000đ",
+  status: "available",
+  image: "assets/images/music/lc10.webp",
+  poster: "assets/images/music/lc10.webp",
+  category: "live-music",
+  description: [
+    "Once Upon a Time là đêm nhạc kể chuyện bằng âm thanh: nhẹ nhàng, điện ảnh và đầy hình ảnh.",
+    "Mỗi phần trình diễn như một chương truyện, dẫn dắt cảm xúc theo mạch câu chuyện."
+  ],
+  highlights: [
+    "★ Vibe nhạc phim/cinematic",
+    "★ Ambient êm, dễ “chìm” vào không gian",
+    "★ Setlist theo chương truyện",
+    "★ Không gian nghệ thuật phù hợp concept"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 700000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" },
+    { type: "economy", name: "Economy", price: 300000, status: "available" }
+  ]
+},
+     "shinsekai-childhood-memory": {
+  id: "shinsekai-childhood-memory",
+  title: "SHINSEKAI: CHILDHOOD MEMORY",
+  date: "30/01/2026 - 20:00",
+  venue: "Fusion Hall, TP.HCM",
+  genre: "Neo-Classical, Piano, Nostalgia",
+  duration: "Khoảng 3 giờ",
+  price: "Từ 450.000đ - 1.100.000đ",
+  status: "sold",
+  image: "assets/images/music/lc11.jpg",
+  poster: "assets/images/music/lc11.jpg",
+  category: "live-music",
+  description: [
+    "Shinsekai: Childhood Memory là đêm nhạc hoài niệm với những giai điệu trong trẻo, gợi ký ức tuổi thơ.",
+    "Không gian được dàn dựng ấm áp, nhấn vào cảm xúc và sự tinh tế của từng lớp nhạc."
+  ],
+  highlights: [
+    "★ Piano/neo-classical giàu cảm xúc",
+    "★ Không khí hoài niệm – dịu – sâu",
+    "★ Visual nhẹ nhàng theo concept ký ức",
+    "★ Trải nghiệm nghe tập trung"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 1100000, status: "sold" },
+    { type: "standard", name: "Standard", price: 775000, status: "sold" },
+    { type: "economy", name: "Economy", price: 450000, status: "sold" }
+  ]
+},
+"concert-to-the-line": {
+  id: "concert-to-the-line",
+  title: "CONCERT TO THE LINE",
+  date: "20/12/2025 - 19:00",
+  venue: "Intimate Venue, Đà Lạt",
+  genre: "Unplugged, Acoustic, Ballad",
+  duration: "Khoảng 2 giờ",
+  price: "Từ 250.000đ - 600.000đ",
+  status: "expired",
+  image: "assets/images/music/lc13.png",
+  poster: "assets/images/music/lc13.png",
+  category: "live-music",
+  description: [
+    "Concert To The Line là đêm nhạc unplugged dành cho những cảm xúc “đi tới tận cùng” – nhẹ nhưng chạm.",
+    "Không gian thân mật giúp khán giả nghe rõ từng tiếng đàn và từng câu hát."
+  ],
+  highlights: [
+    "★ Unplugged mộc, gần gũi",
+    "★ Ballad/slow setlist dễ chạm cảm xúc",
+    "★ Không gian Đà Lạt thân mật",
+    "★ Trải nghiệm nghe “ấm” và yên"
+  ],
+  tickets: [
+    { type: "vip", name: "VIP", price: 600000, status: "expired" },
+    { type: "standard", name: "Standard", price: 425000, status: "expired" },
+    { type: "economy", name: "Economy", price: 250000, status: "expired" }
+  ]
+},
+}
 
 // Merchandise Products Data
 export const merchandise = {
