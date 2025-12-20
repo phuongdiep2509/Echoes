@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sự kiện | Echoes</title>
+    <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Nhúng font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Gideon+Roman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/eventDetail.css">
+    <link rel="stylesheet" href="assets/css/gift-popup.css">
+    
+    <!-- Nhúng AuthManager -->
+    <script src="scripts/authManager.js"></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div id="header">
+        <script>
+  fetch('components/user_header.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('header').innerHTML = data;
+
+      function setHeaderOffset() {
+        const h = document.getElementById('header')?.offsetHeight || 0;
+        document.documentElement.style.setProperty('--header-h', h + 'px');
+      }
+
+      setHeaderOffset();
+      window.addEventListener('resize', setHeaderOffset);
+
+      if (window.authManager) authManager.updateHeaderUI();
+
+      const script = document.createElement('script');
+      script.src = 'components/scroll_header.js';
+      document.body.appendChild(script);
+    });
+</script>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container my-5">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-custom mb-4">
+            <a href="index.html">TRANG CHỦ</a> / 
+            <a href="#" id="categoryBreadcrumb">CONCERT</a> / 
+            <span id="eventBreadcrumb">Chi tiết sự kiện</span>
+        </nav>
+
+        <!-- Event Detail -->
+        <div class="row">
+            <!-- Left Column - Event Info -->
+            <div class="col-lg-8">
+                <!-- Event Poster -->
+                <div class="mb-4">
+                    <img id="eventPoster" src="" alt="Event Poster" class="img-fluid rounded shadow" style="width: 100%; height: auto; object-fit: contain; max-height: 500px;">
+                </div>
+
+                <!-- 1. TÊN CONCERT -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header text-white" style="background-color: var(--color-red);">
+                        <h3 class="mb-0">✶ THÔNG TIN SỰ KIỆN</h3>
+                    </div>
+                    <div class="card-body">
+                        <h1 id="eventTitle" class="fw-bold text-danger mb-4">Đang tải...</h1>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3 fs-4">✶</span>
+                                    <div>
+                                        <small class="text-muted d-block fw-bold">THỜI GIAN</small>
+                                        <span id="eventDate" class="fs-5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3 fs-4">✶</span>
+                                    <div>
+                                        <small class="text-muted d-block fw-bold">ĐỊA ĐIỂM</small>
+                                        <span id="eventVenue" class="fs-5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3 fs-4">✶</span>
+                                    <div>
+                                        <small class="text-muted d-block fw-bold">THỜI LƯỢNG</small>
+                                        <span id="eventDuration" class="fs-5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3 fs-4">✶</span>
+                                    <div>
+                                        <small class="text-muted d-block fw-bold">THỂ LOẠI</small>
+                                        <span id="eventGenre" class="fs-5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. GIỚI THIỆU -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header text-white" style="background-color: var(--color-green);">
+                        <h3 class="mb-0">✶ GIỚI THIỆU</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="eventDescription">
+                            <p>Đang tải thông tin...</p>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h5 class="fw-bold mb-3" style="color: var(--color-green);">✨ ĐIỂM NỔI BẬT</h5>
+                            <ul id="eventHighlights" class="list-unstyled">
+                                <li>Đang tải...</li>
+                            </ul>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div id="eventTerms" class="mt-4" style="display: none;">
+                            <h5 class="fw-bold mb-3" style="color: var(--color-red);">📋 ĐIỀU KIỆN & ĐIỀU KHOẢN</h5>
+                            <div class="p-3 bg-light rounded">
+                                <div id="termsContent" class="small text-muted">
+                                    <!-- Terms will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Booking -->
+            <div class="col-lg-4">
+                <!-- 3. LOẠI VÉ -->
+                <div class="card shadow-sm sticky-top" style="top: 100px;">
+                    <div class="card-header text-white" style="background-color: var(--color-green);">
+                        <h3 class="mb-0">🎫 THÔNG TIN VÉ</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Ticket Price Info -->
+                        <div id="ticketPriceInfo" class="mb-4">
+                            <p class="text-muted">Đang tải thông tin vé...</p>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="d-grid">
+                            <button class="btn btn-lg text-white" id="btnBook" style="background-color: var(--color-red); border-color: var(--color-red);">
+                                🎫 ĐẶT NGAY
+                            </button>
+                        </div>
+
+                        <!-- Note -->
+                        <div class="mt-4 p-3 rounded" style="background-color: var(--color-beige);">
+                            <small class="text-dark">
+                                <strong>💡 LƯU Ý QUAN TRỌNG:</strong><br>
+                                • Vé đã mua không được hoàn trả<br>
+                                • Vui lòng đến trước 30 phút<br>
+                                • Mang theo CMND/CCCD khi nhận vé<br>
+                                • Không mang đồ uống có cồn vào venue
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- BẠN CÓ THỂ THÍCH -->
+    <section class="py-5" style="background-color: var(--color-beige);">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5" style="color: var(--color-red);">🎵 BẠN CÓ THỂ THÍCH</h2>
+            <div class="row" id="relatedEvents">
+                <!-- Related events will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer">
+        <script>
+            fetch('components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                })
+                .catch(error => console.error('Lỗi khi tải footer:', error));
+        </script>
+    </div>
+
+    <!-- Styles -->
+    <style>
+        .ticket-option {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+
+        .ticket-option:hover {
+            border-color: #dc3545;
+            background-color: #fff5f5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+        }
+
+        .ticket-option.selected {
+            border-color: #dc3545;
+            background-color: #fff5f5;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
+        }
+
+        .ticket-badge {
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .badge-available {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .badge-limited {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-sold {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .card-header {
+            font-weight: bold;
+        }
+
+        .sticky-top {
+            position: sticky;
+            top: 100px;
+        }
+
+        .related-event-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .related-event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script type="module" src="scripts/eventDetail.js"></script>
+    <script src="scripts/gift-popup.js"></script>
+</body>
+</html>

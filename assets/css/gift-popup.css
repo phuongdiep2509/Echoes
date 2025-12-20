@@ -1,0 +1,273 @@
+/* 3D Gift Box Popup */
+
+.gift-popup{
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+  display: none;
+}
+
+.gift-tooltip{
+  margin-bottom: 10px;
+  background: rgba(69,77,106,0.9);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: .6px;
+  width: max-content;
+  max-width: 220px;
+}
+
+.gift-pop-btn{
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 18px;
+  transition: transform .18s ease, filter .18s ease;
+}
+
+.gift-pop-btn:hover{
+  transform: translateY(-4px) scale(1.03);
+  filter: drop-shadow(0 16px 26px rgba(0,0,0,.22));
+}
+
+.gift-pop-btn:active{
+  transform: scale(0.96);
+}
+
+.gift-pop-img{
+  width: 200px;     /* chỉnh size popup ở đây */
+  height: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+
+/* Sparkles */
+.sparkle {
+    position: absolute;
+    color: #ffd700;
+    font-size: 12px;
+    animation: sparkle 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.sparkle:nth-child(1) {
+    top: -30px;
+    left: -25px;
+    animation-delay: 0s;
+    font-size: 24px;
+}
+
+.sparkle:nth-child(2) {
+    top: -25px;
+    right: -30px;
+    animation-delay: 0.5s;
+    font-size: 20px;
+}
+
+.sparkle:nth-child(3) {
+    bottom: -30px;
+    left: -20px;
+    animation-delay: 1s;
+    font-size: 24px;
+}
+
+.sparkle:nth-child(4) {
+    bottom: -25px;
+    right: -25px;
+    animation-delay: 1.5s;
+    font-size: 20px;
+}
+
+/* Tooltip */
+.gift-pop-shell{
+  position: relative;
+  width: 160px;             /* = chiều rộng khu ảnh/popup */
+}
+
+/* TOOLTIP: cao hơn + bỏ glow vàng */
+.gift-tooltip{
+  position: absolute;
+  left: 50%;
+  bottom: 190px;                 /* ✅ TĂNG SỐ NÀY để cao hơn (160/175/190) */
+  transform: translateX(-50%);
+  width: 190px;
+  max-width: 190px;
+
+  padding: 12px 14px;
+  border-radius: 18px;
+
+  background: rgba(69,77,106,0.92);  /* xanh đậm sang */
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: .6px;
+  text-align: center;
+
+  white-space: normal;
+  line-height: 1.25;
+
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18); /* ✅ bóng xám, KHÔNG vàng */
+  border: 1px solid rgba(255,255,255,0.12); /* nhẹ thôi cho sang */
+}
+
+/* Nếu trước đó có glow vàng bằng filter hoặc shadow khác -> ép bỏ */
+.gift-tooltip{
+  filter: none !important;
+}
+
+/* Nếu bạn có mũi nhọn mà đang vàng -> đổi về màu tooltip */
+.gift-tooltip::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-8px;
+  transform:translateX(-50%);
+  width:0;height:0;
+  border-left:8px solid transparent;
+  border-right:8px solid transparent;
+  border-top:8px solid rgba(69,77,106,0.92);
+}
+
+.gift-tooltip{ z-index: 2; }
+.gift-pop-btn{ position: relative; z-index: 1; }
+
+
+.gift-popup:hover .gift-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1.2);
+    animation: tooltipBounce 0.6s ease, textGlow 2s ease-in-out infinite;
+}
+/* Tooltip mặc định ẩn */
+.gift-tooltip{
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+/* Hover vào hộp quà (button) thì tooltip hiện */
+.gift-pop-shell:hover .gift-tooltip,
+.gift-pop-btn:hover + .gift-tooltip{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+
+@keyframes tooltipBounce {
+    0% {
+        transform: translateX(-50%) scale(0.8) translateY(15px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.3) translateY(-8px);
+    }
+    100% {
+        transform: translateX(-50%) scale(1.2) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow:
+      0 2px 4px rgba(0,0,0,0.55),
+      0 0 10px rgba(69,77,106,0.35);
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.22),
+      0 0 16px rgba(69,77,106,0.25),
+      inset 0 2px 4px rgba(255,255,255,0.12);
+  }
+
+  50% {
+    text-shadow:
+      0 2px 4px rgba(0,0,0,0.55),
+      0 0 18px rgba(69,77,106,0.55),
+      0 0 26px rgba(255,255,255,0.15);
+    box-shadow:
+      0 12px 34px rgba(0,0,0,0.28),
+      0 0 26px rgba(69,77,106,0.38),
+      inset 0 2px 4px rgba(255,255,255,0.18);
+  }
+
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    }
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-3deg);
+    }
+    75% {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Pulse effect when hovering */
+.gift-popup:hover .gift-box-3d {
+    animation: float 3s ease-in-out infinite, wiggle 2s ease-in-out infinite, pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(116, 7, 13, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(116, 7, 13, 0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gift-popup {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    
+    .gift-tooltip {
+        font-size: 14px;
+        padding: 12px 20px;
+        margin-bottom: 15px;
+    }
+    
+    .gift-popup:hover .gift-tooltip {
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+/* Hide on very small screens */
+@media (max-width: 480px) {
+    .gift-popup {
+        display: none;
+    }
+}

@@ -1,0 +1,267 @@
+/* =====================================================
+   RESET DEBUG
+===================================================== */
+*{
+  outline: none !important;
+}
+
+body {
+  margin-top: 100px;
+}
+
+/* =====================================================
+   HEADER SPACER (not needed anymore)
+===================================================== */
+.header-spacer{
+  height: 0px;
+}
+
+/* =====================================================
+   EVENT DETAIL
+===================================================== */
+.event-detail{
+  padding: 60px 0 90px;
+}
+
+.event-detail .section-content{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.event-detail-grid{
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* IMAGE */
+.event-detail-image{
+  width: 100%;
+  height: 520px;
+  background: #ddd;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.18);
+}
+
+.event-detail-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* INFO */
+.event-detail-info{
+  background: rgba(255,255,255,0.88);
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+}
+
+.event-title{
+  margin: 0 0 14px;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: var(--color-dark);
+}
+
+.event-meta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 22px;
+  font-size: 14px;
+  color: rgba(0,0,0,0.65);
+}
+
+.event-meta span{
+  font-weight: 700;
+}
+
+.event-description{
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(0,0,0,0.7);
+  margin-bottom: 28px;
+}
+
+/* CTA */
+.event-cta{
+  margin-top: auto;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.event-price{
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.btn-book{
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: #2f6b3f;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.btn-book:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+}
+
+/* =====================================================
+   TABS
+===================================================== */
+.event-tabs{
+  padding: 10px 0 80px;
+}
+.event-tabs .section-content{
+  padding-left: 180px;
+  padding-right: -500px;
+}
+
+
+.tabs-card{
+  background: rgba(255,255,255,0.88);
+  border-radius: 24px;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.16);
+  overflow: hidden;
+}
+
+.tabs-head{
+  display: flex;
+  gap: 26px;
+  padding: 18px 22px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.tab-btn{
+  background: none;
+  border: none;
+  padding: 14px 18px;
+  font-size: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: rgba(0,0,0,0.72);
+}
+
+.tab-btn.active{
+  color: var(--color-red);
+  background: rgba(255,255,255,0.95);
+}
+
+.tab-panel{ display: none; }
+.tab-panel.active{ display: block; }
+
+.tab-list{
+  padding-left: 18px;
+  line-height: 1.8;
+  color: rgba(0,0,0,0.68);
+}
+.tabs-head{
+  display: flex;
+  gap: 32px;
+  padding: 18px 26px;              /* 🔥 đều trên/dưới */
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  align-items: flex-end;           /* 🔥 giữ tab nằm đúng trục */
+}
+.tab-btn{
+  border: none;
+  background: transparent;
+  padding: 12px 0;                 /* 🔥 bỏ padding ngang dư */
+  font-family: var(--font);
+  font-size: 18px;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.72);
+  cursor: pointer;
+  position: relative;
+}
+
+/* TAB ACTIVE – gạch dưới thay vì box-shadow */
+.tab-btn.active{
+  color: var(--color-red);
+}
+
+.tab-btn.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:2px;
+  background: var(--color-red);
+}
+.tabs-body{
+  padding: 24px 26px 30px;   /* 🔥 kéo nội dung lên gần tab */
+}
+/* ===== Đồng bộ chiều ngang ô TAB với ô bên trên ===== */
+
+/* đảm bảo 2 section dùng chung "container" chuẩn */
+.event-detail .section-content,
+.event-tabs .section-content{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* card tab phải chiếm full chiều ngang của container */
+.tabs-card{
+  width: 100%;
+  max-width: 100%;
+  margin: 0;              /* tránh bị auto-center kiểu lạ */
+}
+
+/* nếu vẫn bị thụt vào do padding của tabs-head/body */
+.tabs-head,
+.tabs-body{
+  padding-left: 26px;
+  padding-right: 26px;
+}
+
+
+
+/* =====================================================
+   FOOTER WRAPPER FIX
+===================================================== */
+.footer-wrap{
+  padding: 40px 0 30px;
+  background: transparent;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 1024px){
+  .event-detail-grid{ grid-template-columns: 1fr; }
+  .event-detail-image{ height: 420px; }
+}
+
+@media (max-width: 768px){
+  .event-detail-image{ height: 320px; }
+  .event-title{ font-size: 28px; }
+}
+@media (max-width: 768px){
+  .event-detail .section-content,
+  .event-tabs .section-content{
+    padding: 0 20px;
+  }
+
+  .tabs-head,
+  .tabs-body{
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+

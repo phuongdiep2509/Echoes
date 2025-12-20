@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/music.css">
+<link rel="stylesheet" href="assets/css/gift-popup.css">
 
 <!-- Nhúng AuthManager -->
 <script src="scripts/authManager.js"></script>
@@ -34,8 +35,7 @@
                     script.src = 'components/scroll_header.js';
                     document.body.appendChild(script);
                 });
-            </script>
-            
+        </script>
     </div>
 
 <!-- BACKGROUND CHUNG -->
@@ -66,11 +66,9 @@
       <img src="assets/images/music/lc1.jpg" alt="Trending 1">
     </div>
     <div class="trending-info">
-      <a href="booking.html">
       <h4>CONCERT NHẠC SỐNG</h4>
       <p class="price">Từ 500.000đ - 1.000.000đ</p>
       <span class="date">22 THÁNG 12, 2025</span>
-      </a>
     </div>
   </div>
 
@@ -96,7 +94,7 @@
     </div>
   </div>
 
-</div>
+    </div>
 
     </div>
   </section>
@@ -105,77 +103,7 @@
 
 <div class="title-indent">
  <h3 class="sub-title">TẤT CẢ SỰ KIỆN NHẠC SỐNG</h3>
-
-<div class="event-list">
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc2.jpg" alt="Event 1"></div>
-    <button class="btn buy">MUA NGAY</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc3.jpg" alt="Event 2"></div>
-    <button class="btn buy">MUA NGAY</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc5.webp" alt="Event 3"></div>
-    <button class="btn buy">MUA NGAY</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc6.png" alt="Event 4"></div>
-    <button class="btn buy">MUA NGAY</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc7.jpg" alt="Event 5"></div>
-    <button class="btn buy">MUA NGAY</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc15.jpg" alt="Event 6"></div>
-    <button class="btn buy">MUA NGAY</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc9.jpg" alt="Event 7"></div>
-    <button class="btn buy">MUA NGAY</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc10.webp" alt="Event 8"></div>
-    <button class="btn buy">MUA NGAY</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc11.jpg" alt="Event 9"></div>
-    <button class="btn buy">MUA NGAY</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc13.png" alt="Event 10"></div>
-    <button class="btn sold">HẾT HÀNG</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-  <div class="event-wrapper">
-    <div class="event-thumb"><img src="assets/images/music/lc14.jpg" alt="Event 11"></div>
-    <button class="btn expired">ĐÃ HẾT THỜI GIAN</button>
-    <div class="event-content"><h4>CONCERT NHẠC SỐNG</h4><p>Từ 500.000đ</p><span>22 THÁNG 12, 2025</span></div>
-  </div>
-
-</div>
-
+<div class="event-list" id="event-list"></div>
 
 </div>
 </section>
@@ -183,8 +111,7 @@
   <button class="pager-btn" id="pagerPrev" aria-label="Trang trước">‹</button>
 
   <div class="pager-dots" id="pagerDots">
-    <span class="dot active" data-page="0"></span>
-    <span class="dot" data-page="1"></span>
+    <!-- Dots sẽ được tạo từ JS -->
   </div>
 
   <button class="pager-btn" id="pagerNext" aria-label="Trang sau">›</button>
@@ -209,8 +136,85 @@
         </div>
     </div>
     
+    <!-- Modal Styles -->
+    <style>
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            display: none;
+            z-index: 99999;
+        }
+        
+        .modal-overlay.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-container {
+            width: 850px;
+            max-width: 95%;
+            border-radius: 10px;
+            overflow: hidden;
+            background: transparent;
+            box-shadow: none;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 550px;
+            background: transparent;
+            border-radius: 10px;
+            border: none;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+            z-index: 100000;
+            background: rgba(255, 255, 255, 0.9);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 1);
+            color: #333;
+        }
+    </style>
+    
 <!----Nhúng JS --->
-  <script src="scripts/music.js"></script>
+  <script type="module" src="scripts/liveMusic.js"></script>
+  <script src="scripts/gift-popup.js"></script>
+
+  <!-- Modal Scripts -->
+    <script>
+        function openModal() {
+            document.getElementById("loginModal").classList.add("show");
+        }
+        
+        function closeModal() {
+            document.getElementById("loginModal").classList.remove("show");
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById("loginModal").addEventListener("click", function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
 
 </body>
 </html>

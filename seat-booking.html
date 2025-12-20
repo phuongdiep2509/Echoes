@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn Chỗ Ngồi | Echoes</title>
+    <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Nhúng font và icon -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Gideon+Roman&display=swap" rel="stylesheet">
+
+    <!-- Nhúng css -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/seat-booking.css">
+    
+    <!-- Nhúng AuthManager -->
+    <script src="scripts/authManager.js"></script>
+</head>
+<body>
+    <div id="header">
+        <script>
+            fetch('components/user_header.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                    
+                    // Cập nhật UI header với AuthManager
+                    if (window.authManager) {
+                        authManager.updateHeaderUI();
+                    }
+                    
+                    const script = document.createElement('script');
+                    script.src = 'components/scroll_header.js';
+                    document.body.appendChild(script);
+                });
+        </script>
+    </div>
+
+    <main class="container-fluid my-5">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-custom mb-4">
+            <div class="container">
+                <a href="index.html">TRANG CHỦ</a> / 
+                <a href="concert.html">CONCERT</a> / 
+                <span id="eventBreadcrumb">CHỌN CHỖ NGỒI</span>
+            </div>
+        </nav>
+
+        <div class="container">
+            <!-- Event Info Header -->
+            <div class="event-header mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-2">
+                        <img id="eventPoster" src="" alt="Event Poster" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-10">
+                        <h2 id="eventTitle" class="fw-bold text-danger mb-2"></h2>
+                        <p class="mb-1"><i class="fas fa-calendar-alt me-2"></i><span id="eventDate"></span></p>
+                        <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i><span id="eventVenue"></span></p>
+                        <p class="mb-0"><i class="fas fa-clock me-2"></i><span id="eventDuration"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Seat Map -->
+                <div class="col-lg-8">
+                    <div class="seat-map-container">
+                        <h4 class="text-center mb-4">SƠ ĐỒ CHỖ NGỒI</h4>
+                        
+                        <!-- Stage -->
+                        <div class="stage-container mb-4">
+                            <div class="stage">
+                                <span>STAGE</span>
+                            </div>
+                        </div>
+
+                        <!-- Seat Map -->
+                        <div class="seat-map">
+                            <!-- Image Map Version (will be activated when image is provided) -->
+                            <div class="image-map-container" id="imageMapContainer" style="display: none;">
+                                <div class="venue-image-wrapper">
+                                    <img id="venueImage" src="" alt="Venue Layout" class="venue-layout-image" usemap="#venueMap">
+                                    <map name="venueMap" id="venueMap">
+                                        <!-- Areas will be dynamically added based on the image -->
+                                    </map>
+                                </div>
+                                
+                                <!-- Selection Indicator -->
+                                <div class="selection-indicator" id="selectionIndicator" style="display: none;">
+                                    <div class="indicator-content">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span id="selectedAreaName">Đã chọn khu vực</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HTML Seat Map (current version) -->
+                            <div class="html-seat-map" id="htmlSeatMap">
+                                <!-- VIP Center Top -->
+                                <div class="vip-center-top seat-section" data-type="vip" data-section="center-top">
+                                    <span class="section-label">VIP</span>
+                                </div>
+
+                                <!-- Row 1: Economy Left + VIP/Standard + Economy Right -->
+                                <div class="seat-row row-1">
+                                    <div class="economy-left seat-section" data-type="economy" data-section="left-1">
+                                        <span class="section-label">ECONOMY</span>
+                                    </div>
+                                    
+                                    <div class="standard-left seat-section" data-type="standard" data-section="standard-1">
+                                        <span class="section-label">STANDARD</span>
+                                    </div>
+                                    
+                                    <div class="vip-left seat-section" data-type="vip" data-section="vip-1">
+                                        <span class="section-label">VIP</span>
+                                    </div>
+                                    
+                                    <div class="vip-right seat-section" data-type="vip" data-section="vip-2">
+                                        <span class="section-label">VIP</span>
+                                    </div>
+                                    
+                                    <div class="standard-right seat-section" data-type="standard" data-section="standard-2">
+                                        <span class="section-label">STANDARD</span>
+                                    </div>
+                                    
+                                    <div class="economy-right seat-section" data-type="economy" data-section="right-1">
+                                        <span class="section-label">ECONOMY</span>
+                                    </div>
+                                </div>
+
+                                <!-- Row 2: Economy Left + Standard + VIP Center + Standard + Economy Right -->
+                                <div class="seat-row row-2">
+                                    <div class="economy-left seat-section" data-type="economy" data-section="left-2">
+                                        <span class="section-label">ECONOMY</span>
+                                    </div>
+                                    
+                                    <div class="standard-section seat-section" data-type="standard" data-section="standard-3">
+                                        <span class="section-label">STANDARD</span>
+                                    </div>
+                                    
+                                    <div class="standard-section seat-section" data-type="standard" data-section="standard-4">
+                                        <span class="section-label">STANDARD</span>
+                                    </div>
+                                    
+                                    <div class="vip-center seat-section" data-type="vip" data-section="vip-center">
+                                        <span class="section-label">VIP</span>
+                                    </div>
+                                    
+                                    <div class="standard-section seat-section" data-type="standard" data-section="standard-5">
+                                        <span class="section-label">STANDARD</span>
+                                    </div>
+                                    
+                                    <div class="standard-section seat-section" data-type="standard" data-section="standard-6">
+                                        <span class="section-label">STANDARD</span>
+                                    </div>
+                                    
+                                    <div class="economy-right seat-section" data-type="economy" data-section="right-2">
+                                        <span class="section-label">ECONOMY</span>
+                                    </div>
+                                </div>
+
+                                <!-- Row 3: Economy Bottom -->
+                                <div class="seat-row row-3">
+                                    <div class="economy-bottom-left seat-section" data-type="economy" data-section="bottom-left">
+                                        <span class="section-label">ECONOMY</span>
+                                    </div>
+                                    
+                                    <div class="economy-bottom-center seat-section" data-type="economy" data-section="bottom-center">
+                                        <span class="section-label">ECONOMY</span>
+                                    </div>
+                                    
+                                    <div class="economy-bottom-right seat-section" data-type="economy" data-section="bottom-right">
+                                        <span class="section-label">ECONOMY</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Legend -->
+                        <div class="seat-legend mt-4">
+                            <div class="row text-center">
+                                <div class="col-md-4">
+                                    <div class="legend-item">
+                                        <div class="legend-color vip-color"></div>
+                                        <span>VIP</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="legend-item">
+                                        <div class="legend-color standard-color"></div>
+                                        <span>STANDARD</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="legend-item">
+                                        <div class="legend-color economy-color"></div>
+                                        <span>ECONOMY</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Summary -->
+                <div class="col-lg-4">
+                    <div class="booking-summary">
+                        <h4 class="fw-bold text-danger mb-3">THÔNG TIN ĐẶT VÉ</h4>
+                        
+                        <!-- Selected Seat Info -->
+                        <div class="selected-seat-info mb-3">
+                            <div class="alert alert-info" id="seatSelection">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Vui lòng chọn khu vực chỗ ngồi trên sơ đồ
+                            </div>
+                        </div>
+
+                        <!-- Ticket Details -->
+                        <div class="ticket-details" id="ticketDetails" style="display: none;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title fw-bold">Chi Tiết Vé</h6>
+                                    <div class="ticket-info">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Khu vực:</span>
+                                            <span id="selectedZone" class="fw-bold"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Giá vé:</span>
+                                            <span id="ticketPrice" class="fw-bold text-danger"></span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <span>Số lượng:</span>
+                                            <div class="quantity-control">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" id="decreaseQty">-</button>
+                                                <input type="number" id="ticketQuantity" class="form-control form-control-sm mx-2" value="1" min="1" max="10" style="width: 60px;">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" id="increaseQty">+</button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <span class="fw-bold">Tổng tiền:</span>
+                                            <span id="totalPrice" class="fw-bold text-danger fs-5"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="booking-actions mt-4">
+                            <button type="button" class="btn btn-danger w-100 mb-3" id="proceedToPayment" disabled>
+                                <i class="fas fa-credit-card me-2"></i>TIẾN HÀNH THANH TOÁN
+                            </button>
+                            <button type="button" class="btn btn-outline-danger w-100 mb-3" id="giftTicket" disabled>
+                                <i class="fas fa-gift me-2"></i>TẶNG VÉ CHO BẠN BÈ
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary w-100" onclick="goBack()">
+                                <i class="fas fa-arrow-left me-2"></i>QUAY LẠI
+                            </button>
+                        </div>
+
+                        <!-- Booking Notes -->
+                        <div class="booking-notes mt-4">
+                            <div class="alert alert-warning">
+                                <h6 class="fw-bold mb-2">Lưu ý:</h6>
+                                <ul class="mb-0 small">
+                                    <li>Mỗi tài khoản tối đa 10 vé</li>
+                                    <li>Vé đã mua không đổi trả</li>
+                                    <li>Vui lòng kiểm tra thông tin trước khi thanh toán</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer">
+        <script>
+            fetch('components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                })
+                .catch(error => console.error('Lỗi khi tải footer:', error));
+        </script>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="scripts/seat-booking.js"></script>
+</body>
+</html>

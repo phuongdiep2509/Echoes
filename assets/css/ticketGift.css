@@ -1,0 +1,551 @@
+/* Ticket Gift CSS */
+
+* {
+    outline: none !important;
+}
+
+body {
+    font-family: 'Fraunces', serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f0efeb 0%, #faf9f6 50%, #f0efeb 100%);
+    min-height: 100vh;
+    margin-top: 100px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Page Container */
+.page-container {
+    padding-top: 0px;
+    min-height: calc(100vh - 200px);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    padding: 20px 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(116, 7, 13, 0.1);
+}
+
+.breadcrumb a {
+    color: #74070d;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    margin: 0 10px;
+    color: #666;
+}
+
+/* Gift Container */
+.gift-container {
+    padding: 40px 0;
+}
+
+.gift-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.gift-header h1 {
+    color: #74070d;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.gift-header p {
+    color: #666;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* Form Sections */
+.form-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    border-color: rgba(116, 7, 13, 0.2);
+    transform: translateY(-2px);
+}
+
+.form-section h2 {
+    color: #74070d;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #74070d;
+    box-shadow: 0 0 0 3px rgba(116, 7, 13, 0.1);
+}
+
+.form-group small {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Booked Ticket Display */
+.booked-ticket {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(116, 7, 13, 0.05), rgba(116, 7, 13, 0.1));
+    border: 2px solid rgba(116, 7, 13, 0.2);
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.ticket-details {
+    flex: 1;
+}
+
+.ticket-details h3 {
+    margin: 0 0 15px 0;
+    color: #74070d;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.ticket-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.ticket-meta p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.ticket-meta span:first-child {
+    font-size: 1rem;
+}
+
+.ticket-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-top: 1px solid rgba(116, 7, 13, 0.2);
+}
+
+.price-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.price-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #74070d;
+}
+
+.ticket-image {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #74070d, #a00a12);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(116, 7, 13, 0.3);
+}
+
+.ticket-icon {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.booking-note {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.booking-note small {
+    color: #666;
+    font-style: italic;
+}
+
+/* Card Templates */
+.card-templates {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.template-option {
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.template-option:hover {
+    transform: translateY(-3px);
+}
+
+.template-option.active .template-preview {
+    border-color: #74070d;
+    box-shadow: 0 5px 20px rgba(116, 7, 13, 0.3);
+}
+
+.template-preview {
+    width: 100%;
+    height: 120px;
+    border: 3px solid #e0e0e0;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.template-preview.classic {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.template-preview.modern {
+    background: linear-gradient(135deg, #74070d, #a00a12);
+    color: white;
+}
+
+.template-preview.festive {
+    background: linear-gradient(135deg, #d4af37, #ffd700);
+    color: #333;
+}
+
+.template-content {
+    text-align: center;
+    padding: 10px;
+}
+
+.template-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+}
+
+.template-content p {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.template-option span {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Card Preview */
+.card-preview {
+    position: sticky;
+    top: 140px;
+}
+
+.preview-card {
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    min-height: 300px;
+}
+
+.preview-card.classic {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border: 3px solid #74070d;
+}
+
+.preview-card.modern {
+    background: linear-gradient(135deg, #74070d, #a00a12);
+    color: white;
+}
+
+.preview-card.festive {
+    background: linear-gradient(135deg, #d4af37, #ffd700);
+    color: #333;
+}
+
+.card-header h3 {
+    margin: 0 0 20px 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.card-body {
+    margin-bottom: 20px;
+}
+
+.recipient-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.gift-text {
+    text-align: center;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.ticket-info-preview {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ticket-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.message-preview {
+    font-style: italic;
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-footer {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 15px;
+}
+
+/* Summary */
+.summary {
+    background: rgba(116, 7, 13, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid rgba(116, 7, 13, 0.2);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(116, 7, 13, 0.1);
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #74070d;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid #74070d;
+}
+
+/* Form Actions */
+.form-actions {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-gift {
+    background: linear-gradient(135deg, #74070d, #a00a12);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(116, 7, 13, 0.3);
+}
+
+.btn-gift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(116, 7, 13, 0.4);
+}
+
+.btn-gift:active {
+    transform: translateY(-1px);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 40px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.success-animation {
+    margin-bottom: 30px;
+}
+
+.checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    animation: checkmarkPulse 0.6s ease;
+}
+
+@keyframes checkmarkPulse {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.modal-content h2 {
+    color: #74070d;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #74070d;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #a00a12;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #74070d;
+    border: 2px solid #74070d;
+}
+
+.btn-secondary:hover {
+    background: #74070d;
+    color: white;
+    transform: translateY(-2px);
+}

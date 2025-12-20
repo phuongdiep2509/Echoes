@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Castle Veil Bandana | Echoes</title>
+
+  <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/merchandiseDetail.css">
+
+  <!-- Auth -->
+  <script src="scripts/authManager.js"></script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<script>
+fetch('components/user_header.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+    if (window.authManager) authManager.updateHeaderUI();
+    const script = document.createElement('script');
+    script.src = 'components/scroll_header.js';
+    document.body.appendChild(script);
+  });
+</script>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  Merch / Year End 2025 / <span>Castle Veil Bandana</span>
+</div>
+
+<!-- PRODUCT -->
+<section class="product-detail">
+
+  <!-- IMAGE -->
+  <div class="product-image">
+    <img
+      src="assets/images/merch/merch1.png"
+      alt="Castle Veil Bandana"
+      id="productImg"
+      class="product-main-img"
+    >
+  </div>
+
+  <!-- INFO -->
+  <div class="product-info">
+    <h1>Castle Veil Bandana</h1>
+    <p class="price">105.000 đ</p>
+
+    <p class="desc">
+      Castle Veil Bandana – “Wonder Hallows” Collection Echoes Year End 2025
+    </p>
+
+    <ul class="meta">
+      <li><strong>Chất liệu:</strong> Lụa bóng</li>
+      <li><strong>Kích thước:</strong> 60 × 60 cm</li>
+    </ul>
+
+    <div class="quantity">
+      <span>Số lượng</span>
+      <div class="qty-box">
+        <button onclick="changeQty(-1)">−</button>
+        <input type="text" id="qty" value="1" readonly>
+        <button onclick="changeQty(1)">+</button>
+      </div>
+    </div>
+
+    <button class="add-cart">THÊM VÀO GIỎ HÀNG</button>
+
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button class="active" onclick="openTab(0)">Mô tả</button>
+        <button onclick="openTab(1)">Chính sách đổi trả</button>
+      </div>
+
+      <div class="tab-content active">
+        Bandana phiên bản giới hạn thuộc bộ sưu tập cuối năm của Echoes.
+      </div>
+
+      <div class="tab-content">
+        Đổi trả trong vòng 7 ngày nếu có lỗi từ nhà sản xuất.
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- IMAGE MODAL -->
+<div class="image-modal" id="imageModal">
+  <span class="close" onclick="closeModal()">×</span>
+  <img id="modalImg">
+</div>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+<script>
+fetch('components/footer.html')
+  .then(res => res.text())
+  .then(html => document.getElementById('footer').innerHTML = html);
+</script>
+
+<script src="scripts/merchandiseDetail.js"></script>
+
+</body>
+</html>

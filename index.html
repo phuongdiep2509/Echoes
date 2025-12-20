@@ -15,6 +15,7 @@
     <!-- Nhúng css -->
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/gift-popup.css">
     
     <!-- Nhúng AuthManager -->
     <script src="scripts/authManager.js"></script>
@@ -178,7 +179,7 @@
                     </div>
 
                     <div class="ads-adventcld">
-                        <a href="adventCalendar.html">
+                        <a href="opensecretbox.html">
                             <img src="assets/images/news/ads_adventcld.png">
                         </a>
                     </div>
@@ -453,7 +454,9 @@
         </script>
 </body>
 <!----Nhúng JS --->
-<script src="scripts/carousel.js">
+<script src="scripts/carousel.js"></script>
+<script src="scripts/gift-popup.js"></script>
+<script>
 fetch('components/user_header.html')
   .then(res => {
     if (!res.ok) throw new Error('Không tìm thấy file header');
