@@ -1,0 +1,292 @@
+/* Gift Popup Responsive Styles */
+
+/* Tablet và màn hình nhỏ */
+@media (max-width: 1024px) {
+    .gift-popup {
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .gift-pop-img {
+        width: 180px; /* Giảm từ 200px xuống 180px */
+    }
+    
+    .gift-pop-shell {
+        width: 144px; /* Tương ứng với gift-pop-img */
+    }
+    
+    .gift-tooltip {
+        width: 170px;
+        max-width: 170px;
+        bottom: 170px; /* Điều chỉnh theo kích thước mới */
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+    
+    .sparkle:nth-child(1) {
+        top: -25px;
+        left: -20px;
+        font-size: 20px;
+    }
+    
+    .sparkle:nth-child(2) {
+        top: -20px;
+        right: -25px;
+        font-size: 18px;
+    }
+    
+    .sparkle:nth-child(3) {
+        bottom: -25px;
+        left: -18px;
+        font-size: 20px;
+    }
+    
+    .sparkle:nth-child(4) {
+        bottom: -20px;
+        right: -20px;
+        font-size: 18px;
+    }
+}
+
+/* Tablet nhỏ */
+@media (max-width: 768px) {
+    .gift-popup {
+        right: 16px;
+        bottom: 16px;
+    }
+    
+    .gift-pop-img {
+        width: 160px; /* Giảm xuống 160px */
+    }
+    
+    .gift-pop-shell {
+        width: 128px; /* Tương ứng với gift-pop-img */
+    }
+    
+    .gift-tooltip {
+        width: 150px;
+        max-width: 150px;
+        bottom: 150px; /* Điều chỉnh theo kích thước mới */
+        font-size: 12px;
+        padding: 8px 10px;
+        border-radius: 14px;
+    }
+    
+    .gift-tooltip::after {
+        border-top: 6px solid rgba(69,77,106,0.92);
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        bottom: -6px;
+    }
+    
+    .gift-popup:hover .gift-tooltip {
+        transform: translateX(-50%) scale(1.1); /* Giảm scale từ 1.2 xuống 1.1 */
+    }
+    
+    .sparkle {
+        font-size: 10px;
+    }
+    
+    .sparkle:nth-child(1) {
+        top: -20px;
+        left: -15px;
+        font-size: 16px;
+    }
+    
+    .sparkle:nth-child(2) {
+        top: -18px;
+        right: -20px;
+        font-size: 14px;
+    }
+    
+    .sparkle:nth-child(3) {
+        bottom: -20px;
+        left: -15px;
+        font-size: 16px;
+    }
+    
+    .sparkle:nth-child(4) {
+        bottom: -18px;
+        right: -18px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .gift-popup {
+        right: 12px;
+        bottom: 12px;
+    }
+    
+    .gift-pop-img {
+        width: 140px; /* Giảm xuống 140px */
+    }
+    
+    .gift-pop-shell {
+        width: 112px; /* Tương ứng với gift-pop-img */
+    }
+    
+    .gift-tooltip {
+        width: 130px;
+        max-width: 130px;
+        bottom: 130px; /* Điều chỉnh theo kích thước mới */
+        font-size: 11px;
+        padding: 6px 8px;
+        border-radius: 12px;
+        line-height: 1.2;
+    }
+    
+    .gift-tooltip::after {
+        border-top: 5px solid rgba(69,77,106,0.92);
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        bottom: -5px;
+    }
+    
+    .gift-popup:hover .gift-tooltip {
+        transform: translateX(-50%) scale(1.05); /* Giảm scale xuống 1.05 */
+    }
+    
+    .gift-pop-btn:hover {
+        transform: translateY(-2px) scale(1.02); /* Giảm hover effect */
+    }
+    
+    .sparkle:nth-child(1) {
+        top: -15px;
+        left: -12px;
+        font-size: 14px;
+    }
+    
+    .sparkle:nth-child(2) {
+        top: -12px;
+        right: -15px;
+        font-size: 12px;
+    }
+    
+    .sparkle:nth-child(3) {
+        bottom: -15px;
+        left: -10px;
+        font-size: 14px;
+    }
+    
+    .sparkle:nth-child(4) {
+        bottom: -12px;
+        right: -12px;
+        font-size: 12px;
+    }
+}
+
+/* Mobile nhỏ */
+@media (max-width: 480px) {
+    .gift-popup {
+        right: 8px;
+        bottom: 8px;
+    }
+    
+    .gift-pop-img {
+        width: 120px; /* Giảm xuống 120px */
+    }
+    
+    .gift-pop-shell {
+        width: 96px; /* Tương ứng với gift-pop-img */
+    }
+    
+    .gift-tooltip {
+        width: 110px;
+        max-width: 110px;
+        bottom: 110px; /* Điều chỉnh theo kích thước mới */
+        font-size: 10px;
+        padding: 5px 6px;
+        border-radius: 10px;
+        line-height: 1.1;
+    }
+    
+    .gift-tooltip::after {
+        border-top: 4px solid rgba(69,77,106,0.92);
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        bottom: -4px;
+    }
+    
+    .gift-popup:hover .gift-tooltip {
+        transform: translateX(-50%) scale(1.0); /* Không scale trên mobile nhỏ */
+    }
+    
+    .gift-pop-btn:hover {
+        transform: translateY(-1px) scale(1.01); /* Giảm hover effect nhiều hơn */
+    }
+    
+    .sparkle {
+        display: none; /* Ẩn sparkles trên mobile nhỏ để tránh lag */
+    }
+}
+
+/* Mobile rất nhỏ - Ẩn hoàn toàn */
+@media (max-width: 360px) {
+    .gift-popup {
+        display: none !important;
+    }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .gift-popup {
+        right: 8px;
+        bottom: 8px;
+    }
+    
+    .gift-pop-img {
+        width: 100px; /* Rất nhỏ cho landscape */
+    }
+    
+    .gift-pop-shell {
+        width: 80px;
+    }
+    
+    .gift-tooltip {
+        width: 90px;
+        max-width: 90px;
+        bottom: 90px;
+        font-size: 9px;
+        padding: 4px 5px;
+        border-radius: 8px;
+    }
+    
+    .gift-tooltip::after {
+        border-top: 3px solid rgba(69,77,106,0.92);
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        bottom: -3px;
+    }
+    
+    .sparkle {
+        display: none;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .gift-pop-img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .gift-popup * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .gift-pop-btn:hover {
+        transform: none !important;
+    }
+    
+    .gift-popup:hover .gift-tooltip {
+        transform: translateX(-50%) !important;
+        animation: none !important;
+    }
+}
