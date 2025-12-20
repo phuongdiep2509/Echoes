@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Vé của tôi | Echoes</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/myTicket.css">
+</head>
+<body>
+
+<section class="my-ticket-wrapper">
+  <h1 class="page-title">Vé của tôi</h1>
+
+  <!-- FILTER -->
+  <div class="ticket-filter">
+    <button class="filter active" data-status="all">Tất cả</button>
+    <button class="filter" data-status="success">Thành công</button>
+    <button class="filter" data-status="cancelled">Đã huỷ</button>
+  </div>
+
+  <!-- SUB TAB -->
+  <div class="sub-filter">
+    <span class="sub active">Sắp diễn ra</span>
+    <span class="sub">Đã kết thúc</span>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="ticket-content"></div>
+</section>
+
+<script src="scripts/myTicket.js"></script>
+</body>
+</html>

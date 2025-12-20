@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chi tiết vé | Echoes</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/ticketDetail.css">
+</head>
+
+<body>
+
+<section class="ticket-detail-wrapper">
+  <a href="myTicket.html" class="back-link">← Quay lại Vé của tôi</a>
+
+  <div class="ticket-detail-card">
+
+    <!-- INFO -->
+    <div class="ticket-info">
+
+      <h1 id="ticketName"></h1>
+
+      <div class="ticket-row">
+        <span>📍 Địa điểm</span>
+        <p id="ticketLocation"></p>
+      </div>
+
+      <div class="ticket-row">
+        <span>🕒 Thời gian</span>
+        <p id="ticketTime"></p>
+      </div>
+
+      <div class="ticket-row">
+        <span>🎫 Vị trí</span>
+        <p id="ticketSeat"></p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="receiver">
+        <h4>Người nhận</h4>
+        <p id="receiverName"></p>
+        <p id="receiverEmail"></p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="price">
+        <p>Đơn giá: <strong id="ticketPrice"></strong></p>
+        <p>Thành tiền: <strong id="ticketTotal"></strong></p>
+      </div>
+
+    </div>
+
+    <!-- QR -->
+    <div class="ticket-qr">
+      <div id="qrDetail"></div>
+    </div>
+
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+<script src="scripts/ticketDetail.js"></script>
+</body>
+</html>
