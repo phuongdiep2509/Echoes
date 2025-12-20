@@ -1,105 +1,138 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết vé | Echoes</title>
-    <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chi tiết vé | Echoes</title>
+  <link rel="icon" type="image/png" href="assets/images/index/favicon.png" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/common.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/ticketDetail.css">
-    
-    <!-- Scripts -->
-    <script src="scripts/authManager.js"></script>
-    <script src="scripts/common.js"></script>
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/ticketDetail.css" />
+
+  <!-- Nhúng AuthManager -->
+  <script src="scripts/authManager.js"></script>
 </head>
+
 <body>
-    <!-- HEADER -->
-    <div id="header"></div>
+  <!-- Header -->
+  <div id="header">
+    <script>
+      fetch('components/user_header.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('header').innerHTML = data;
 
-    <!-- MAIN CONTENT -->
-    <section class="ticket-detail-wrapper">
-        <a href="myTicket.html" class="back-link">← Quay lại Vé của tôi</a>
+          if (window.authManager) {
+            authManager.updateHeaderUI();
+          }
 
-        <div class="ticket-detail-card">
-            <!-- TICKET INFO -->
-            <div class="ticket-info">
-                <h1 id="ticketName">Tên sự kiện</h1>
+          const script = document.createElement('script');
+          script.src = 'components/scroll_header.js';
+          document.body.appendChild(script);
+        });
+    </script>
+  </div>
 
-                <div class="ticket-row">
-                    <span>📍 Địa điểm</span>
-                    <p id="ticketLocation">-</p>
-                </div>
+  <!-- Main -->
+  <section class="ticket-detail-wrapper">
+    <a href="myTicket.html" class="back-link">← Quay lại Vé của tôi</a>
 
-                <div class="ticket-row">
-                    <span>🕒 Thời gian</span>
-                    <p id="ticketTime">-</p>
-                </div>
+    <div class="ticket-detail-card">
 
-                <div class="ticket-row">
-                    <span>🎫 Loại vé</span>
-                    <p id="ticketSeat">-</p>
-                </div>
+      <!-- INFO -->
+      <div class="ticket-info">
+        <h1 id="ticketName"></h1>
 
-                <div class="ticket-row">
-                    <span>🎟️ Số lượng</span>
-                    <p id="ticketQuantity">1</p>
-                </div>
-
-                <div class="ticket-row">
-                    <span>📅 Thời gian đặt</span>
-                    <p id="bookingTime">-</p>
-                </div>
-
-                <div class="ticket-row">
-                    <span>🎁 Vé tặng</span>
-                    <p id="giftStatus">Không</p>
-                </div>
-
-                <div class="ticket-row">
-                    <span>✅ Trạng thái</span>
-                    <p id="ticketStatus">-</p>
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="receiver">
-                    <h4>Người nhận</h4>
-                    <p id="receiverName">-</p>
-                    <p id="receiverEmail">-</p>
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="price">
-                    <p>Đơn giá: <strong id="ticketPrice">0đ</strong></p>
-                    <p>Thành tiền: <strong id="ticketTotal">0đ</strong></p>
-                </div>
-            </div>
-
-            <!-- QR CODE -->
-            <div class="ticket-qr">
-                <div id="qrDetail"></div>
-            </div>
+        <div class="ticket-row">
+          <span>📍 Địa điểm</span>
+          <p id="ticketLocation"></p>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <div id="footer"></div>
-    
-    <!-- LOGIN MODAL -->
-    <div id="loginModal" class="modal-overlay" style="display: none;">
-        <div class="modal-container">
-            <div class="close-modal" onclick="closeModal()">&times;</div>
-            <iframe src="accounts/SignUp_LogIn_Form.html" class="login-iframe"></iframe>
+        <div class="ticket-row">
+          <span>🕒 Thời gian</span>
+          <p id="ticketTime"></p>
         </div>
+
+        <div class="ticket-row">
+          <span>🎫 Vị trí</span>
+          <p id="ticketSeat"></p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="receiver">
+          <h4>Người nhận</h4>
+          <p id="receiverName"></p>
+          <p id="receiverEmail"></p>
+
+          <!-- ✅ Nút gửi mail -->
+          <button id="btnSendTicketEmail" class="btn buy" type="button">
+            Gửi vé về Gmail
+          </button>
+          <p id="sendMailStatus" style="margin-top:10px;"></p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="price">
+          <p>Đơn giá: <strong id="ticketPrice"></strong></p>
+          <p>Thành tiền: <strong id="ticketTotal"></strong></p>
+        </div>
+      </div>
+
+      <!-- QR -->
+      <div class="ticket-qr">
+        <div id="qrDetail"></div>
+      </div>
+
     </div>
+  </section>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
-    <script src="scripts/ticketDetail.js"></script>
+  <!-- QR library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+  <!-- Ticket Detail Script -->
+  <script src="scripts/ticketDetail.js"></script>
+
+  <!-- Footer -->
+  <div id="footer">
+    <script>
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Lỗi khi tải footer:', error));
+    </script>
+  </div>
+
+  <!-- Optional: Login modal nếu site bạn có dùng -->
+  <div id="loginModal" class="modal-overlay" style="display:none;">
+    <div class="modal-container" id="loginModalContainer">
+      <div class="close-modal" onclick="closeModal()">&times;</div>
+      <iframe src="accounts/SignUp_LogIn_Form.html"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      const m = document.getElementById("loginModal");
+      if (m) m.style.display = "flex";
+    }
+
+    function closeModal() {
+      const m = document.getElementById("loginModal");
+      if (m) m.style.display = "none";
+    }
+
+    // Close modal when clicking outside
+    const modal = document.getElementById("loginModal");
+    if (modal) {
+      modal.addEventListener("click", function (e) {
+        if (e.target === this) closeModal();
+      });
+    }
+  </script>
 </body>
 </html>
