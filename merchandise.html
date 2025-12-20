@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu | Echoes</title>
+    <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
+
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/merchandise.css">
+    
+    <!-- Nhúng AuthManager -->
+    <script src="scripts/authManager.js"></script>
+</head>
+<body>
+    <div id="header">
+        <script>
+            fetch('components/user_header.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                    if (window.authManager) {
+                        authManager.updateHeaderUI();
+                    }
+                    const script = document.createElement('script');
+                    script.src = 'components/scroll_header.js';
+                    document.body.appendChild(script);
+                });
+            </script>
+            
+    </div>
+<!-- ===== BREADCRUMB ===== -->
+<div class="breadcrumb">
+    TRANG CHỦ / MERCHANDISE
+</div>
+
+<!-- ===== HEADER TITLE ===== -->
+<section class="page-header">
+    <h1>MERCHANDISE</h1>
+    <p>
+        Những sản phẩm Merch từ những sự kiện âm nhạc bạn yêu thích!
+    </p>
+</section>
+
+<!-- ===== PRODUCT LIST ===== -->
+<section class="product-section">
+    <h2 class="section-title">TẤT CẢ SẢN PHẨM</h2>
+
+    <div class="product-list">
+
+        <!-- ITEM -->
+      <a href="merchandiseDetail.html" class="product-item">
+            <img src="assets/images/merch/merch1.png" alt="">
+            <div class="product-info">
+                <h3> Castle Veil Bandana – “Wonder Hallows” </h3>
+                <span class="price">105.000 ₫</span>
+            </div>
+        </a>
+
+         <a href="merchandiseDetail.html" class="product-item">
+            <img src="assets/images/merch/merch2.png" alt="">
+            <div class="product-info">
+                <h3>Echo Keyring – “Wonder Hallows”</h3>
+                <span class="price">85.000 ₫ </span>
+            </div>
+        </a>
+
+        <a href="merchandiseDetail.html" class="product-item">
+            <img src="assets/images/merch/merch3.png" alt="">
+            <div class="product-info">
+                <h3>Anh Trai "Say Hi" Bandana / The Last Chapter</h3>
+                <span class="price">179,000₫</span>
+            </div>
+         </a>
+
+       <a href="merchandiseDetail.html" class="product-item">
+            <img src="assets/images/merch/merch4.png" alt="">
+            <div class="product-info">
+                <h3>Anh Trai "Say Hi" Lightstick set / Eternal Shine</h3>
+                <span class="price">499,000₫</span>
+            </div>
+        </a>
+       <a href="merchandiseDetail.html" class="product-item">
+            <img src="assets/images/merch/merch5.png" alt="">
+            <div class="product-info">
+                <h3>Em Xinh "Ssy Hi" Lightstick set / The real Aura</h3>
+                <span class="price">499,000₫</span>
+            </div>
+        </a>
+
+        <a href="merchandiseDetail.html" class="product-item">
+            <img src="assets/images/merch/merch6.png" alt="">
+            <div class="product-info">
+                <h3>EM XINH "Say Hi" Cap / Xinh Sập Xình Sập Sàn</h3>
+                <span class="price">249,000₫</span>
+            </div>
+      </a>
+
+        <a href="merchandiseDetail.html" class="product-item">
+            <img src="assets/images/merch/merch7.png" alt="">
+            <div class="product-info">
+                <h3>KINGDOMStick (1st EDITION)</h3>
+                <span class="price">1,299,000₫</span>
+            </div>
+   </a>
+
+        <a href="merchandiseDetail.html" class="product-item">
+            <img src="assets/images/merch/merch8.png" alt="">
+            <div class="product-info">
+                <h3>Túi Tote “ALL-ROUNDER" </h3>
+                <span class="price">299,000đ</span>
+            </div>
+       </a>
+    </div>
+</section>
+
+<!-- ===== PAGINATION ===== -->
+<div class="product-list" id="productList">
+   <div class="pagination">
+    <button class="arrow" onclick="prevPage()">‹</button>
+
+    <div class="dots" id="dots"></div>
+
+    <button class="arrow" onclick="nextPage()">›</button>
+</div>
+<script>
+const products = document.querySelectorAll(".product-item");
+const perPage = 4;
+let currentPage = 1;
+const totalPages = Math.ceil(products.length / perPage);
+const dotsContainer = document.getElementById("dots");
+
+function renderDots() {
+    dotsContainer.innerHTML = "";
+    for (let i = 1; i <= totalPages; i++) {
+        const dot = document.createElement("span");
+        dot.classList.add("dot");
+        if (i === currentPage) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+            currentPage = i;
+            renderPage();
+        });
+        dotsContainer.appendChild(dot);
+    }
+}
+
+function renderPage() {
+    products.forEach((item, index) => {
+        item.style.display =
+            index >= (currentPage - 1) * perPage &&
+            index < currentPage * perPage
+            ? "flex"
+            : "none";
+    });
+    renderDots();
+}
+
+function nextPage() {
+    if (currentPage < totalPages) {
+        currentPage++;
+        renderPage();
+    }
+}
+
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        renderPage();
+    }
+}
+
+renderPage();
+</script>
+
+div id="footer">
+        <script>
+        fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Lỗi khi tải footer:', error));
+        </script>
+    </div>
+    
+    <div id="loginModal" class="modal-overlay" style="display: none;">
+        <div class="modal-container" id="loginModal">
+            <div class="close-modal" onclick="closeModal()">&times;</div>
+            
+            <iframe src="accounts/SignUp_LogIn_Form.html"></iframe>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+
