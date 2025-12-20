@@ -154,6 +154,29 @@ body {
 .tab-content.active {
     display: block;
 }
+/* TOAST */
+.toast {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background:#4b4d2a;
+    color: #f6f1e7;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 9999;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
