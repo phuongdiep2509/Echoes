@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sự kiện | Echoes</title>
     <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
+    
+    <!-- Bootstrap & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- Nhúng font -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Gideon+Roman&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/eventDetail.css">
     <link rel="stylesheet" href="assets/css/gift-popup.css">
     
-    <!-- Nhúng AuthManager -->
+    <!-- Scripts -->
     <script src="scripts/authManager.js"></script>
+    <script src="scripts/common.js"></script>
 </head>
 
 <body>
@@ -184,106 +189,9 @@
     </section>
 
     <!-- FOOTER -->
-    <div id="footer">
-        <script>
-            fetch('components/footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer').innerHTML = data;
-                })
-                .catch(error => console.error('Lỗi khi tải footer:', error));
-        </script>
-    </div>
+    <div id="footer"></div>
 
-    <!-- Styles -->
-    <style>
-        .breadcrumb-custom {
-            background: var(--color-green);
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .breadcrumb-custom a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .breadcrumb-custom a:hover {
-            text-decoration: underline;
-        }
-        
-        .breadcrumb-custom span {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .ticket-option {
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: #f8f9fa;
-        }
-
-        .ticket-option:hover {
-            border-color: #dc3545;
-            background-color: #fff5f5;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
-        }
-
-        .ticket-option.selected {
-            border-color: #dc3545;
-            background-color: #fff5f5;
-            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
-        }
-
-        .ticket-badge {
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .badge-available {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .badge-limited {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-
-        .badge-sold {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-
-        .card-header {
-            font-weight: bold;
-        }
-
-        .sticky-top {
-            position: sticky;
-            top: 100px;
-        }
-
-        .related-event-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .related-event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
-        }
-    </style>
-
-    <!-- JavaScript -->
+    <!-- Scripts -->
     <script type="module" src="scripts/eventDetail.js"></script>
     <script src="scripts/gift-popup.js"></script>
 </body>

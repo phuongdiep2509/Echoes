@@ -1,0 +1,173 @@
+/* ===== COMMON STYLES FOR ALL PAGES ===== */
+
+/* Body margin for header spacing */
+body {
+    margin-top: 100px;
+}
+
+/* Breadcrumb styling - consistent across all pages */
+.breadcrumb-custom {
+    background-color: var(--color-green);
+    color: white;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.breadcrumb-custom a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-custom a:hover {
+    color: #ffffff;
+}
+
+.breadcrumb-custom span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Common modal styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    display: none;
+    z-index: 99999;
+}
+
+.modal-overlay.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container {
+    width: 850px;
+    max-width: 95%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: none;
+}
+
+.login-iframe {
+    width: 100%;
+    height: 550px;
+    background: transparent;
+    border-radius: 10px;
+    border: none;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    z-index: 100000;
+    background: rgba(255, 255, 255, 0.9);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border: 1px solid #ddd;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 1);
+    color: #333;
+}
+
+/* Common button styles */
+.btn-echoes {
+    background: linear-gradient(135deg, #74070d, #a00a12);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-echoes:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(116, 7, 13, 0.3);
+}
+
+.btn-echoes:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Common card styles */
+.card-echoes {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(116, 7, 13, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card-echoes:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Common loading spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #74070d;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Common product styles */
+.product-item {
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    text-decoration: none;
+    color: inherit;
+}
+
+.out-of-stock {
+    opacity: 0.6;
+}
+
+.stock-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #dc3545;
+    color: white;
+}

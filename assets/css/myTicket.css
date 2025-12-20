@@ -16,6 +16,7 @@ body {
   background: var(--cream);
   font-family: 'Inter', sans-serif;
   color: var(--text-main);
+  margin-top: 100px;
 }
 
 /* WRAPPER */
@@ -208,4 +209,46 @@ body {
   .gift-badge {
     align-self: flex-start;
   }
+}
+/* Success notification styles */
+.ticket-success-alert {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  border: 1px solid #28a745;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+  animation: slideInDown 0.5s ease;
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.ticket-success-alert h5 {
+  color: #155724;
+  font-weight: bold;
+}
+
+.ticket-success-alert p {
+  color: #155724;
+  margin: 0;
+}
+
+/* Enhanced ticket meta styling */
+.ticket-meta {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-bottom: 4px;
+}
+
+.ticket-meta:last-of-type {
+  margin-bottom: 8px;
 }

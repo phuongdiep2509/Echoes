@@ -1,5 +1,5 @@
 // Seat Booking JavaScript
-import { concerts } from './ObjectForEchoes.js';
+import { concerts, liveMusic } from './ObjectForEchoes.js';
 
 class SeatBooking {
     constructor() {
@@ -9,7 +9,7 @@ class SeatBooking {
         this.ticketPrice = 0;
         this.quantity = 1;
         this.totalPrice = 0;
-        this.useImageMap = false; // Flag to determine which map to use
+        this.useImageMap = false;
         
         // Define pricing for the 3 zones (VIP, Standard, Economy)
         this.zonePricing = {
@@ -18,9 +18,7 @@ class SeatBooking {
             economy: { multiplier: 0.4, name: 'Economy' }
         };
         
-        // Define image map areas (will be set when image is provided)
         this.imageMapAreas = [];
-        
         this.init();
     }
     
@@ -32,14 +30,11 @@ class SeatBooking {
     }
     
     checkForVenueImage() {
-        // Check if there's a venue image for this event
-        // This will be updated when you provide the actual image
         const venueImagePath = this.getVenueImagePath();
         
         if (venueImagePath) {
             this.setupImageMap(venueImagePath);
         } else {
-            // Use HTML seat map as default
             this.useImageMap = false;
             document.getElementById('htmlSeatMap').style.display = 'block';
             document.getElementById('imageMapContainer').style.display = 'none';
@@ -47,25 +42,17 @@ class SeatBooking {
     }
     
     getVenueImagePath() {
-        // This method will return the path to the venue image
-        // For now, return null to use HTML map
-        // When you provide the image, update this method
         return null; // Will be updated with actual image path
     }
     
     setupImageMap(imagePath) {
         this.useImageMap = true;
         
-        // Hide HTML map and show image map
         document.getElementById('htmlSeatMap').style.display = 'none';
         document.getElementById('imageMapContainer').style.display = 'block';
-        
-        // Set image source
         document.getElementById('venueImage').src = imagePath;
         
-        // Define clickable areas (coordinates will be set based on your image)
         this.imageMapAreas = [
-            // Example areas - will be updated with actual coordinates
             { coords: '100,50,200,150', type: 'vip', section: 'vip-front', name: 'VIP Phía Trước' },
             { coords: '250,100,350,200', type: 'standard', section: 'standard-center', name: 'Standard Giữa' },
             { coords: '400,150,500,250', type: 'economy', section: 'economy-back', name: 'Economy Phía Sau' }
@@ -76,9 +63,9 @@ class SeatBooking {
     
     createImageMapAreas() {
         const map = document.getElementById('venueMap');
-        map.innerHTML = ''; // Clear existing areas
+        map.innerHTML = '';
         
-        this.imageMapAreas.forEach((area, index) => {
+        this.imageMapAreas.forEach((area) => {
             const areaElement = document.createElement('area');
             areaElement.shape = 'rect';
             areaElement.coords = area.coords;
@@ -97,56 +84,78 @@ class SeatBooking {
     }
     
     selectImageMapArea(area) {
-        // Store selection data
         this.selectedSection = area.section;
         this.selectedZone = area.type;
         
-        // Show selection indicator
         const indicator = document.getElementById('selectionIndicator');
         const areaName = document.getElementById('selectedAreaName');
         
         areaName.textContent = `Đã chọn: ${area.name}`;
         indicator.style.display = 'block';
         
-        // Calculate price and update UI
         this.calculatePrice();
         this.updateTicketDetails();
         this.updateUI();
     }
     
     loadEventData() {
-        // Get event ID from URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const eventId = urlParams.get('eventId');
         
-        if (eventId && concerts[eventId]) {
-            this.currentEvent = concerts[eventId];
-            this.displayEventInfo();
-        } else {
-            // Fallback to a default event for demo
-            const firstEventId = Object.keys(concerts)[0];
-            if (firstEventId) {
-                this.currentEvent = concerts[firstEventId];
+        console.log('Loading event data for eventId:', eventId);
+        
+        if (eventId) {
+            // Try to find in concerts first, then liveMusic
+            let eventData = concerts[eventId] || liveMusic[eventId];
+            
+            if (eventData) {
+                console.log('Found event data:', eventData);
+                this.currentEvent = eventData;
+                this.displayEventInfo();
+                return;
+            } else {
+                console.log('Event not found in concerts or liveMusic for ID:', eventId);
+            }
+        }
+        
+        // Fallback: try to get from localStorage (from eventDetail page)
+        const savedEvent = localStorage.getItem('currentBookingEvent');
+        if (savedEvent) {
+            try {
+                const parsedEvent = JSON.parse(savedEvent);
+                console.log('Found saved event in localStorage:', parsedEvent);
+                this.currentEvent = parsedEvent;
                 this.displayEventInfo();
                 
-                // Update URL to reflect the demo event
+                // Update URL with the correct eventId
                 const newUrl = new URL(window.location);
-                newUrl.searchParams.set('eventId', firstEventId);
+                newUrl.searchParams.set('eventId', this.currentEvent.id);
                 window.history.replaceState({}, '', newUrl);
-            } else {
-                // No events available
-                this.showNoEventsMessage();
+                return;
+            } catch (e) {
+                console.error('Error parsing saved event:', e);
             }
+        }
+        
+        // Final fallback: use first concert
+        console.log('Using fallback - first concert');
+        const firstEventId = Object.keys(concerts)[0];
+        if (firstEventId) {
+            this.currentEvent = concerts[firstEventId];
+            this.displayEventInfo();
+            
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.set('eventId', firstEventId);
+            window.history.replaceState({}, '', newUrl);
+        } else {
+            this.showNoEventsMessage();
         }
     }
     
     displayEventInfo() {
         if (!this.currentEvent) return;
         
-        // Update breadcrumb
         document.getElementById('eventBreadcrumb').textContent = this.currentEvent.title;
-        
-        // Update event header
         document.getElementById('eventPoster').src = this.currentEvent.image;
         document.getElementById('eventPoster').alt = this.currentEvent.title;
         document.getElementById('eventTitle').textContent = this.currentEvent.title;
@@ -154,7 +163,6 @@ class SeatBooking {
         document.getElementById('eventVenue').textContent = this.currentEvent.venue;
         document.getElementById('eventDuration').textContent = this.currentEvent.duration || '3 giờ';
         
-        // Update page title
         document.title = `Chọn Chỗ Ngồi - ${this.currentEvent.title} | Echoes`;
     }
     
@@ -164,7 +172,6 @@ class SeatBooking {
         document.getElementById('eventVenue').textContent = 'N/A';
         document.getElementById('eventDuration').textContent = 'N/A';
         
-        // Hide seat map and show error message
         document.querySelector('.seat-map-container').innerHTML = `
             <div class="alert alert-warning text-center">
                 <h4>Không tìm thấy sự kiện</h4>
@@ -175,7 +182,6 @@ class SeatBooking {
     }
     
     setupEventListeners() {
-        // Seat section selection (HTML map)
         document.querySelectorAll('.seat-section').forEach(section => {
             section.addEventListener('click', (e) => {
                 if (!this.useImageMap) {
@@ -184,9 +190,6 @@ class SeatBooking {
             });
         });
         
-        // Image map areas are handled in createImageMapAreas()
-        
-        // Quantity controls
         document.getElementById('decreaseQty').addEventListener('click', () => {
             this.changeQuantity(-1);
         });
@@ -199,12 +202,10 @@ class SeatBooking {
             this.setQuantity(parseInt(e.target.value));
         });
         
-        // Proceed to payment
         document.getElementById('proceedToPayment').addEventListener('click', () => {
             this.proceedToPayment();
         });
         
-        // Gift ticket
         document.getElementById('giftTicket').addEventListener('click', () => {
             this.giftTicket();
         });
@@ -213,22 +214,16 @@ class SeatBooking {
     selectSeat(sectionElement) {
         if (!sectionElement) return;
         
-        // Remove previous selection
         document.querySelectorAll('.seat-section.selected').forEach(section => {
             section.classList.remove('selected');
         });
         
-        // Add selection to clicked section
         sectionElement.classList.add('selected');
         
-        // Store selection data
         this.selectedSection = sectionElement.dataset.section;
         this.selectedZone = sectionElement.dataset.type;
         
-        // Calculate price based on zone and event's base VIP price
         this.calculatePrice();
-        
-        // Update UI
         this.updateTicketDetails();
         this.updateUI();
     }
@@ -236,11 +231,9 @@ class SeatBooking {
     calculatePrice() {
         if (!this.currentEvent || !this.selectedZone) return;
         
-        // Get base VIP price from event data
         const vipTicket = this.currentEvent.tickets.find(ticket => ticket.type === 'vip');
-        const basePrice = vipTicket ? vipTicket.price : 1000000; // Fallback price
+        const basePrice = vipTicket ? vipTicket.price : 1000000;
         
-        // Calculate price based on zone multiplier
         const zoneInfo = this.zonePricing[this.selectedZone];
         this.ticketPrice = Math.round(basePrice * zoneInfo.multiplier);
         
@@ -256,17 +249,14 @@ class SeatBooking {
         
         const zoneInfo = this.zonePricing[this.selectedZone];
         
-        // Update selection info
         document.getElementById('seatSelection').innerHTML = `
             <i class="fas fa-check-circle me-2"></i>
             Đã chọn khu vực: <strong>${zoneInfo.name.toUpperCase()}</strong>
         `;
         document.getElementById('seatSelection').className = 'alert alert-success';
         
-        // Show ticket details
         document.getElementById('ticketDetails').style.display = 'block';
         
-        // Update ticket info
         document.getElementById('selectedZone').textContent = zoneInfo.name.toUpperCase();
         document.getElementById('ticketPrice').textContent = this.formatPrice(this.ticketPrice);
         document.getElementById('totalPrice').textContent = this.formatPrice(this.totalPrice);
@@ -291,7 +281,6 @@ class SeatBooking {
     }
     
     updateUI() {
-        // Enable/disable payment button
         const paymentBtn = document.getElementById('proceedToPayment');
         const giftBtn = document.getElementById('giftTicket');
         
@@ -317,22 +306,10 @@ class SeatBooking {
         }).format(price);
     }
     
-    proceedToPayment() {
-        if (!this.selectedZone || !this.currentEvent) {
-            alert('Vui lòng chọn khu vực chỗ ngồi trước khi thanh toán!');
-            return;
-        }
-        
-        // Check if user is logged in
-        if (window.authManager && !window.authManager.isLoggedIn()) {
-            alert('Vui lòng đăng nhập để tiếp tục đặt vé!');
-            window.location.href = 'accounts/SignUp_LogIn_Form.html';
-            return;
-        }
-        
-        // Create booking data
-        const bookingData = {
-            id: 'booking_' + Date.now(),
+    // Unified method to create booking data
+    createBookingData(isGift = false) {
+        return {
+            id: (isGift ? 'gift_' : 'booking_') + Date.now(),
             eventId: this.currentEvent.id,
             eventName: this.currentEvent.title,
             eventDate: this.currentEvent.date,
@@ -344,26 +321,49 @@ class SeatBooking {
             quantity: this.quantity,
             totalAmount: this.totalPrice,
             timestamp: new Date().toISOString(),
-            status: 'pending'
+            status: isGift ? 'gift' : 'pending',
+            isGift: isGift,
+            bookingType: 'seat-booking',
+            eventImage: this.currentEvent.image
         };
-        
-        // Save booking to localStorage
+    }
+    
+    // Unified method to save booking
+    saveBooking(bookingData) {
         try {
             const existingBookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
             existingBookings.push(bookingData);
             localStorage.setItem('userBookings', JSON.stringify(existingBookings));
-            
-            // Save current booking for payment
+            sessionStorage.setItem('currentBookingData', JSON.stringify(bookingData));
+            return true;
+        } catch (error) {
+            console.error('Error saving booking:', error);
+            return false;
+        }
+    }
+    
+    proceedToPayment() {
+        if (!this.selectedZone || !this.currentEvent) {
+            alert('Vui lòng chọn khu vực chỗ ngồi trước khi thanh toán!');
+            return;
+        }
+        
+        if (window.authManager && !window.authManager.isLoggedIn()) {
+            alert('Vui lòng đăng nhập để tiếp tục đặt vé!');
+            window.location.href = 'accounts/SignUp_LogIn_Form.html';
+            return;
+        }
+        
+        const bookingData = this.createBookingData(false);
+        
+        if (this.saveBooking(bookingData)) {
             localStorage.setItem('currentBooking', JSON.stringify({
                 id: bookingData.id,
                 type: 'seat-booking'
             }));
             
-            // Redirect to payment
             window.location.href = `components/payment.html?type=seat-booking&bookingId=${bookingData.id}`;
-            
-        } catch (error) {
-            console.error('Error saving booking:', error);
+        } else {
             alert('Có lỗi xảy ra khi lưu thông tin đặt vé. Vui lòng thử lại!');
         }
     }
@@ -374,47 +374,21 @@ class SeatBooking {
             return;
         }
         
-        // Check if user is logged in
         if (window.authManager && !window.authManager.isLoggedIn()) {
             alert('Vui lòng đăng nhập để tiếp tục tặng vé!');
             window.location.href = 'accounts/SignUp_LogIn_Form.html';
             return;
         }
         
-        // Create booking data for gift
-        const bookingData = {
-            id: 'gift_' + Date.now(),
-            eventId: this.currentEvent.id,
-            eventName: this.currentEvent.title,
-            eventDate: this.currentEvent.date,
-            eventTime: this.currentEvent.time || '20:00',
-            venue: this.currentEvent.venue,
-            ticketType: this.zonePricing[this.selectedZone].name,
-            seatSection: this.selectedSection,
-            price: this.ticketPrice,
-            quantity: this.quantity,
-            totalAmount: this.totalPrice,
-            timestamp: new Date().toISOString(),
-            status: 'gift',
-            isGift: true
-        };
+        const bookingData = this.createBookingData(true);
         
-        // Save booking to localStorage
-        try {
-            const existingBookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
-            existingBookings.push(bookingData);
-            localStorage.setItem('userBookings', JSON.stringify(existingBookings));
-            
-            // Redirect to gift page
+        if (this.saveBooking(bookingData)) {
             window.location.href = `ticketGift.html?bookingId=${bookingData.id}&type=seat-booking`;
-            
-        } catch (error) {
-            console.error('Error saving gift booking:', error);
+        } else {
             alert('Có lỗi xảy ra khi lưu thông tin tặng vé. Vui lòng thử lại!');
         }
     }
     
-    // Method to get booking data (for payment page)
     static getBookingData(bookingId) {
         try {
             const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
@@ -433,3 +407,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for use in other modules
 export { SeatBooking };
+
+// Global function for back button
+window.goBack = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventId = urlParams.get('eventId');
+    
+    if (eventId) {
+        window.location.href = `eventDetail.html?id=${eventId}&type=concert`;
+    } else {
+        window.location.href = 'concert.html';
+    }
+};

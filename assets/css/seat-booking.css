@@ -1,4 +1,8 @@
 /* Seat Booking Styles */
+body {
+    margin-top: 100px;
+}
+
 .breadcrumb-custom {
     background: transparent;
     padding: 1rem 0;
@@ -147,6 +151,8 @@
 
 /* HTML Seat Map Styles */
 .html-seat-map {
+    /* Add styles if needed */
+}
 
 .seat-row {
     display: flex;
