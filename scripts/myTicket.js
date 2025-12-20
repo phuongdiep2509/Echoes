@@ -1,35 +1,73 @@
 /* =======================
-   DATA
+   DATA & INITIALIZATION
 ======================= */
-const tickets = [
-  {
-    id: "ECHOES001",
-    name: "Echoes Live Concert",
-    time: "20:00 · 20/12/2025",
-    location: "Nhà hát Lớn Hà Nội",
-    price: 499000,
-    status: "success",
-    timeStatus: "upcoming"
-  },
-  {
-    id: "ECHOES002",
-    name: "Echoes Acoustic Night",
-    time: "19:30 · 05/01/2024",
-    location: "Indie Space Hà Nội",
-    price: 299000,
-    status: "success",
-    timeStatus: "past"
-  },
-  {
-    id: "ECHOES003",
-    name: "Echoes Cancel Show",
-    time: "18:00 · 01/11/2024",
-    location: "Hà Nội",
-    price: 199000,
-    status: "cancelled",
-    timeStatus: "past"
-  }
-];
+let tickets = [];
+
+// Load tickets from localStorage
+function loadTicketsFromStorage() {
+    try {
+        const userBookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
+        const completedBookings = JSON.parse(localStorage.getItem('completedBookings') || '[]');
+        
+        // Combine and transform bookings to ticket format
+        const allBookings = [...userBookings, ...completedBookings];
+        
+        tickets = allBookings.map(booking => ({
+            id: booking.id || `ECHOES${Date.now()}`,
+            name: booking.eventName || booking.title || 'Echoes Event',
+            time: `${booking.eventTime || '20:00'} · ${booking.eventDate || booking.date}`,
+            location: booking.venue || booking.location || 'Venue TBA',
+            price: booking.totalAmount || booking.price || 0,
+            status: booking.status === 'completed' ? 'success' : 
+                   booking.status === 'cancelled' ? 'cancelled' : 
+                   booking.status === 'gift' ? 'success' : 'success',
+            timeStatus: isUpcoming(booking.eventDate || booking.date) ? 'upcoming' : 'past',
+            ticketType: booking.ticketType || 'Standard',
+            seatSection: booking.seatSection || null,
+            quantity: booking.quantity || 1,
+            isGift: booking.isGift || false,
+            bookingType: booking.seatSection ? 'seat-booking' : 'regular'
+        }));
+        
+        // Add some demo tickets if no bookings exist
+        if (tickets.length === 0) {
+            tickets = [
+                {
+                    id: "ECHOES001",
+                    name: "Echoes Live Concert",
+                    time: "20:00 · 20/12/2025",
+                    location: "Nhà hát Lớn Hà Nội",
+                    price: 499000,
+                    status: "success",
+                    timeStatus: "upcoming",
+                    ticketType: "VIP",
+                    quantity: 1,
+                    bookingType: "regular"
+                }
+            ];
+        }
+    } catch (error) {
+        console.error('Error loading tickets:', error);
+        tickets = [];
+    }
+}
+
+// Check if date is upcoming
+function isUpcoming(dateString) {
+    if (!dateString) return false;
+    
+    try {
+        // Parse date string (assuming format DD/MM/YYYY)
+        const [day, month, year] = dateString.split('/');
+        const eventDate = new Date(year, month - 1, day);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        return eventDate >= today;
+    } catch (error) {
+        return false;
+    }
+}
 
 /* =======================
    STATE
@@ -71,12 +109,27 @@ function renderTickets() {
     link.href = `ticketDetail.html?id=${ticket.id}`;
     link.className = "ticket-link";
 
-    // 👉 CARD BÊN TRONG LINK
+    // 👉 CARD BÊN TRONG LINK với thông tin seat booking
+    const seatInfo = ticket.seatSection ? 
+      `<div class="ticket-meta">🎫 ${ticket.ticketType} (${ticket.seatSection})</div>` :
+      `<div class="ticket-meta">🎫 ${ticket.ticketType}</div>`;
+    
+    const quantityInfo = ticket.quantity > 1 ? 
+      `<div class="ticket-meta">👥 ${ticket.quantity} vé</div>` : '';
+    
+    const giftBadge = ticket.isGift ? 
+      `<div class="gift-badge">🎁 Vé tặng</div>` : '';
+
     link.innerHTML = `
-      <div class="ticket-card">
-        <h3>${ticket.name}</h3>
+      <div class="ticket-card ${ticket.bookingType}">
+        <div class="ticket-header">
+          <h3>${ticket.name}</h3>
+          ${giftBadge}
+        </div>
         <div class="ticket-meta">📍 ${ticket.location}</div>
         <div class="ticket-meta">🕒 ${ticket.time}</div>
+        ${seatInfo}
+        ${quantityInfo}
         <div class="ticket-price">${ticket.price.toLocaleString()}đ</div>
       </div>
     `;
@@ -137,4 +190,23 @@ subs.forEach(sub => {
 /* =======================
    INIT
 ======================= */
-renderTickets();
+document.addEventListener('DOMContentLoaded', function() {
+    loadTicketsFromStorage();
+    renderTickets();
+    
+    // Listen for storage changes (when new bookings are added)
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'userBookings' || e.key === 'completedBookings') {
+            loadTicketsFromStorage();
+            renderTickets();
+        }
+    });
+});
+
+/* =======================
+   REFRESH FUNCTION (can be called from other pages)
+======================= */
+window.refreshMyTickets = function() {
+    loadTicketsFromStorage();
+    renderTickets();
+};

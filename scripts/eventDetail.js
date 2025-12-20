@@ -318,9 +318,9 @@ document.addEventListener('DOMContentLoaded', function() {
         btnBook.textContent = '🔄 Đang chuyển...';
         btnBook.disabled = true;
         
-        // Redirect to booking page
+        // Redirect to seat booking page
         setTimeout(() => {
-            window.location.href = `booking-demo.html`;
+            window.location.href = `seat-booking.html?eventId=${currentEventData.id}`;
         }, 1000);
     }
 });

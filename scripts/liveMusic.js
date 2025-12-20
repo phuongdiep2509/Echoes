@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function renderTrendingList() {
     const container = document.getElementById('trending-list');
+    if (!container) return;
+    
     // Lấy 3 live music đầu tiên làm trending
     const trendingEvents = allLiveMusic.slice(0, 3);
 
@@ -32,6 +34,8 @@ function renderTrendingList() {
 
 function renderEventList() {
     const container = document.getElementById('event-list');
+    if (!container) return;
+    
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const pageItems = allLiveMusic.slice(startIndex, endIndex);
