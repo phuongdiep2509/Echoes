@@ -26,30 +26,57 @@ body {
     font-size: 13px;
 }
 
+/* Breadcrumb mới giống News */
+.breadcrumb-custom {
+    padding: 15px 0;
+    background-color: var(--color-green); /* Màu xanh giống News */
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 120px; /* Để tránh header che */
+}
+
+.breadcrumb-custom a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-custom a:hover {
+    color: #ffffff;
+}
+
 /* ===== HEADER ===== */
 .page-header {
-    padding: 70px 8% 40px;
+    padding: 40px 0;
+    text-align: center;
 }
 
 .page-header h1 {
     font-size: 48px;
     font-weight: 900;
     margin-bottom: 12px;
+    color: var(--red);
 }
 
 .page-header p {
     max-width: 800px;
-    font-size: 14px;
+    font-size: 16px;
+    margin: 0 auto;
+    color: var(--dark);
 }
 
 /* ===== SECTION ===== */
 .product-section {
-    padding: 40px 8% 60px;
+    padding: 40px 0 60px;
 }
 
 .section-title {
     font-size: 20px;
     margin-bottom: 24px;
+    color: var(--color-red); /* Màu đỏ Echoes */
+    font-weight: bold;
 }
 
 /* ===== PRODUCT LIST ===== */

@@ -204,3 +204,989 @@ export const news = {
 },
       // Sau này bạn thêm bài viết mới vào đây là tự động hiển thị
 };
+
+// Concert Events Data
+export const concerts = {
+    "anh-trai-say-hi-2025": {
+        id: "anh-trai-say-hi-2025",
+        title: "ANH TRAI \"SAY HI\" 2025 CONCERT",
+        date: "12:00 - 23:00, 27 tháng 12, 2025",
+        venue: "Khu đô thị Vạn Phúc",
+        fullVenue: "Khu đô thị Vạn Phúc, Phường Hiệp Bình Phước, Quận Thủ Đức, Thành Phố Hồ Chí Minh",
+        genre: "Pop, Hip-hop",
+        duration: "11 giờ (12:00 - 23:00)",
+        price: "Từ 1.000.000đ - 10.000.000đ",
+        status: "available",
+        image: "assets/images/concert/atsh.png",
+        poster: "assets/images/concert/atsh.png",
+        category: "concert",
+        description: [
+            "Concert hoành tráng nhất năm 2025 với sự tham gia của 33 anh trai từ chương trình Anh Trai Say Hi.",
+            "Echoes là đơn vị phân phối vé độc quyền của sự kiện Anh Trai \"Say Hi\" 2025 và chỉ giải quyết vấn đề phát sinh liên quan đến vé trong hệ thống Echoes.",
+            "Một đêm nhạc đầy cảm xúc với những ca khúc hit và màn trình diễn bùng nổ không thể bỏ lỡ."
+        ],
+        highlights: [
+            "�  33 anh trai tham gia biểu diễn",
+            "🎵 Những ca khúc hit đình đám", 
+            "🎭 Sân khấu hoành tráng với công nghệ hiện đại",
+            "⚡ Hiệu ứng ánh sáng và âm thanh đỉnh cao",
+            "📸 Được phép chụp ảnh (không flash)"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 10000000, status: "available" },
+            { type: "standard", name: "Standard", price: 50000000, status: "available" },
+            { type: "economy", name: "Economy", price: 10000000, status: "available" }
+        ],
+        terms: [
+            "**ĐIỀU KIỆN VÀ ĐIỀU KHOẢN MUA VÉ:**",
+            "• Khi mua vé, người mua mặc nhiên đồng ý với Điều kiện – Điều khoản của BTC và Quy định tham gia tại Echoes",
+            "• Mỗi tài khoản được mua tối đa 10 vé; mỗi mã vé dùng cho 01 người/01 lần",
+            "",
+            "**QUY ĐỊNH ĐỘ TUỔI:**",
+            "• Người từ 8–<18 tuổi phải có giấy tờ tùy thân và người thân ≥21 tuổi đi cùng (1 người bảo lãnh tối đa 2 người)",
+            "• Người bảo lãnh chịu trách nhiệm quản lý, chăm sóc, chi trả các chi phí liên quan",
+            "• Người bảo lãnh phải điền Đơn Bảo Lãnh và xác nhận tại quầy BTC",
+            "• Riêng SKY LOUNGE: người bảo lãnh phải đảm bảo người được bảo lãnh không dùng đồ uống có cồn",
+            "",
+            "**QUY ĐỊNH VÉ & THAM DỰ:**",
+            "• Vé không đổi – trả – hủy – hoàn tiền; mất vé không cấp lại",
+            "• Phụ nữ mang thai và người khuyết tật chỉ được mua khu khán đài ngồi",
+            "• Người tham dự tự chịu trách nhiệm về sức khỏe khi vào sự kiện",
+            "• BTC có quyền điều chỉnh quy định, thông tin sẽ được cập nhật trên Echoes",
+            "• Vé chỉ dùng để tham gia chương trình; cấm mua bán lại, dùng vé cho mục đích thương mại",
+            "• BTC giữ quyền thu hồi vé vi phạm và đưa ra quyết định cuối cùng"
+        ],
+    },
+    "nhung-thanh-pho-mong-mo": {
+        id: "nhung-thanh-pho-mong-mo",
+        title: "Những Thành Phố Mơ Màng Year End 2025",
+        date: "07/12/2025 - 15:30",
+        venue: "799 Nguyễn Văn Linh, Phường Tân Phú, Quận 7, Thành Phố Hồ Chí Minh",
+        genre: "Pop, Rock, Hip-hop",
+        duration: "Khoảng 6 giờ",
+        price: "Từ 750.000đ - 4.000.000đ",
+        status: "available",
+        image: "assets/images/concert/ntpmm.png",
+        poster: "assets/images/concert/ntpmm2.png",
+        category: "concert",
+        description: [
+            "Đại nhạc hội Mega Booming 2025 quy tụ 21 nghệ sĩ hàng đầu tại cố đô Huế.",
+            "Sự kiện âm nhạc đặc biệt trong khuôn khổ bế mạc Năm Du lịch Quốc gia 2025."
+        ],
+        highlights: [
+            "🌟 21 nghệ sĩ hàng đầu Việt Nam",
+            "🎸 Đa dạng thể loại âm nhạc",
+            "🎆 Pháo hoa và hiệu ứng đặc biệt"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 4000000, status: "available" },
+            { type: "standard", name: "Standard", price: 2000000, status: "available" },
+            { type: "economy", name: "Economy", price: 750000, status: "available" }
+        ],
+        terms: [
+    "**QUY ĐỊNH ĐỘ TUỔI & GIÁM HỘ:**",
+    "• Chương trình dành cho khán giả trên 16 tuổi. Trẻ em từ 10–15 tuổi phải có người giám hộ (≥18 tuổi) đi kèm",
+    "• Mỗi người giám hộ chỉ kèm tối đa 01 trẻ vị thành niên và chịu hoàn toàn trách nhiệm về sự cố phát sinh",
+    "• BTC có quyền kiểm tra giấy tờ tùy thân và từ chối khán giả không đủ điều kiện độ tuổi",
+    "",
+    "**QUY ĐỊNH VÉ & THANH TOÁN:**",
+    "• Mỗi vé dành cho 01 người, không kèm trẻ em. Người giám hộ phải mua vé riêng để tham dự",
+    "• Vé đã mua không đổi – trả – hủy – hoàn tiền dưới mọi hình thức (kể cả đặt nhầm chặng/hạng vé)",
+    "• Khán giả tự bảo mật mã vé; BTC chỉ chấp nhận lượt check-in đầu tiên đối với mã vé bị trùng",
+    "• Vui lòng chỉ mua vé qua kênh chính thức của Echoes để tránh vé giả hoặc lừa đảo",
+    "",
+    "**SỨC KHỎE & AN TOÀN:**",
+    "• Phụ nữ mang thai và người có vấn đề sức khỏe cần tự cân nhắc khi tham gia; BTC không chịu trách nhiệm nếu có sự cố",
+    "• Khán giả tự ý thức bảo vệ sức khỏe, lường trước rủi ro thời tiết và quá trình di chuyển",
+    "",
+    "**QUY ĐỊNH CHUNG:**",
+    "• BTC có quyền hoãn, hủy hoặc tạm ngưng sự kiện trong trường hợp bất khả kháng (thời tiết, khẩn cấp)",
+    "• Khán giả đồng ý cho BTC sử dụng hình ảnh/âm thanh cá nhân để quảng bá chương trình",
+    "• Phải tuân thủ quy định về đồ dùng bị cấm được đăng tải trên Fanpage Echoes trước sự kiện",
+    "• Trong mọi trường hợp tranh chấp, quyết định của BTC là quyết định cuối cùng",
+    "",
+    "**HỖ TRỢ:** Hotline hỗ trợ vé Echoes: [190012354]"
+],
+    },
+    "waterbomb-vietnam": {
+        id: "waterbomb-vietnam",
+        title: "Waterbomb Vietnam 2025",
+        date: "15/06/2025 - 14:00",
+        venue: "Khu đô thị Vạn Phúc City, TP.HCM",
+        genre: "EDM, K-pop, Hip-hop",
+        duration: "Cả ngày",
+        price: "Từ 1.200.000đ - 3.500.000đ",
+        status: "available",
+        image: "assets/images/concert/waterbomb.png",
+        poster: "assets/images/concert/waterbomb2.png",
+        category: "concert",
+        description: [
+            "Lễ hội âm nhạc mùa hè lớn nhất châu Á lần đầu tổ chức tại Việt Nam.",
+            "Kết hợp âm nhạc và trò chơi nước trong không khí lễ hội sôi động."
+        ],
+        highlights: [
+            "💦 Lễ hội âm nhạc và nước độc đáo",
+            "🌏 Lần đầu tổ chức tại Việt Nam",
+            "🎵 Line-up nghệ sĩ quốc tế và Việt Nam",
+            "🏊 Trò chơi nước và hoạt động giải trí",
+            "☀️ Trải nghiệm mùa hè đáng nhớ"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 3500000, status: "available" },
+            { type: "standard", name: "Standard", price: 2200000, status: "available" },
+            { type: "economy", name: "Economy", price: 1200000, status: "available" }
+        ]
+    },
+    "mr-siro-concert": {
+        id: "mr-siro-concert",
+        title: "Mr Siro - Fan Concert - Ai Cũng Giấu Trong Lòng Tảng Băng",
+        date: "10/01/2025 - 19:00",
+        venue: "Nhà Hát Quân Đội Phía Nam",
+        genre: "Ballad",
+        duration: "Khoảng 2.5 giờ",
+        price: "Từ 1.000.000đ - 2.800.000đ",
+        status: "available",
+        image: "assets/images/concert/mrSiro.jpg",
+        poster: "assets/images/concert/mrSiro.jpg",
+        category: "concert",
+        description: [
+            "Concert đặc biệt của Mr. Siro với những ca khúc ballad đầy cảm xúc.",
+            "Một đêm nhạc tri ân người hâm mộ với những bài hát đã đồng hành cùng tuổi trẻ của nhiều thế hệ."
+        ],
+        highlights: [
+            "🎵 Những ca khúc hit được yêu thích",
+            "🎤 Nghệ sĩ trình diễn trực tiếp",
+            "🎭 Không gian ấm cúng",
+            "💫 Tương tác gần gũi với khán giả"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1500000, status: "available" },
+            { type: "standard", name: "Standard", price: 1000000, status: "available" },
+            { type: "economy", name: "Economy", price: 500000, status: "available" }
+        ],
+        terms: [
+    "**MR SIRO - FAN CONCERT: AI CŨNG GIẤU TRONG LÒNG TẢNG BĂNG**",
+    "“Những bài hát ấy - hoàn toàn có thể mãi chỉ là những lá thư tình đơn độc, lặng lẽ có mặt rồi rời đi, không ai đồng cảm. Nhưng chính các bạn đã cho nhạc Mr. Siro cơ duyên góp mặt trong đời sống của mỗi người.”",
+    "",
+    "Đêm nhạc là lời tri ân sâu sắc, là nơi chúng ta được hát cùng nhau, được trải lòng và trở về với những cảm xúc, những câu chuyện riêng tư nhất mà mỗi người vẫn luôn giấu kín. Cảm ơn các bạn đã cho nhạc Mr. Siro cơ hội được đồng điệu qua những cung bậc thăng trầm của cuộc đời.",
+    "",
+    "**ĐIỀU KIỆN & ĐIỀU KHOẢN THAM GIA:**",
+    "• Mỗi mã vé tương ứng với 01 khán giả; vui lòng không mua vé từ các nguồn không chính thống để tránh rủi ro vé giả.",
+    "• Vé đã mua không được đổi - trả - hoàn tiền dưới mọi hình thức.",
+    "• Khán giả có trách nhiệm tự bảo mật thông tin mã vé; BTC từ chối giải quyết các trường hợp trùng mã vé sau lượt check-in đầu tiên.",
+    "",
+    "**QUY ĐỊNH ĐỘ TUỔI & AN NINH:**",
+    "• Chương trình dành cho khán giả từ 16 tuổi trở lên. Khán giả dưới độ tuổi quy định sẽ không được phép tham gia và không được hoàn vé.",
+    "• Vui lòng mang theo giấy tờ tùy thân có ảnh để BTC kiểm tra trong trường hợp cần thiết.",
+    "• BTC có quyền từ chối quyền tham gia của bất kỳ khán giả nào không tuân thủ quy định an ninh chung của sự kiện.",
+    "",
+    "**LƯU Ý VỀ SỨC KHỎE:**",
+    "• Khán giả tham dự cần tự ý thức và chịu trách nhiệm về tình trạng sức khỏe cá nhân trong suốt thời gian diễn ra concert.",
+    "• Trong các tình huống bất khả kháng (thời tiết, thiên tai), quyết định đảm bảo quyền lợi khán giả sẽ theo phương án của BTC.",
+    "",
+    "**THÔNG TIN HỖ TRỢ:**",
+    "• Mọi vấn đề liên quan đến vé cần hỗ trợ, vui lòng liên hệ hotline Echoes: [19001234]"
+        ]
+    },
+    "tram-yeu-yeu-lai-tu-dau": {
+        id: "tram-yeu-yeu-lai-tu-dau",
+        title: "[DELODELO SHOW] TRẠM YÊU - YÊU LẠI TỪ ĐẦU",
+        date: "11/1/2025 - 19:30",
+        venue: "Cung Điền Kinh Mỹ Đình,Trần Hữu Dực, Mỹ Đình, Phường Cầu Diễn, Quận Nam Từ Liêm, Thành Phố Hà Nội",
+        duration: "Khoảng 2 giờ",
+        price: "Từ 1.000.000đ - 6.000.000đ",
+        status: "available",
+        image: "assets/images/concert/tramyeu.jpg",
+        poster: "assets/images/concert/tramyeu.jpg",
+        category: "concert",
+        description: [
+            "Chuyến tàu cuối năm đã khởi hành",
+            "Nhưng lần này, điều gì đang chờ đợi bạn ở sân ga?"
+        ],
+        
+        highlights: [
+            "🚂 Hành trình âm nhạc đầy cảm xúc",
+            "🎤 Dàn nghệ sĩ đình đám: SOOBIN, QUỐC THIÊN, VŨ CÁT TƯỜNG...",
+            "💝 Concept \"Yêu lại từ đầu\" đầy ý nghĩa",
+            "🎭 Không gian sân khấu hoành tráng tại Mỹ Đình",
+            "🌸 Đêm nhạc tri ân người hâm mộ"
+        ],
+        
+        tickets: [
+            { type: "vip", name: "VIP", price: 6000000, status: "available" },
+            { type: "standard", name: "Standard", price: 3000000, status: "available" },
+            { type: "economy", name: "Economy", price: 1000000, status: "available" }
+        ],
+        terms: [
+    "**TRẠM YÊU CONCERT 3 - YÊU LẠI TỪ ĐẦU [Delodelo show]**",
+    "Chuyến tàu cuối năm đã khởi hành, đưa bạn trở về sân ga cảm xúc - nơi trái tim được lắng nghe, được chạm và được yêu thương thêm lần nữa.",
+    "",
+    "Sau hai mùa concert đầy dấu ấn, Trạm Yêu 3 chính thức trở lại, mang đến một hành trình âm nhạc nơi mỗi người tìm thấy chính mình giữa những “mùa” của cuộc đời. \"Yêu lại từ đầu\" là lời mời gọi bạn khép lại những điều dang dở, để can đảm bắt đầu một chương mới trọn vẹn hơn.",
+    "",
+    "Một trạm dừng giữa hai mùa đông - xuân, nơi ta nhìn lại hành trình đã qua để mở ra khởi đầu mới, đầy hy vọng và dịu dàng.",
+    "",
+    "Nếu Trạm Yêu 1 là những rung động đầu tiên; Trạm Yêu 2 là hành trình nhìn lại những đoạn đường đã qua… Thì Trạm Yêu 3 là điểm dừng chân cuối năm, nhẹ nhàng khép lại những điều dang dở, vuốt ve những nỗi niềm còn bỏ ngỏ, và tự hỏi: sau tất cả, ta có dám yêu thêm một lần nữa? 🌸💗",
+    "",
+    "🌟 **Đồng hành tại Trạm Yêu 3 là dàn nghệ sĩ khiến con tim rung động thêm lần nữa:**",
+    "SOOBIN - QUỐC THIÊN - VŨ CÁT TƯỜNG - RHYMASTIC - BÙI CÔNG NAM - (S)TRONG TRỌNG HIẾU - CƯỜNG SEVEN - VŨ. - RHYDER, cùng sự dẫn dắt của MC THÀNH TRUNG.",
+    "Mỗi nghệ sĩ, với màu sắc rất riêng, sẽ đưa bạn vào một chuyến tàu âm nhạc vừa rực rỡ, vừa sâu lắng.",
+    "",
+    "Vậy bạn đã sẵn sàng \"yêu lại từ đâu\" tại Trạm Yêu 3 chưa?!",
+    "",
+    "**THÔNG TIN SỰ KIỆN:**",
+    "• Thời gian: 19h30 ngày 11/1/2026",
+    "• Địa điểm: Cung Điền Kinh - Phố Trần Hữu Dực, Mỹ Đình, Hà Nội"
+],
+    },
+    "giao-huong-mua-yeu": {
+        id: "giao-huong-mua-yeu",
+        title: "GIAO HƯỞNG MÙA YÊU - LIVE CONCERT ĐẶC BIỆT ",
+        date: "03/1/2025 - 20:00",
+        venue: "Nhà Hát Hồ Gươm, 40 Hàng Bài, Phường Cửa Nam, Quận Hoàn Kiếm, Thành Phố Hà Nội",
+        genre: "Pop, Ballad",
+        duration: "Khoảng 3 giờ",
+        price: "Từ 600.000đ - 1.800.000đ",
+        status: "available",
+        image: "assets/images/concert/ghmy.jpg",
+        poster: "assets/images/concert/ghmy.jpg",
+        category: "concert",
+        description: [
+            "Concert giao hưởng đặc biệt với sự kết hợp giữa dàn nhạc cổ điển và nghệ sĩ đương đại.",
+            "Một đêm nhạc lãng mạn và đầy cảm xúc tại Nhà hát Hồ Gươm danh tiếng."
+        ],
+        highlights: [
+            "🎼 Dàn nhạc giao hưởng bán cổ điển quy mô lớn",
+            "🎭 Không gian Nhà hát Hồ Gươm sang trọng",
+            "💝 Kết hợp tinh tế giữa cổ điển và đương đại",
+            "🌹 Chủ đề \"Mùa Yêu\" đầy lãng mạn",
+            "🎤 Dàn nghệ sĩ tài hoa trình diễn"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1800000, status: "limited" },
+            { type: "standard", name: "Standard", price: 1200000, status: "available" },
+            { type: "economy", name: "Economy", price: 600000, status: "available" }
+        ],
+        terms: [
+    "**LIVE CONCERT: GIAO HƯỞNG MÙA YÊU**",
+    "Trong một không gian âm nhạc sang trọng, tinh tế và đầy cảm xúc tại Nhà hát Hồ Gươm, “Giao Hưởng Mùa Yêu” hứa hẹn mang đến những phút giây thăng hoa giữa lòng Hà Nội vào thời khắc bước sang một “mùa yêu mới”.",
+    "",
+    "Chương trình được dàn dựng công phu với sự kết hợp độc đáo giữa dàn nhạc giao hưởng bán cổ điển quy mô lớn và sự quy tụ của những nghệ sĩ tài hoa. Mỗi thanh âm phát ra sẽ mở ra một hành trình cảm xúc, chạm đến những rung động sâu thẳm nhất của trái tim.",
+    "",
+    "Điểm nhấn đặc biệt nằm ở cách hòa quyện tinh tế giữa cổ điển và đương đại, giữa đam mê rực cháy và sự lắng đọng dịu dàng. Đây chắc chắn là đêm nhạc không thể bỏ lỡ cho những ai yêu cái đẹp của âm nhạc và nghệ thuật trình diễn sống động.",
+    "",
+    "**ĐIỀU KHOẢN MUA VÉ & THAM DỰ:**",
+    "• Mỗi vé tương ứng với một vị trí ghế ngồi cố định tại Nhà hát; vui lòng ngồi đúng số ghế ghi trên vé.",
+    "• Vé không được đổi - trả - hủy hoặc hoàn tiền dưới bất kỳ hình thức nào sau khi đã thanh toán thành công.",
+    "• Khán giả có trách nhiệm bảo mật thông tin vé điện tử; BTC không chịu trách nhiệm nếu có tranh chấp từ việc chia sẻ mã vé.",
+    "",
+    "**QUY ĐỊNH TẠI NHÀ HÁT:**",
+    "• Chương trình dành cho khán giả từ 12 tuổi trở lên. Trẻ em dưới độ tuổi quy định sẽ không được vào khán phòng.",
+    "• Trang phục lịch sự, trang trọng. BTC có quyền từ chối khán giả mặc trang phục không phù hợp (quần lửng, dép lê, v.v.).",
+    "• Vui lòng có mặt trước giờ biểu diễn ít nhất 30 phút. BTC sẽ đóng cửa khán phòng khi chương trình bắt đầu và chỉ mở lại vào giờ nghỉ giải lao.",
+    "• Không mang đồ ăn, thức uống và không quay phim, chụp ảnh chuyên nghiệp trong suốt buổi biểu diễn.",
+    "",
+    "**THÔNG TIN HỖ TRỢ:**",
+    "• Hotline giải đáp thắc mắc về vé: [19001234]",
+    "• Địa điểm: Nhà hát Hồ Gươm - 40 Hàng Bài, Hoàn Kiếm, Hà Nội"
+        ]
+    },
+    "concert-nhac-song-4": {
+        id: "concert-nhac-song-4",
+        title: "Concert Nhạc Sống Đêm Gala",
+        date: "02/01/2026 - 20:00",
+        venue: "Nhà hát Opera, TP.HCM",
+        genre: "Classical, Pop",
+        duration: "Khoảng 2.5 giờ",
+        price: "Từ 700.000đ - 2.000.000đ",
+        status: "available",
+        image: "assets/images/concert/lc6.png",
+        poster: "assets/images/concert/lc6.png",
+        category: "concert",
+        description: [
+            "Đêm gala âm nhạc đẳng cấp với sự kết hợp giữa nhạc cổ điển và hiện đại.",
+            "Trải nghiệm âm nhạc tinh tế trong không gian sang trọng."
+        ],
+        highlights: [
+            "🎭 Không gian Opera sang trọng",
+            "🎼 Kết hợp nhạc cổ điển và hiện đại",
+            "👗 Dress code trang trọng",
+            "🍾 Tiệc cocktail sau chương trình"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 2000000, status: "available" },
+            { type: "standard", name: "Standard", price: 1300000, status: "available" },
+            { type: "economy", name: "Economy", price: 700000, status: "available" }
+        ]
+    },
+    "concert-nhac-song-5": {
+        id: "concert-nhac-song-5",
+        title: "Concert Nhạc Sống Xuân Mới",
+        date: "15/01/2026 - 19:00",
+        venue: "Sân vận động Mỹ Đình, Hà Nội",
+        genre: "Traditional, Modern",
+        duration: "Khoảng 3 giờ",
+        price: "Từ 300.000đ - 1.000.000đ",
+        status: "available",
+        image: "assets/images/concert/lc7.jpg",
+        poster: "assets/images/concert/lc7.jpg",
+        category: "concert",
+        description: [
+            "Concert chào xuân với những giai điệu truyền thống và hiện đại.",
+            "Không khí lễ hội xuân tràn đầy niềm vui và hy vọng."
+        ],
+        highlights: [
+            "🌸 Chào đón mùa xuân mới",
+            "🎵 Nhạc truyền thống và hiện đại",
+            "🏮 Trang trí đậm chất Tết",
+            "🎁 Quà tặng may mắn"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1000000, status: "available" },
+            { type: "standard", name: "Standard", price: 650000, status: "available" },
+            { type: "economy", name: "Economy", price: 300000, status: "available" }
+        ]
+    },
+    "concert-nhac-song-6": {
+        id: "concert-nhac-song-6",
+        title: "Concert Nhạc Sống Valentine",
+        date: "14/02/2026 - 20:30",
+        venue: "Nhà hát Hồ Gươm, Hà Nội",
+        genre: "Romantic, Ballad",
+        duration: "Khoảng 2 giờ",
+        price: "Từ 500.000đ - 1.500.000đ",
+        status: "available",
+        image: "assets/images/concert/lc15.jpg",
+        poster: "assets/images/concert/lc15.jpg",
+        category: "concert",
+        description: [
+            "Đêm nhạc lãng mạn dành cho các cặp đôi trong ngày Valentine.",
+            "Những ca khúc tình yêu bất hủ trong không gian ấm cúng."
+        ],
+        highlights: [
+            "💕 Đêm nhạc lãng mạn",
+            "🌹 Tặng hoa hồng cho các cặp đôi",
+            "🕯️ Ánh nến lung linh",
+            "💝 Quà tặng đặc biệt"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1500000, status: "limited" },
+            { type: "standard", name: "Standard", price: 1000000, status: "available" },
+            { type: "economy", name: "Economy", price: 500000, status: "available" }
+        ]
+    },
+    "concert-nhac-song-7": {
+        id: "concert-nhac-song-7",
+        title: "Concert Nhạc Sống Mùa Hè",
+        date: "20/06/2026 - 19:30",
+        venue: "Công viên Thống Nhất, TP.HCM",
+        genre: "Pop, Dance",
+        duration: "Khoảng 3 giờ",
+        price: "Từ 400.000đ - 1.200.000đ",
+        status: "available",
+        image: "assets/images/concert/lc9.jpg",
+        poster: "assets/images/concert/lc9.jpg",
+        category: "concert",
+        description: [
+            "Concert ngoài trời sôi động trong không khí mùa hè.",
+            "Những ca khúc dance sôi động cùng không gian mở."
+        ],
+        highlights: [
+            "☀️ Concert ngoài trời",
+            "💃 Nhạc dance sôi động",
+            "🌳 Không gian xanh mát",
+            "🎪 Hoạt động giải trí đa dạng"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1200000, status: "available" },
+            { type: "standard", name: "Standard", price: 800000, status: "available" },
+            { type: "economy", name: "Economy", price: 400000, status: "available" }
+        ]
+    },
+    "concert-nhac-song-8": {
+        id: "concert-nhac-song-8",
+        title: "Concert Nhạc Sống Đêm Trăng",
+        date: "15/08/2026 - 20:00",
+        venue: "Bờ hồ Hoàn Kiếm, Hà Nội",
+        genre: "Folk, Acoustic",
+        duration: "Khoảng 2 giờ",
+        price: "Từ 350.000đ - 900.000đ",
+        status: "available",
+        image: "assets/images/concert/lc10.webp",
+        poster: "assets/images/concert/lc10.webp",
+        category: "concert",
+        description: [
+            "Đêm nhạc thơ mộng bên bờ hồ Hoàn Kiếm dưới ánh trăng.",
+            "Không gian lãng mạn với những giai điệu folk nhẹ nhàng."
+        ],
+        highlights: [
+            "🌙 Đêm nhạc dưới ánh trăng",
+            "🏞️ Bên bờ hồ Hoàn Kiếm",
+            "🎸 Nhạc folk acoustic",
+            "⭐ Không gian thơ mộng"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 900000, status: "available" },
+            { type: "standard", name: "Standard", price: 600000, status: "available" },
+            { type: "economy", name: "Economy", price: 350000, status: "available" }
+        ]
+    },
+    "concert-nhac-song-9": {
+        id: "concert-nhac-song-9",
+        title: "Concert Nhạc Sống Mùa Thu",
+        date: "22/10/2026 - 19:00",
+        venue: "Nhà hát Lớn, TP.HCM",
+        genre: "Jazz, Blues",
+        duration: "Khoảng 2.5 giờ",
+        price: "Từ 600.000đ - 1.600.000đ",
+        status: "available",
+        image: "assets/images/concert/lc11.jpg",
+        poster: "assets/images/concert/lc11.jpg",
+        category: "concert",
+        description: [
+            "Đêm nhạc jazz và blues trong không khí mùa thu se lạnh.",
+            "Thưởng thức những giai điệu sâu lắng và đầy cảm xúc."
+        ],
+        highlights: [
+            "🍂 Không khí mùa thu",
+            "🎷 Nhạc jazz và blues",
+            "🍷 Đồ uống cao cấp",
+            "🎹 Nghệ sĩ tài năng"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1600000, status: "available" },
+            { type: "standard", name: "Standard", price: 1100000, status: "available" },
+            { type: "economy", name: "Economy", price: 600000, status: "available" }
+        ]
+    },
+    "concert-nhac-song-10": {
+        id: "concert-nhac-song-10",
+        title: "Concert Nhạc Sống Đặc Biệt",
+        date: "05/12/2026 - 20:30",
+        venue: "Cung Văn hóa Hữu nghị, Hà Nội",
+        genre: "World Music",
+        duration: "Khoảng 3 giờ",
+        price: "Từ 500.000đ - 1.400.000đ",
+        status: "sold",
+        image: "assets/images/concert/lc13.png",
+        poster: "assets/images/concert/lc13.png",
+        category: "concert",
+        description: [
+            "Concert đặc biệt với sự kết hợp của nhiều thể loại nhạc thế giới.",
+            "Hành trình âm nhạc xuyên suốt các nền văn hóa."
+        ],
+        highlights: [
+            "🌍 Nhạc thế giới đa dạng",
+            "🎭 Kết hợp nhiều nền văn hóa",
+            "🎪 Biểu diễn đa phương tiện",
+            "🎨 Nghệ thuật tổng hợp"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1400000, status: "sold" },
+            { type: "standard", name: "Standard", price: 950000, status: "sold" },
+            { type: "economy", name: "Economy", price: 500000, status: "sold" }
+        ]
+    },
+    "concert-nhac-song-11": {
+        id: "concert-nhac-song-11",
+        title: "Concert Nhạc Sống Kỷ Niệm",
+        date: "31/12/2026 - 22:00",
+        venue: "Sân khấu ngoài trời, Đà Nẵng",
+        genre: "Pop, Rock",
+        duration: "Khoảng 4 giờ",
+        price: "Từ 800.000đ - 2.200.000đ",
+        status: "expired",
+        image: "assets/images/concert/lc14.jpg",
+        poster: "assets/images/concert/lc14.jpg",
+        category: "concert",
+        description: [
+            "Concert kỷ niệm cuối năm với những màn trình diễn hoành tráng.",
+            "Đón chào năm mới với âm nhạc và pháo hoa rực rỡ."
+        ],
+        highlights: [
+            "🎊 Đón năm mới hoành tráng",
+            "🎆 Pháo hoa rực rỡ",
+            "🌊 Sân khấu bên bờ biển",
+            "🎉 Lễ hội âm nhạc lớn"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 2200000, status: "expired" },
+            { type: "standard", name: "Standard", price: 1500000, status: "expired" },
+            { type: "economy", name: "Economy", price: 800000, status: "expired" }
+        ]
+    }
+};
+
+// Live Music Events Data
+export const liveMusic = {
+    "acoustic-trinh-cong-son": {
+        id: "acoustic-trinh-cong-son",
+        title: "Đêm Nhạc Acoustic - Trịnh Công Sơn",
+        date: "22/12/2025 - 20:00",
+        venue: "Phòng trà Acoustic, Hà Nội",
+        genre: "Acoustic, Nhạc Trịnh",
+        duration: "Khoảng 2 giờ 30 phút",
+        price: "Từ 300.000đ - 800.000đ",
+        status: "available",
+        image: "assets/images/music/lc1.jpg",
+        poster: "assets/images/music/lc1.jpg",
+        category: "live-music",
+        description: [
+            "Đêm nhạc Acoustic đặc biệt tái hiện những tác phẩm bất hủ của nhạc sĩ Trịnh Công Sơn.",
+            "Một không gian âm nhạc đầy cảm xúc với sự trình diễn của các nghệ sĩ tài năng."
+        ],
+        highlights: [
+            "🎸 Không gian âm nhạc acoustic đặc biệt",
+            "🎤 Dàn nghệ sĩ tài năng trình diễn",
+            "🎵 Những ca khúc bất hủ của Trịnh Công Sơn",
+            "🕯️ Không gian ấm cúng, thân mật",
+            "☕ Đồ uống miễn phí"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 800000, status: "limited" },
+            { type: "standard", name: "Standard", price: 500000, status: "available" },
+            { type: "economy", name: "Economy", price: 300000, status: "available" }
+        ]
+    },
+    "jazz-night-saigon": {
+        id: "jazz-night-saigon",
+        title: "Jazz Night Saigon",
+        date: "28/12/2025 - 21:00",
+        venue: "Saigon Opera House, TP.HCM",
+        genre: "Jazz, Blues",
+        duration: "Khoảng 2 giờ",
+        price: "Từ 400.000đ - 1.000.000đ",
+        status: "available",
+        image: "assets/images/music/lc4.jpg",
+        poster: "assets/images/music/lc4.jpg",
+        category: "live-music",
+        description: [
+            "Đêm nhạc Jazz đẳng cấp với sự tham gia của các nghệ sĩ jazz hàng đầu.",
+            "Thưởng thức những giai điệu jazz kinh điển trong không gian sang trọng."
+        ],
+        highlights: [
+            "🎷 Nghệ sĩ jazz hàng đầu Việt Nam",
+            "🎹 Những giai điệu jazz kinh điển",
+            "🏛️ Không gian sang trọng tại Opera House",
+            "🍷 Dịch vụ đồ uống cao cấp",
+            "🎭 Trải nghiệm văn hóa đẳng cấp"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1000000, status: "available" },
+            { type: "standard", name: "Standard", price: 700000, status: "available" },
+            { type: "economy", name: "Economy", price: 400000, status: "available" }
+        ]
+    },
+    "indie-music-hanoi": {
+        id: "indie-music-hanoi",
+        title: "Indie Music Night - Hà Nội",
+        date: "30/12/2025 - 19:30",
+        venue: "L'Espace, Hà Nội",
+        genre: "Indie, Alternative",
+        duration: "Khoảng 3 giờ",
+        price: "Từ 250.000đ - 600.000đ",
+        status: "available",
+        image: "assets/images/music/lc16.jpg",
+        poster: "assets/images/music/lc16.jpg",
+        category: "live-music",
+        description: [
+            "Đêm nhạc Indie với những ban nhạc underground tài năng của Hà Nội.",
+            "Khám phá những âm thanh mới lạ và sáng tạo từ thế hệ nghệ sĩ trẻ."
+        ],
+        highlights: [
+            "🎸 Ban nhạc indie underground",
+            "🎵 Âm nhạc sáng tạo và độc đáo",
+            "🌃 Không gian nghệ thuật đương đại",
+            "👥 Cộng đồng yêu nhạc indie",
+            "🎨 Kết hợp với triển lãm nghệ thuật"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 600000, status: "available" },
+            { type: "standard", name: "Standard", price: 400000, status: "available" },
+            { type: "economy", name: "Economy", price: 250000, status: "available" }
+        ]
+    },
+    "live-music-1": {
+        id: "live-music-1",
+        title: "Đêm Nhạc Sống Bolero",
+        date: "25/12/2025 - 20:30",
+        venue: "Nhà hát Tuổi trẻ, TP.HCM",
+        genre: "Bolero, Tango",
+        duration: "Khoảng 2 giờ",
+        price: "Từ 350.000đ - 900.000đ",
+        status: "available",
+        image: "assets/images/music/lc2.jpg",
+        poster: "assets/images/music/lc2.jpg",
+        category: "live-music",
+        description: [
+            "Đêm nhạc Bolero đầy cảm xúc với những ca khúc bất hủ.",
+            "Không gian lãng mạn với những giai điệu da diết."
+        ],
+        highlights: [
+            "💃 Nhạc Bolero và Tango",
+            "🌹 Không gian lãng mạn",
+            "🎤 Nghệ sĩ tài năng",
+            "🕯️ Ánh nến lung linh"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 900000, status: "available" },
+            { type: "standard", name: "Standard", price: 600000, status: "available" },
+            { type: "economy", name: "Economy", price: 350000, status: "available" }
+        ]
+    },
+    "live-music-2": {
+        id: "live-music-2",
+        title: "Đêm Nhạc Sống Folk",
+        date: "27/12/2025 - 19:00",
+        venue: "Cà phê Acoustic, Hà Nội",
+        genre: "Folk, Country",
+        duration: "Khoảng 2.5 giờ",
+        price: "Từ 200.000đ - 500.000đ",
+        status: "available",
+        image: "assets/images/music/lc3.jpg",
+        poster: "assets/images/music/lc3.jpg",
+        category: "live-music",
+        description: [
+            "Đêm nhạc Folk với những giai điệu dân gian đương đại.",
+            "Không gian ấm cúng như ở nhà với những ca khúc gần gũi."
+        ],
+        highlights: [
+            "🎸 Nhạc Folk và Country",
+            "☕ Không gian cà phê ấm cúng",
+            "🌿 Gần gũi với thiên nhiên",
+            "🎵 Ca khúc dân gian đương đại"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 500000, status: "available" },
+            { type: "standard", name: "Standard", price: 350000, status: "available" },
+            { type: "economy", name: "Economy", price: 200000, status: "available" }
+        ]
+    },
+    "live-music-3": {
+        id: "live-music-3",
+        title: "Đêm Nhạc Sống Rock",
+        date: "29/12/2025 - 21:30",
+        venue: "Rock Club, TP.HCM",
+        genre: "Rock, Metal",
+        duration: "Khoảng 3 giờ",
+        price: "Từ 300.000đ - 700.000đ",
+        status: "available",
+        image: "assets/images/music/lc5.webp",
+        poster: "assets/images/music/lc5.webp",
+        category: "live-music",
+        description: [
+            "Đêm nhạc Rock sôi động với những ban nhạc rock underground.",
+            "Cháy hết mình với những giai điệu rock mạnh mẽ."
+        ],
+        highlights: [
+            "🎸 Ban nhạc rock underground",
+            "⚡ Âm nhạc mạnh mẽ, sôi động",
+            "🔥 Không khí cuồng nhiệt",
+            "🤘 Cộng đồng rock yêu nhạc"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 700000, status: "available" },
+            { type: "standard", name: "Standard", price: 500000, status: "available" },
+            { type: "economy", name: "Economy", price: 300000, status: "available" }
+        ]
+    },
+    "live-music-4": {
+        id: "live-music-4",
+        title: "Đêm Nhạc Sống Classical",
+        date: "02/01/2026 - 20:00",
+        venue: "Nhà hát Lớn Hà Nội",
+        genre: "Classical, Chamber",
+        duration: "Khoảng 2 giờ",
+        price: "Từ 500.000đ - 1.200.000đ",
+        status: "available",
+        image: "assets/images/music/lc6.png",
+        poster: "assets/images/music/lc6.png",
+        category: "live-music",
+        description: [
+            "Đêm nhạc cổ điển với dàn nhạc thính phòng chuyên nghiệp.",
+            "Thưởng thức những tác phẩm kinh điển của các nhạc sĩ nổi tiếng thế giới."
+        ],
+        highlights: [
+            "🎼 Nhạc cổ điển kinh điển",
+            "🎻 Dàn nhạc thính phòng",
+            "🏛️ Không gian trang nghiêm",
+            "🎭 Trải nghiệm văn hóa cao cấp"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1200000, status: "available" },
+            { type: "standard", name: "Standard", price: 800000, status: "available" },
+            { type: "economy", name: "Economy", price: 500000, status: "available" }
+        ]
+    },
+    "live-music-5": {
+        id: "live-music-5",
+        title: "Đêm Nhạc Sống R&B",
+        date: "05/01/2026 - 21:00",
+        venue: "Soul Bar, TP.HCM",
+        genre: "R&B, Soul",
+        duration: "Khoảng 2.5 giờ",
+        price: "Từ 400.000đ - 1.000.000đ",
+        status: "available",
+        image: "assets/images/music/lc7.jpg",
+        poster: "assets/images/music/lc7.jpg",
+        category: "live-music",
+        description: [
+            "Đêm nhạc R&B và Soul với những giọng ca đầy cảm xúc.",
+            "Không gian bar sang trọng với âm nhạc đầy tâm hồn."
+        ],
+        highlights: [
+            "🎤 Giọng ca R&B đầy cảm xúc",
+            "🍸 Không gian bar sang trọng",
+            "💫 Âm nhạc đầy tâm hồn",
+            "🌃 Không khí đêm lãng mạn"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1000000, status: "limited" },
+            { type: "standard", name: "Standard", price: 700000, status: "available" },
+            { type: "economy", name: "Economy", price: 400000, status: "available" }
+        ]
+    },
+    "live-music-6": {
+        id: "live-music-6",
+        title: "Đêm Nhạc Sống Reggae",
+        date: "10/01/2026 - 20:30",
+        venue: "Beach Club, Đà Nẵng",
+        genre: "Reggae, Ska",
+        duration: "Khoảng 3 giờ",
+        price: "Từ 250.000đ - 600.000đ",
+        status: "available",
+        image: "assets/images/music/lc15.jpg",
+        poster: "assets/images/music/lc15.jpg",
+        category: "live-music",
+        description: [
+            "Đêm nhạc Reggae bên bờ biển với không khí thoải mái.",
+            "Thư giãn với những giai điệu Reggae đầy năng lượng tích cực."
+        ],
+        highlights: [
+            "🏖️ Bên bờ biển Đà Nẵng",
+            "🎵 Nhạc Reggae thoải mái",
+            "🌊 Không khí biển cả",
+            "☀️ Năng lượng tích cực"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 600000, status: "available" },
+            { type: "standard", name: "Standard", price: 425000, status: "available" },
+            { type: "economy", name: "Economy", price: 250000, status: "available" }
+        ]
+    },
+    "live-music-7": {
+        id: "live-music-7",
+        title: "Đêm Nhạc Sống Electronic",
+        date: "15/01/2026 - 22:00",
+        venue: "Electronic Club, Hà Nội",
+        genre: "Electronic, Ambient",
+        duration: "Khoảng 4 giờ",
+        price: "Từ 350.000đ - 800.000đ",
+        status: "available",
+        image: "assets/images/music/lc9.jpg",
+        poster: "assets/images/music/lc9.jpg",
+        category: "live-music",
+        description: [
+            "Đêm nhạc Electronic với những âm thanh tương lai.",
+            "Trải nghiệm âm nhạc điện tử trong không gian hiện đại."
+        ],
+        highlights: [
+            "🎛️ Nhạc Electronic hiện đại",
+            "💫 Hiệu ứng ánh sáng đặc biệt",
+            "🔊 Hệ thống âm thanh chất lượng cao",
+            "🌌 Không gian tương lai"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 800000, status: "available" },
+            { type: "standard", name: "Standard", price: 575000, status: "available" },
+            { type: "economy", name: "Economy", price: 350000, status: "available" }
+        ]
+    },
+    "live-music-8": {
+        id: "live-music-8",
+        title: "Đêm Nhạc Sống World Music",
+        date: "20/01/2026 - 19:30",
+        venue: "Cultural Center, TP.HCM",
+        genre: "World Music, Fusion",
+        duration: "Khoảng 2.5 giờ",
+        price: "Từ 400.000đ - 950.000đ",
+        status: "available",
+        image: "assets/images/music/lc10.webp",
+        poster: "assets/images/music/lc10.webp",
+        category: "live-music",
+        description: [
+            "Đêm nhạc World Music với sự kết hợp của nhiều nền văn hóa.",
+            "Hành trình âm nhạc xuyên suốt các châu lục."
+        ],
+        highlights: [
+            "🌍 Nhạc thế giới đa văn hóa",
+            "🎭 Kết hợp nhiều nền văn hóa",
+            "🎪 Biểu diễn đa phương tiện",
+            "🎨 Nghệ thuật tổng hợp"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 950000, status: "available" },
+            { type: "standard", name: "Standard", price: 675000, status: "available" },
+            { type: "economy", name: "Economy", price: 400000, status: "available" }
+        ]
+    },
+    "live-music-9": {
+        id: "live-music-9",
+        title: "Đêm Nhạc Sống Experimental",
+        date: "25/01/2026 - 21:30",
+        venue: "Art Space, Hà Nội",
+        genre: "Experimental, Avant-garde",
+        duration: "Khoảng 2 giờ",
+        price: "Từ 300.000đ - 700.000đ",
+        status: "available",
+        image: "assets/images/music/lc11.jpg",
+        poster: "assets/images/music/lc11.jpg",
+        category: "live-music",
+        description: [
+            "Đêm nhạc thử nghiệm với những âm thanh độc đáo và sáng tạo.",
+            "Khám phá ranh giới mới của âm nhạc đương đại."
+        ],
+        highlights: [
+            "🎨 Âm nhạc thử nghiệm",
+            "🔬 Khám phá âm thanh mới",
+            "🎭 Nghệ thuật đương đại",
+            "💡 Sáng tạo không giới hạn"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 700000, status: "available" },
+            { type: "standard", name: "Standard", price: 500000, status: "available" },
+            { type: "economy", name: "Economy", price: 300000, status: "available" }
+        ]
+    },
+    "live-music-10": {
+        id: "live-music-10",
+        title: "Đêm Nhạc Sống Fusion",
+        date: "30/01/2026 - 20:00",
+        venue: "Fusion Hall, TP.HCM",
+        genre: "Jazz Fusion, Rock Fusion",
+        duration: "Khoảng 3 giờ",
+        price: "Từ 450.000đ - 1.100.000đ",
+        status: "sold",
+        image: "assets/images/music/lc13.png",
+        poster: "assets/images/music/lc13.png",
+        category: "live-music",
+        description: [
+            "Đêm nhạc Fusion với sự kết hợp hoàn hảo giữa Jazz và Rock.",
+            "Trải nghiệm âm nhạc đa chiều với những nghệ sĩ tài năng."
+        ],
+        highlights: [
+            "🎷 Jazz Fusion chuyên nghiệp",
+            "🎸 Rock Fusion sôi động",
+            "🎹 Kỹ thuật cao siêu",
+            "🎵 Âm nhạc đa chiều"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 1100000, status: "sold" },
+            { type: "standard", name: "Standard", price: 775000, status: "sold" },
+            { type: "economy", name: "Economy", price: 450000, status: "sold" }
+        ]
+    },
+    "live-music-11": {
+        id: "live-music-11",
+        title: "Đêm Nhạc Sống Unplugged",
+        date: "05/02/2026 - 19:00",
+        venue: "Intimate Venue, Đà Lạt",
+        genre: "Unplugged, Acoustic",
+        duration: "Khoảng 2 giờ",
+        price: "Từ 250.000đ - 600.000đ",
+        status: "expired",
+        image: "assets/images/music/lc14.jpg",
+        poster: "assets/images/music/lc14.jpg",
+        category: "live-music",
+        description: [
+            "Đêm nhạc Unplugged trong không gian thân mật tại Đà Lạt.",
+            "Những ca khúc được trình diễn hoàn toàn bằng nhạc cụ acoustic."
+        ],
+        highlights: [
+            "🎸 Hoàn toàn acoustic",
+            "🏔️ Không gian Đà Lạt thơ mộng",
+            "🕯️ Không khí thân mật",
+            "❤️ Gần gũi với nghệ sĩ"
+        ],
+        tickets: [
+            { type: "vip", name: "VIP", price: 600000, status: "expired" },
+            { type: "standard", name: "Standard", price: 425000, status: "expired" },
+            { type: "economy", name: "Economy", price: 250000, status: "expired" }
+        ]
+    }
+};
+
+// Merchandise Products Data
+export const merchandise = {
+    "castle-veil-bandana": {
+        id: "castle-veil-bandana",
+        name: "Castle Veil Bandana – \"Wonder Hallows\"",
+        price: 105000,
+        image: "assets/images/merch/merch1.png",
+        category: "accessories",
+        description: "Khăn bandana phong cách Gothic với họa tiết Wonder Hallows độc đáo.",
+        inStock: true
+    },
+    "echo-keyring": {
+        id: "echo-keyring",
+        name: "Echo Keyring – \"Wonder Hallows\"",
+        price: 85000,
+        image: "assets/images/merch/merch2.png",
+        category: "accessories",
+        description: "Móc khóa Echo với thiết kế Wonder Hallows tinh tế.",
+        inStock: true
+    },
+    "anh-trai-bandana": {
+        id: "anh-trai-bandana",
+        name: "Anh Trai \"Say Hi\" Bandana / The Last Chapter",
+        price: 179000,
+        image: "assets/images/merch/merch3.png",
+        category: "accessories",
+        description: "Khăn bandana chính thức từ concert Anh Trai Say Hi.",
+        inStock: true
+    },
+    "anh-trai-lightstick": {
+        id: "anh-trai-lightstick",
+        name: "Anh Trai \"Say Hi\" Lightstick set / Eternal Shine",
+        price: 499000,
+        image: "assets/images/merch/merch4.png",
+        category: "lightstick",
+        description: "Lightstick chính thức với hiệu ứng ánh sáng đặc biệt.",
+        inStock: true
+    },
+    "em-xinh-lightstick": {
+        id: "em-xinh-lightstick",
+        name: "Em Xinh \"Say Hi\" Lightstick set / The real Aura",
+        price: 499000,
+        image: "assets/images/merch/merch5.png",
+        category: "lightstick",
+        description: "Lightstick Em Xinh với aura đặc biệt và màu sắc rực rỡ.",
+        inStock: true
+    },
+    "em-xinh-cap": {
+        id: "em-xinh-cap",
+        name: "EM XINH \"Say Hi\" Cap / Xinh Sập Xình Sập Sàn",
+        price: 249000,
+        image: "assets/images/merch/merch6.png",
+        category: "clothing",
+        description: "Mũ lưỡi trai Em Xinh với slogan độc đáo và thiết kế trendy.",
+        inStock: true
+    },
+    "kingdom-stick": {
+        id: "kingdom-stick",
+        name: "KINGDOMStick (1st EDITION)",
+        price: 1299000,
+        image: "assets/images/merch/merch7.png",
+        category: "lightstick",
+        description: "Lightstick phiên bản giới hạn đầu tiên với công nghệ cao cấp.",
+        inStock: false
+    },
+    "all-rounder-tote": {
+        id: "all-rounder-tote",
+        name: "Túi Tote \"ALL-ROUNDER\"",
+        price: 299000,
+        image: "assets/images/merch/merch8.png",
+        category: "accessories",
+        description: "Túi tote đa năng với thiết kế minimalist và chất liệu bền đẹp.",
+        inStock: true
+    }
+};
