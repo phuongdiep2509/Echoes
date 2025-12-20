@@ -55,12 +55,24 @@ function loadTicket() {
     const bookingType = urlParams.get('type');
     const bookingId = urlParams.get('bookingId');
     
-    // Handle seat booking
-    if (bookingType === 'seat-booking' && bookingId) {
+    // Handle seat booking or regular booking
+    if ((bookingType === 'seat-booking' || bookingType === 'booking') && bookingId) {
         const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
         const booking = bookings.find(b => b.id === bookingId);
         
         if (booking) {
+            // Debug log
+            console.log('Found booking:', booking);
+            console.log('Original eventImage:', booking.eventImage);
+            
+            // Fix image path for payment page (in components folder)
+            let imagePath = booking.eventImage;
+            if (imagePath && !imagePath.startsWith('http') && !imagePath.startsWith('../')) {
+                imagePath = '../' + imagePath;
+            }
+            
+            console.log('Fixed imagePath:', imagePath);
+            
             state.ticket = {
                 title: booking.eventName,
                 location: booking.venue,
@@ -71,28 +83,7 @@ function loadTicket() {
                 price: booking.price,
                 quantity: booking.quantity,
                 totalPrice: booking.totalAmount,
-                img: '../assets/images/index/main_banner_1.png',
-                bookingId: booking.id
-            };
-            return;
-        }
-    }
-    
-    // Handle regular booking
-    if (bookingType === 'booking' && bookingId) {
-        const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
-        const booking = bookings.find(b => b.id === bookingId);
-        
-        if (booking) {
-            state.ticket = {
-                title: booking.eventName,
-                location: booking.venue,
-                date: booking.eventDate,
-                time: booking.eventTime,
-                type: booking.ticketType,
-                price: booking.price,
-                quantity: booking.quantity,
-                img: '../assets/images/index/main_banner_1.png',
+                img: imagePath || '../assets/images/index/main_banner_1.png',
                 bookingId: booking.id
             };
             return;
@@ -103,7 +94,16 @@ function loadTicket() {
     const saved = localStorage.getItem('selectedTicket');
     if (saved) {
         try {
-            state.ticket = JSON.parse(saved);
+            const ticketData = JSON.parse(saved);
+            // Fix image path for payment page (in components folder)
+            if (ticketData.img && !ticketData.img.startsWith('http') && !ticketData.img.startsWith('../')) {
+                ticketData.img = '../' + ticketData.img;
+            }
+            // Ensure image field exists
+            if (!ticketData.img) {
+                ticketData.img = '../assets/images/index/main_banner_1.png';
+            }
+            state.ticket = ticketData;
             return;
         } catch (e) {}
     }

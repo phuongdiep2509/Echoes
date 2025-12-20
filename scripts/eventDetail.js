@@ -287,30 +287,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Check if event is expired or sold out
         if (currentEventData.status === 'expired') {
-            // Don't show alert, button is already disabled
             return;
         }
         
         if (currentEventData.status === 'sold') {
-            // Don't show alert, button is already disabled
             return;
         }
         
-        // Prepare event data for booking page
-        const eventData = {
-            eventId: currentEventData.id,
-            eventTitle: currentEventData.title,
-            eventDate: currentEventData.date,
-            venue: currentEventData.venue,
-            genre: currentEventData.genre,
-            duration: currentEventData.duration,
-            poster: currentEventData.poster,
-            tickets: currentEventData.tickets,
-            timestamp: new Date().toISOString()
-        };
-        
-        // Save event data for booking page
-        localStorage.setItem('currentBookingEvent', JSON.stringify(eventData));
+        // Save the complete event data for booking page
+        localStorage.setItem('currentBookingEvent', JSON.stringify(currentEventData));
         
         // Show loading state
         const btnBook = document.getElementById('btnBook');

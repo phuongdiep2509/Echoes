@@ -4,15 +4,6 @@
     outline: none !important;
 }
 
-body {
-    font-family: 'Fraunces', serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #f0efeb 0%, #faf9f6 50%, #f0efeb 100%);
-    min-height: 100vh;
-    margin-top: 100px;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -23,27 +14,6 @@ body {
 .page-container {
     padding-top: 0px;
     min-height: calc(100vh - 200px);
-}
-
-/* Breadcrumb */
-.breadcrumb-custom {
-    background-color: var(--color-green);
-    color: white;
-    padding: 12px 20px;
-    font-size: 14px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.breadcrumb-custom a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.breadcrumb-custom a:hover {
-    color: #ffffff;
 }
 
 /* Event Detail Container */
@@ -462,27 +432,67 @@ body {
     transform: none;
 }
 
-/* Booking Note */
-.booking-note {
-    background: rgba(255, 193, 7, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-    border-left: 4px solid #ffc107;
+/* Ticket Options */
+.ticket-option {
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #f8f9fa;
 }
 
-.booking-note p {
-    margin: 0 0 10px 0;
+.ticket-option:hover {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+}
+
+.ticket-option.selected {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
+}
+
+.ticket-badge {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge-available {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.badge-limited {
+    background-color: #fff3cd;
     color: #856404;
-    font-weight: 600;
 }
 
-.booking-note ul {
-    margin: 0;
-    padding-left: 20px;
-    color: #856404;
+.badge-sold {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
-.booking-note li {
-    margin-bottom: 5px;
-    font-size: 0.9rem;
+.card-header {
+    font-weight: bold;
+}
+
+.sticky-top {
+    position: sticky;
+    top: 100px;
+}
+
+.related-event-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.related-event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
 }
