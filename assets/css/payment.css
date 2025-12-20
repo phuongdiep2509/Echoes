@@ -46,14 +46,7 @@ body {
 }
 
 .checkout-logo-section img {
-    height: 50px;
-}
-
-.checkout-logo-section .brand-name {
-    font-size: 28px;
-    color: var(--color-red);
-    font-weight: 800;
-    letter-spacing: 2px;
+    height: 70px;
 }
 
 .checkout-nav ul {
@@ -144,7 +137,7 @@ body {
 }
 
 .promotion-card.selected {
-    background: var(--color-yellow);
+    background: rgb(255, 245, 245);
     border-color: var(--color-red);
     box-shadow: 0 0 15px rgba(116, 7, 13, 0.3);
 }
@@ -255,7 +248,7 @@ body {
 
 .payment-option.selected {
     border-color: var(--color-red);
-    background: var(--color-yellow);
+    background: rgb(255, 245, 245);
     box-shadow: 0 0 15px rgba(116, 7, 13, 0.3);
 }
 
@@ -279,13 +272,12 @@ body {
 
 /* Ticket Summary Card */
 .ticket-summary-card {
-    background: #111;
+    background: #27271a;
     border-radius: 7px;
     overflow: hidden;
     position: sticky;
     top: 120px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border: 1px solid #333;
     width: 100%;
 }
 
@@ -389,7 +381,7 @@ body {
 .total-amount {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--color-red);
+    color: orange;
 }
 
 /* Payment Button */
