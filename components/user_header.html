@@ -482,7 +482,7 @@
               
               <div class="search-container" id="searchContainer">
                 <div class="search-input-container">
-                  <input type="text" class="search-input" id="searchInput" placeholder="Tìm kiếm sự kiện, concert, merchandise..." onkeyup="performSearch(this.value)">
+                  <input type="text" class="search-input" id="searchInput" placeholder="Tìm kiếm sự kiện, concert, merchandise..." onkeyup="performSearch(this.value)" onkeydown="handleSearchKeydown(event)">
                 </div>
                 <div class="search-results" id="searchResults">
                   <div class="no-results">Nhập từ khóa để tìm kiếm...</div>

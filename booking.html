@@ -290,7 +290,30 @@
 </head>
 
 <body>
-    <div id="header"></div>
+    <div id="header">
+        <script>
+            fetch('components/user_header.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+            
+                    // Cập nhật UI header với AuthManager
+                    if (window.authManager) {
+                        authManager.updateHeaderUI();
+                    }
+            
+                    // Load scroll header script
+                    const scrollScript = document.createElement('script');
+                    scrollScript.src = 'components/scroll_header.js';
+                    document.body.appendChild(scrollScript);
+                    
+                    // Load header functionality script
+                    const headerScript = document.createElement('script');
+                    headerScript.src = 'components/header.js';
+                    document.body.appendChild(headerScript);
+                });
+        </script>
+    </div>
 
     <main class="container-fluid my-5">
         <!-- Breadcrumb -->
@@ -393,7 +416,16 @@
     </main>
 
 
-    <div id="footer"></div>
+    <div id="footer">
+        <script>
+        fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Lỗi khi tải footer:', error));
+        </script>
+    </div>
 
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -404,7 +436,6 @@
         crossorigin="anonymous"></script>
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="scripts/loadComponents.js"></script>
     <script type="module" src="scripts/booking.js"></script>
     <script src="scripts/seat.js"></script>
 
