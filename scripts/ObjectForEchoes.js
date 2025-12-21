@@ -1253,7 +1253,7 @@ export const merchandise = {
         description: "Mũ lưỡi trai Em Xinh với slogan độc đáo và thiết kế trendy.",
         material: "Cotton twill",
         size: "Free size (56-60 cm)",
-        inStock: true
+        inStock: false  // Đổi thành hết hàng để test
     },
     "kingdom-stick": {
         id: "kingdom-stick",

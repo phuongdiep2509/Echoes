@@ -1,8 +1,12 @@
 /* ======================
-   MERCHANDISE DATA
+   MERCHANDISE DETAIL
 ====================== */
 // Import merchandise data
 import { merchandise } from './ObjectForEchoes.js';
+
+// Global variables
+let currentProduct = null;
+let qty = 1;
 
 // Get merchandise data from URL or use default
 function getMerchandiseData() {
@@ -32,7 +36,7 @@ function getMerchandiseData() {
     
     // Default product data (fallback)
     console.log('Using default product data');
-    const defaultProduct = {
+    return {
         id: 'castle-veil-bandana',
         name: 'Castle Veil Bandana',
         price: 105000,
@@ -43,205 +47,183 @@ function getMerchandiseData() {
         category: 'Phụ kiện',
         inStock: true
     };
-    
-    return defaultProduct;
 }
 
 // Update page content with product data
 function updatePageContent(product) {
     console.log('Updating page content with:', product);
     
-    // Update title
+    // Update title and breadcrumb
     document.title = `${product.name} | Echoes`;
     
-    // Update breadcrumb
-    const breadcrumb = document.querySelector('.breadcrumb');
-    if (breadcrumb) {
-        breadcrumb.innerHTML = `Merch / Year End 2025 / <span>${product.name}</span>`;
-    }
+    const productTitle = document.getElementById('product-title');
+    const productBreadcrumb = document.getElementById('product-breadcrumb');
     
-    // Update product image
+    if (productTitle) productTitle.textContent = product.name;
+    if (productBreadcrumb) productBreadcrumb.textContent = product.name;
+    
+    // Update product info
+    const productName = document.getElementById('productName');
+    const productPrice = document.getElementById('productPrice');
+    const productDesc = document.getElementById('productDesc');
+    const productMaterial = document.getElementById('productMaterial');
+    const productSize = document.getElementById('productSize');
     const productImg = document.getElementById('productImg');
+    
+    if (productName) productName.textContent = product.name;
+    if (productPrice) productPrice.textContent = formatPrice(product.price);
+    if (productDesc) productDesc.textContent = product.description;
+    if (productMaterial) productMaterial.textContent = product.material;
+    if (productSize) productSize.textContent = product.size;
     if (productImg) {
         productImg.src = product.image;
         productImg.alt = product.name;
     }
     
-    // Update product info
-    const productTitle = document.querySelector('.product-info h1');
-    if (productTitle) {
-        productTitle.textContent = product.name;
-    }
+    // Update stock status
+    const stockBadge = document.getElementById('stockBadge');
+    const buyButton = document.getElementById('buyButton');
     
-    const productPrice = document.querySelector('.product-info .price');
-    if (productPrice) {
-        productPrice.textContent = formatPrice(product.price);
-    }
-    
-    const productDesc = document.querySelector('.product-info .desc');
-    if (productDesc) {
-        productDesc.textContent = product.description;
-    }
-    
-    // Update meta information
-    const metaList = document.querySelector('.product-info .meta');
-    if (metaList) {
-        metaList.innerHTML = `
-            <li><strong>Chất liệu:</strong> ${product.material}</li>
-            <li><strong>Kích thước:</strong> ${product.size}</li>
-            ${!product.inStock ? '<li><strong>Tình trạng:</strong> <span style="color: red;">Hết hàng</span></li>' : ''}
-        `;
-    }
-    
-    // Update buy button state
-    const buyButton = document.querySelector('.buy-now');
-    if (buyButton && !product.inStock) {
-        buyButton.textContent = 'HẾT HÀNG';
-        buyButton.disabled = true;
-        buyButton.style.backgroundColor = '#ccc';
-        buyButton.style.cursor = 'not-allowed';
+    if (stockBadge && buyButton) {
+        if (product.inStock) {
+            stockBadge.textContent = 'CÒN HÀNG';
+            stockBadge.className = 'stock-badge-large';
+            buyButton.textContent = 'MUA HÀNG';
+            buyButton.disabled = false;
+            buyButton.style.opacity = '1';
+            buyButton.style.cursor = 'pointer';
+        } else {
+            stockBadge.textContent = 'HẾT HÀNG';
+            stockBadge.className = 'stock-badge-large out';
+            buyButton.textContent = 'HẾT HÀNG';
+            buyButton.disabled = true;
+            buyButton.style.opacity = '0.6';
+            buyButton.style.cursor = 'not-allowed';
+        }
     }
 }
 
+// Format price function
 function formatPrice(price) {
     return new Intl.NumberFormat('vi-VN', {
         style: 'currency',
         currency: 'VND'
-    }).format(price).replace('₫', 'đ');
+    }).format(price);
 }
 
-/* ======================
-   QUANTITY
-====================== */
-let qty = 1;
-let currentProduct = null;
+// Quantity functions
+function changeQty(delta) {
+    const qtyInput = document.getElementById('qty');
+    if (!qtyInput) return;
+    
+    let currentQty = parseInt(qtyInput.value) || 1;
+    let newQty = currentQty + delta;
+    
+    if (newQty < 1) newQty = 1;
+    if (newQty > 10) newQty = 10; // Max quantity limit
+    
+    qtyInput.value = newQty;
+    qty = newQty;
+}
+
+// Tab functions
+function openTab(tabIndex) {
+    const tabButtons = document.querySelectorAll('.tab-buttons button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    // Remove active class from all
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    tabContents.forEach(content => content.classList.remove('active'));
+    
+    // Add active class to selected
+    if (tabButtons[tabIndex] && tabContents[tabIndex]) {
+        tabButtons[tabIndex].classList.add('active');
+        tabContents[tabIndex].classList.add('active');
+    }
+}
+
+// Image modal functions
+function openImageModal() {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const productImg = document.getElementById('productImg');
+    
+    if (modal && modalImg && productImg) {
+        modal.style.display = 'flex';
+        modalImg.src = productImg.src;
+    }
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Buy button handler
+function handleBuyClick() {
+    if (!currentProduct) {
+        alert('Không tìm thấy thông tin sản phẩm!');
+        return;
+    }
+    
+    if (!currentProduct.inStock) {
+        alert('Sản phẩm này hiện đã hết hàng!');
+        return;
+    }
+    
+    const qtyInput = document.getElementById('qty');
+    const quantity = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
+    
+    // Create merchandise booking data
+    const merchandiseData = {
+        id: 'merch_' + Date.now(),
+        type: 'merchandise',
+        productId: currentProduct.id,
+        productName: currentProduct.name,
+        productImage: currentProduct.image,
+        price: currentProduct.price,
+        quantity: quantity,
+        totalPrice: currentProduct.price * quantity,
+        date: new Date().toLocaleDateString('vi-VN'),
+        time: new Date().toLocaleTimeString('vi-VN'),
+        status: 'pending'
+    };
+
+    // Save to sessionStorage for payment page
+    sessionStorage.setItem('currentMerchandiseData', JSON.stringify(merchandiseData));
+    
+    // Also save to localStorage for order history
+    const existingOrders = JSON.parse(localStorage.getItem('userOrders') || '[]');
+    existingOrders.push(merchandiseData);
+    localStorage.setItem('userOrders', JSON.stringify(existingOrders));
+
+    console.log('Merchandise booking created:', merchandiseData);
+
+    // Redirect to payment page
+    window.location.href = 'payment.html?type=merchandise';
+}
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     currentProduct = getMerchandiseData();
     updatePageContent(currentProduct);
     
-    // Setup buy button after content is loaded
-    setupBuyButton();
-});
-
-function changeQty(value) {
-    qty += value;
-    if (qty < 1) qty = 1;
-    if (qty > 10) qty = 10; // Giới hạn tối đa 10 sản phẩm
+    // Add event listeners
+    const productImg = document.getElementById('productImg');
+    const buyButton = document.getElementById('buyButton');
     
-    const qtyInput = document.getElementById("qty");
-    if (qtyInput) {
-        qtyInput.value = qty;
+    if (productImg) {
+        productImg.addEventListener('click', openImageModal);
     }
-}
-
-// Make changeQty available globally
-window.changeQty = changeQty;
-
-/* ======================
-   TABS
-====================== */
-function openTab(index) {
-    const tabs = document.querySelectorAll(".tab-content");
-    const buttons = document.querySelectorAll(".tab-buttons button");
-
-    tabs.forEach(tab => tab.classList.remove("active"));
-    buttons.forEach(btn => btn.classList.remove("active"));
-
-    if (tabs[index] && buttons[index]) {
-        tabs[index].classList.add("active");
-        buttons[index].classList.add("active");
-    }
-}
-
-// Make openTab available globally
-window.openTab = openTab;
-
-/* ======================
-   IMAGE MODAL
-====================== */
-const productImg = document.getElementById("productImg");
-const modal = document.getElementById("imageModal");
-const modalImg = document.getElementById("modalImg");
-
-productImg.addEventListener("click", () => {
-    modal.style.display = "flex";
-    modalImg.src = productImg.src;
-});
-
-function closeModal() {
-    modal.style.display = "none";
-}
-
-/* ======================
-   BUY NOW - PROCEED TO PAYMENT
-====================== */
-function setupBuyButton() {
-    const buyNowBtn = document.querySelector(".buy-now");
     
-    if (buyNowBtn) {
-        buyNowBtn.addEventListener("click", () => {
-            // Check if product is in stock
-            if (!currentProduct.inStock) {
-                showToast("Sản phẩm này hiện đã hết hàng!");
-                return;
-            }
-            
-            console.log("Proceeding to payment for:", {
-                product: currentProduct.name,
-                quantity: qty,
-                totalPrice: currentProduct.price * qty
-            });
-
-            // Create merchandise booking data
-            const merchandiseData = {
-                id: 'merch_' + Date.now(),
-                type: 'merchandise',
-                productId: currentProduct.id,
-                productName: currentProduct.name,
-                productImage: currentProduct.image,
-                price: currentProduct.price,
-                quantity: qty,
-                totalAmount: currentProduct.price * qty,
-                category: currentProduct.category,
-                material: currentProduct.material,
-                size: currentProduct.size,
-                description: currentProduct.description,
-                timestamp: new Date().toISOString(),
-                status: 'pending'
-            };
-
-            // Save to sessionStorage for payment page
-            sessionStorage.setItem('currentMerchandiseData', JSON.stringify(merchandiseData));
-            
-            // Also save to localStorage for order history
-            const existingOrders = JSON.parse(localStorage.getItem('userOrders') || '[]');
-            existingOrders.push(merchandiseData);
-            localStorage.setItem('userOrders', JSON.stringify(existingOrders));
-
-            // Show toast and redirect
-            showToast("Đang chuyển đến trang thanh toán...");
-            
-            // Redirect to payment page after a short delay
-            setTimeout(() => {
-                window.location.href = 'payment.html?type=merchandise';
-            }, 1000);
-        });
+    if (buyButton) {
+        buyButton.addEventListener('click', handleBuyClick);
     }
-}
-
-/* ======================
-   TOAST
-====================== */
-const toast = document.createElement("div");
-toast.className = "toast";
-document.body.appendChild(toast);
-
-function showToast(message = "Đang chuyển đến trang thanh toán...") {
-    toast.innerHTML = message;
-    toast.classList.add("show");
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2200);
-}
+    
+    // Make functions global for HTML onclick
+    window.changeQty = changeQty;
+    window.openTab = openTab;
+    window.closeImageModal = closeImageModal;
+});

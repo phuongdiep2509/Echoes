@@ -20,10 +20,16 @@ body {
 }
 
 /* BREADCRUMB */
-.breadcrumb {
-    padding: 16px 8%;
+.breadcrumb-pill{
+    width: 1200px;
+    background-color: var(--color-green); /* Màu rêu đặc trưng */
+    color: white;
+    padding: 12px 20px;
     font-size: 14px;
-}
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: -60px;  }   
 
 /* LAYOUT */
 .product-detail {
@@ -43,7 +49,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px;
 }
 
 .product-image img {
@@ -59,7 +64,7 @@ body {
 }
 
 .product-info h1 {
-    font-size: 42px;
+    font-size: 36px;
     font-weight: 900;
     margin-bottom: 16px;
 }
@@ -168,30 +173,33 @@ body {
 }
 
 .tab-buttons button {
-    background: none;
+    background: var(--color-green);  /* Nền xanh lá */
+    color: white;  /* Chữ trắng */
     border: none;
     font-weight: 600;
     cursor: pointer;
-    opacity: 0.6;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 10px 16px;
+    border-radius: 6px;
     transition: all 0.3s ease;
     font-size: 14px;
+    margin-right: 10px;
 }
 
 .tab-buttons .active {
-    opacity: 1;
-    background: var(--green-dark);
+    background: var(--color-red);  /* Nền đỏ cho active */
     color: white;
+    transform: translateY(-2px);
 }
 
 .tab-buttons button:hover {
-    opacity: 0.8;
-    background: #f0f0f0;
+    background: var(--color-red);  /* Hover chuyển thành đỏ */
+    color: white;
+    transform: translateY(-1px);
 }
 
 .tab-buttons .active:hover {
-    background: var(--green-dark);
+    background: var(--color-red);
+    transform: translateY(-2px);
 }
 
 .tab-content {
@@ -268,4 +276,294 @@ body {
     .product-info {
         padding: 60px 8%;
     }
+}
+/* ===== BACKGROUND WRAPPER ===== */
+.bg-wrapper {
+    margin-top: 90px;
+    background: url("../images/merchandise/bg-merch.jpg") center / cover no-repeat;
+    min-height: 100vh;
+    position: relative;
+    display: flow-root;
+}
+
+.bg-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;  
+    background: rgba(240,239,235,0.78); 
+    z-index: 0;
+}
+
+.bg-wrapper > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+    padding: 40px 0 50px;
+}
+
+.page-hero .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.breadcrumb-pill {
+    background-color: var(--color-green);
+    color: white;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: -20px;
+    display: inline-block;
+}
+
+.page-title {
+    margin: 32px 0 16px;
+    font-size: 72px;
+    color: var(--color-green);
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.soft-line {
+    margin-top: 30px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.1),
+        rgba(0,0,0,0)
+    );
+}
+
+/* ===== SECTIONS ===== */
+.section-1 {
+    height: auto !important;
+    min-height: unset;
+    background: transparent;
+    box-shadow: none;
+    margin-top: -60px !important;
+    padding-top: 20px !important;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+}
+
+/* ===== STOCK BADGE LARGE ===== */
+.stock-badge-large {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    background-color: var(--color-green);
+    color: white;
+}
+
+.stock-badge-large.out {
+    background-color: var(--color-red);
+}
+
+/* ===== PRODUCT DETAIL LAYOUT ===== */
+.product-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .product-detail {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .page-title {
+        font-size: 42px;
+    }
+    
+    .breadcrumb-pill {
+        font-size: 11px;
+        padding: 8px 14px;
+    }
+}
+/* ===== IMAGE MODAL ===== */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.image-modal .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.image-modal .close:hover {
+    opacity: 0.7;
+}
+
+/* ===== BUY BUTTON STATES ===== */
+.buy-now {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.buy-now:hover:not(:disabled) {
+    background-color: var(--color-red);
+    transform: translateY(-2px);
+}
+
+.buy-now:disabled {
+    background-color: #ccc !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+/* ===== QUANTITY BOX ===== */
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.qty-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.qty-box button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: var(--color-green);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.qty-box button:hover {
+    background: var(--color-red);
+}
+
+.qty-box input {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ===== TABS ===== */
+.tabs {
+    margin-top: 30px;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab-buttons button {
+    padding: 12px 20px;
+    border: none;
+    background: var(--color-green);  /* Nền xanh lá */
+    color: white;  /* Chữ trắng */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 6px;  /* Thêm border-radius cho đẹp */
+    margin-right: 10px;  /* Khoảng cách giữa các button */
+}
+
+.tab-buttons button.active {
+    background: var(--color-red);  /* Nền đỏ cho active */
+    color: white;
+    transform: translateY(-2px);  /* Nâng lên một chút */
+}
+
+.tab-buttons button:hover {
+    background: var(--color-red);  /* Hover cũng chuyển thành đỏ */
+    color: white;
+    transform: translateY(-1px);
+}
+
+.tab-content {
+    display: none;
+    line-height: 1.6;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h4 {
+    color: var(--color-green);
+    margin-bottom: 15px;
+}
+
+.tab-content h5 {
+    color: var(--color-red);
+    margin: 15px 0 10px;
+}
+
+.tab-content ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.tab-content li {
+    margin-bottom: 5px;
 }
