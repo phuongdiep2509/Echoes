@@ -644,7 +644,27 @@ class MusicBooking {
         const formatted = new Intl.NumberFormat('vi-VN').format(price);
         return formatted + ' đ';
     }
-}
+};
+
+import { addTicket } from "./ticketStorage.js";
+
+function createTicketAfterPayment() {
+  const ticket = {
+    id: "ECHOES" + Date.now(),          // hoặc id thật của bạn
+    name: "Echoes Live Concert",
+    location: "Nhà hát Lớn Hà Nội",
+    time: "20:00 · 20/12/2025",
+    seat: "Khu A – Hàng 3 – Ghế 12",
+    receiverName: "Nguyễn Văn A",
+    receiverEmail: "nguyenvana@gmail.com",
+    price: 499000
+  };
+
+  addTicket(ticket);
+
+  // chuyển qua trang chi tiết vé
+  window.location.href = `ticketDetail.html?id=${encodeURIComponent(ticket.id)}`;
+};
 
 // Initialize booking when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {

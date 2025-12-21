@@ -52,6 +52,9 @@ function loadTicketsFromStorage() {
         });
         
         console.log(`Loaded ${tickets.length} tickets`);
+        // ✅ Đồng bộ danh sách vé cho ticketDetail đọc
+        localStorage.setItem("ECHOES_TICKETS", JSON.stringify(tickets));
+
         
     } catch (error) {
         console.error('Error loading tickets:', error);
@@ -99,21 +102,37 @@ function createDemoBookings() {
 }
 
 function transformBookingToTicket(booking) {
-    return {
-        id: booking.id || `ECHOES${Date.now()}`,
-        name: booking.eventName || booking.title || 'Echoes Event',
-        time: `${booking.eventTime || '20:00'} · ${booking.eventDate || booking.date}`,
-        location: booking.venue || booking.location || 'Venue TBA',
-        price: booking.totalAmount || booking.totalPaid || booking.price || 0,
-        ticketType: booking.ticketType || 'Standard',
-        seatSection: booking.seatSection || null,
-        quantity: booking.quantity || 1,
-        isGift: booking.isGift || false,
-        bookingType: booking.seatSection ? 'seat-booking' : 'regular',
-        paymentTime: booking.paymentTime || null,
-        bookingTime: booking.timestamp ? new Date(booking.timestamp).toLocaleString('vi-VN') : null
-    };
+  const priceNumber = Number(
+    booking.totalAmount ?? booking.totalPaid ?? booking.price ?? 0
+  );
+
+  const ticketType = booking.ticketType || 'Standard';
+  const seatSection = booking.seatSection || null;
+
+  return {
+    id: booking.id || `ECHOES${Date.now()}`,
+    name: booking.eventName || booking.title || 'Echoes Event',
+    time: `${booking.eventTime || '20:00'} · ${booking.eventDate || booking.date || ''}`.trim(),
+    location: booking.venue || booking.location || 'Venue TBA',
+    price: priceNumber,
+
+    ticketType,
+    seatSection,
+    // ✅ ticketDetail đang dùng ticket.seat -> tạo luôn cho nó
+    seat: seatSection ? `${ticketType} (${seatSection})` : (booking.seat || 'Standing'),
+
+    quantity: booking.quantity || 1,
+    isGift: booking.isGift || false,
+    bookingType: booking.seatSection ? 'seat-booking' : 'regular',
+    paymentTime: booking.paymentTime || null,
+    bookingTime: booking.timestamp ? new Date(booking.timestamp).toLocaleString('vi-VN') : null,
+
+    // ✅ để nút "Gửi vé về Gmail" có email
+    receiverName: booking.receiverName || booking.customerName || booking.fullName || "Khách hàng",
+    receiverEmail: booking.receiverEmail || booking.customerEmail || booking.email || ""
+  };
 }
+
 
 /* ===== RENDERING ===== */
 function renderTickets() {
