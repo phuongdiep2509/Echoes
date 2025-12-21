@@ -34,19 +34,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoSlide;
 
     /* ===== TẠO DOTS TỰ ĐỘNG ===== */
-    dotsContainer.innerHTML = ''; // clear trước
+    if (dotsContainer) {
+        dotsContainer.innerHTML = ''; // clear trước
 
-    slides.forEach((_, i) => {
-        const dot = document.createElement('li');
-        if (i === 0) dot.classList.add('active');
+        slides.forEach((_, i) => {
+            const dot = document.createElement('li');
+            if (i === 0) dot.classList.add('active');
 
-        dot.addEventListener('click', () => {
-            showSlide(i);
-            resetAutoSlide();
+            dot.addEventListener('click', () => {
+                showSlide(i);
+                resetAutoSlide();
+            });
+
+            dotsContainer.appendChild(dot);
         });
-
-        dotsContainer.appendChild(dot);
-    });
+    }
 
     const dots = document.querySelectorAll('.carousel-dots li');
 
@@ -55,8 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
         index = (i + total) % total;
         list.style.transform = `translateX(-${index * 100}%)`;
 
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[index].classList.add('active');
+        // Cập nhật dots nếu có
+        if (dots.length > 0) {
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
     }
     
     /* ===== AUTO SLIDE ===== */

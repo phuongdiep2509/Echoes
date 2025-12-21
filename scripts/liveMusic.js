@@ -35,7 +35,7 @@ function renderTrendingList() {
   console.log('Rendering trending events:', trendingEvents.length);
 
   container.innerHTML = trendingEvents.map(([id, event]) => `
-    <div class="trending-item" onclick="location.href='concertDetail.html?id=${id}&type=live-music'">
+    <div class="trending-item" onclick="location.href='musicDetail.html?id=${id}&type=live-music'">
       <div class="trending-thumb">
         <img src="${event.image}" alt="${event.title}">
       </div>
@@ -66,7 +66,7 @@ function renderEventList() {
   console.log('Rendering events for page', currentPage, ':', pageItems.length);
 
   container.innerHTML = pageItems.map(([id, event]) => `
-    <div class="event-wrapper" onclick="location.href='concertDetail.html?id=${id}&type=live-music'">
+    <div class="event-wrapper" onclick="location.href='musicDetail.html?id=${id}&type=live-music'">
       <div class="event-thumb">
         <img src="${event.image}" alt="${event.title}">
       </div>

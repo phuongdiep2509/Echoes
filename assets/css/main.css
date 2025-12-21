@@ -81,14 +81,15 @@
 }
 
 .carousel-dots {
-    opacity: 0.5;
+    opacity: 0.8;
     position: absolute;
-    bottom: 1px;
+    bottom: 20px;
     left: 0;
     right: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 8px;
 }
 
 .carousel-dots li {
