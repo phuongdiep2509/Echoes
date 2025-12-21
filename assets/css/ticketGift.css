@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font);
     margin: 0;
     padding: 0;
     background: linear-gradient(135deg, #f0efeb 0%, #faf9f6 50%, #f0efeb 100%);

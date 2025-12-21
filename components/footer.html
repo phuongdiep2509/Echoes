@@ -12,6 +12,21 @@
     
     <link rel="stylesheet" href="../assets/css/base.css">
     <style>
+        /* CSS Variables */
+        :root{
+           --color-text: #000;
+           --color-yellow: #f0efeb;
+           --color-white: #fff;
+           --color-red: #74070d;
+           --color-green: #46462a;
+           --color-beige: #e1cfac;
+           --font: "Cal Sans", sans-serif;
+        }
+
+        * {
+            font-family: var(--font);
+        }
+
         .footer .footer-top {
             margin-top: 50px;
             display: flex;
@@ -130,6 +145,7 @@
                 margin-right: 0;
                 width: 100%;
                 max-width: 400px;
+                text-align: center;
             }
 
             .footer .footer-top .about-us ul {
@@ -137,7 +153,7 @@
             }
 
             .footer .footer-top .about-us ul li {
-                text-align: left;
+                text-align: center;
             }
 
             .footer .footer-top .about-us .social {
@@ -156,27 +172,58 @@
                 height: 80px;
             }
 
+            .footer-bottom .inner-logo img {
+                height: 70px;
+                width: 70px;
+            }
+
             .footer-bottom .inner-content ul li p {
                 font-size: 14px;
+                line-height: 1.6;
             }
         }
 
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: 768px) {
             .footer .footer-top {
-                padding: 20px 10px;
+                padding: 25px 15px;
+                gap: 25px;
+            }
+
+            .footer .footer-top .about-us {
+                max-width: 350px;
             }
 
             .footer .footer-top .about-us h1 {
                 font-size: 18px;
+                margin-top: 15px;
             }
 
             .footer .footer-top .about-us .list-box {
                 width: 150px;
                 height: 8px;
+                margin: 0 auto 15px;
+            }
+
+            .footer .footer-top .about-us ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer .footer-top .about-us ul li a,
+            .footer .footer-top .about-us ul li p {
+                font-size: 14px;
+            }
+
+            .footer-bottom {
+                padding: 15px;
             }
 
             .footer-bottom .inner-logo {
                 height: 60px;
+            }
+
+            .footer-bottom .inner-logo img {
+                height: 55px;
+                width: 55px;
             }
 
             .footer-bottom .inner-content ul li p {
@@ -186,6 +233,59 @@
             .footer .footer-top .about-us .social li .inner-image {
                 height: 32px;
                 width: 32px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .footer .footer-top {
+                padding: 20px 10px;
+                gap: 20px;
+            }
+
+            .footer .footer-top .about-us {
+                max-width: 300px;
+            }
+
+            .footer .footer-top .about-us h1 {
+                font-size: 16px;
+                margin-top: 10px;
+            }
+
+            .footer .footer-top .about-us .list-box {
+                width: 120px;
+                height: 6px;
+            }
+
+            .footer .footer-top .about-us ul li a,
+            .footer .footer-top .about-us ul li p {
+                font-size: 13px;
+            }
+
+            .footer-bottom {
+                padding: 10px;
+            }
+
+            .footer-bottom .inner-logo {
+                height: 50px;
+            }
+
+            .footer-bottom .inner-logo img {
+                height: 45px;
+                width: 45px;
+            }
+
+            .footer-bottom .inner-content ul li p {
+                font-size: 12px;
+                line-height: 1.5;
+            }
+
+            .footer .footer-top .about-us .social li .inner-image {
+                height: 28px;
+                width: 28px;
+            }
+
+            .footer .footer-top .about-us .social li {
+                margin-right: 8px;
             }
         }
     </style>

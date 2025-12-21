@@ -1,7 +1,7 @@
 /* --- 1. ĐỊNH DẠNG CHUNG (GENERAL) --- */
 body {
     background-color: #f0efeb; /* Màu nền kem nhẹ */
-    font-family: "Fraunces", serif;
+    font-family: var(--font);
     color: #333;
     line-height: 1.6;
     margin-top: 100px;

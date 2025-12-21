@@ -13,7 +13,7 @@
 }
 
 body {
-    font-family: 'Fraunces', serif;
+    font-family: var(--font);
     background: var(--cream);
     color: var(--dark);
     margin-top: 100px;

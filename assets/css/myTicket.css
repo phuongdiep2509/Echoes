@@ -14,7 +14,7 @@
 
 body {
   background: var(--cream);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   color: var(--text-main);
   margin-top: 100px;
 }
@@ -28,7 +28,7 @@ body {
 
 /* TITLE */
 .page-title {
-  font-family: 'Fraunces', serif;
+  font-family: var(--font);
   font-size: 34px;
   margin-bottom: 24px;
 }
@@ -145,7 +145,7 @@ body {
 }
 
 .ticket-card h3 {
-  font-family: 'Fraunces', serif;
+  font-family: var(--font);
   font-size: 22px;
   margin-bottom: 6px;
 }

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const list = document.querySelector('.carousel-list');
     const slides = document.querySelectorAll('.carousel-image');
-    const dotsContainer = document.querySelector('.carousel-dots');
+    const counterContainer = document.querySelector('.carousel-counter');
     const next = document.querySelector('.carousel-button-next');
     const prev = document.querySelector('.carousel-button-prev');
 
@@ -33,34 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const total = slides.length;
     let autoSlide;
 
-    /* ===== TẠO DOTS TỰ ĐỘNG ===== */
-    if (dotsContainer) {
-        dotsContainer.innerHTML = ''; // clear trước
-
-        slides.forEach((_, i) => {
-            const dot = document.createElement('li');
-            if (i === 0) dot.classList.add('active');
-
-            dot.addEventListener('click', () => {
-                showSlide(i);
-                resetAutoSlide();
-            });
-
-            dotsContainer.appendChild(dot);
-        });
+    /* ===== TẠO COUNTER TỰ ĐỘNG ===== */
+    if (counterContainer) {
+        updateCounter();
     }
-
-    const dots = document.querySelectorAll('.carousel-dots li');
 
     /* ===== HIỂN THỊ SLIDE ===== */
     function showSlide(i) {
         index = (i + total) % total;
         list.style.transform = `translateX(-${index * 100}%)`;
 
-        // Cập nhật dots nếu có
-        if (dots.length > 0) {
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
+        // Cập nhật counter
+        updateCounter();
+    }
+
+    /* ===== CẬP NHẬT COUNTER ===== */
+    function updateCounter() {
+        if (counterContainer) {
+            counterContainer.textContent = `${index + 1} / ${total}`;
         }
     }
     

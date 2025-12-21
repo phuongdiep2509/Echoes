@@ -40,7 +40,7 @@ body {
 
 .event-header h2 {
     color: #74070d;
-    font-family: 'Fraunces', serif;
+    font-family: var(--font);
 }
 
 .event-header p {
@@ -58,7 +58,7 @@ body {
 
 .seat-map-container h4 {
     color: #74070d;
-    font-family: 'Fraunces', serif;
+    font-family: var(--font);
     margin-bottom: 2rem;
 }
 
@@ -316,7 +316,7 @@ body {
 
 .booking-summary h4 {
     color: #74070d;
-    font-family: 'Fraunces', serif;
+    font-family: var(--font);
     border-bottom: 2px solid #74070d;
     padding-bottom: 0.5rem;
 }

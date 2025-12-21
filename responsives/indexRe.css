@@ -1,0 +1,824 @@
+/* ===== RESPONSIVE STYLES FOR INDEX PAGE ===== */
+
+/* ===== LARGE DESKTOP (1200px and above) ===== */
+@media screen and (min-width: 1200px) {
+    .carousel {
+        height: 900px;
+    }
+    
+    .section-1 {
+        height: 1000px;
+    }
+    
+    .inner-title {
+        font-size: 65px;
+    }
+    
+    .event-list {
+        gap: 120px;
+        padding: 100px 0;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+/* ===== TABLET LANDSCAPE (1024px and below) ===== */
+@media screen and (max-width: 1024px) {
+    /* Carousel adjustments */
+    .carousel {
+        height: 600px;
+        margin-top: 70px;
+    }
+    
+    .carousel-button-prev,
+    .carousel-button-next {
+        width: 20%;
+        font-size: 36px;
+    }
+    
+    .carousel-button-prev:hover,
+    .carousel-button-next:hover {
+        font-size: 42px;
+    }
+    
+    .carousel-counter {
+        bottom: 15px;
+        right: 20px;
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+    
+    /* Section 1 adjustments */
+    .section-1 {
+        height: 700px;
+    }
+    
+    .inner-title {
+        font-size: 45px;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    
+    .event-list {
+        gap: 60px;
+        padding: 60px 20px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .event-wrapper {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    
+    /* Music grid adjustments */
+    .music-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .poster-img {
+        height: 300px;
+    }
+    
+    /* Container adjustments */
+    .container {
+        padding: 0 20px;
+    }
+    
+    /* Section header adjustments */
+    .section-header {
+        margin-top: 40px;
+        padding: 8px 15px;
+    }
+    
+    .section-title {
+        font-size: 16px;
+    }
+    
+    .see-more {
+        font-size: 13px;
+    }
+    
+    /* Stats section adjustments */
+    .stats-title {
+        font-size: 55px;
+        margin-top: -80px;
+    }
+    
+    .stats-container {
+        gap: 20px;
+    }
+    
+    .big-number-text {
+        font-size: 120px;
+    }
+    
+    .big-box .label {
+        font-size: 40px;
+    }
+    
+    .small-box .number {
+        font-size: 80px;
+    }
+    
+    .small-box .label {
+        font-size: 25px;
+    }
+    
+    /* Ads adjustments */
+    .ads-adventcld {
+        width: 95%;
+        margin: 30px auto;
+    }
+    
+    /* News adjustments */
+    .news-item-horizontal {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .news-image-wrapper {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .news-content-wrapper {
+        padding: 15px 20px;
+    }
+}
+
+/* ===== TABLET PORTRAIT (768px and below) ===== */
+@media screen and (max-width: 768px) {
+    /* Carousel adjustments */
+    .carousel {
+        height: 400px;
+        margin-top: 60px;
+    }
+    
+    .carousel-button-prev,
+    .carousel-button-next {
+        width: 25%;
+        font-size: 28px;
+        opacity: 0.7;
+    }
+    
+    .carousel-button-prev:hover,
+    .carousel-button-next:hover {
+        font-size: 32px;
+        opacity: 1;
+    }
+    
+    .carousel-counter {
+        bottom: 12px;
+        right: 15px;
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+    
+    /* Section 1 adjustments */
+    .section-1 {
+        height: 600px;
+    }
+    
+    .inner-title {
+        font-size: 35px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .event-list {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 15px;
+    }
+    
+    .event-wrapper {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    /* Music grid adjustments */
+    .music-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .poster-img {
+        height: 320px;
+    }
+    
+    .btn-buy {
+        font-size: 16px;
+        padding: 6px 0;
+    }
+    
+    .event-name {
+        font-size: 16px;
+    }
+    
+    .event-address {
+        font-size: 13px;
+    }
+    
+    .date {
+        font-size: 13px;
+    }
+    
+    /* Container adjustments */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Section header adjustments */
+    .section-header {
+        margin-top: 30px;
+        padding: 6px 12px;
+    }
+    
+    .section-title {
+        font-size: 15px;
+    }
+    
+    .see-more {
+        font-size: 12px;
+    }
+    
+    /* Stats section adjustments */
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .stats-title {
+        font-size: 40px;
+        margin-top: -60px;
+        text-align: center;
+    }
+    
+    .big-box {
+        padding-left: 20px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .big-number-text {
+        font-size: 100px;
+    }
+    
+    .big-box .label {
+        font-size: 35px;
+        margin-top: 15px;
+    }
+    
+    .small-box .number {
+        font-size: 70px;
+    }
+    
+    .small-box .label {
+        font-size: 24px;
+    }
+    
+    .follow-title, .contact-title {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+    
+    .social-list li {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    .contact-email {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    /* News adjustments */
+    .news-content-wrapper {
+        padding: 15px;
+    }
+    
+    .news-title-big {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    
+    .news-desc-big {
+        font-size: 14px;
+    }
+    
+    /* Event button adjustments */
+    .event-btn {
+        font-size: 16px;
+        padding: 8px 80px;
+    }
+}
+
+/* ===== MOBILE LANDSCAPE (640px and below) ===== */
+@media screen and (max-width: 640px) {
+    /* Carousel adjustments */
+    .carousel {
+        height: 350px;
+        margin-top: 55px;
+    }
+    
+    .carousel-counter {
+        bottom: 10px;
+        right: 12px;
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+    
+    /* Section 1 adjustments */
+    .section-1 {
+        height: 550px;
+    }
+    
+    .inner-title {
+        font-size: 30px;
+        margin-top: 15px;
+    }
+    
+    .event-list {
+        gap: 30px;
+        padding: 30px 12px;
+    }
+    
+    /* Music grid adjustments */
+    .poster-img {
+        height: 300px;
+    }
+    
+    /* Container adjustments */
+    .container {
+        padding: 0 12px;
+    }
+    
+    /* Stats adjustments */
+    .stats-title {
+        font-size: 35px;
+        margin-top: -50px;
+    }
+    
+    .big-number-text {
+        font-size: 85px;
+    }
+    
+    .big-box .label {
+        font-size: 30px;
+    }
+    
+    .small-box .number {
+        font-size: 60px;
+    }
+    
+    .small-box .label {
+        font-size: 20px;
+    }
+    
+    .follow-title, .contact-title {
+        font-size: 22px;
+    }
+    
+    .social-list li {
+        font-size: 16px;
+    }
+}
+
+/* ===== MOBILE PORTRAIT (480px and below) ===== */
+@media screen and (max-width: 480px) {
+    /* Carousel adjustments */
+    .carousel {
+        height: 300px;
+        margin-top: 50px;
+    }
+    
+    .carousel-button-prev,
+    .carousel-button-next {
+        width: 30%;
+        font-size: 24px;
+    }
+    
+    .carousel-button-prev:hover,
+    .carousel-button-next:hover {
+        font-size: 28px;
+    }
+    
+    .carousel-counter {
+        bottom: 8px;
+        right: 10px;
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+    
+    /* Section 1 adjustments */
+    .section-1 {
+        height: 500px;
+    }
+    
+    .inner-title {
+        font-size: 28px;
+        margin-top: 15px;
+    }
+    
+    .event-list {
+        gap: 25px;
+        padding: 25px 10px;
+    }
+    
+    .event-wrapper {
+        max-width: 320px;
+    }
+    
+    /* Music grid adjustments */
+    .poster-img {
+        height: 280px;
+    }
+    
+    .btn-buy {
+        font-size: 15px;
+        padding: 5px 0;
+    }
+    
+    .event-name {
+        font-size: 15px;
+    }
+    
+    .event-address {
+        font-size: 12px;
+    }
+    
+    .date {
+        font-size: 12px;
+    }
+    
+    /* Container adjustments */
+    .container {
+        padding: 0 10px;
+    }
+    
+    /* Section header adjustments */
+    .section-header {
+        margin-top: 25px;
+        padding: 5px 10px;
+    }
+    
+    .section-title {
+        font-size: 14px;
+    }
+    
+    .see-more {
+        font-size: 11px;
+    }
+    
+    /* Stats section adjustments */
+    .stats-title {
+        font-size: 32px;
+        margin-top: -45px;
+    }
+    
+    .big-number-text {
+        font-size: 80px;
+    }
+    
+    .big-box .label {
+        font-size: 28px;
+        margin-top: 10px;
+    }
+    
+    .small-box .number {
+        font-size: 60px;
+    }
+    
+    .small-box .label {
+        font-size: 20px;
+        margin-top: 8px;
+    }
+    
+    .follow-title, .contact-title {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .social-list li {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .social-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+    
+    .contact-email {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    /* News adjustments */
+    .news-content-wrapper {
+        padding: 12px;
+    }
+    
+    .news-title-big {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    
+    .news-desc-big {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    /* Event button adjustments */
+    .event-btn {
+        font-size: 15px;
+        padding: 6px 60px;
+        min-height: 44px; /* Better touch target */
+    }
+    
+    /* Ads adjustments */
+    .ads-adventcld {
+        width: 98%;
+        margin: 20px auto;
+    }
+    
+    /* Better touch targets for mobile */
+    .music-item,
+    .event-wrapper,
+    .news-item-horizontal {
+        min-height: 44px;
+    }
+    
+    /* Improve text readability on small screens */
+    .event-content,
+    .card-bottom {
+        line-height: 1.5;
+    }
+}
+
+/* ===== SMALL MOBILE (360px and below) ===== */
+@media screen and (max-width: 360px) {
+    /* Carousel adjustments */
+    .carousel {
+        height: 250px;
+        margin-top: 45px;
+    }
+    
+    .carousel-counter {
+        bottom: 6px;
+        right: 8px;
+        font-size: 9px;
+        padding: 2px 5px;
+    }
+    
+    /* Section 1 adjustments */
+    .section-1 {
+        height: 450px;
+    }
+    
+    .inner-title {
+        font-size: 24px;
+        margin-top: 12px;
+    }
+    
+    .event-list {
+        gap: 20px;
+        padding: 20px 8px;
+    }
+    
+    .event-wrapper {
+        max-width: 280px;
+    }
+    
+    /* Music grid adjustments */
+    .poster-img {
+        height: 250px;
+    }
+    
+    .btn-buy {
+        font-size: 14px;
+        padding: 4px 0;
+    }
+    
+    .event-name {
+        font-size: 14px;
+    }
+    
+    .event-address,
+    .date {
+        font-size: 11px;
+    }
+    
+    /* Container adjustments */
+    .container {
+        padding: 0 8px;
+    }
+    
+    /* Section header adjustments */
+    .section-header {
+        margin-top: 20px;
+        padding: 4px 8px;
+    }
+    
+    .section-title {
+        font-size: 13px;
+    }
+    
+    .see-more {
+        font-size: 10px;
+    }
+    
+    /* Stats section adjustments */
+    .stats-title {
+        font-size: 28px;
+        margin-top: -40px;
+    }
+    
+    .big-number-text {
+        font-size: 70px;
+    }
+    
+    .big-box .label {
+        font-size: 24px;
+    }
+    
+    .small-box .number {
+        font-size: 50px;
+    }
+    
+    .small-box .label {
+        font-size: 18px;
+    }
+    
+    .follow-title, .contact-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .social-list li {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
+    .social-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+    
+    .contact-email {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    
+    /* News adjustments */
+    .news-content-wrapper {
+        padding: 10px;
+    }
+    
+    .news-title-big {
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+    
+    .news-desc-big {
+        font-size: 12px;
+    }
+    
+    /* Event button adjustments */
+    .event-btn {
+        font-size: 14px;
+        padding: 5px 40px;
+    }
+    
+    /* Modal adjustments */
+    .modal-container {
+        width: 95%;
+        height: 400px;
+        margin: 0 10px;
+    }
+    
+    .close-modal {
+        font-size: 30px;
+        right: 10px;
+        top: 5px;
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* ===== EXTRA SMALL MOBILE (320px and below) ===== */
+@media screen and (max-width: 320px) {
+    /* Carousel adjustments */
+    .carousel {
+        height: 220px;
+        margin-top: 40px;
+    }
+    
+    .carousel-button-prev,
+    .carousel-button-next {
+        font-size: 20px;
+    }
+    
+    .carousel-button-prev:hover,
+    .carousel-button-next:hover {
+        font-size: 24px;
+    }
+    
+    /* Section 1 adjustments */
+    .section-1 {
+        height: 400px;
+    }
+    
+    .inner-title {
+        font-size: 22px;
+        margin-top: 10px;
+    }
+    
+    .event-list {
+        gap: 18px;
+        padding: 18px 6px;
+    }
+    
+    .event-wrapper {
+        max-width: 260px;
+    }
+    
+    /* Music grid adjustments */
+    .poster-img {
+        height: 220px;
+    }
+    
+    /* Container adjustments */
+    .container {
+        padding: 0 6px;
+    }
+    
+    /* Stats adjustments */
+    .stats-title {
+        font-size: 24px;
+        margin-top: -35px;
+    }
+    
+    .big-number-text {
+        font-size: 60px;
+    }
+    
+    .big-box .label {
+        font-size: 20px;
+    }
+    
+    .small-box .number {
+        font-size: 45px;
+    }
+    
+    .small-box .label {
+        font-size: 16px;
+    }
+    
+    .follow-title, .contact-title {
+        font-size: 16px;
+    }
+    
+    .social-list li {
+        font-size: 13px;
+    }
+    
+    /* Event button adjustments */
+    .event-btn {
+        font-size: 13px;
+        padding: 4px 30px;
+    }
+    
+    /* Modal adjustments */
+    .modal-container {
+        width: 98%;
+        height: 350px;
+        margin: 0 5px;
+    }
+    
+    .close-modal {
+        font-size: 28px;
+        right: 8px;
+        top: 3px;
+        padding: 4px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
