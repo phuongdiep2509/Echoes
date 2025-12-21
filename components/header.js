@@ -15,7 +15,7 @@
       }
     },
 
-    // Perform search với dữ liệu cứng để test
+    // Perform search với dữ liệu cứng để test và logic thông minh
     performSearch: function(query) {
       const resultsContainer = document.getElementById('searchResults');
       
@@ -91,100 +91,203 @@
       this.searchInData(query, resultsContainer, dataToSearch);
     },
 
-    // Search in loaded data với thuật toán fuzzy search
-    searchInData: function(query, resultsContainer, dataSource) {
+    // Handle Enter key press
+    handleSearchKeydown: function(event) {
+      if (event.key === 'Enter') {
+        const query = event.target.value.trim().toLowerCase();
+        this.handleEnterSearch(query);
+      }
+    },
+
+    // Handle Enter search with smart routing
+    handleEnterSearch: function(query) {
+      // Từ khóa chung dẫn đến trang danh mục
+      const categoryKeywords = {
+        'concert': 'concert.html',
+        'nhạc sống': 'music.html',
+        'nhac song': 'music.html',
+        'live music': 'music.html',
+        'merchandise': 'merchandise.html',
+        'sản phẩm': 'merchandise.html',
+        'san pham': 'merchandise.html',
+        'áo': 'merchandise.html',
+        'ao': 'merchandise.html',
+        'mũ': 'merchandise.html',
+        'mu': 'merchandise.html'
+      };
+
+      // Kiểm tra từ khóa chung trước
+      for (const [keyword, page] of Object.entries(categoryKeywords)) {
+        if (query.includes(keyword)) {
+          window.location.href = page;
+          return;
+        }
+      }
+
+      // Nếu không phải từ khóa chung, tìm kết quả cụ thể đầu tiên
+      const dataToSearch = window.ObjectForEchoes || this.getSampleData();
+      const results = this.getSearchResults(query, dataToSearch);
+      
+      if (results.length > 0) {
+        // Chuyển đến kết quả đầu tiên (có điểm cao nhất)
+        const firstResult = results[0];
+        this.goToEvent(this.getEventUrl(firstResult));
+      } else {
+        // Không tìm thấy, hiển thị thông báo
+        alert('Không tìm thấy kết quả phù hợp với "' + query + '"');
+      }
+    },
+
+    // Get sample data
+    getSampleData: function() {
+      return {
+        concerts: {
+          "anh-trai-say-hi-2025": {
+            title: "ANH TRAI SAY HI 2025 CONCERT",
+            venue: "Khu đô thị Vạn Phúc",
+            genre: "Concert",
+            date: "27/12/2025",
+            time: "12:00",
+            tickets: { vip: { price: 10000000 }, standard: { price: 5000000 } }
+          },
+          "YConcert": {
+            title: "Y CONCERT 2025",
+            venue: "Vinhomes Ocean Park 3",
+            genre: "Concert",
+            date: "20/12/2026",
+            time: "14:00",
+            tickets: { vip: { price: 5000000 }, standard: { price: 3000000 } }
+          }
+        },
+        liveMusic: {
+          "concert-bon-canh-chim-troi": {
+            title: "BỐN CÁNH CHIM TRỜI",
+            venue: "Nhà hát Lớn Hà Nội",
+            genre: "Live Music",
+            date: "27/12/2025",
+            time: "20:00",
+            tickets: { vip: { price: 800000 }, standard: { price: 500000 } }
+          }
+        },
+        merchandise: {
+          "ao-thun-echoes": {
+            name: "Áo thun Echoes",
+            description: "Áo thun chính hãng Echoes",
+            price: 299000
+          }
+        }
+      };
+    },
+
+    // Get search results
+    getSearchResults: function(query, dataSource) {
       const searchTerm = query.toLowerCase().trim();
       const searchWords = searchTerm.split(' ').filter(word => word.length > 0);
       let results = [];
 
+      const data = dataSource || window.ObjectForEchoes;
+      if (!data) return results;
+
+      const { concerts, liveMusic, merchandise } = data;
+
+      // Hàm tính điểm tương đồng
+      const calculateScore = (text, searchWords) => {
+        if (!text) return 0;
+        const textLower = text.toLowerCase();
+        let score = 0;
+        
+        searchWords.forEach(word => {
+          if (textLower.includes(word)) {
+            score += word.length * 10;
+            if (textLower.startsWith(word)) {
+              score += 20;
+            }
+          }
+        });
+        
+        return score;
+      };
+
+      // Tìm kiếm trong concerts
+      if (concerts) {
+        Object.entries(concerts).forEach(([key, concert]) => {
+          let totalScore = 0;
+          totalScore += calculateScore(concert.title, searchWords) * 3;
+          totalScore += calculateScore(concert.venue, searchWords) * 2;
+          totalScore += calculateScore(concert.genre, searchWords);
+          
+          if (totalScore > 0) {
+            results.push({
+              type: 'concert',
+              data: concert,
+              id: key,
+              score: totalScore
+            });
+          }
+        });
+      }
+
+      // Tìm kiếm trong live music
+      if (liveMusic) {
+        Object.entries(liveMusic).forEach(([key, music]) => {
+          let totalScore = 0;
+          totalScore += calculateScore(music.title, searchWords) * 3;
+          totalScore += calculateScore(music.venue, searchWords) * 2;
+          totalScore += calculateScore(music.genre, searchWords);
+          
+          if (totalScore > 0) {
+            results.push({
+              type: 'music',
+              data: music,
+              id: key,
+              score: totalScore
+            });
+          }
+        });
+      }
+
+      // Tìm kiếm trong merchandise
+      if (merchandise) {
+        Object.entries(merchandise).forEach(([key, item]) => {
+          let totalScore = 0;
+          totalScore += calculateScore(item.name, searchWords) * 3;
+          totalScore += calculateScore(item.description, searchWords);
+          
+          if (totalScore > 0) {
+            results.push({
+              type: 'merchandise',
+              data: item,
+              id: key,
+              score: totalScore
+            });
+          }
+        });
+      }
+
+      // Sắp xếp theo điểm số
+      results.sort((a, b) => b.score - a.score);
+      return results;
+    },
+
+    // Get event URL
+    getEventUrl: function(result) {
+      switch (result.type) {
+        case 'concert':
+          return `concertDetail.html?id=${result.id}`;
+        case 'music':
+          return `musicDetail.html?id=${result.id}&type=live-music`;
+        case 'merchandise':
+          return `merchandiseDetail.html?id=${result.id}`;
+        default:
+          return 'index.html';
+      }
+    },
+
+    // Search in loaded data với thuật toán fuzzy search
+    searchInData: function(query, resultsContainer, dataSource) {
       try {
-        // Sử dụng dataSource được truyền vào hoặc window.ObjectForEchoes
-        const data = dataSource || window.ObjectForEchoes;
-        if (!data) {
-          resultsContainer.innerHTML = '<div class="no-results">Không có dữ liệu để tìm kiếm</div>';
-          return;
-        }
-
-        const { concerts, liveMusic, merchandise } = data;
-
-        // Hàm tính điểm tương đồng đơn giản
-        const calculateScore = (text, searchWords) => {
-          if (!text) return 0;
-          const textLower = text.toLowerCase();
-          let score = 0;
-          
-          searchWords.forEach(word => {
-            if (textLower.includes(word)) {
-              score += word.length * 10; // Điểm cơ bản
-              if (textLower.startsWith(word)) {
-                score += 20; // Bonus nếu bắt đầu bằng từ khóa
-              }
-            }
-          });
-          
-          return score;
-        };
-
-        // Tìm kiếm trong concerts
-        if (concerts) {
-          Object.entries(concerts).forEach(([key, concert]) => {
-            let totalScore = 0;
-            totalScore += calculateScore(concert.title, searchWords) * 3;
-            totalScore += calculateScore(concert.venue, searchWords) * 2;
-            totalScore += calculateScore(concert.genre, searchWords);
-            
-            if (totalScore > 0) {
-              results.push({
-                type: 'concert',
-                data: concert,
-                id: key,
-                score: totalScore
-              });
-            }
-          });
-        }
-
-        // Tìm kiếm trong live music
-        if (liveMusic) {
-          Object.entries(liveMusic).forEach(([key, music]) => {
-            let totalScore = 0;
-            totalScore += calculateScore(music.title, searchWords) * 3;
-            totalScore += calculateScore(music.venue, searchWords) * 2;
-            totalScore += calculateScore(music.genre, searchWords);
-            
-            if (totalScore > 0) {
-              results.push({
-                type: 'music',
-                data: music,
-                id: key,
-                score: totalScore
-              });
-            }
-          });
-        }
-
-        // Tìm kiếm trong merchandise
-        if (merchandise) {
-          Object.entries(merchandise).forEach(([key, item]) => {
-            let totalScore = 0;
-            totalScore += calculateScore(item.name, searchWords) * 3;
-            totalScore += calculateScore(item.description, searchWords);
-            
-            if (totalScore > 0) {
-              results.push({
-                type: 'merchandise',
-                data: item,
-                id: key,
-                score: totalScore
-              });
-            }
-          });
-        }
-
-        // Sắp xếp theo điểm số
-        results.sort((a, b) => b.score - a.score);
-
-        this.displaySearchResults(results, resultsContainer, searchWords);
+        const results = this.getSearchResults(query, dataSource);
+        this.displaySearchResults(results, resultsContainer, query.toLowerCase().split(' ').filter(w => w.length > 0));
         
       } catch (error) {
         console.error('Lỗi tìm kiếm:', error);
@@ -388,6 +491,10 @@
 
   window.performSearch = function(query) {
     window.searchFunctions.performSearch(query);
+  };
+
+  window.handleSearchKeydown = function(event) {
+    window.searchFunctions.handleSearchKeydown(event);
   };
 
   // Close search when clicking outside
