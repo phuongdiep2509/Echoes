@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
   allLiveMusic = Object.entries(liveMusic);
   console.log('allLiveMusic entries:', allLiveMusic.length);
 
-  // ✅ Bỏ 3 sự kiện đầu ra khỏi grid để không bị lặp
   allEvents = allLiveMusic.slice(TRENDING_COUNT);
   console.log('allEvents entries:', allEvents.length);
 
@@ -43,7 +42,7 @@ function renderTrendingList() {
       <div class="trending-info">
         <h4>${event.title}</h4>
         <p class="price">${event.price}</p>
-        <span class="date">${event.date}</span>
+        <span class="date"><img src="assets/images/index/calendar-icon.png">${event.date}</span>
       </div>
     </div>
   `).join('');

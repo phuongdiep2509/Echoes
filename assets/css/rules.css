@@ -1,11 +1,12 @@
-:root {
-  --cream: #f6f1e7;
-  --olive: #6b7a5a;
-  --line: #d8d2c6;
-  --text: #2b2b2b;
+:root{
+   --color-text: #000;
+   --color-yellow: #f0efeb;
+   --color-white: #fff;
+   --color-red: #74070d;
+   --color-green: #46462a;
+   --font: "Cal Sans", sans-serif;
 }
 
-/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,59 +14,74 @@
 }
 
 body {
-  background: var(--cream);
-  font-family: 'Inter', sans-serif;
+  background: var(--color-yellow);
+  font-family: var(--font);
   color: var(--text);
-  line-height: 1.7;
+  line-height: 1.4;
 }
 
-/* PAGE */
+
+.breadcrumb-pill{
+    background-color: var(--color-green); /* Màu rêu đặc trưng */
+    color: white;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .policy-page {
-  max-width: 900px;
-  margin: 80px auto;
+  max-width: 1200px;
+  margin: 90px auto;
   padding: 0 24px 80px;
-}
-
-.back-link {
-  display: inline-block;
-  margin-bottom: 24px;
-  text-decoration: none;
-  color: var(--olive-dark);
-  font-size: 14px;
 }
 
 /* TITLE */
 .page-title {
-  font-family: 'Fraunces', serif;
-  font-size: 42px;
+  color: var(--color-green);
+  font-family: var(--font);
+  text-transform: uppercase;
+  font-size: 60px;
   margin-bottom: 12px;
+  margin-top: 50px;
 }
 
 .page-sub {
-  max-width: 600px;
+  max-width: 1200px;
   color: #555;
-  margin-bottom: 48px;
+  margin-bottom: 30px;
 }
 
 /* POLICY LIST */
 .policy-list {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 25px;
 }
 
 .policy-item {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 28px 32px;
+  transition: all 0.3s ease; 
+}
+
+.policy-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(70, 70, 42, 0.25);  /* Shadow màu xanh rêu nhẹ */
+    cursor: pointer;
+    border-color: var(--color-green);  /* Đổi màu border khi hover */
 }
 
 .policy-item h2 {
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
+  font-family: var(--font);
+  text-transform: uppercase;
+  font-size: 26px;
   margin-bottom: 16px;
-  color: var(--olive);
+  color: var(--color-green);
 }
 
 .policy-item ul {
@@ -73,21 +89,20 @@ body {
 }
 
 .policy-item li {
-  margin-bottom: 10px;
-  font-size: 15px;
+  margin-bottom:7px;
+  font-size: 18px;
 }
 
 /* FOOTER */
 .policy-footer {
-  margin-top: 64px;
-  padding-top: 24px;
+  margin-top: 40px;
   border-top: 1px dashed var(--line);
-  font-size: 14px;
+  font-size: 16px;
   color: #555;
 }
 
 .policy-footer strong {
-  color: var(--olive);
+  color: var(--color-green);
 }
 
 /* RESPONSIVE */

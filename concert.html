@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concert</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<title>CONCERT</title>
 <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
 
+<!-- CSS GỐC – KHÔNG ĐỤNG -->
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/concert.css">
@@ -39,14 +39,16 @@
         </script>
     </div>
 
+<!-- BACKGROUND CHUNG -->
 <div class="bg-wrapper">
 
+  <!-- HERO -->
   <section class="page-hero">
     <div class="section-content">
-      <div class="breadcrumb-pill"><a href="index.html" style="color: inherit; text-decoration: none;">TRANG CHỦ</a> / CONCERT</div>
+      <div class="breadcrumb-pill"><a href="index.html" style="color: inherit; text-decoration: none;">TRANG CHỦ</a> / NHẠC SỐNG</div>
       <h1 class="page-title">CONCERT</h1>
       <p class="page-desc">
-        Hãy cùng hòa mình vào không khí rực lửa của đêm concert để thưởng thức những màn trình diễn bùng nổ và kết nối trực tiếp với nguồn năng lượng vô tận từ nghệ sĩ yêu thích. Những vị trí đẹp nhất đang dần lấp đầy – hãy đặt vé ngay hôm nay để cùng hàng ngàn khán giả tạo nên một đêm cháy hết mình trong âm nhạc! 
+        Hãy cùng hòa mình vào không khí rực lửa của đêm concert để thưởng thức những màn trình diễn bùng nổ và kết nối trực tiếp với nguồn năng lượng vô tận từ nghệ sĩ yêu thích. Những vị trí đẹp nhất đang dần lấp đầy – hãy đặt vé ngay hôm nay để cùng hàng ngàn khán giả tạo nên một đêm cháy hết mình trong âm nhạc!
       </p>
       <div class="soft-line"></div>
     </div>
@@ -57,10 +59,7 @@
     <div class="section-content">
 
      <h3 class="sub-title">ĐANG THỊNH HÀNH</h3>
-
-<div class="trending-list" id="trending-list">
-  <!-- Trending items sẽ được load từ JS -->
-</div>
+    <div class="trending-list" id="trending-list"></div>
 
     </div>
   </section>
@@ -69,10 +68,7 @@
 
 <div class="title-indent">
  <h3 class="sub-title">TẤT CẢ SỰ KIỆN CONCERT</h3>
-
-<div class="event-list" id="event-list">
-  <!-- Event items sẽ được load từ JS -->
-</div>
+<div class="event-list" id="event-list"></div>
 
 </div>
 </section>
@@ -154,7 +150,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            line-height: 1;
             border: 1px solid #ddd;
         }
         
@@ -163,7 +158,7 @@
             color: #333;
         }
     </style>
-
+    
 <!----Nhúng JS --->
   <script type="module" src="scripts/concert.js"></script>
   <script src="scripts/gift-popup.js"></script>
