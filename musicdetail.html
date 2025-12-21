@@ -36,15 +36,18 @@
                 .then(data => {
                     document.getElementById('header').innerHTML = data;
                     
-                    // Load scroll header script
-                    const scrollScript = document.createElement('script');
-                    scrollScript.src = 'components/scroll_header.js';
-                    document.body.appendChild(scrollScript);
-                    
-                    // Load header functionality script
-                    const headerScript = document.createElement('script');
-                    headerScript.src = 'components/header.js';
-                    document.body.appendChild(headerScript);
+                    // Đợi DOM render xong rồi mới load scripts
+                    setTimeout(() => {
+                        // Load scroll header script
+                        const scrollScript = document.createElement('script');
+                        scrollScript.src = 'components/scroll_header.js';
+                        document.body.appendChild(scrollScript);
+                        
+                        // Load header functionality script
+                        const headerScript = document.createElement('script');
+                        headerScript.src = 'components/header.js';
+                        document.body.appendChild(headerScript);
+                    }, 100);
                 });
         </script>
     </div>
@@ -209,16 +212,6 @@ fetch('components/user_header.html')
     if (window.authManager) {
         authManager.updateHeaderUI();
     }
-
-    // Load scroll header script
-    const scrollScript = document.createElement('script');
-    scrollScript.src = 'components/scroll_header.js';
-    document.body.appendChild(scrollScript);
-    
-    // Load header functionality script
-    const headerScript = document.createElement('script');
-    headerScript.src = 'components/header.js';
-    document.body.appendChild(headerScript);
   })
   .catch(err => console.error("Lỗi header:", err));
   </script>
