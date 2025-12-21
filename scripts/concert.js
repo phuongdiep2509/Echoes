@@ -17,7 +17,7 @@ function renderTrendingList() {
     const trendingConcerts = allConcerts.slice(0, 3);
 
     container.innerHTML = trendingConcerts.map(([id, concert]) => `
-        <div class="trending-item" onclick="location.href='eventDetail.html?id=${id}&type=concert'">
+        <div class="trending-item" onclick="location.href='concertDetail.html?id=${id}&type=concert'">
             <div class="trending-thumb">
                 <img src="${concert.image}" alt="${concert.title}">
             </div>
@@ -37,7 +37,7 @@ function renderEventList() {
     const pageItems = allConcerts.slice(startIndex, endIndex);
 
     container.innerHTML = pageItems.map(([id, concert]) => `
-        <div class="event-wrapper" onclick="location.href='eventDetail.html?id=${id}&type=concert'">
+        <div class="event-wrapper" onclick="location.href='concertDetail.html?id=${id}&type=concert'">
             <div class="event-thumb">
                 <img src="${concert.image}" alt="${concert.title}">
             </div>

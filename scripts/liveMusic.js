@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
   allLiveMusic = Object.entries(liveMusic);
   console.log('allLiveMusic entries:', allLiveMusic.length);
 
-  // ✅ Bỏ 3 sự kiện đầu ra khỏi grid để không bị lặp
   allEvents = allLiveMusic.slice(TRENDING_COUNT);
   console.log('allEvents entries:', allEvents.length);
 
@@ -36,14 +35,14 @@ function renderTrendingList() {
   console.log('Rendering trending events:', trendingEvents.length);
 
   container.innerHTML = trendingEvents.map(([id, event]) => `
-    <div class="trending-item" onclick="location.href='eventDetail.html?id=${id}&type=live-music'">
+    <div class="trending-item" onclick="location.href='musicDetail.html?id=${id}&type=live-music'">
       <div class="trending-thumb">
         <img src="${event.image}" alt="${event.title}">
       </div>
       <div class="trending-info">
         <h4>${event.title}</h4>
         <p class="price">${event.price}</p>
-        <span class="date">${event.date}</span>
+        <span class="date"><img src="assets/images/index/calendar-icon.png">${event.date}</span>
       </div>
     </div>
   `).join('');
@@ -67,7 +66,7 @@ function renderEventList() {
   console.log('Rendering events for page', currentPage, ':', pageItems.length);
 
   container.innerHTML = pageItems.map(([id, event]) => `
-    <div class="event-wrapper" onclick="location.href='eventDetail.html?id=${id}&type=live-music'">
+    <div class="event-wrapper" onclick="location.href='musicDetail.html?id=${id}&type=live-music'">
       <div class="event-thumb">
         <img src="${event.image}" alt="${event.title}">
       </div>
