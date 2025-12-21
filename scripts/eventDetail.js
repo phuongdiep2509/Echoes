@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         container.innerHTML = relatedEvents.map(event => `
             <div class="col-md-6 col-lg-3 mb-4">
-                <div class="card h-100 shadow-sm related-event-card" onclick="location.href='eventDetail.html?id=${event.eventId}&type=${event.eventType}'" style="cursor: pointer;">
+                <div class="card h-100 shadow-sm related-event-card" onclick="location.href='${event.eventType === 'concert' ? 'concertDetail.html' : 'musicdetail.html'}?id=${event.eventId}&type=${event.eventType}'" style="cursor: pointer;">
                     <div class="position-relative">
                         <img src="${event.image}" class="card-img-top" alt="${event.title}" style="height: 200px; object-fit: cover;">
                         <span class="badge position-absolute top-0 start-0 m-2" style="background-color: ${event.eventType === 'concert' ? 'var(--color-red)' : 'var(--color-green)'}; color: white;">
