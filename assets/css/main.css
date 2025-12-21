@@ -230,7 +230,6 @@
     color: #333;
 }
 
-/* Hiệu ứng hover nhẹ để tăng đẹp mắt */
 .event-wrapper:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
@@ -306,13 +305,13 @@
     transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
-    gap: 5px; /* Khoảng cách giữa phần trên và phần dưới */
+    gap: 5px; 
 }
 
 .music-item:hover {
     transform: scale(1.05);
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Thêm đổ bóng cho đẹp */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
 }
 
 
@@ -403,30 +402,24 @@
 }
 
 .ads-adventcld {
-    width: 1170px;        /* Chỉnh độ rộng bạn muốn (ví dụ 300px hoặc 30%) */
-    margin: 40px auto;   /* auto giúp căn giữa theo chiều ngang, 40px là khoảng cách trên dưới */
-    display: block;      /* Đảm bảo khung bao là khối để margin: auto có tác dụng */
+    width: 1170px;        
+    margin: 40px auto;   
+    display: block;     
 transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .ads-adventcld img {
-    width: 100%;         /* Ảnh sẽ luôn vừa khít với độ rộng 300px của khung cha */
-    height: auto;        /* Tự động tính toán chiều cao để ảnh không bị méo/móp */
-    display: block;      /* Loại bỏ khoảng trắng thừa dưới chân ảnh */
-    border-radius: 7px; /* Tùy chọn: bo góc cho giống các box khác của bạn */
+    width: 100%;        
+    height: auto;       
+    display: block;    
+    border-radius: 7px; 
 }
 .ads-adventcld:hover {
-    /* Phóng to lên 1.05 lần (5%) hoặc 1.1 lần tùy bạn muốn zoom mạnh hay nhẹ */
     transform: scale(1.05); 
-    
-    /* Thêm đổ bóng để tạo cảm giác ảnh nổi hẳn lên khỏi mặt trang web */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); 
-    
-    /* Đảm bảo nó nằm trên các thành phần khác khi phóng to */
     z-index: 10; 
 }
 
-/* Container chính cho toàn bộ Section 2 */
 .section-2 {
     padding-top: 60px;
     margin-top: 100px;
@@ -443,8 +436,8 @@ transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
 /* Tiêu đề chính */
 .stats-title {
-    margin-top: -110px;   /* Kéo tiêu đề lên trên */
-    margin-bottom: 10px; /* Tạo khoảng cách với các box bên dưới */
+    margin-top: -110px;   
+    margin-bottom: 10px; 
     position: relative;
     z-index: 5;
     font-size: 75px;
@@ -567,28 +560,28 @@ transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
 .social-list li {
     display: flex;
-    align-items: center; /* Căn giữa icon và chữ theo chiều dọc */
-    margin-bottom: 15px; /* Khoảng cách giữa các dòng */
-    font-size: 22px;     /* Giữ font chữ như bạn đã thiết lập */
+    align-items: center;
+    margin-bottom: 15px; 
+    font-size: 22px;   
 }
 
 /* Chỉnh kích thước icon bé lại */
 .social-icon {
-    width: 24px;         /* Bạn có thể chỉnh con số này (ví dụ 20px) để bé hơn nữa */
-    height: 24px;        /* Đảm bảo chiều cao bằng chiều rộng để ảnh không bị méo */
-    object-fit: contain; /* Giữ nguyên tỷ lệ hình ảnh bên trong khung */
-    margin-right: 12px;  /* Khoảng cách giữa icon và chữ */
+    width: 24px;    
+    height: 24px;      
+    object-fit: contain;
+    margin-right: 12px; 
 }
 
 .social-list li a {
-    text-decoration: none; /* Bỏ gạch chân mặc định của link */
-    color: inherit;        /* Lấy màu từ thẻ cha (thường là màu trắng bạn đã thiết lập) */
-    display: flex;         /* Giữ icon và chữ nằm cùng hàng */
-    align-items: center;   /* Căn giữa icon và chữ theo chiều dọc */
-    width: 100%;           /* Cho phép nhấn vào toàn bộ dòng để mở link */
+    text-decoration: none; 
+    color: inherit;       
+    display: flex;       
+    align-items: center;  
+    width: 100%;          
 }
 
-/* Đảm bảo khi di chuột vào hoặc đã nhấn vào, màu không bị đổi sang tím/xanh */
+
 .social-list li a:visited, 
 .social-list li a:hover, 
 .social-list li a:active {
@@ -596,7 +589,6 @@ transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     text-decoration: none;
 }
 
-/* Hộp Email ở dưới cùng bên phải */
 .contact-email {
     background-color: #e1cfac;
     border: 2px solid #000;
@@ -610,7 +602,7 @@ transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 /* Responsive cho màn hình nhỏ */
 @media (max-width: 992px) {
     .stats-container {
-        grid-template-columns: 1fr; /* Chuyển thành 1 cột trên mobile */
+        grid-template-columns: 1fr; 
     }
 }
 
@@ -619,26 +611,26 @@ transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.2s ease;
     font-family: var(--font);
     display: flex;
-    flex-direction: column; /* Các tin tức xếp chồng lên nhau theo hàng dọc */
-    gap: 7px; /* Khoảng cách giữa các tin tức */
+    flex-direction: column; 
+    gap: 7px; 
     margin-top: 20px;
 }
 
-/* Từng dòng tin tức: Ảnh và Chữ nằm ngang */
+
 .news-item-horizontal {
-    display: flex; /* Kích hoạt nằm ngang */
-    background-color: transparent; /* Màu be đồng bộ với card nhạc sống */
+    display: flex; 
+    background-color: transparent; 
     border: 1px solid var(--color-green);
     border-radius: 7px;
     overflow: hidden;
-    align-items: center; /* Căn giữa ảnh và chữ theo chiều dọc */
+    align-items: center;
     transition: transform 0.3s ease;
 }
 
 .news-item-horizontal:hover {
     transform: scale(1.05);
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Thêm đổ bóng cho đẹp */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
 }
 
 /* Khối ảnh */
@@ -656,11 +648,11 @@ transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     width: 100%; 
     height: 100%; 
     display: block;
-    aspect-ratio: 18 / 9; /* Tạo khung hình chữ nhật cố định (có thể đổi thành 1/1 nếu muốn khung vuông) */
-    object-fit: cover;   /* Ảnh sẽ tự lấp đầy khung mà không bị méo, phần dư bị cắt bỏ */
+    aspect-ratio: 18 / 9; 
+    object-fit: cover;  
     padding: 7px; 
 }
-/* Điều chỉnh lại khối nội dung chữ cho cân đối */
+
 .news-content-wrapper {
     flex: 1;
     padding: 20px 30px; 
