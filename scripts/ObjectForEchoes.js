@@ -974,7 +974,7 @@ export const liveMusic = {
   duration: "Khoảng 3 giờ",
   price: "Từ 500.000đ - 800.000đ",
   status: "expired",
-  image: "assets/images/music/lc5.jpg",
+  image: "assets/images/music/lc5.webp",
   poster: "assets/images/music/lc5.jpg",
   category: "live-music",
   description: [
