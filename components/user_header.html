@@ -170,17 +170,127 @@
 
 
         /* Thanh tìm kiếm */
+        .search-box {
+            position: relative;
+        }
+
         .search-icon {
-        background: none;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        color: #000; 
-        padding: 10px;
+            background: none;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #000; 
+            padding: 10px;
         }
 
         .search-icon:hover {
             opacity: 0.8;
+        }
+
+        .search-container {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 2px solid var(--color-green);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 400px;
+            max-height: 500px;
+            overflow-y: auto;
+            z-index: 10000;
+            display: none;
+        }
+
+        .search-container.show {
+            display: block;
+        }
+
+        .search-input-container {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--color-green);
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--color-red);
+            box-shadow: 0 0 5px rgba(116, 7, 13, 0.3);
+        }
+
+        .search-results {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-category {
+            padding: 10px 15px;
+            background: var(--color-beige);
+            font-weight: bold;
+            color: var(--color-green);
+            border-bottom: 1px solid #ddd;
+        }
+
+        .search-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-item:hover {
+            background: var(--color-beige);
+        }
+
+        .search-item-title {
+            font-weight: bold;
+            color: var(--color-green);
+            margin-bottom: 5px;
+        }
+
+        .search-item-info {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .search-item-price {
+            color: var(--color-red);
+            font-weight: bold;
+        }
+
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        .search-score {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .search-summary {
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            border-top: 1px solid #eee;
+            background: #f9f9f9;
+        }
+
+        mark {
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 1px 2px;
+            border-radius: 2px;
         }
         #logoutBtn {
         color: #74070d;
@@ -261,6 +371,12 @@
           display: block;
           cursor: pointer;
         }
+
+        /* Responsive cho search */
+        .search-container {
+          width: 350px;
+          right: -50px;
+        }
       }
 
       @media screen and (max-width: 480px) {
@@ -283,6 +399,25 @@
         .ad-banner img {
             max-height: 150px;
             object-fit: cover; /* cắt vừa nếu cần */
+        }
+
+        /* Mobile responsive cho search */
+        .search-container {
+          width: 300px;
+          right: -100px;
+        }
+
+        .search-input {
+          font-size: 14px;
+          padding: 10px 12px;
+        }
+
+        .search-item-title {
+          font-size: 14px;
+        }
+
+        .search-item-info {
+          font-size: 12px;
         }
       }
     </style>
@@ -333,7 +468,7 @@
             </nav>
 
             <div class="search-box">
-              <button class="search-icon" aria-label="Tìm kiếm">
+              <button class="search-icon" aria-label="Tìm kiếm" onclick="toggleSearch()">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24"
                     fill="none"
@@ -344,6 +479,15 @@
                     <line x1="30" y1="30" x2="16.65" y2="16.65"/>
                 </svg>
               </button>
+              
+              <div class="search-container" id="searchContainer">
+                <div class="search-input-container">
+                  <input type="text" class="search-input" id="searchInput" placeholder="Tìm kiếm sự kiện, concert, merchandise..." onkeyup="performSearch(this.value)">
+                </div>
+                <div class="search-results" id="searchResults">
+                  <div class="no-results">Nhập từ khóa để tìm kiếm...</div>
+                </div>
+              </div>
             </div>
         </div>
       </div>
