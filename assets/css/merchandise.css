@@ -141,32 +141,10 @@ h1 {
     }
 }
 
-/* ===== BACKGROUND WRAPPER ===== */
-.bg-wrapper {
-    margin-top: 90px;
-    background: url("../images/merchandise/bg-merch.jpg") center / cover no-repeat;
-    min-height: 100vh;
-    position: relative;
-    display: flow-root;
-}
 
-.bg-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;  
-    background: rgba(240,239,235,0.78); 
-    z-index: 0;
-}
-
-.bg-wrapper > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* ===== PAGE HERO ===== */
 .page-hero {
-    padding: 70px 0 90px;
-}
+    padding: 200px 0 40px;
+}   
 
 .page-hero .section-content {
     max-width: 1200px;
@@ -255,11 +233,14 @@ h1 {
     width: 26px;
     background: var(--color-green);
 }
-/* ===== PRODUCT WRAPPER STYLE (giống event-wrapper) ===== */
+
 .product-list {
+    max-width: 1200px;
+    margin: 0 auto;  
     display: grid !important;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
+    justify-content: center;  
 }
 
 .product-wrapper {
@@ -344,4 +325,80 @@ h1 {
     .product-content h4 {
         font-size: 14px;
     }
+}
+/* ===== TITLE INDENT OVERRIDE ===== */
+.title-indent {
+    max-width: 1200px;
+    width: 100%;
+    margin: -50px auto 0;  /* Kéo lên gần hero page hơn */
+    padding: 10px 16px;
+}
+
+.title-indent .product-list {
+    margin: 0 auto;  /* Căn giữa product list */
+    padding-left: 0;
+    justify-content: center;  /* Căn giữa các items trong grid */
+    width: 100% !important;
+    max-width: 1200px;
+    box-sizing: border-box !important;
+}
+/* ===== STOCK STATUS ===== */
+.stock-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.stock-badge.in {
+    background-color: var(--color-green);
+    color: white;
+}
+
+.stock-badge.out {
+    background-color: var(--color-red);
+    color: white;
+}
+
+/* ===== OUT OF STOCK STYLES ===== */
+.product-wrapper.out-of-stock {
+    opacity: 0.6;
+    cursor: not-allowed !important;
+    position: relative;
+}
+
+.product-wrapper.out-of-stock::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    border-radius: 16px;
+}
+
+.product-wrapper.out-of-stock:hover {
+    transform: none !important;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.18) !important;
+}
+
+.product-wrapper.out-of-stock .product-thumb {
+    position: relative;
+}
+
+.product-wrapper.out-of-stock .product-content h4,
+.product-wrapper.out-of-stock .product-content p {
+    color: rgba(0,0,0,0.5);
+}
+
+.product-wrapper.out-of-stock .product-content .price {
+    color: rgba(116, 7, 13, 0.5);
 }

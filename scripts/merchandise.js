@@ -1,37 +1,78 @@
 import { merchandise } from './ObjectForEchoes.js';
 
+// Pagination settings
+const ITEMS_PER_PAGE = 8;
+let currentPage = 1;
+let totalPages = 1;
+
 document.addEventListener('DOMContentLoaded', function() {
-    renderMerchandiseList();
+    renderAllProducts();
+    setupPagination();
 });
 
-function renderMerchandiseList() {
-    const container = document.getElementById('merchandise-list-container');
-    const entries = Object.entries(merchandise);
+function renderAllProducts() {
+    const container = document.getElementById('all-products');
+    const allProducts = Object.values(merchandise);  // Bỏ filter để hiển thị cả sản phẩm hết hàng
+    
+    totalPages = Math.ceil(allProducts.length / ITEMS_PER_PAGE);
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const currentProducts = allProducts.slice(startIndex, endIndex);
 
-    container.innerHTML = entries.map(([id, product]) => `
-        <div class="col-md-6 col-lg-3 mb-4">
-            <a href="merchandiseDetail.html?id=${id}" class="product-item text-decoration-none">
-                <div class="card shadow-sm h-100 ${!product.inStock ? 'out-of-stock' : ''}">
-                    <div class="position-relative">
-                        <img src="${product.image}" class="card-img-top" alt="${product.name}" style="height: 200px; object-fit: cover;">
-                        ${!product.inStock ? '<span class="stock-badge">Hết hàng</span>' : ''}
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h6 class="card-title fw-bold text-dark">${product.name}</h6>
-                        <p class="card-text text-muted small mb-2">${product.description}</p>
-                        <div class="mt-auto">
-                            <p class="card-text text-danger fw-bold mb-0">${formatPrice(product.price)}</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+    container.innerHTML = currentProducts.map(product => `
+        <a href="merchandiseDetail.html?id=${product.id}" class="product-wrapper ${!product.inStock ? 'out-of-stock' : ''}">
+            <div class="product-thumb">
+                <img src="${product.image}" alt="${product.name}">
+                ${!product.inStock ? '<div class="stock-badge out">HẾT HÀNG</div>' : '<div class="stock-badge in">CÒN HÀNG</div>'}
+            </div>
+            <div class="product-content">
+                <h4>${product.name}</h4>
+                <p>${product.description}</p>
+                <div class="price">${formatPrice(product.price)}</div>
+            </div>
+        </a>
     `).join('');
+}
+
+function setupPagination() {
+    const prevBtn = document.getElementById('pagerPrev');
+    const nextBtn = document.getElementById('pagerNext');
+    const dotsContainer = document.getElementById('pagerDots');
+
+    // Create dots
+    dotsContainer.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+        const dot = document.createElement('div');
+        dot.className = `dot ${i === currentPage ? 'active' : ''}`;
+        dot.addEventListener('click', () => goToPage(i));
+        dotsContainer.appendChild(dot);
+    }
+
+    // Update button states
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
+
+    // Button event listeners
+    prevBtn.onclick = () => goToPage(currentPage - 1);
+    nextBtn.onclick = () => goToPage(currentPage + 1);
+}
+
+function goToPage(page) {
+    if (page < 1 || page > totalPages) return;
+    
+    currentPage = page;
+    renderAllProducts();
+    setupPagination();
+    
+    // Scroll to top of products
+    document.querySelector('.title-indent').scrollIntoView({ 
+        behavior: 'smooth' 
+    });
 }
 
 function formatPrice(price) {
     return new Intl.NumberFormat('vi-VN', {
         style: 'currency',
         currency: 'VND'
-    }).format(price).replace('₫', 'đ');
+    }).format(price);
 }
