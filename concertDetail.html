@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết sự kiện | Echoes</title>
+    <title>Chi tiết sự kiện</title>
     <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
     
     <!-- Bootstrap & FontAwesome -->
@@ -43,25 +43,21 @@
         </script>
     </div>
 
-    <!-- MAIN CONTENT -->
     <main class="container my-5">
-        <!-- Breadcrumb -->
         <nav class="breadcrumb-custom mb-4">
             <a href="index.html">TRANG CHỦ</a> / 
             <a href="#" id="categoryBreadcrumb">CONCERT</a> / 
             <span id="eventBreadcrumb">Chi tiết sự kiện</span>
         </nav>
 
-        <!-- Event Detail -->
+        <!-- Concert Detail -->
         <div class="row">
-            <!-- Left Column - Event Info -->
             <div class="col-lg-8">
-                <!-- Event Poster -->
+                <!-- Poster -->
                 <div class="mb-4">
                     <img id="eventPoster" src="" alt="Event Poster" class="img-fluid rounded shadow" style="width: 100%; height: 400px; object-fit: cover;">
                 </div>
 
-                <!-- 1. TÊN CONCERT -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-header text-white" style="background-color: var(--color-red);">
                         <h3 class="mb-0">✶ THÔNG TIN SỰ KIỆN</h3>
@@ -113,7 +109,7 @@
                     </div>
                 </div>
 
-                <!-- 2. GIỚI THIỆU -->
+                <!-- Info -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-header text-white" style="background-color: var(--color-green);">
                         <h3 class="mb-0">✶ GIỚI THIỆU</h3>
@@ -130,12 +126,11 @@
                             </ul>
                         </div>
 
-                        <!-- Terms and Conditions -->
+                        <!-- Terms -->
                         <div id="eventTerms" class="mt-4" style="display: none;">
                             <h5 class="fw-bold mb-3" style="color: var(--color-red);">📋 ĐIỀU KIỆN & ĐIỀU KHOẢN</h5>
                             <div class="p-3 bg-light rounded">
                                 <div id="termsContent" class="small text-muted">
-                                    <!-- Terms will be loaded here -->
                                 </div>
                             </div>
                         </div>
@@ -143,20 +138,18 @@
                 </div>
             </div>
 
-            <!-- Right Column - Booking -->
+            <!-- Booking -->
             <div class="col-lg-4">
-                <!-- 3. LOẠI VÉ -->
                 <div class="card shadow-sm sticky-top" style="top: 100px;">
                     <div class="card-header text-white" style="background-color: var(--color-green);">
-                        <h3 class="mb-0">🎫 THÔNG TIN VÉ</h3>
+                        <h3 class="mb-0">THÔNG TIN VÉ</h3>
                     </div>
                     <div class="card-body">
-                        <!-- Ticket Price Info -->
+                        <!-- Giá -->
                         <div id="ticketPriceInfo" class="mb-4">
                             <p class="text-muted">Đang tải thông tin vé...</p>
                         </div>
 
-                        <!-- Action Button -->
                         <div class="d-grid">
                             <button class="btn btn-lg text-white" id="btnBook" style="background-color: var(--color-red); border-color: var(--color-red);">
                                 🎫 ĐẶT NGAY
@@ -169,8 +162,8 @@
                                 <strong>💡 LƯU Ý QUAN TRỌNG:</strong><br>
                                 • Vé đã mua không được hoàn trả<br>
                                 • Vui lòng đến trước 30 phút<br>
-                                • Mang theo CMND/CCCD khi nhận vé<br>
-                                • Không mang đồ uống có cồn vào venue
+                                • Không mang đồ uống có cồn, rượu bia, các chất gây nghiện<br>
+                                • Không dẫn theo thú cưng
                             </small>
                         </div>
                     </div>
@@ -183,9 +176,8 @@
     <section class="py-5" style="background-color: var(--color-beige);">
         <div class="container">
             <h2 class="text-center fw-bold mb-5" style="color: var(--color-red);">🎵 BẠN CÓ THỂ THÍCH</h2>
-            <div class="row" id="relatedEvents">
-                <!-- Related events will be loaded here -->
-            </div>
+
+            <div class="row" id="relatedEvents"></div>
         </div>
     </section>
 
@@ -195,5 +187,29 @@
     <!-- Scripts -->
     <script type="module" src="scripts/eventDetail.js"></script>
     <script src="scripts/gift-popup.js"></script>
+    <script>
+fetch('components/user_header.html')
+  .then(res => {
+    if (!res.ok) throw new Error('Không tìm thấy file header');
+    return res.text();
+  })
+  .then(data => {
+    const headerContainer = document.getElementById('header');
+    if (!headerContainer) return;
+    
+    headerContainer.innerHTML = data;
+
+    // Cập nhật UI header với AuthManager
+    if (window.authManager) {
+        authManager.updateHeaderUI();
+    }
+
+    // Load script cuộn sau khi HTML đã render xong
+    const script = document.createElement('script');
+    script.src = 'components/scroll_header.js';
+    document.body.appendChild(script);
+  })
+  .catch(err => console.error("Lỗi header:", err));
+  </script>
 </body>
 </html>

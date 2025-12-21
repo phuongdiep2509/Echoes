@@ -202,14 +202,16 @@ export const news = {
         "Hãy cùng Echoes khép lại năm 2025 bằng một đêm nhạc bùng nổ cảm xúc giữa lòng di sản!"
     ]
 },
-      // Sau này bạn thêm bài viết mới vào đây là tự động hiển thị
+
+
+
 };
 
 // Concert Events Data
 export const concerts = {
     "anh-trai-say-hi-2025": {
         id: "anh-trai-say-hi-2025",
-        title: "ANH TRAI \"SAY HI\" 2025 CONCERT",
+        title: "ANH TRAI SAY HI 2025 CONCERT",
         date: "12:00 - 23:00, 27 tháng 12, 2025",
         venue: "Khu đô thị Vạn Phúc",
         fullVenue: "Khu đô thị Vạn Phúc, Phường Hiệp Bình Phước, Quận Thủ Đức, Thành Phố Hồ Chí Minh",
@@ -226,7 +228,7 @@ export const concerts = {
             "Một đêm nhạc đầy cảm xúc với những ca khúc hit và màn trình diễn bùng nổ không thể bỏ lỡ."
         ],
         highlights: [
-            "�  33 anh trai tham gia biểu diễn",
+            "�  30 anh trai tham gia biểu diễn",
             "🎵 Những ca khúc hit đình đám", 
             "🎭 Sân khấu hoành tráng với công nghệ hiện đại",
             "⚡ Hiệu ứng ánh sáng và âm thanh đỉnh cao",
@@ -234,8 +236,8 @@ export const concerts = {
         ],
         tickets: [
             { type: "vip", name: "VIP", price: 10000000, status: "available" },
-            { type: "standard", name: "Standard", price: 50000000, status: "available" },
-            { type: "economy", name: "Economy", price: 10000000, status: "available" }
+            { type: "standard", name: "Standard", price: 5000000, status: "available" },
+            { type: "economy", name: "Economy", price: 1000000, status: "available" }
         ],
         terms: [
             "**ĐIỀU KIỆN VÀ ĐIỀU KHOẢN MUA VÉ:**",
@@ -257,11 +259,11 @@ export const concerts = {
             "• BTC giữ quyền thu hồi vé vi phạm và đưa ra quyết định cuối cùng"
         ],
     },
-    "nhung-thanh-pho-mong-mo": {
-        id: "nhung-thanh-pho-mong-mo",
+    "nhung-thanh-pho-mo-mang": {
+        id: "nhung-thanh-pho-mo-mang",
         title: "Những Thành Phố Mơ Màng Year End 2025",
-        date: "07/12/2025 - 15:30",
-        venue: "799 Nguyễn Văn Linh, Phường Tân Phú, Quận 7, Thành Phố Hồ Chí Minh",
+        date: "21/12/2025 - 15:30",
+        venue: "Công Viên Yên Sở",
         genre: "Pop, Rock, Hip-hop",
         duration: "Khoảng 6 giờ",
         price: "Từ 750.000đ - 4.000.000đ",
@@ -270,11 +272,11 @@ export const concerts = {
         poster: "assets/images/concert/ntpmm2.png",
         category: "concert",
         description: [
-            "Đại nhạc hội Mega Booming 2025 quy tụ 21 nghệ sĩ hàng đầu tại cố đô Huế.",
-            "Sự kiện âm nhạc đặc biệt trong khuôn khổ bế mạc Năm Du lịch Quốc gia 2025."
+            "Chào mừng cư dân đến với NTPMM Year End 2025 - Wondertopia,  vùng đất diệu kỳ nơi âm nhạc cất lời và cảm xúc thăng hoa!",
+            "Wondertopia không chỉ là một show diễn – mà là không gian nơi chúng ta tìm thấy sự đồng điệu, truyền cảm hứng cho một khởi đầu mới rực rỡ hơn."
         ],
         highlights: [
-            "🌟 21 nghệ sĩ hàng đầu Việt Nam",
+            "🌟 12 nghệ sĩ hàng đầu Việt Nam",
             "🎸 Đa dạng thể loại âm nhạc",
             "🎆 Pháo hoa và hiệu ứng đặc biệt"
         ],
@@ -344,7 +346,7 @@ export const concerts = {
         venue: "Nhà Hát Quân Đội Phía Nam",
         genre: "Ballad",
         duration: "Khoảng 2.5 giờ",
-        price: "Từ 1.000.000đ - 2.800.000đ",
+        price: "Từ 600.000đ - 2.800.000đ",
         status: "available",
         image: "assets/images/concert/mrSiro.jpg",
         poster: "assets/images/concert/mrSiro.jpg",
@@ -360,9 +362,9 @@ export const concerts = {
             "💫 Tương tác gần gũi với khán giả"
         ],
         tickets: [
-            { type: "vip", name: "VIP", price: 1500000, status: "available" },
+            { type: "vip", name: "VIP", price: 2800000, status: "available" },
             { type: "standard", name: "Standard", price: 1000000, status: "available" },
-            { type: "economy", name: "Economy", price: 500000, status: "available" }
+            { type: "economy", name: "Economy", price: 600000, status: "available" }
         ],
         terms: [
     "**MR SIRO - FAN CONCERT: AI CŨNG GIẤU TRONG LÒNG TẢNG BĂNG**",
@@ -657,7 +659,7 @@ export const concerts = {
         date: "20/12/2026 - 14:00",
         venue: "VINHOMES OCEAN PARK 3",
         genre: "Modern, Acoustic",
-        duration: "Khoảng 8 giờ",
+        duration: "Khoảng 10 giờ",
         price: "Từ 1.000.000đ - 5.000.000đ",
         status: "available",
         image: "assets/images/concert/concertY.jpg",
@@ -847,11 +849,11 @@ export const liveMusic = {
         { type: "standard", name: "Standard", price: 500000, status: "available" }
             ]
     },
-    "concert-sketch-a-rose": {
-  id: "concert-sketch-a-rose",
-  title: "CONCERT SKETCH A ROSE",
-  date: "25/12/2025 - 21:00",
-  venue: "Saigon Opera House, TP.HCM",
+    "concert-the-rose": {
+  id: "concert-the-rose",
+  title: "CONCERT THE ROSE",
+  date: "17/01/2026 - 20:00",
+  venue: "Sân Vận Động Đà Lạt",
   genre: "Pop Ballad, Live Band",
   duration: "Khoảng 2 giờ",
   price: "Từ 500.000đ - 800.000đ",
@@ -860,14 +862,14 @@ export const liveMusic = {
   poster: "assets/images/music/lc4.jpg",
   category: "live-music",
   description: [
-    "Sketch A Rose là đêm nhạc lãng mạn với những bản tình ca nhẹ nhàng, được dàn dựng theo concept mùa lễ hội.",
-    "Sân khấu kết hợp live band và hiệu ứng ánh sáng ấm áp, tạo không gian thưởng thức âm nhạc tinh tế."
+    "“THE ROSE” là phiên bản đặc biệt trong chuỗi concert “SKETCH A ROSE”, dự án âm nhạc lớn nhất từ trước đến nay của ca sĩ Hà Anh Tuấn, diễn ra vào lúc 20:00 ngày 17/01/2026 tại Sân vận động Đà Lạt.",
+    "Âm nhạc tuyệt đẹp của những tác phẩm trong album “SKETCH A ROSE”, những bản tình ca gắn liền với Đà Lạt và cả những điều chưa bao giờ...tất cả hứa hẹn tạo nên một đêm diễn mang dấu ấn độc nhất của “THE ROSE”."
   ],
   highlights: [
-    "★ Concept lãng mạn “Sketch A Rose”",
+    "★ Concept lãng mạn “The Rose”",
     "★ Live vocal + live band",
     "★ Ánh sáng & sân khấu dàn dựng theo chủ đề lễ hội",
-    "★ Không gian sang trọng tại Opera House",
+    "★ Không gian sang trọng, lãng mạn",
     "★ Khu vực check-in theo concept (tuỳ chương trình)"
   ],
   tickets: [

@@ -1,118 +1,215 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chi tiết sự kiện | Echoes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sự kiện</title>
+    <link rel="icon" type="image/png" href="assets/images/index/favicon.png">
+    
+    <!-- Bootstrap & FontAwesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/musicdetail.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Gideon+Roman&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/eventDetail.css">
+    <link rel="stylesheet" href="assets/css/gift-popup.css">
+    <link rel="stylesheet" href="responsives/gift-popupRe.css">
+    
+    <!-- Scripts -->
+    <script src="scripts/authManager.js"></script>
+    <script src="scripts/common.js"></script>
 </head>
 
 <body>
-
-<!-- HEADER -->
-<div id="header"></div>
-
-<!-- EVENT DETAIL -->
-<section class="event-detail">
-  <div class="section-content">
-    <div class="event-detail-grid">
-      <div class="event-detail-image">
-        <img src="assets/images/music/lc1.jpg" alt="">
-      </div>
-      <div class="event-detail-info">
-        <h1 class="event-title">CONCERT NHẠC SỐNG ECHOES</h1>
-        <div class="event-meta">
-          <div><span>Thời gian:</span> 22 Tháng 12, 2025</div>
-          <div><span>Địa điểm:</span> [Bạn tự điền]</div>
-          <div><span>Nghệ sĩ:</span> [Bạn tự điền]</div>
-        </div>
-        <div class="event-description">
-          [Mô tả chi tiết sự kiện...]
-        </div>
-        <div class="event-cta">
-          <div class="event-price">Từ 500.000đ</div>
-          <a href="booking.html" class="btn-book">ĐẶT VÉ NGAY</a>
-        </div>
-      </div>
-
+    <!-- HEADER -->
+    <div id="header">
+        <script>
+            fetch('components/user_header.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                    
+                    const script = document.createElement('script');
+                    script.src = 'components/scroll_header.js';
+                    document.body.appendChild(script);
+                });
+        </script>
     </div>
-  </div>
-</section>
 
-<!-- TABS -->
-<section class="event-tabs">
-  <div class="section-content">
-    <div class="tabs-card">
+    <main class="container my-5">
+        <nav class="breadcrumb-custom mb-4">
+            <a href="index.html">TRANG CHỦ</a> / 
+            <a href="#" id="categoryBreadcrumb">NHẠC SỐNG</a> / 
+            <span id="eventBreadcrumb">Chi tiết sự kiện</span>
+        </nav>
 
-      <div class="tabs-head">
-        <button class="tab-btn active" data-tab="benefit">QUYỀN LỢI KHÁCH HÀNG</button>
-        <button class="tab-btn" data-tab="rules">QUY ĐỊNH</button>
-      </div>
+        <!-- Detail -->
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Poster -->
+                <div class="mb-4">
+                    <img id="eventPoster" src="" alt="Event Poster" class="img-fluid rounded shadow" style="width: 100%; height: 400px; object-fit: cover;">
+                </div>
 
-      <div class="tabs-body">
-        <div class="tab-panel active" id="benefit">
-          <ul class="tab-list">
-            <li>Vé điện tử (QR) gửi qua email/SMS sau khi thanh toán thành công.</li> 
-            <li>Ưu tiên check-in nhanh theo hạng vé (nếu có).</li> 
-            <li>Nhận quà tặng/merch (áp dụng theo chương trình & hạng vé).</li> 
-            <li>Hỗ trợ đổi thông tin người tham dự theo chính sách trước ngày diễn ra.</li> 
-            <li>Được hỗ trợ từ đội CSKH trong giờ làm việc: <strong>[Bạn tự điền]</strong>.</li>
-          </ul><br>
-        <p class="tab-note"> * Quyền lợi cụ thể có thể thay đổi theo từng sự kiện. Vui lòng xem thông tin hạng vé khi đặt. </p>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header text-white" style="background-color: var(--color-red);">
+                        <h3 class="mb-0">✶ THÔNG TIN SỰ KIỆN</h3>
+                    </div>
+                    <div class="card-body">
+                        <h1 id="eventTitle" class="fw-bold text-danger mb-4">Đang tải...</h1>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3 fs-4">✶</span>
+                                    <div>
+                                        <small class="text-muted d-block fw-bold">THỜI GIAN</small>
+                                        <span id="eventDate" class="fs-5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3 fs-4">✶</span>
+                                    <div>
+                                        <small class="text-muted d-block fw-bold">ĐỊA ĐIỂM</small>
+                                        <span id="eventVenue" class="fs-5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3 fs-4">✶</span>
+                                    <div>
+                                        <small class="text-muted d-block fw-bold">THỜI LƯỢNG</small>
+                                        <span id="eventDuration" class="fs-5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3 fs-4">✶</span>
+                                    <div>
+                                        <small class="text-muted d-block fw-bold">THỂ LOẠI</small>
+                                        <span id="eventGenre" class="fs-5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header text-white" style="background-color: var(--color-green);">
+                        <h3 class="mb-0">✶ GIỚI THIỆU</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="eventDescription">
+                            <p>Đang tải thông tin...</p>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h5 class="fw-bold mb-3" style="color: var(--color-green);">✨ ĐIỂM NỔI BẬT</h5>
+                            <ul id="eventHighlights" class="list-unstyled">
+                                <li>Đang tải...</li>
+                            </ul>
+                        </div>
+
+                        <!-- Terms -->
+                        <div id="eventTerms" class="mt-4" style="display: none;">
+                            <h5 class="fw-bold mb-3" style="color: var(--color-red);">📋 ĐIỀU KIỆN & ĐIỀU KHOẢN</h5>
+                            <div class="p-3 bg-light rounded">
+                                <div id="termsContent" class="small text-muted">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm sticky-top" style="top: 100px;">
+                    <div class="card-header text-white" style="background-color: var(--color-green);">
+                        <h3 class="mb-0">THÔNG TIN VÉ</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Giá -->
+                        <div id="ticketPriceInfo" class="mb-4">
+                            <p class="text-muted">Đang tải thông tin vé...</p>
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-lg text-white" id="btnBook" style="background-color: var(--color-red); border-color: var(--color-red);">
+                                🎫 ĐẶT NGAY
+                            </button>
+                        </div>
+
+                        <!-- Note -->
+                        <div class="mt-4 p-3 rounded" style="background-color: var(--color-beige);">
+                            <small class="text-dark">
+                                <strong>💡 LƯU Ý QUAN TRỌNG:</strong><br>
+                                • Vé đã mua không được hoàn trả<br>
+                                • Vui lòng đến trước 30 phút<br>
+                                • Không mang đồ uống có cồn, rượu bia, các chất gây nghiện<br>
+                                • Không dẫn theo thú cưng
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </main>
 
-        <div class="tab-panel" id="rules">
-          <ul class="tab-list">
-            <li>Vui lòng đến trước giờ diễn <strong>60–90 phút</strong> để check-in.</li>
-             <li>Mỗi vé chỉ có giá trị vào cổng <strong>01 lần</strong>. Không chia sẻ mã QR.</li> 
-             <li>Không mang vật sắc nhọn, chất dễ cháy nổ, đồ uống có cồn vào khu vực sự kiện.</li>
-              <li>Tuân thủ hướng dẫn của BTC/An ninh. BTC có quyền từ chối phục vụ nếu vi phạm.</li> 
-              <li>BTC được quyền ghi hình/chụp ảnh và sử dụng cho mục đích truyền thông của sự kiện.</li> 
-            </ul> <br>
-            <p class="tab-note"> * Trường hợp bất khả kháng (thời tiết, kỹ thuật…), BTC có thể thay đổi lịch/format và sẽ thông báo qua kênh chính thức. </p>
+    <!-- BẠN CÓ THỂ THÍCH -->
+    <section class="py-5" style="background-color: var(--color-beige);">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5" style="color: var(--color-red);">🎵 BẠN CÓ THỂ THÍCH</h2>
+
+            <div class="row" id="relatedEvents"></div>
         </div>
-      </div>
+    </section>
 
-    </div>
-  </div>
-</section>
+    <!-- FOOTER -->
+    <div id="footer"></div>
 
-<!-- FOOTER -->
-<div id="footer"></div>
-
-<!-- FETCH HEADER & FOOTER -->
+    <!-- Scripts -->
+    <script type="module" src="scripts/eventDetail.js"></script>
+    <script src="scripts/gift-popup.js"></script>
 <script>
 fetch('components/user_header.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('header').innerHTML = html;
+  .then(res => {
+    if (!res.ok) throw new Error('Không tìm thấy file header');
+    return res.text();
+  })
+  .then(data => {
+    const headerContainer = document.getElementById('header');
+    if (!headerContainer) return;
+    
+    headerContainer.innerHTML = data;
 
-    if (window.authManager) authManager.updateHeaderUI();
+    // Cập nhật UI header với AuthManager
+    if (window.authManager) {
+        authManager.updateHeaderUI();
+    }
 
-    const s = document.createElement('script');
-    s.src = 'components/scroll_header.js';
-    document.body.appendChild(s);
-  });
-
-fetch('components/footer.html')
-  .then(res => res.text())
-  .then(html => document.getElementById('footer').innerHTML = html);
-</script>
-
-<!-- TAB SCRIPT -->
-<script>
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll('.tab-btn,.tab-panel')
-      .forEach(el=>el.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
-  }
-});
-</script>
-
+    // Load script cuộn sau khi HTML đã render xong
+    const script = document.createElement('script');
+    script.src = 'components/scroll_header.js';
+    document.body.appendChild(script);
+  })
+  .catch(err => console.error("Lỗi header:", err));
+  </script>
 </body>
 </html>
