@@ -32,9 +32,15 @@
                         authManager.updateHeaderUI();
                     }
             
-                    const script = document.createElement('script');
-                    script.src = 'components/scroll_header.js';
-                    document.body.appendChild(script);
+                    // Load scroll header script
+                    const scrollScript = document.createElement('script');
+                    scrollScript.src = 'components/scroll_header.js';
+                    document.body.appendChild(scrollScript);
+                    
+                    // Load header functionality script
+                    const headerScript = document.createElement('script');
+                    headerScript.src = 'components/header.js';
+                    document.body.appendChild(headerScript);
                 });
         </script>
     </div>
