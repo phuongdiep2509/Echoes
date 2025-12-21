@@ -39,14 +39,12 @@
 }
 
 .gift-pop-img{
-  width: 200px;     /* chỉnh size popup ở đây */
+  width: 200px;
   height: auto;
   display: block;
   pointer-events: none;
   user-select: none;
 }
-
-
 
 /* Sparkles */
 .sparkle {
@@ -85,59 +83,67 @@
     font-size: 20px;
 }
 
-/* Tooltip */
+/* Tooltip Container */
 .gift-pop-shell{
   position: relative;
-  width: 160px;             /* = chiều rộng khu ảnh/popup */
+  width: 160px;
 }
 
-/* TOOLTIP: cao hơn + bỏ glow vàng */
+/* Tooltip Styling */
 .gift-tooltip{
   position: absolute;
   left: 50%;
-  bottom: 190px;                 /* ✅ TĂNG SỐ NÀY để cao hơn (160/175/190) */
+  bottom: 190px;
   transform: translateX(-50%);
   width: 190px;
   max-width: 190px;
-
   padding: 12px 14px;
   border-radius: 18px;
-
-  background: rgba(69,77,106,0.92);  /* xanh đậm sang */
+  background: rgba(69,77,106,0.92);
   color: #fff;
   font-weight: 600;
   font-size: 14px;
   letter-spacing: .6px;
   text-align: center;
-
   white-space: normal;
   line-height: 1.25;
-
-  box-shadow: 0 10px 22px rgba(0,0,0,0.18); /* ✅ bóng xám, KHÔNG vàng */
-  border: 1px solid rgba(255,255,255,0.12); /* nhẹ thôi cho sang */
-}
-
-/* Nếu trước đó có glow vàng bằng filter hoặc shadow khác -> ép bỏ */
-.gift-tooltip{
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.12);
   filter: none !important;
+  z-index: 2;
+  
+  /* Default hidden state */
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
 }
 
-/* Nếu bạn có mũi nhọn mà đang vàng -> đổi về màu tooltip */
+/* Tooltip Arrow */
 .gift-tooltip::after{
   content:"";
   position:absolute;
   left:50%;
   bottom:-8px;
   transform:translateX(-50%);
-  width:0;height:0;
+  width:0;
+  height:0;
   border-left:8px solid transparent;
   border-right:8px solid transparent;
   border-top:8px solid rgba(69,77,106,0.92);
 }
 
-.gift-tooltip{ z-index: 2; }
-.gift-pop-btn{ position: relative; z-index: 1; }
+.gift-pop-btn{ 
+  position: relative; 
+  z-index: 1; 
+}
 
+/* Hover States */
+.gift-pop-shell:hover .gift-tooltip,
+.gift-pop-btn:hover + .gift-tooltip{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 
 .gift-popup:hover .gift-tooltip {
     opacity: 1;
@@ -145,22 +151,8 @@
     transform: translateX(-50%) scale(1.2);
     animation: tooltipBounce 0.6s ease, textGlow 2s ease-in-out infinite;
 }
-/* Tooltip mặc định ẩn */
-.gift-tooltip{
-  opacity: 0;
-  transform: translateX(-50%) translateY(10px);
-  pointer-events: none;
-  transition: opacity .2s ease, transform .2s ease;
-}
 
-/* Hover vào hộp quà (button) thì tooltip hiện */
-.gift-pop-shell:hover .gift-tooltip,
-.gift-pop-btn:hover + .gift-tooltip{
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-
+/* Animations */
 @keyframes tooltipBounce {
     0% {
         transform: translateX(-50%) scale(0.8) translateY(15px);
@@ -196,10 +188,8 @@
       0 0 26px rgba(69,77,106,0.38),
       inset 0 2px 4px rgba(255,255,255,0.18);
   }
-
 }
 
-/* Animations */
 @keyframes float {
     0%, 100% {
         transform: translateY(0px) rotateX(0deg) rotateY(0deg);
@@ -232,11 +222,6 @@
     }
 }
 
-/* Pulse effect when hovering */
-.gift-popup:hover .gift-box-3d {
-    animation: float 3s ease-in-out infinite, wiggle 2s ease-in-out infinite, pulse 1s ease-in-out infinite;
-}
-
 @keyframes pulse {
     0%, 100% {
         box-shadow: 0 0 0 0 rgba(116, 7, 13, 0.4);
@@ -246,28 +231,7 @@
     }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .gift-popup {
-        bottom: 20px;
-        right: 20px;
-    }
-    
-    
-    .gift-tooltip {
-        font-size: 14px;
-        padding: 12px 20px;
-        margin-bottom: 15px;
-    }
-    
-    .gift-popup:hover .gift-tooltip {
-        transform: translateX(-50%) scale(1.1);
-    }
-}
-
-/* Hide on very small screens */
-@media (max-width: 480px) {
-    .gift-popup {
-        display: none;
-    }
+/* Pulse effect when hovering */
+.gift-popup:hover .gift-box-3d {
+    animation: float 3s ease-in-out infinite, wiggle 2s ease-in-out infinite, pulse 1s ease-in-out infinite;
 }

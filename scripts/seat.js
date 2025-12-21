@@ -206,7 +206,70 @@ if (seat) {
 
         // Lưu tổng tiền vé vào SessionStorage
         sessionStorage.setItem('seatTotalPrice', seatTotalPrice);
-        updateTotalPrice();
+        
+        console.log('Saved to sessionStorage - selectedSeats:', selectedSeatsByType);
+        console.log('Saved to sessionStorage - seatTotalPrice:', seatTotalPrice);
+        
+        // Update total price display directly
+        updateTotalPriceDisplay(seatTotalPrice);
+        
+        // Call updateTotalPrice if it exists
+        if (typeof window.updateTotalPrice === 'function') {
+            console.log('Calling updateTotalPrice function');
+            window.updateTotalPrice();
+        } else {
+            console.log('updateTotalPrice function not available, trying again in 200ms');
+            setTimeout(() => {
+                if (typeof window.updateTotalPrice === 'function') {
+                    console.log('Calling updateTotalPrice function (delayed)');
+                    window.updateTotalPrice();
+                } else {
+                    console.log('updateTotalPrice still not available after delay');
+                }
+            }, 200);
+        }
+    }
+    
+    // Function to update total price display directly
+    function updateTotalPriceDisplay(totalPrice) {
+        const totalPriceElement = document.querySelector('.total-price-number');
+        if (totalPriceElement) {
+            const formatted = new Intl.NumberFormat('vi-VN').format(totalPrice);
+            totalPriceElement.textContent = formatted + ' đ';
+            console.log('Updated total price display directly to:', formatted + ' đ');
+        }
+        
+        // Update button state
+        const nextButton = document.querySelector('.button-next');
+        const giftButton = document.querySelector('.button-gift');
+        
+        if (nextButton && totalPrice > 0) {
+            nextButton.textContent = 'THANH TOÁN';
+            nextButton.style.opacity = '1';
+            nextButton.style.cursor = 'pointer';
+            nextButton.classList.remove('disabled');
+            // Force remove any disabled attribute
+            nextButton.removeAttribute('disabled');
+        } else if (nextButton) {
+            nextButton.textContent = 'CHỌN GHẾ TRƯỚC';
+            nextButton.style.opacity = '0.6';
+            nextButton.style.cursor = 'not-allowed';
+            nextButton.classList.add('disabled');
+        }
+        
+        if (giftButton && totalPrice > 0) {
+            giftButton.textContent = 'TẶNG VÉ';
+            giftButton.style.opacity = '1';
+            giftButton.style.cursor = 'pointer';
+            giftButton.classList.remove('disabled');
+            // Force remove any disabled attribute
+            giftButton.removeAttribute('disabled');
+        } else if (giftButton) {
+            giftButton.textContent = 'CHỌN GHẾ TRƯỚC';
+            giftButton.style.opacity = '0.6';
+            giftButton.style.cursor = 'not-allowed';
+            giftButton.classList.add('disabled');
+        }
     }
 
     

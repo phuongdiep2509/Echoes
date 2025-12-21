@@ -10,16 +10,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/payment.css">
-    <link rel="stylesheet" href="../responsives/paymentRe.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/payment.css">
+    <link rel="stylesheet" href="responsives/paymentRe.css">
     
     <!-- Nhúng AuthManager -->
-    <script src="../scripts/authManager.js"></script>
+    <script src="scripts/authManager.js"></script>
 </head>
 
 <body>
-<!-- Nhúng header -->
+    <!-- Nhúng header -->
     <div id="header">
         <script>
             fetch('components/user_header.html')
@@ -101,22 +101,22 @@
                     <div class="payment-options-simple">
                         <div class="payment-option selected" data-id="momo">
                             <input type="radio" name="payment" value="momo" checked>
-                            <img src="../assets/images/bankings/momo.png" alt="Ví MoMo">
+                            <img src="assets/images/bankings/momo.png" alt="Ví MoMo">
                             <div class="payment-name">Ví MoMo</div>
                         </div>
                         <div class="payment-option" data-id="shopeepay">
                             <input type="radio" name="payment" value="shopeepay">
-                            <img src="../assets/images/bankings/shopeepay.png" alt="ShopeePay">
+                            <img src="assets/images/bankings/shopeepay.png" alt="ShopeePay">
                             <div class="payment-name">ShopeePay</div>
                         </div>
                         <div class="payment-option" data-id="vnpay">
                             <input type="radio" name="payment" value="vnpay">
-                            <img src="../assets/images/bankings/vnpay.png" alt="VNPay">
+                            <img src="assets/images/bankings/vnpay.png" alt="VNPay">
                             <div class="payment-name">VNPay</div>
                         </div>
                         <div class="payment-option" data-id="zalopay">
                             <input type="radio" name="payment" value="zalopay">
-                            <img src="../assets/images/bankings/zalopay.png" alt="ZaloPay">
+                            <img src="assets/images/bankings/zalopay.png" alt="ZaloPay">
                             <div class="payment-name">ZaloPay</div>
                         </div>
                         <div class="payment-option" data-id="visa">
@@ -137,7 +137,7 @@
             <div class="col-lg-6">
                 <div class="ticket-summary-card">
                     <div class="poster-box">
-                        <img src="../assets/images/index/main_banner_1.png" alt="Poster sự kiện" id="ticket-img">
+                        <img src="assets/images/index/main_banner_1.png" alt="Poster sự kiện" id="ticket-img">
                         <div class="event-badge">
                             <i class="fas fa-calendar-alt me-1"></i>
                             <span id="event-date">25/12/2024</span>
@@ -228,7 +228,7 @@
                         <button type="button" class="btn btn-primary" onclick="viewMyTickets()">
                             Xem vé của tôi
                         </button>
-                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='../index.html'">
+                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='index.html'">
                             Về trang chủ
                         </button>
                     </div>
@@ -240,7 +240,7 @@
     <!-- FOOTER -->
     <div id="footer">
         <script>
-        fetch('../components/footer.html')
+        fetch('components/footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer').innerHTML = data;
@@ -284,6 +284,6 @@
     </script>
     
     <!-- Payment JS -->
-    <script src="../scripts/payment.js"></script>
+    <script src="scripts/payment.js"></script>
 </body>
 </html>

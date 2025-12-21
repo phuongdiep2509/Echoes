@@ -202,14 +202,16 @@ export const news = {
         "Hãy cùng Echoes khép lại năm 2025 bằng một đêm nhạc bùng nổ cảm xúc giữa lòng di sản!"
     ]
 },
-      // Sau này bạn thêm bài viết mới vào đây là tự động hiển thị
+
+
+
 };
 
 // Concert Events Data
 export const concerts = {
     "anh-trai-say-hi-2025": {
         id: "anh-trai-say-hi-2025",
-        title: "ANH TRAI \"SAY HI\" 2025 CONCERT",
+        title: "ANH TRAI SAY HI 2025 CONCERT",
         date: "12:00 - 23:00, 27 tháng 12, 2025",
         venue: "Khu đô thị Vạn Phúc",
         fullVenue: "Khu đô thị Vạn Phúc, Phường Hiệp Bình Phước, Quận Thủ Đức, Thành Phố Hồ Chí Minh",
@@ -226,7 +228,7 @@ export const concerts = {
             "Một đêm nhạc đầy cảm xúc với những ca khúc hit và màn trình diễn bùng nổ không thể bỏ lỡ."
         ],
         highlights: [
-            "�  33 anh trai tham gia biểu diễn",
+            "�  30 anh trai tham gia biểu diễn",
             "🎵 Những ca khúc hit đình đám", 
             "🎭 Sân khấu hoành tráng với công nghệ hiện đại",
             "⚡ Hiệu ứng ánh sáng và âm thanh đỉnh cao",
@@ -234,8 +236,8 @@ export const concerts = {
         ],
         tickets: [
             { type: "vip", name: "VIP", price: 10000000, status: "available" },
-            { type: "standard", name: "Standard", price: 50000000, status: "available" },
-            { type: "economy", name: "Economy", price: 10000000, status: "available" }
+            { type: "standard", name: "Standard", price: 5000000, status: "available" },
+            { type: "economy", name: "Economy", price: 1000000, status: "available" }
         ],
         terms: [
             "**ĐIỀU KIỆN VÀ ĐIỀU KHOẢN MUA VÉ:**",
@@ -257,11 +259,11 @@ export const concerts = {
             "• BTC giữ quyền thu hồi vé vi phạm và đưa ra quyết định cuối cùng"
         ],
     },
-    "nhung-thanh-pho-mong-mo": {
-        id: "nhung-thanh-pho-mong-mo",
+    "nhung-thanh-pho-mo-mang": {
+        id: "nhung-thanh-pho-mo-mang",
         title: "Những Thành Phố Mơ Màng Year End 2025",
-        date: "07/12/2025 - 15:30",
-        venue: "799 Nguyễn Văn Linh, Phường Tân Phú, Quận 7, Thành Phố Hồ Chí Minh",
+        date: "21/12/2025 - 15:30",
+        venue: "Công Viên Yên Sở",
         genre: "Pop, Rock, Hip-hop",
         duration: "Khoảng 6 giờ",
         price: "Từ 750.000đ - 4.000.000đ",
@@ -270,11 +272,11 @@ export const concerts = {
         poster: "assets/images/concert/ntpmm2.png",
         category: "concert",
         description: [
-            "Đại nhạc hội Mega Booming 2025 quy tụ 21 nghệ sĩ hàng đầu tại cố đô Huế.",
-            "Sự kiện âm nhạc đặc biệt trong khuôn khổ bế mạc Năm Du lịch Quốc gia 2025."
+            "Chào mừng cư dân đến với NTPMM Year End 2025 - Wondertopia,  vùng đất diệu kỳ nơi âm nhạc cất lời và cảm xúc thăng hoa!",
+            "Wondertopia không chỉ là một show diễn – mà là không gian nơi chúng ta tìm thấy sự đồng điệu, truyền cảm hứng cho một khởi đầu mới rực rỡ hơn."
         ],
         highlights: [
-            "🌟 21 nghệ sĩ hàng đầu Việt Nam",
+            "🌟 12 nghệ sĩ hàng đầu Việt Nam",
             "🎸 Đa dạng thể loại âm nhạc",
             "🎆 Pháo hoa và hiệu ứng đặc biệt"
         ],
@@ -344,7 +346,7 @@ export const concerts = {
         venue: "Nhà Hát Quân Đội Phía Nam",
         genre: "Ballad",
         duration: "Khoảng 2.5 giờ",
-        price: "Từ 1.000.000đ - 2.800.000đ",
+        price: "Từ 600.000đ - 2.800.000đ",
         status: "available",
         image: "assets/images/concert/mrSiro.jpg",
         poster: "assets/images/concert/mrSiro.jpg",
@@ -360,9 +362,9 @@ export const concerts = {
             "💫 Tương tác gần gũi với khán giả"
         ],
         tickets: [
-            { type: "vip", name: "VIP", price: 1500000, status: "available" },
+            { type: "vip", name: "VIP", price: 2800000, status: "available" },
             { type: "standard", name: "Standard", price: 1000000, status: "available" },
-            { type: "economy", name: "Economy", price: 500000, status: "available" }
+            { type: "economy", name: "Economy", price: 600000, status: "available" }
         ],
         terms: [
     "**MR SIRO - FAN CONCERT: AI CŨNG GIẤU TRONG LÒNG TẢNG BĂNG**",
@@ -657,7 +659,7 @@ export const concerts = {
         date: "20/12/2026 - 14:00",
         venue: "VINHOMES OCEAN PARK 3",
         genre: "Modern, Acoustic",
-        duration: "Khoảng 8 giờ",
+        duration: "Khoảng 10 giờ",
         price: "Từ 1.000.000đ - 5.000.000đ",
         status: "available",
         image: "assets/images/concert/concertY.jpg",
@@ -826,7 +828,7 @@ export const liveMusic = {
         venue: "Học viện Âm nhạc Quốc Gia Việt Nam, Hà Nội",
         genre: "Giao hưởng, Piano",
         duration: "Khoảng 2 giờ 30 phút",
-        price: "Từ 300.000đ - 800.000đ",
+        price: "Từ 500.000đ - 800.000đ",
         status: "available",
         image: "assets/images/music/lc1.jpg",
         poster: "assets/images/music/lc1.jpg",
@@ -844,37 +846,35 @@ export const liveMusic = {
             ],
         tickets: [
         { type: "vip", name: "VIP", price: 800000, status: "limited" },
-        { type: "standard", name: "Standard", price: 500000, status: "available" },
-        { type: "economy", name: "Economy", price: 300000, status: "available" }
+        { type: "standard", name: "Standard", price: 500000, status: "available" }
             ]
     },
-    "concert-sketch-a-rose": {
-  id: "concert-sketch-a-rose",
-  title: "CONCERT SKETCH A ROSE",
-  date: "25/12/2025 - 21:00",
-  venue: "Saigon Opera House, TP.HCM",
+    "concert-the-rose": {
+  id: "concert-the-rose",
+  title: "CONCERT THE ROSE",
+  date: "17/01/2026 - 20:00",
+  venue: "Sân Vận Động Đà Lạt",
   genre: "Pop Ballad, Live Band",
   duration: "Khoảng 2 giờ",
-  price: "Từ 400.000đ - 1.000.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc4.jpg",
   poster: "assets/images/music/lc4.jpg",
   category: "live-music",
   description: [
-    "Sketch A Rose là đêm nhạc lãng mạn với những bản tình ca nhẹ nhàng, được dàn dựng theo concept mùa lễ hội.",
-    "Sân khấu kết hợp live band và hiệu ứng ánh sáng ấm áp, tạo không gian thưởng thức âm nhạc tinh tế."
+    "“THE ROSE” là phiên bản đặc biệt trong chuỗi concert “SKETCH A ROSE”, dự án âm nhạc lớn nhất từ trước đến nay của ca sĩ Hà Anh Tuấn, diễn ra vào lúc 20:00 ngày 17/01/2026 tại Sân vận động Đà Lạt.",
+    "Âm nhạc tuyệt đẹp của những tác phẩm trong album “SKETCH A ROSE”, những bản tình ca gắn liền với Đà Lạt và cả những điều chưa bao giờ...tất cả hứa hẹn tạo nên một đêm diễn mang dấu ấn độc nhất của “THE ROSE”."
   ],
   highlights: [
-    "★ Concept lãng mạn “Sketch A Rose”",
+    "★ Concept lãng mạn “The Rose”",
     "★ Live vocal + live band",
     "★ Ánh sáng & sân khấu dàn dựng theo chủ đề lễ hội",
-    "★ Không gian sang trọng tại Opera House",
+    "★ Không gian sang trọng, lãng mạn",
     "★ Khu vực check-in theo concept (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 1000000, status: "available" },
-    { type: "standard", name: "Standard", price: 700000, status: "available" },
-    { type: "economy", name: "Economy", price: 400000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -885,7 +885,7 @@ export const liveMusic = {
   venue: "Nhà hát Lớn Hà Nội",
   genre: "Giao hưởng, Nhạc thính phòng",
   duration: "Khoảng 2 giờ 30 phút",
-  price: "Từ 250.000đ - 600.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc16.jpg",
   poster: "assets/images/music/lc16.jpg",
@@ -902,9 +902,8 @@ export const liveMusic = {
     "★ Poster/photobooth kỷ niệm (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 600000, status: "available" },
-    { type: "standard", name: "Standard", price: 400000, status: "available" },
-    { type: "economy", name: "Economy", price: 250000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -915,7 +914,7 @@ export const liveMusic = {
   venue: "Nhà hát Tuổi trẻ, TP.HCM",
   genre: "Ballad, Acoustic",
   duration: "Khoảng 2 giờ",
-  price: "Từ 350.000đ - 900.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc2.jpg",
   poster: "assets/images/music/lc2.jpg",
@@ -932,9 +931,8 @@ export const liveMusic = {
     "★ Góc check-in theo concept (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 900000, status: "available" },
-    { type: "standard", name: "Standard", price: 600000, status: "available" },
-    { type: "economy", name: "Economy", price: 350000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -945,7 +943,7 @@ export const liveMusic = {
   venue: "Cà phê Acoustic, Hà Nội",
   genre: "Anime, Orchestral, Epic",
   duration: "Khoảng 2.5 giờ",
-  price: "Từ 200.000đ - 500.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc3.jpg",
   poster: "assets/images/music/lc3.jpg",
@@ -962,9 +960,8 @@ export const liveMusic = {
     "★ Góc check-in/standee theo concept (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 500000, status: "available" },
-    { type: "standard", name: "Standard", price: 350000, status: "available" },
-    { type: "economy", name: "Economy", price: 200000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -975,7 +972,7 @@ export const liveMusic = {
   venue: "Rock Club, TP.HCM",
   genre: "Christmas, Acoustic, Pop",
   duration: "Khoảng 3 giờ",
-  price: "Từ 300.000đ - 700.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc5.webp",
   poster: "assets/images/music/lc5.webp",
@@ -992,9 +989,8 @@ export const liveMusic = {
     "★ Check-in & quà mini (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 700000, status: "available" },
-    { type: "standard", name: "Standard", price: 500000, status: "available" },
-    { type: "economy", name: "Economy", price: 300000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -1005,7 +1001,7 @@ export const liveMusic = {
   venue: "Soul Bar, TP.HCM",
   genre: "Symphonic, Anime, Epic",
   duration: "Khoảng 2.5 giờ",
-  price: "Từ 400.000đ - 1.000.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
         image: "assets/images/music/lc6.png",
         poster: "assets/images/music/lc6.png",
@@ -1021,9 +1017,8 @@ export const liveMusic = {
     "★ Visual/lighting theo nhịp nhạc (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 1000000, status: "limited" },
-    { type: "standard", name: "Standard", price: 700000, status: "available" },
-    { type: "economy", name: "Economy", price: 400000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "limited" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
     "attack-on-titan-freedom": {
@@ -1033,7 +1028,7 @@ export const liveMusic = {
   venue: "Beach Club, Đà Nẵng",
   genre: "Anime, Orchestral Rock, Epic",
   duration: "Khoảng 3 giờ",
-  price: "Từ 250.000đ - 600.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc7.jpg",
   poster: "assets/images/music/lc7.jpg",
@@ -1049,9 +1044,8 @@ export const liveMusic = {
     "★ Check-in concept (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 600000, status: "available" },
-    { type: "standard", name: "Standard", price: 425000, status: "available" },
-    { type: "economy", name: "Economy", price: 250000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
     "symphonic-anime": {
@@ -1061,7 +1055,7 @@ export const liveMusic = {
   venue: "Electronic Club, Hà Nội",
   genre: "Symphonic, Anime OST, Live Show",
   duration: "Khoảng 4 giờ",
-  price: "Từ 350.000đ - 800.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc15.jpg",
   poster: "assets/images/music/lc15.jpg",
@@ -1078,8 +1072,7 @@ export const liveMusic = {
   ],
   tickets: [
     { type: "vip", name: "VIP", price: 800000, status: "available" },
-    { type: "standard", name: "Standard", price: 575000, status: "available" },
-    { type: "economy", name: "Economy", price: 350000, status: "available" }
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
 
@@ -1090,7 +1083,7 @@ export const liveMusic = {
   venue: "Cultural Center, TP.HCM",
   genre: "Anime OST, J-Pop, Live Band",
   duration: "Khoảng 2.5 giờ",
-  price: "Từ 400.000đ - 950.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc9.jpg",
   poster: "assets/images/music/lc9.jpg",
@@ -1106,9 +1099,8 @@ export const liveMusic = {
     "★ Cosplay/check-in (tuỳ chương trình)"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 950000, status: "available" },
-    { type: "standard", name: "Standard", price: 675000, status: "available" },
-    { type: "economy", name: "Economy", price: 400000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
   
@@ -1119,7 +1111,7 @@ export const liveMusic = {
   venue: "Art Space, Hà Nội",
   genre: "Film Score, Ambient, Storytelling",
   duration: "Khoảng 2 giờ",
-  price: "Từ 300.000đ - 700.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "available",
   image: "assets/images/music/lc10.webp",
   poster: "assets/images/music/lc10.webp",
@@ -1135,9 +1127,8 @@ export const liveMusic = {
     "★ Không gian nghệ thuật phù hợp concept"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 700000, status: "available" },
-    { type: "standard", name: "Standard", price: 500000, status: "available" },
-    { type: "economy", name: "Economy", price: 300000, status: "available" }
+    { type: "vip", name: "VIP", price: 800000, status: "available" },
+    { type: "standard", name: "Standard", price: 500000, status: "available" }
   ]
 },
      "shinsekai-childhood-memory": {
@@ -1147,7 +1138,7 @@ export const liveMusic = {
   venue: "Fusion Hall, TP.HCM",
   genre: "Neo-Classical, Piano, Nostalgia",
   duration: "Khoảng 3 giờ",
-  price: "Từ 450.000đ - 1.100.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "sold",
   image: "assets/images/music/lc11.jpg",
   poster: "assets/images/music/lc11.jpg",
@@ -1163,9 +1154,8 @@ export const liveMusic = {
     "★ Trải nghiệm nghe tập trung"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 1100000, status: "sold" },
-    { type: "standard", name: "Standard", price: 775000, status: "sold" },
-    { type: "economy", name: "Economy", price: 450000, status: "sold" }
+    { type: "vip", name: "VIP", price: 800000, status: "sold" },
+    { type: "standard", name: "Standard", price: 500000, status: "sold" }
   ]
 },
 "concert-to-the-line": {
@@ -1175,7 +1165,7 @@ export const liveMusic = {
   venue: "Intimate Venue, Đà Lạt",
   genre: "Unplugged, Acoustic, Ballad",
   duration: "Khoảng 2 giờ",
-  price: "Từ 250.000đ - 600.000đ",
+  price: "Từ 500.000đ - 800.000đ",
   status: "expired",
   image: "assets/images/music/lc13.png",
   poster: "assets/images/music/lc13.png",
@@ -1191,9 +1181,8 @@ export const liveMusic = {
     "★ Trải nghiệm nghe “ấm” và yên"
   ],
   tickets: [
-    { type: "vip", name: "VIP", price: 600000, status: "expired" },
-    { type: "standard", name: "Standard", price: 425000, status: "expired" },
-    { type: "economy", name: "Economy", price: 250000, status: "expired" }
+    { type: "vip", name: "VIP", price: 800000, status: "expired" },
+    { type: "standard", name: "Standard", price: 500000, status: "expired" }
   ]
 },
 }
@@ -1207,6 +1196,8 @@ export const merchandise = {
         image: "assets/images/merch/merch1.png",
         category: "accessories",
         description: "Khăn bandana phong cách Gothic với họa tiết Wonder Hallows độc đáo.",
+        material: "Lụa bóng",
+        size: "60 × 60 cm",
         inStock: true
     },
     "echo-keyring": {
@@ -1216,6 +1207,8 @@ export const merchandise = {
         image: "assets/images/merch/merch2.png",
         category: "accessories",
         description: "Móc khóa Echo với thiết kế Wonder Hallows tinh tế.",
+        material: "Kim loại mạ vàng",
+        size: "5 × 3 cm",
         inStock: true
     },
     "anh-trai-bandana": {
@@ -1225,6 +1218,8 @@ export const merchandise = {
         image: "assets/images/merch/merch3.png",
         category: "accessories",
         description: "Khăn bandana chính thức từ concert Anh Trai Say Hi.",
+        material: "Cotton cao cấp",
+        size: "55 × 55 cm",
         inStock: true
     },
     "anh-trai-lightstick": {
@@ -1234,6 +1229,8 @@ export const merchandise = {
         image: "assets/images/merch/merch4.png",
         category: "lightstick",
         description: "Lightstick chính thức với hiệu ứng ánh sáng đặc biệt.",
+        material: "Nhựa ABS + LED",
+        size: "25 cm (dài)",
         inStock: true
     },
     "em-xinh-lightstick": {
@@ -1243,6 +1240,8 @@ export const merchandise = {
         image: "assets/images/merch/merch5.png",
         category: "lightstick",
         description: "Lightstick Em Xinh với aura đặc biệt và màu sắc rực rỡ.",
+        material: "Nhựa ABS + LED RGB",
+        size: "25 cm (dài)",
         inStock: true
     },
     "em-xinh-cap": {
@@ -1252,6 +1251,8 @@ export const merchandise = {
         image: "assets/images/merch/merch6.png",
         category: "clothing",
         description: "Mũ lưỡi trai Em Xinh với slogan độc đáo và thiết kế trendy.",
+        material: "Cotton twill",
+        size: "Free size (56-60 cm)",
         inStock: true
     },
     "kingdom-stick": {
@@ -1261,6 +1262,8 @@ export const merchandise = {
         image: "assets/images/merch/merch7.png",
         category: "lightstick",
         description: "Lightstick phiên bản giới hạn đầu tiên với công nghệ cao cấp.",
+        material: "Nhựa ABS + LED + Bluetooth",
+        size: "30 cm (dài)",
         inStock: false
     },
     "all-rounder-tote": {
@@ -1270,6 +1273,8 @@ export const merchandise = {
         image: "assets/images/merch/merch8.png",
         category: "accessories",
         description: "Túi tote đa năng với thiết kế minimalist và chất liệu bền đẹp.",
+        material: "Canvas cotton",
+        size: "40 × 35 × 10 cm",
         inStock: true
     }
 };
