@@ -434,3 +434,116 @@
         font-size: 30px;
     }
 }
+
+/* Extra small screens (≤320px) */
+@media (max-width: 320px) {
+    .form-box {
+        padding: 10px;
+        padding-top: 30px;
+    }
+    
+    .form-box.register {
+        padding-top: 20px;
+        padding-bottom: 90px;
+    }
+    
+    h1 {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    
+    .form-box.register h1 {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+    
+    .input-box input {
+        padding: 8px 40px 8px 10px;
+        font-size: 14px;
+        height: 40px;
+    }
+    
+    .btn {
+        height: 40px;
+        font-size: 13px;
+    }
+    
+    .mobile-nav .btn {
+        width: 90px;
+        height: 35px;
+        font-size: 11px;
+    }
+    
+    .password-validation-box {
+        padding: 4px 6px;
+        margin: 4px 0;
+        max-height: 80px;
+    }
+    
+    .password-validation-box li {
+        font-size: 8px;
+    }
+    
+    .social-icons a {
+        padding: 6px;
+        margin: 0 1px;
+        font-size: 14px;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 850px) and (orientation: landscape) and (max-height: 500px) {
+    .container {
+        height: 100vh;
+        width: 100vw;
+        border-radius: 0;
+    }
+    
+    .form-box {
+        height: calc(100vh - 60px);
+        padding: 15px;
+    }
+    
+    .form-box.login {
+        justify-content: center;
+    }
+    
+    .form-box.register {
+        justify-content: flex-start;
+        padding-top: 10px;
+        padding-bottom: 70px;
+    }
+    
+    .mobile-nav {
+        height: 60px;
+    }
+    
+    h1 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+    
+    .input-box {
+        margin: 4px 0;
+    }
+    
+    .password-validation-box {
+        max-height: 60px;
+        font-size: 10px;
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .container {
+        box-shadow: 0 0 40px rgba(0,0,0,0.3);
+    }
+    
+    .btn {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    
+    .input-box input {
+        border: 1.5px solid rgba(255,255,255,0.2);
+    }
+}

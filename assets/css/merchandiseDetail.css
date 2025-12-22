@@ -360,6 +360,11 @@ body {
 }
 
 /* ===== STOCK BADGE LARGE ===== */
+.product-image {
+    position: relative;
+    overflow: hidden;
+}
+
 .stock-badge-large {
     position: absolute;
     top: 15px;

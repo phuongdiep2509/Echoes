@@ -23,7 +23,7 @@ function renderAllProducts() {
         <a href="merchandiseDetail.html?id=${product.id}" class="product-wrapper ${!product.inStock ? 'out-of-stock' : ''}">
             <div class="product-thumb">
                 <img src="${product.image}" alt="${product.name}">
-                ${!product.inStock ? '<div class="stock-badge out">HẾT HÀNG</div>' : '<div class="stock-badge in">CÒN HÀNG</div>'}
+                ${!product.inStock ? '<div class="stock-badge out">HẾT HÀNG</div>' : ''}
             </div>
             <div class="product-content">
                 <h4>${product.name}</h4>

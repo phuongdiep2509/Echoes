@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets\css\about.css">
     <link rel="stylesheet" href="assets/css/gift-popup.css">
+    <link rel="stylesheet" href="responsives/mobileMenuRe.css">
     
     <!-- Nhúng AuthManager -->
     <script src="scripts/authManager.js"></script>
@@ -29,9 +30,23 @@
                     if (window.authManager) {
                         authManager.updateHeaderUI();
                     }
-                    const script = document.createElement('script');
-                    script.src = 'components/scroll_header.js';
-                    document.body.appendChild(script);
+                    // Load scroll header script
+                    const scrollScript = document.createElement('script');
+                    scrollScript.src = 'components/scroll_header.js';
+                    document.body.appendChild(scrollScript);
+                    
+                    // Load header functionality script
+                    const headerScript = document.createElement('script');
+                    headerScript.src = 'components/header.js';
+                    headerScript.onload = function() {
+                        // Initialize mobile menu after header.js loads
+                        setTimeout(() => {
+                            if (window.mobileMenuFunctions && window.mobileMenuFunctions.init) {
+                                window.mobileMenuFunctions.init();
+                            }
+                        }, 100);
+                    };
+                    document.body.appendChild(headerScript);
                 });
             </script>
             

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/myTicket.css">
+    <link rel="stylesheet" href="responsives/mobileMenuRe.css">
     
     <!-- Scripts -->
     <script src="scripts/authManager.js"></script>
@@ -18,7 +19,38 @@
 </head>
 <body>
     <!-- HEADER -->
-    <div id="header"></div>
+    <div id="header">
+        <script>
+            fetch('components/user_header.html')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+            
+                    // Cập nhật UI header với AuthManager
+                    if (window.authManager) {
+                        authManager.updateHeaderUI();
+                    }
+            
+                    // Load scroll header script
+                    const scrollScript = document.createElement('script');
+                    scrollScript.src = 'components/scroll_header.js';
+                    document.body.appendChild(scrollScript);
+                    
+                    // Load header functionality script
+                    const headerScript = document.createElement('script');
+                    headerScript.src = 'components/header.js';
+                    headerScript.onload = function() {
+                        // Initialize mobile menu after header.js loads
+                        setTimeout(() => {
+                            if (window.mobileMenuFunctions && window.mobileMenuFunctions.init) {
+                                window.mobileMenuFunctions.init();
+                            }
+                        }, 100);
+                    };
+                    document.body.appendChild(headerScript);
+                });
+            </script>
+    </div>
 
     <!-- MAIN CONTENT -->
     <section class="my-ticket-wrapper">
