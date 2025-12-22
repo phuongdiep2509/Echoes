@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = false;
 
             // Redirect to payment page
-            window.location.href = 'components/payment.html?type=gift';
+            window.location.href = 'payment.html?type=gift';
         }, 1500);
     }
 
