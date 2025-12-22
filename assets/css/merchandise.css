@@ -261,6 +261,7 @@ h1 {
 }
 
 .product-thumb {
+    position: relative;  /* Added for stock badge positioning */
     width: 100%;
     height: 250px;
     background: #ddd;

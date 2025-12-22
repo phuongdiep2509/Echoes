@@ -6,24 +6,40 @@ let currentPage = 1;
 let totalPages = 1;
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, merchandise data:', merchandise); // Debug log
     renderAllProducts();
     setupPagination();
 });
 
 function renderAllProducts() {
     const container = document.getElementById('all-products');
-    const allProducts = Object.values(merchandise);  // Bỏ filter để hiển thị cả sản phẩm hết hàng
+    if (!container) {
+        console.error('Container #all-products not found');
+        return;
+    }
+    
+    const allProducts = Object.values(merchandise);
+    console.log('All products:', allProducts); // Debug log
     
     totalPages = Math.ceil(allProducts.length / ITEMS_PER_PAGE);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const currentProducts = allProducts.slice(startIndex, endIndex);
 
-    container.innerHTML = currentProducts.map(product => `
-        <a href="merchandiseDetail.html?id=${product.id}" class="product-wrapper ${!product.inStock ? 'out-of-stock' : ''}">
+    console.log('Current products:', currentProducts); // Debug log
+
+    container.innerHTML = currentProducts.map(product => {
+        const stockBadgeClass = product.inStock ? 'in' : 'out';
+        const stockBadgeText = product.inStock ? 'CÒN HÀNG' : 'HẾT HÀNG';
+        const outOfStockClass = !product.inStock ? 'out-of-stock' : '';
+        
+        console.log(`Product ${product.name}: inStock=${product.inStock}, class=${stockBadgeClass}`); // Debug log
+        
+        return `
+        <a href="merchandiseDetail.html?id=${product.id}" class="product-wrapper ${outOfStockClass}">
             <div class="product-thumb">
                 <img src="${product.image}" alt="${product.name}">
-                ${!product.inStock ? '<div class="stock-badge out">HẾT HÀNG</div>' : '<div class="stock-badge in">CÒN HÀNG</div>'}
+                <div class="stock-badge ${stockBadgeClass}">${stockBadgeText}</div>
             </div>
             <div class="product-content">
                 <h4>${product.name}</h4>
@@ -31,13 +47,21 @@ function renderAllProducts() {
                 <div class="price">${formatPrice(product.price)}</div>
             </div>
         </a>
-    `).join('');
+    `;
+    }).join('');
+    
+    console.log('HTML generated and inserted'); // Debug log
 }
 
 function setupPagination() {
     const prevBtn = document.getElementById('pagerPrev');
     const nextBtn = document.getElementById('pagerNext');
     const dotsContainer = document.getElementById('pagerDots');
+
+    if (!prevBtn || !nextBtn || !dotsContainer) {
+        console.error('Pagination elements not found');
+        return;
+    }
 
     // Create dots
     dotsContainer.innerHTML = '';
@@ -65,9 +89,12 @@ function goToPage(page) {
     setupPagination();
     
     // Scroll to top of products
-    document.querySelector('.title-indent').scrollIntoView({ 
-        behavior: 'smooth' 
-    });
+    const titleElement = document.querySelector('.title-indent') || document.querySelector('.page-title');
+    if (titleElement) {
+        titleElement.scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    }
 }
 
 function formatPrice(price) {
