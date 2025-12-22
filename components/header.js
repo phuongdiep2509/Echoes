@@ -334,7 +334,7 @@
         case 'concert':
           return `concertDetail.html?id=${result.id}`;
         case 'music':
-          return `musicDetail.html?id=${result.id}&type=live-music`;
+          return `musicdetail.html?id=${result.id}&type=live-music`;
         case 'merchandise':
           return `merchandiseDetail.html?id=${result.id}`;
         default:
@@ -507,7 +507,7 @@
           }
           
           html += `
-            <div class="search-item" onclick="window.searchFunctions.goToEvent('musicDetail.html?id=${item.id}&type=live-music')">
+            <div class="search-item" onclick="window.searchFunctions.goToEvent('musicdetail.html?id=${item.id}&type=live-music')">
               <div class="search-item-title">${highlightText(musicEvent.title, searchWords)}</div>
               <div class="search-item-info">
                 📍 ${highlightText(musicEvent.venue, searchWords)} • 📅 ${musicEvent.date} ${musicEvent.time}
