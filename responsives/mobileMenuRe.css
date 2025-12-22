@@ -1,0 +1,102 @@
+/* Mobile Menu Responsive CSS */
+
+@media screen and (max-width: 1024px) {
+  /* Hide top bar on tablet */
+  .inner-wrap-1 {
+    display: none;
+  }
+
+  /* Adjust main header padding */
+  .inner-wrap-2 {
+    padding: 10px 20px;
+    position: relative;
+  }
+
+  /* Show mobile menu toggle */
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+
+  /* Hide desktop menu initially */
+  .inner-menu {
+    display: none;
+  }
+
+  /* Show mobile menu when active - SIMPLE & DIRECT */
+  .inner-menu.show-menu {
+    display: block !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 9999;
+    padding: 10px 0;
+  }
+
+  .inner-menu.show-menu ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-direction: column;
+  }
+
+  .inner-menu.show-menu ul li {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+  }
+
+  .inner-menu.show-menu ul li a {
+    display: block;
+    padding: 12px 20px;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .inner-menu.show-menu ul li:hover {
+    background: #f5f5f5;
+  }
+
+  /* Hide dropdown arrows on mobile */
+  .inner-menu.show-menu ul li img {
+    display: none;
+  }
+
+  /* Submenu responsive */
+  .inner-menu.show-menu ul ul.submenu {
+    position: static;
+    display: block;
+    background-color: #f5f5f5;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .inner-menu.show-menu ul ul.submenu li a {
+    padding-left: 40px;
+    font-size: 14px;
+    color: #666;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .inner-wrap-2 {
+    padding: 8px 15px;
+  }
+  
+  .inner-menu.show-menu ul li a {
+    padding: 10px 15px;
+    font-size: 15px;
+  }
+  
+  .inner-menu.show-menu ul ul.submenu li a {
+    padding-left: 30px;
+    font-size: 13px;
+  }
+}

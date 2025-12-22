@@ -7,7 +7,7 @@ export const news = {
         category: "SỰ KIỆN",
         intro: "Tối 7/9, chuỗi concert “Anh trai vượt ngàn chông gai” đã chính thức khép lại với đêm diễn thứ 8 tại The Global City, Thủ Đức, TP. HCM.",
         images: [
-            { src: "/assets/images/news/atvncg.png", caption: "Đêm diễn thứ 8 của chuỗi concert" }
+            { src: "assets/images/news/atvncg.png", caption: "Đêm diễn thứ 8 của chuỗi concert" }
         ],
         paragraphs: [
     "33 nghệ sĩ đã cháy hết mình cùng hàng chục nghìn khán giả.",
@@ -50,7 +50,7 @@ export const news = {
         category: "SỰ KIỆN",
         intro: "Hai ngày cuồng nhiệt của WATERBOMB đã chính thức khép lại với nhiều kỷ niệm đáng nhớ.",
         images: [
-            { src: "/assets/images/news/wtb.png", caption: "Không khí sôi động tại WATERBOMB 2025" }
+            { src: "assets/images/news/wtb.png", caption: "Không khí sôi động tại WATERBOMB 2025" }
         ],
         paragraphs: [
             "Một trong những lễ hội mùa hè được mong chờ nhất châu Á đã chính thức đổ bộ Việt Nam, biến Khu đô thị Vạn Phúc City thành tâm điểm giải trí suốt hai ngày liên tiếp.",
@@ -71,7 +71,7 @@ export const news = {
     category: "SỰ KIỆN",
     intro: "Tổng hợp các sự kiện âm nhạc - văn hóa nghệ thuật nổi bật tháng 12/2025.",
     images: [
-        { src: "/assets/images/news/wishmas.png", caption: "Hòa nhạc Giáng Sinh 2025" }
+        { src: "assets/images/news/wishmas.png", caption: "Hòa nhạc Giáng Sinh 2025" }
     ],
     paragraphs: [
         "Thời gian: Ngày 20/12/2025 (gồm 2 suất diễn).",

@@ -1,5 +1,64 @@
-// Header JavaScript - Chức năng tìm kiếm và các function khác
+// Header JavaScript - Chức năng tìm kiếm và mobile menu
 (function() {
+  // Mobile menu functionality
+  window.mobileMenuFunctions = {
+    // Initialize mobile menu
+    init: function() {
+      console.log('Initializing mobile menu...');
+      
+      // Mobile menu toggle function
+      window.toggleMobileMenu = function() {
+        console.log('toggleMobileMenu called');
+        const menu = document.querySelector('.inner-menu');
+        console.log('Menu element found:', !!menu);
+        
+        if (menu) {
+          const wasOpen = menu.classList.contains('show-menu');
+          menu.classList.toggle('show-menu');
+          
+          console.log('Menu toggled:', wasOpen ? 'closed' : 'opened');
+          console.log('Menu classes:', menu.className);
+        } else {
+          console.error('Menu element (.inner-menu) not found');
+        }
+      };
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const menu = document.querySelector('.inner-menu');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        
+        if (menu && toggle && 
+            !menu.contains(event.target) && 
+            !toggle.contains(event.target)) {
+          menu.classList.remove('show-menu');
+        }
+      });
+      
+      // Close mobile menu when clicking on menu items
+      document.addEventListener('click', function(event) {
+        if (event.target.closest('.inner-menu a')) {
+          const menu = document.querySelector('.inner-menu');
+          if (menu) {
+            menu.classList.remove('show-menu');
+          }
+        }
+      });
+      
+      console.log('Mobile menu initialized successfully');
+    }
+  };
+
+  // Initialize mobile menu when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', window.mobileMenuFunctions.init);
+  } else {
+    window.mobileMenuFunctions.init();
+  }
+  
+  // Also initialize after a delay (for fetch-loaded content)
+  setTimeout(window.mobileMenuFunctions.init, 500);
+
   // Chức năng tìm kiếm cho header
   window.searchFunctions = {
     // Toggle search box
@@ -275,7 +334,7 @@
         case 'concert':
           return `concertDetail.html?id=${result.id}`;
         case 'music':
-          return `musicDetail.html?id=${result.id}&type=live-music`;
+          return `musicdetail.html?id=${result.id}&type=live-music`;
         case 'merchandise':
           return `merchandiseDetail.html?id=${result.id}`;
         default:
@@ -448,7 +507,7 @@
           }
           
           html += `
-            <div class="search-item" onclick="window.searchFunctions.goToEvent('musicDetail.html?id=${item.id}&type=live-music')">
+            <div class="search-item" onclick="window.searchFunctions.goToEvent('musicdetail.html?id=${item.id}&type=live-music')">
               <div class="search-item-title">${highlightText(musicEvent.title, searchWords)}</div>
               <div class="search-item-info">
                 📍 ${highlightText(musicEvent.venue, searchWords)} • 📅 ${musicEvent.date} ${musicEvent.time}
