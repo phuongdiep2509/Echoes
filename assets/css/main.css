@@ -3,10 +3,10 @@
     margin-top: 90px;
     position: relative;
     width: 100%;           
-    max-width: 2000px;     /* Giới hạn chiều rộng tối đa, zoom ra cũng không to hơn số này */
-    margin-left: auto;     /* Căn giữa carousel */
-    margin-right: auto;    /* Căn giữa carousel */
-    height: 850px;         /* Nên đặt chiều cao cố định hoặc tỉ lệ cụ thể thay vì 100% */
+    max-width: 2000px;  
+    margin-left: auto;    
+    margin-right: auto;   
+    height: 850px;         
     overflow: hidden;
 }
 
@@ -32,8 +32,8 @@
 .carousel-button-next {
     position: absolute;
     top: 0;
-    width: 15%;              /* vùng click */
-    height: 100%;            /* cao bằng carousel */
+    width: 15%;            
+    height: 100%;       
     z-index: 10;
 
     display: flex;
