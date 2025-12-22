@@ -27,7 +27,7 @@ const pageEntries = entries.slice(start, end);
         <div class="news-item mb-4 shadow-sm" onclick="location.href='NewDetail.html?id=${id}'" style="cursor:pointer; background:#fff; border-radius:10px; overflow:hidden;">
             <div class="row g-0">
                 <div class="col-md-4 p-0 d-flex align-items-center justify-content-center" style="background:${data.bgColor}; min-height:160px; overflow:hidden;">
-                 <img src="${data.images[0]?.src.startsWith('/') ? '..' + data.images[0].src : '../' + data.images[0].src}" 
+                 <img src="${data.images[0]?.src}" 
          class="img-fluid w-100 h-100 object-fit-cover" 
          alt="${data.label}">
                    
